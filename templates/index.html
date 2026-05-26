@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}我的博客 — 首页{% endblock %}
+
+{% block content %}
+<h1 class="page-title">最新文章</h1>
+
+{% if posts %}
+    {% for post in posts %}
+    <article class="post-card">
+        <h2 class="post-title">
+            <a href="/{{ post.path }}/">{{ post.meta.title }}</a>
+        </h2>
+        <time class="post-date">{{ post.meta.date }}</time>
+        {% if post.meta.summary %}
+        <p class="post-summary">{{ post.meta.summary }}</p>
+        {% endif %}
+        <a href="/{{ post.path }}/" class="read-more">阅读全文 &rarr;</a>
+    </article>
+    {% endfor %}
+{% else %}
+    <p class="no-posts">还没有文章，敬请期待！</p>
+{% endif %}
+{% endblock %}

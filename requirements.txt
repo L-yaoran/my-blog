@@ -1,0 +1,4 @@
+flask==3.1.0
+flask-flatpages==0.7.3
+markdown==3.7
+gunicorn==23.0.0
