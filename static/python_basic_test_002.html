@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python 练习 002</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/monokai.min.css">
+<link rel="stylesheet" href="/static/css/quiz.css?v=20260530">
+
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div class="badge">交互式练习</div>
+    <h1>Python 练习 002</h1>
+    <div class="subtitle">38 道题 · 选择题 + 填空题 + 简答题 + 代码实战 · 即时反馈 · 记录保存</div>
+  </div>
+  <div class="quiz-nav">
+    <a href="/static/python_basic_test_001.html" class="quiz-arrow" title="上一练习">◂</a>
+    <div class="quiz-dropdown">
+      <button class="quiz-dropdown-btn" onclick="toggleDropdown(this)">练习 002 <span class="arrow-icon">▾</span></button>
+      <div class="quiz-dropdown-menu">
+        <a href="/static/python_basic_test_001.html">练习 001</a>
+        <a href="/static/python_basic_test_002.html" class="active">练习 002</a>
+        <a href="/static/python_basic_test_003.html">练习 003</a>
+        <a href="/static/python_basic_test_004.html">练习 004</a>
+        <a href="/static/python_basic_test_005-1.html">练习 005-1</a>
+        <a href="/static/python_basic_test_005-2.html">练习 005-2</a>
+      </div>
+      </div>
+    <a href="/static/python_basic_test_003.html" class="quiz-arrow" title="下一练习">▸</a>
+  </div>
+  <div class="sticky-toolbar">
+    <a href="/" class="back-link">&larr; 返回主页</a>
+    <div class="score-bar">
+      <div class="score-item"><div class="score-label">客观题</div><div class="score-num"><span id="objDone">0</span>/20</div></div>
+      <div class="score-item"><div class="score-label">主观题</div><div class="score-num"><span id="subjDone">0</span>/18</div></div>
+      <div class="score-item" id="scoreResult" style="display:none"><div class="score-label">得分</div><div class="score-num"><span id="correctCount">0</span></div></div>
+      <div style="flex:1;min-width:0;"></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.35rem;position:relative;">
+        <div style="display:flex;gap:0.5rem;">
+          <button class="score-btn" id="btnSubmit" onclick="submitAll()">提交答案</button>
+          <button class="score-btn" style="background:var(--muted)" onclick="resetAll()">重置进度</button>
+        </div>
+      </div>
+    </div>
+    <div style="width:100%;display:flex;align-items:center;justify-content:space-between;padding-top:0.35rem;border-top:1px dashed var(--border);position:relative;">
+      <span onclick="toggleHistory()" style="cursor:pointer;font-size:0.78rem;color:var(--sub);user-select:none;">做题记录 <span id="historyToggleIcon">▼</span></span>
+      <div style="display:flex;gap:0.5rem;">
+        <button class="score-btn" style="background:var(--green)" onclick="saveProgress()">暂存进度</button>
+        <button class="score-btn" style="background:var(--purple)" onclick="loadProgress()">加载进度</button>
+        <button class="score-btn" style="background:var(--gold)" onclick="exportProgress()">导出数据</button>
+        <button class="score-btn" style="background:var(--blue)" onclick="importProgress()">导入数据</button>
+        <input type="file" id="importFileInput" accept=".json" style="display:none" onchange="handleImportFile(event)">
+      </div>
+      <div class="history-panel" id="historyPanel">
+    <h4>做题记录 <button class="history-clear" onclick="clearHistory()">清空记录</button></h4>
+    <ul class="history-list" id="historyList"></ul>
+    <div class="history-empty" id="historyEmpty">暂无记录</div>
+  </div>
+    </div>
+  </div>
+
+  <!-- History detail modal -->
+  <div class="history-detail-overlay" id="historyDetailOverlay" onclick="closeHistoryDetail()">
+    <div class="history-detail" id="historyDetail" onclick="event.stopPropagation()">
+      <div class="history-detail-header">
+        <h4>答题详情</h4>
+        <button class="history-detail-close" onclick="closeHistoryDetail()">&times;</button>
+      </div>
+      <div class="history-detail-body" id="historyDetailBody"></div>
+    </div>
+  </div>
+
+<!-- ====== 一、选择题 10题 ====== -->
+  <div class="section">
+    <div class="section-title"><span class="icon"></span>一、选择题（10 题）</div>
+
+    <div class="card" data-qid="1" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 1 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">面向对象中，封装主要解决的问题是？</div>
+      <div class="options">
+        <div class="option" data-opt="A" onclick="selectOption(this)"><span class="option-letter">A</span> 让所有代码都不能被访问</div>
+        <div class="option" data-opt="B" onclick="selectOption(this)"><span class="option-letter">B</span> 数据和行为的组织，以及访问边界控制</div>
+        <div class="option" data-opt="C" onclick="selectOption(this)"><span class="option-letter">C</span> 让类不能被继承</div>
+        <div class="option" data-opt="D" onclick="selectOption(this)"><span class="option-letter">D</span> 让程序只能按顺序执行</div>
+      </div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>封装的核心是把相关的数据和操作方法组织到类里，同时用私有属性和公共接口控制外部访问方式（访问边界）。</div>
+    </div>
+
+    <div class="card" data-qid="2" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 2 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">下列关于继承的说法正确的是？</div>
+      <div class="options">
+        <div class="option" data-opt="A" onclick="selectOption(this)"><span class="option-letter">A</span> 子类不能使用父类方法</div>
+        <div class="option" data-opt="B" onclick="selectOption(this)"><span class="option-letter">B</span> 继承可以减少重复代码，并让子类复用父类能力</div>
+        <div class="option" data-opt="C" onclick="selectOption(this)"><span class="option-letter">C</span> 继承会让所有类完全一样</div>
+        <div class="option" data-opt="D" onclick="selectOption(this)"><span class="option-letter">D</span> Python 不支持继承</div>
+      </div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>继承的核心价值就是复用。子类继承父类后自动获得父类的属性和方法，避免重复编写相同代码。</div>
+    </div>
+
+    <div class="card" data-qid="3" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 3 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">定义 <code>Dog</code> 类继承 <code>Animal</code> 类，正确写法是？</div>
+      <div class="options">
+        <div class="option" data-opt="A" onclick="selectOption(this)"><span class="option-letter">A</span> `class Dog[Animal]:`</div>
+        <div class="option" data-opt="B" onclick="selectOption(this)"><span class="option-letter">B</span> `class Dog(Animal):`</div>
+        <div class="option" data-opt="C" onclick="selectOption(this)"><span class="option-letter">C</span> `class Dog:Animal`</div>
+        <div class="option" data-opt="D" onclick="selectOption(this)"><span class="option-letter">D</span> `class Dog extends Animal:`</div>
+      </div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>Python 继承语法：<code>class 子类名(父类名):</code>。注意是圆括号。</div>
+    </div>
+
+    <div class="card" data-qid="4" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 4 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">子类重新定义父类同名方法，这种行为叫？</div>
+      <div class="options">
+        <div class="option" data-opt="A" onclick="selectOption(this)"><span class="option-letter">A</span> 方法删除</div>
+        <div class="option" data-opt="B" onclick="selectOption(this)"><span class="option-letter">B</span> 方法重写</div>
+        <div class="option" data-opt="C" onclick="selectOption(this)"><span class="option-letter">C</span> 方法导入</div>
+        <div class="option" data-opt="D" onclick="selectOption(this)"><span class="option-letter">D</span> 方法隐藏文件</div>
+      </div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>方法重写（Override）是子类定义与父类同名的方法，从而在子类中提供不同的实现。</div>
+    </div>
+
+    <div class="card" data-qid="5" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 5 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">子类重写父类方法后，子类对象调用该同名方法时，默认会优先执行？</div>
+      <div class="options">
+        <div class="option" data-opt="A" onclick="selectOption(this)"><span class="option-letter">A</span> 子类自己的方法</div>
+        <div class="option" data-opt="B" onclick="selectOption(this)"><span class="option-letter">B</span> 父类的方法</div>
+        <div class="option" data-opt="C" onclick="selectOption(this)"><span class="option-letter">C</span> 随机方法</div>
+        <div class="option" data-opt="D" onclick="selectOption(this)"><span class="option-letter">D</span> `object` 中的方法</div>
+      </div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>方法查找遵循「就近原则」：先在子类自身查找，找到即停止，找不到才去父类。</div>
+    </div>
+
+    <div class="card" data-qid="6" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 6 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">在 Python3 中，子类调用父类初始化方法，推荐写法是？</div>
+      <div class="options">
+        <div class="option" data-opt="A" onclick="selectOption(this)"><span class="option-letter">A</span> `super().__init__(参数)`</div>
+        <div class="option" data-opt="B" onclick="selectOption(this)"><span class="option-letter">B</span> `super(self).__init__(参数)`</div>
+        <div class="option" data-opt="C" onclick="selectOption(this)"><span class="option-letter">C</span> `父类.__init__(参数)`</div>
+        <div class="option" data-opt="D" onclick="selectOption(this)"><span class="option-letter">D</span> `self.super().__init__(参数)`</div>
+      </div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>Python3 推荐 <code>super().__init__(参数)</code>，不需要手动传 self。</div>
+    </div>
+
+    <div class="card" data-qid="7" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 7 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">多继承中，如果多个父类有同名方法，排查调用顺序应查看？</div>
+      <div class="options">
+        <div class="option" data-opt="A" onclick="selectOption(this)"><span class="option-letter">A</span> `类名.path()`</div>
+        <div class="option" data-opt="B" onclick="selectOption(this)"><span class="option-letter">B</span> `类名.mro()`</div>
+        <div class="option" data-opt="C" onclick="selectOption(this)"><span class="option-letter">C</span> `类名.route()`</div>
+        <div class="option" data-opt="D" onclick="selectOption(this)"><span class="option-letter">D</span> `类名.order()`</div>
+      </div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>MRO（Method Resolution Order）可用 <code>类名.mro()</code> 或 <code>类名.__mro__</code> 查看。不要靠感觉猜测。</div>
+    </div>
+
+    <div class="card" data-qid="8" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 8 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">Python 中常说的"鸭子类型"强调的是？</div>
+      <div class="options">
+        <div class="option" data-opt="A" onclick="selectOption(this)"><span class="option-letter">A</span> 对象必须来自同一个父类</div>
+        <div class="option" data-opt="B" onclick="selectOption(this)"><span class="option-letter">B</span> 只要有相同的方法，就可以被调用</div>
+        <div class="option" data-opt="C" onclick="selectOption(this)"><span class="option-letter">C</span> 必须先写接口文件</div>
+        <div class="option" data-opt="D" onclick="selectOption(this)"><span class="option-letter">D</span> 变量必须提前声明类型</div>
+      </div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>鸭子类型核心：「如果它走路像鸭子，叫起来像鸭子，那它就是鸭子」。不强制继承关系，只关心对象有没有需要的方法。</div>
+    </div>
+
+    <div class="card" data-qid="9" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 9 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">类方法需要使用的装饰器是？</div>
+      <div class="options">
+        <div class="option" data-opt="A" onclick="selectOption(this)"><span class="option-letter">A</span> `@staticmethod`</div>
+        <div class="option" data-opt="B" onclick="selectOption(this)"><span class="option-letter">B</span> `@classmethod`</div>
+        <div class="option" data-opt="C" onclick="selectOption(this)"><span class="option-letter">C</span> `@propertyonly`</div>
+        <div class="option" data-opt="D" onclick="selectOption(this)"><span class="option-letter">D</span> `@selfmethod`</div>
+      </div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>类方法使用 <code>@classmethod</code> 装饰器，第一个参数约定为 <code>cls</code>。</div>
+    </div>
+
+    <div class="card" data-qid="10" data-type="choice" data-answer="C">
+      <div class="card-header"><span class="card-qnum">第 10 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">静态方法的特点是？</div>
+      <div class="options">
+        <div class="option" data-opt="A" onclick="selectOption(this)"><span class="option-letter">A</span> 必须使用 `self`</div>
+        <div class="option" data-opt="B" onclick="selectOption(this)"><span class="option-letter">B</span> 必须使用 `cls`</div>
+        <div class="option" data-opt="C" onclick="selectOption(this)"><span class="option-letter">C</span> 通常不依赖实例属性，也不依赖类属性</div>
+        <div class="option" data-opt="D" onclick="selectOption(this)"><span class="option-letter">D</span> 只能通过对象调用，不能通过类调用</div>
+      </div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>静态方法不需要 <code>self</code> 或 <code>cls</code>，就是放在类里的普通函数。可通过对象或类名调用。</div>
+    </div>
+  </div>
+
+  <!-- ====== 二、填空题 10题 ====== -->
+  <div class="section">
+    <div class="section-title"><span class="icon"></span>二、填空题（10 题）</div>
+
+    <div class="card" data-qid="11" data-type="fill" data-answer="封装,继承,多态">
+      <div class="card-header"><span class="card-qnum">第 11 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">面向对象三大特性是 <input type="text" class="blank-input">、<input type="text" class="blank-input">、<input type="text" class="blank-input">。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>三大特性：<strong>封装</strong>（数据安全）、<strong>继承</strong>（代码复用）、<strong>多态</strong>（灵活扩展）。</div>
+    </div>
+
+    <div class="card" data-qid="12" data-type="fill" data-answer="__">
+      <div class="card-header"><span class="card-qnum">第 12 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">私有属性通常在属性名前加 <input type="text" class="blank-input">。</div>
+      
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>答案为 <code>__</code>（双下划线）。如 <code>self.__balance = 0</code>。</div>
+    </div>
+
+    <div class="card" data-qid="13" data-type="fill" data-answer="get_xx()">
+      <div class="card-header"><span class="card-qnum">第 13 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">如果想在类外安全读取私有属性，通常可以提供 <input type="text" class="blank-input"> 方法。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>答案为 <code>get_xx()</code>（如 <code>get_balance()</code>）。通过 getter 方法安全读取私有属性。</div>
+    </div>
+
+    <div class="card" data-qid="14" data-type="fill" data-answer="set_xx()">
+      <div class="card-header"><span class="card-qnum">第 14 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">如果想在类外安全修改私有属性，通常可以提供 <input type="text" class="blank-input"> 方法，并在方法中做校验。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>答案为 <code>set_xx()</code>。在 setter 中校验类型和范围，防止非法数据。</div>
+    </div>
+
+    <div class="card" data-qid="15" data-type="fill" data-answer="父类名">
+      <div class="card-header"><span class="card-qnum">第 15 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">子类继承父类的格式是：<code>class 子类名(</code><input type="text" class="blank-input"><code>):</code></div>
+      
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>答案为「父类名」。括号中写要继承的父类名称。</div>
+    </div>
+
+    <div class="card" data-qid="16" data-type="fill" data-answer="重写">
+      <div class="card-header"><span class="card-qnum">第 16 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">子类重新定义父类同名方法，叫方法 <input type="text" class="blank-input">。</div>
+      
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>答案为「重写」（Override）。调用时优先执行子类版本。</div>
+    </div>
+
+    <div class="card" data-qid="17" data-type="fill" data-answer="父">
+      <div class="card-header"><span class="card-qnum">第 17 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question"><code>super().__init__(name, hp)</code> 调用的是 <input type="text" class="blank-input"> 类的初始化方法。</div>
+      
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>答案为「父」。<code>super()</code> 代表当前类的父类。</div>
+    </div>
+
+    <div class="card" data-qid="18" data-type="fill" data-answer="__mro__">
+      <div class="card-header"><span class="card-qnum">第 18 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">多继承中查看方法解析顺序的两种写法是 <code>类名.mro()</code> 和 <code>类名.</code><input type="text" class="blank-input"><code></code>。</div>
+      
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>答案为 <code>__mro__</code>。<code>类名.mro()</code> 返回列表，<code>类名.__mro__</code> 返回元组。</div>
+    </div>
+
+    <div class="card" data-qid="19" data-type="fill" data-answer="@classmethod">
+      <div class="card-header"><span class="card-qnum">第 19 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">类方法需要装饰器 <input type="text" class="blank-input">，第一个参数通常写作 <code>cls</code>。</div>
+      
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>答案为 <code>@classmethod</code>。类方法第一个参数 <code>cls</code> 代表类本身。</div>
+    </div>
+
+    <div class="card" data-qid="20" data-type="fill" data-answer="@staticmethod">
+      <div class="card-header"><span class="card-qnum">第 20 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">静态方法需要装饰器 <input type="text" class="blank-input">，通常不需要写 <code>self</code> 或 <code>cls</code>。</div>
+      
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>解析：</strong>答案为 <code>@staticmethod</code>。静态方法不依赖实例或类属性。</div>
+    </div>
+  </div>
+
+  <!-- ====== 三、简答题 10题 ====== -->
+  <div class="section">
+    <div class="section-title"><span class="icon"></span>三、简答题（10 题）</div>
+
+    <div class="card" data-qid="21" data-type="short" data-answer="把数据和方法组织到类里,控制外部访问方式,代码清晰数据安全">
+      <div class="card-header"><span class="card-qnum">第 21 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">什么是封装？封装有什么好处？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="2"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">封装是把属性和方法组织到类里，并控制外部访问方式。好处是让代码结构更清晰，重要数据更安全（私有属性不被外部随意修改），外部使用更简单（通过公共方法调用）。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>封装是把属性和方法组织到类里，并控制外部访问方式。好处是让代码结构更清晰，重要数据更安全（私有属性不被外部随意修改），外部使用更简单（通过公共方法调用）。</div>
+    </div>
+    <div class="card" data-qid="22" data-type="short" data-answer="不是,可以通过公共方法间接使用">
+      <div class="card-header"><span class="card-qnum">第 22 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">私有属性是不是意味着外部完全不能使用这个数据？为什么？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="2"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">不是。私有属性只是外部不应该直接访问，但可以通过类提供的公共方法（如 <code>get_balance()</code>）间接使用。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>不是。私有属性只是外部不应该直接访问，但可以通过类提供的公共方法（如 <code>get_balance()</code>）间接使用。</div>
+    </div>
+    <div class="card" data-qid="23" data-type="short" data-answer="防止非法数据,统一做类型和范围校验">
+      <div class="card-header"><span class="card-qnum">第 23 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">为什么 <code>set_xx()</code> 方法中通常要做数据校验？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="2"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">因为直接修改可能产生非法数据（负数余额、错误年龄）。<code>set_xx()</code> 可以统一做类型检查、范围校验，在修改前拦截不合理数据。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>因为直接修改可能产生非法数据（负数余额、错误年龄）。<code>set_xx()</code> 可以统一做类型检查、范围校验，在修改前拦截不合理数据。</div>
+    </div>
+    <div class="card" data-qid="24" data-type="short" data-answer="减少重复代码,提高复用性">
+      <div class="card-header"><span class="card-qnum">第 24 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">什么是继承？继承的主要好处是什么？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="2"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">继承是子类自动获得父类已有属性和方法的机制。主要好处是减少重复代码，提高复用性。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>继承是子类自动获得父类已有属性和方法的机制。主要好处是减少重复代码，提高复用性。</div>
+    </div>
+    <div class="card" data-qid="25" data-type="short" data-answer="不是,可以新增自己的方法,也可以重写父类方法">
+      <div class="card-header"><span class="card-qnum">第 25 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">子类继承父类后，是否只能使用父类已有功能？为什么？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="2"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">不是。子类可以：①使用父类已有功能（继承）；②新增自己的方法（扩展）；③重写父类方法（覆盖）。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>不是。子类可以：①使用父类已有功能（继承）；②新增自己的方法（扩展）；③重写父类方法（覆盖）。</div>
+    </div>
+    <div class="card" data-qid="26" data-type="short" data-answer="子类重新定义父类同名方法,父类方法不满足需求时">
+      <div class="card-header"><span class="card-qnum">第 26 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">什么是方法重写？什么时候需要方法重写？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="2"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">方法重写是子类重新定义父类同名方法。当父类方法不能满足子类需求时（比如需要不同的输出格式），就需要重写。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>方法重写是子类重新定义父类同名方法。当父类方法不能满足子类需求时（比如需要不同的输出格式），就需要重写。</div>
+    </div>
+    <div class="card" data-qid="27" data-type="short" data-answer="调用父类方法,复用父类初始化逻辑">
+      <div class="card-header"><span class="card-qnum">第 27 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question"><code>super()</code> 的作用是什么？常见使用场景是什么？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="2"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);"><code>super()</code> 用于在子类中调用父类方法。最常见场景：子类重写 <code>__init__</code> 后，用 <code>super().__init__()</code> 复用父类初始化逻辑。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><code>super()</code> 用于在子类中调用父类方法。最常见场景：子类重写 <code>__init__</code> 后，用 <code>super().__init__()</code> 复用父类初始化逻辑。</div>
+    </div>
+    <div class="card" data-qid="28" data-type="short" data-answer="MRO决定查找顺序,不同继承顺序结果不同,不能靠猜">
+      <div class="card-header"><span class="card-qnum">第 28 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">多继承出现同名方法冲突时，为什么不能靠猜？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="2"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">因为多继承的查找顺序由 MRO 决定，不同继承顺序会影响结果。应使用 <code>类名.mro()</code> 查看真实的调用顺序。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>因为多继承的查找顺序由 MRO 决定，不同继承顺序会影响结果。应使用 <code>类名.mro()</code> 查看真实的调用顺序。</div>
+    </div>
+    <div class="card" data-qid="29" data-type="short" data-answer="统一调用入口,传入不同对象表现不同结果,减少判断方便扩展">
+      <div class="card-header"><span class="card-qnum">第 29 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">什么是多态？多态有什么好处？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="2"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">多态是同一个调用入口，传入不同对象，表现出不同结果。好处：调用统一，减少 if/else 分支判断，方便扩展新类型。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>多态是同一个调用入口，传入不同对象，表现出不同结果。好处：调用统一，减少 if/else 分支判断，方便扩展新类型。</div>
+    </div>
+    <div class="card" data-qid="30" data-type="short" data-answer="需要实例数据用成员方法,需要类数据用类方法,都不需要则静态方法">
+      <div class="card-header"><span class="card-qnum">第 30 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">如何判断一个方法应该写成成员方法、类方法还是静态方法？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="2"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);"><strong>口诀</strong>：需要对象数据（self）→成员方法；需要类数据（cls）→类方法；都不需要→静态方法。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><strong>口诀</strong>：需要对象数据（self）→成员方法；需要类数据（cls）→类方法；都不需要→静态方法。</div>
+    </div>
+  </div>
+
+  <!-- ====== 四、代码实战题 8题 ====== -->
+  <div class="section">
+    <div class="section-title"><span class="icon"></span>四、代码实战（8 题）</div>
+
+    <!-- Q31 -->
+    <div class="card" data-qid="31" data-type="write">
+      <div class="card-header"><span class="card-qnum">第 31 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question">私有属性与公共接口 — 定义 <code>Wallet</code> 类</div>
+      <div class="card-task">
+        <ol style="margin-left:1.2rem;">
+          <li>使用 <code>__init__</code> 初始化用户名 <code>username</code> 和私有余额 <code>__balance</code></li>
+          <li>定义 <code>get_balance()</code> 方法返回当前余额</li>
+          <li>定义 <code>deposit(money)</code> 方法，存钱金额必须大于 0</li>
+          <li>定义 <code>pay(money)</code> 方法，付款金额必须大于 0 且不能超过余额</li>
+          <li>创建对象并测试存钱、付款、余额不足三种情况</li>
+        </ol>
+      </div>
+      <textarea class="code-editor" placeholder="# 在这里编写你的代码..." spellcheck="false"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer"><div class="code-block"><span class="kw">class <span class="fn">Wallet:
+    <span class="kw">def <span class="fn">__init__(<span class="kw">self, username, balance):
+        <span class="kw">self.username = username
+        <span class="kw">self.__balance = balance
+
+    <span class="kw">def <span class="fn">get_balance(<span class="kw">self):
+        <span class="kw">return <span class="kw">self.__balance
+
+    <span class="kw">def <span class="fn">deposit(<span class="kw">self, money):
+        <span class="kw">if money <= <span class="num">0:
+            <span class="fn">print(<span class="str">"存钱金额必须大于0")
+            <span class="kw">return
+        <span class="kw">self.__balance += money
+        <span class="fn">print(<span class="str">f"存钱成功，当前余额：{self.__balance}")
+
+    <span class="kw">def <span class="fn">pay(<span class="kw">self, money):
+        <span class="kw">if money <= <span class="num">0:
+            <span class="fn">print(<span class="str">"付款金额必须大于0")
+            <span class="kw">return
+        <span class="kw">if money > <span class="kw">self.__balance:
+            <span class="fn">print(<span class="str">"余额不足，付款失败")
+            <span class="kw">return
+        <span class="kw">self.__balance -= money
+        <span class="fn">print(<span class="str">f"付款成功，当前余额：{self.__balance}")
+
+wallet = Wallet(<span class="str">"小明", <span class="num">100)
+wallet.deposit(<span class="num">50)
+wallet.pay(<span class="num">30)
+wallet.pay(<span class="num">1000)
+<span class="fn">print(wallet.get_balance())</div></div>
+    </div>
+
+    <!-- Q32 -->
+    <div class="card" data-qid="32" data-type="write">
+      <div class="card-header"><span class="card-qnum">第 32 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question">单继承与子类扩展 — 定义 <code>AiTool</code> 和 <code>DifyTool</code></div>
+      <div class="card-task">
+        <ol style="margin-left:1.2rem;">
+          <li>定义父类 <code>AiTool</code>，属性 <code>name</code>、<code>status</code>；方法 <code>enable()</code>、<code>show_info()</code></li>
+          <li>定义子类 <code>DifyTool</code> 继承 <code>AiTool</code></li>
+          <li><code>DifyTool</code> 新增方法 <code>run_workflow()</code>，输出"正在运行 Dify 工作流"</li>
+          <li>创建对象并测试父类方法和子类方法</li>
+        </ol>
+      </div>
+      <textarea class="code-editor" placeholder="# 在这里编写你的代码..." spellcheck="false"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer"><div class="code-block"><span class="kw">class <span class="fn">AiTool:
+    <span class="kw">def <span class="fn">__init__(<span class="kw">self, name, status):
+        <span class="kw">self.name = name
+        <span class="kw">self.status = status
+
+    <span class="kw">def <span class="fn">enable(<span class="kw">self):
+        <span class="kw">self.status = <span class="str">"启用"
+
+    <span class="kw">def <span class="fn">show_info(<span class="kw">self):
+        <span class="fn">print(<span class="str">f"工具名称：{self.name}，状态：{self.status}")
+
+<span class="kw">class <span class="fn">DifyTool(AiTool):
+    <span class="kw">def <span class="fn">run_workflow(<span class="kw">self):
+        <span class="fn">print(<span class="str">"正在运行 Dify 工作流")
+
+dify = DifyTool(<span class="str">"客服问答工作流", <span class="str">"未启用")
+dify.show_info()
+dify.enable()
+dify.show_info()
+dify.run_workflow()</div></div>
+    </div>
+
+    <!-- Q33 -->
+    <div class="card" data-qid="33" data-type="write">
+      <div class="card-header"><span class="card-qnum">第 33 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question">方法重写 — 在 <code>DifyTool</code> 中重写 <code>show_info()</code></div>
+      <div class="card-task">
+        <ol style="margin-left:1.2rem;">
+          <li>在第 32 题基础上，在 <code>DifyTool</code> 中重写 <code>show_info()</code></li>
+          <li>子类输出信息时要体现这是"Dify 平台工具"</li>
+          <li>创建对象测试重写后的效果</li>
+        </ol>
+      </div>
+      <textarea class="code-editor" placeholder="# 在这里编写你的代码..." spellcheck="false"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer"><div class="code-block"><span class="kw">class <span class="fn">AiTool:
+    <span class="kw">def <span class="fn">__init__(<span class="kw">self, name, status):
+        <span class="kw">self.name = name
+        <span class="kw">self.status = status
+
+    <span class="kw">def <span class="fn">show_info(<span class="kw">self):
+        <span class="fn">print(<span class="str">f"工具名称：{self.name}，状态：{self.status}")
+
+<span class="kw">class <span class="fn">DifyTool(AiTool):
+    <span class="kw">def <span class="fn">show_info(<span class="kw">self):
+        <span class="fn">print(<span class="str">f"Dify 平台工具：{self.name}，当前状态：{self.status}")
+
+dify = DifyTool(<span class="str">"知识库问答", <span class="str">"启用")
+dify.show_info()  <span class="cm"># 调用子类重写后的版本</div></div>
+    </div>
+
+    <!-- Q34 -->
+    <div class="card" data-qid="34" data-type="write">
+      <div class="card-header"><span class="card-qnum">第 34 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question">使用 <code>super()</code> 复用父类初始化 — 定义 <code>ModelClient</code> 和 <code>OpenAIClient</code></div>
+      <div class="card-task">
+        <ol style="margin-left:1.2rem;">
+          <li>父类 <code>ModelClient</code>：属性 <code>model_name</code>、<code>base_url</code>；方法 <code>show_config()</code></li>
+          <li>子类 <code>OpenAIClient</code> 新增属性 <code>api_key</code></li>
+          <li>子类 <code>__init__</code> 中必须使用 <code>super()</code> 调用父类初始化</li>
+          <li>子类重写 <code>show_config()</code>，先调用父类方法，再补充输出 api_key 前 4 位</li>
+        </ol>
+      </div>
+      <textarea class="code-editor" placeholder="# 在这里编写你的代码..." spellcheck="false"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer"><div class="code-block"><span class="kw">class <span class="fn">ModelClient:
+    <span class="kw">def <span class="fn">__init__(<span class="kw">self, model_name, base_url):
+        <span class="kw">self.model_name = model_name
+        <span class="kw">self.base_url = base_url
+
+    <span class="kw">def <span class="fn">show_config(<span class="kw">self):
+        <span class="fn">print(<span class="str">f"模型名称：{self.model_name}")
+        <span class="fn">print(<span class="str">f"接口地址：{self.base_url}")
+
+<span class="kw">class <span class="fn">OpenAIClient(ModelClient):
+    <span class="kw">def <span class="fn">__init__(<span class="kw">self, model_name, base_url, api_key):
+        <span class="kw">super().__init__(model_name, base_url)
+        <span class="kw">self.api_key = api_key
+
+    <span class="kw">def <span class="fn">show_config(<span class="kw">self):
+        <span class="kw">super().show_config()
+        <span class="fn">print(<span class="str">f"密钥前4位：{self.api_key[:4]}")
+
+client = OpenAIClient(<span class="str">"gpt-4.1", <span class="str">"https://api.openai.com", <span class="str">"sk-123456789")
+client.show_config()</div></div>
+    </div>
+
+    <!-- Q35 -->
+    <div class="card" data-qid="35" data-type="write">
+      <div class="card-header"><span class="card-qnum">第 35 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question">多态：统一运行不同工具 — 定义三个 Runner 类和统一调用函数</div>
+      <div class="card-task">
+        <ol style="margin-left:1.2rem;">
+          <li>定义 <code>DifyRunner</code>、<code>OpenAIRunner</code>、<code>LocalRunner</code>，每个类都有 <code>run()</code> 方法</li>
+          <li>定义函数 <code>start_runner(runner)</code>，内部统一调用 <code>runner.run()</code></li>
+          <li>分别传入三个不同对象，观察同一个函数表现出不同结果</li>
+        </ol>
+      </div>
+      <textarea class="code-editor" placeholder="# 在这里编写你的代码..." spellcheck="false"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer"><div class="code-block"><span class="kw">class <span class="fn">DifyRunner:
+    <span class="kw">def <span class="fn">run(<span class="kw">self):
+        <span class="fn">print(<span class="str">"DifyRunner：运行 Dify 工作流")
+
+<span class="kw">class <span class="fn">OpenAIRunner:
+    <span class="kw">def <span class="fn">run(<span class="kw">self):
+        <span class="fn">print(<span class="str">"OpenAIRunner：调用 OpenAI 模型")
+
+<span class="kw">class <span class="fn">LocalRunner:
+    <span class="kw">def <span class="fn">run(<span class="kw">self):
+        <span class="fn">print(<span class="str">"LocalRunner：运行本地模型")
+
+<span class="kw">def <span class="fn">start_runner(runner):
+    runner.run()  <span class="cm"># 多态：不关心类型，只要有 run 方法就能调用
+
+start_runner(DifyRunner())
+start_runner(OpenAIRunner())
+start_runner(LocalRunner())</div></div>
+    </div>
+
+    <!-- Q36 -->
+    <div class="card" data-qid="36" data-type="write">
+      <div class="card-header"><span class="card-qnum">第 36 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question">类属性、类方法、静态方法 — 定义 <code>Task</code> 类</div>
+      <div class="card-task">
+        <ol style="margin-left:1.2rem;">
+          <li>类属性 <code>total_count</code>，统计创建了多少个任务对象</li>
+          <li>实例属性 <code>title</code>，保存任务标题</li>
+          <li>成员方法 <code>finish()</code>，输出"某任务已完成"</li>
+          <li>类方法 <code>show_total_count()</code>，输出任务总数</li>
+          <li>静态方法 <code>show_rule()</code>，输出任务规则说明</li>
+          <li>创建多个对象并测试三种方法</li>
+        </ol>
+      </div>
+      <textarea class="code-editor" placeholder="# 在这里编写你的代码..." spellcheck="false"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer"><div class="code-block"><span class="kw">class <span class="fn">Task:
+    total_count = <span class="num">0  <span class="cm"># 类属性：全类共享
+
+    <span class="kw">def <span class="fn">__init__(<span class="kw">self, title):
+        <span class="kw">self.title = title
+        Task.total_count += <span class="num">1  <span class="cm"># 通过类名修改类属性
+
+    <span class="kw">def <span class="fn">finish(<span class="kw">self):  <span class="cm"># 成员方法：用 self
+        <span class="fn">print(<span class="str">f"任务《{self.title}》已完成")
+
+    <span class="op">@classmethod
+    <span class="kw">def <span class="fn">show_total_count(cls):  <span class="cm"># 类方法：用 cls
+        <span class="fn">print(<span class="str">f"当前任务总数：{cls.total_count}")
+
+    <span class="op">@staticmethod
+    <span class="kw">def <span class="fn">show_rule():  <span class="cm"># 静态方法：不用 self/cls
+        <span class="fn">print(<span class="str">"任务规则：创建任务后，完成时调用 finish 方法")
+
+Task.show_rule()
+task1 = Task(<span class="str">"复习继承")
+task2 = Task(<span class="str">"完成作业")
+task1.finish()
+task2.finish()
+Task.show_total_count()</div></div>
+    </div>
+
+    <!-- Q37 -->
+    <div class="card" data-qid="37" data-type="write">
+      <div class="card-header"><span class="card-qnum">第 37 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question">综合案例：AI 工具管理中心</div>
+      <div class="card-task">
+        <ol style="margin-left:1.2rem;">
+          <li>定义父类 <code>BaseTool</code>，包含工具名 <code>name</code>、私有状态 <code>__enabled</code></li>
+          <li>提供 <code>enable()</code>、<code>disable()</code>、<code>is_enabled()</code> 方法</li>
+          <li>定义 <code>DifyTool</code> 和 <code>OpenAITool</code> 继承 <code>BaseTool</code>，各自实现 <code>run()</code></li>
+          <li>定义统一函数 <code>run_tool(tool)</code>：已启用则调用 <code>tool.run()</code>，否则提示未启用</li>
+          <li>创建两个工具对象，分别测试启用前和启用后的运行效果</li>
+        </ol>
+      </div>
+      <textarea class="code-editor" placeholder="# 在这里编写你的代码..." spellcheck="false"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer"><div class="code-block"><span class="kw">class <span class="fn">BaseTool:
+    <span class="kw">def <span class="fn">__init__(<span class="kw">self, name):
+        <span class="kw">self.name = name
+        <span class="kw">self.__enabled = <span class="kw">False  <span class="cm"># 私有状态
+
+    <span class="kw">def <span class="fn">enable(<span class="kw">self):
+        <span class="kw">self.__enabled = <span class="kw">True
+        <span class="fn">print(<span class="str">f"{self.name} 已启用")
+
+    <span class="kw">def <span class="fn">disable(<span class="kw">self):
+        <span class="kw">self.__enabled = <span class="kw">False
+        <span class="fn">print(<span class="str">f"{self.name} 已禁用")
+
+    <span class="kw">def <span class="fn">is_enabled(<span class="kw">self):
+        <span class="kw">return <span class="kw">self.__enabled
+
+<span class="kw">class <span class="fn">DifyTool(BaseTool):
+    <span class="kw">def <span class="fn">run(<span class="kw">self):
+        <span class="fn">print(<span class="str">f"{self.name} 正在运行 Dify 工作流")
+
+<span class="kw">class <span class="fn">OpenAITool(BaseTool):
+    <span class="kw">def <span class="fn">run(<span class="kw">self):
+        <span class="fn">print(<span class="str">f"{self.name} 正在调用 OpenAI 模型")
+
+<span class="kw">def <span class="fn">run_tool(tool):
+    <span class="kw">if <span class="kw">not tool.is_enabled():
+        <span class="fn">print(<span class="str">f"{tool.name} 未启用，不能运行")
+        <span class="kw">return
+    tool.run()  <span class="cm"># 多态调用
+
+dify = DifyTool(<span class="str">"客服知识库")
+openai_tool = OpenAITool(<span class="str">"文本生成模型")
+
+run_tool(dify)       <span class="cm"># 未启用，被拦截
+dify.enable()
+run_tool(dify)       <span class="cm"># 启用后正常运行
+
+openai_tool.enable()
+run_tool(openai_tool)</div></div>
+    </div>
+
+    <!-- Q38 -->
+    <div class="card" data-qid="38" data-type="write">
+      <div class="card-header"><span class="card-qnum">第 38 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question">综合案例：课程学习系统</div>
+      <div class="card-task">
+        <ol style="margin-left:1.2rem;">
+          <li>定义 <code>Course</code> 类，类属性 <code>total_learning_minutes</code> 统计全班累计学习分钟数</li>
+          <li>实例属性：课程名 <code>name</code>、学生名 <code>student_name</code></li>
+          <li>成员方法 <code>learn(minutes)</code>：某学生学习指定分钟数，并累加到全班总学习时长</li>
+          <li>类方法 <code>show_total_minutes()</code>：输出全班总学习分钟数</li>
+          <li>静态方法 <code>show_rule()</code>：输出学习规则</li>
+          <li>创建至少两个课程对象，测试学习和总时长统计</li>
+        </ol>
+      </div>
+      <textarea class="code-editor" placeholder="# 在这里编写你的代码..." spellcheck="false"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼
+      <div class="ref-answer"><div class="code-block"><span class="kw">class <span class="fn">Course:
+    total_learning_minutes = <span class="num">0  <span class="cm"># 类属性：全班总时长
+
+    <span class="kw">def <span class="fn">__init__(<span class="kw">self, name, student_name):
+        <span class="kw">self.name = name
+        <span class="kw">self.student_name = student_name
+
+    <span class="kw">def <span class="fn">learn(<span class="kw">self, minutes):  <span class="cm"># 成员方法
+        <span class="kw">if minutes <= <span class="num">0:
+            <span class="fn">print(<span class="str">"学习分钟数必须大于0")
+            <span class="kw">return
+        <span class="fn">print(<span class="str">f"{self.student_name} 学习《{self.name}》{minutes}分钟")
+        Course.total_learning_minutes += minutes
+
+    <span class="op">@classmethod
+    <span class="kw">def <span class="fn">show_total_minutes(cls):  <span class="cm"># 类方法
+        <span class="fn">print(<span class="str">f"全班累计学习时长：{cls.total_learning_minutes}分钟")
+
+    <span class="op">@staticmethod
+    <span class="kw">def <span class="fn">show_rule():  <span class="cm"># 静态方法
+        <span class="fn">print(<span class="str">"学习规则：每次学习后，请记录真实学习分钟数")
+
+Course.show_rule()
+course1 = Course(<span class="str">"面向对象高级", <span class="str">"小明")
+course2 = Course(<span class="str">"面向对象高级", <span class="str">"小红")
+course1.learn(<span class="num">30)
+course2.learn(<span class="num">45)
+Course.show_total_minutes()  <span class="cm"># → 75分钟</div></div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+const STORAGE_KEY = 'py_oop_day02_quiz_history'
+const SAVE_KEY = 'py_day02_saves'
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+<script src="/static/js/quiz-engine.js?v=20260530"></script>
+
+</body>
+</html>

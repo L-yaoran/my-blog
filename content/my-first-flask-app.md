@@ -1,5 +1,6 @@
 title: 用 Flask 搭建这个博客
 date: 2026-05-26
+badge: 项目实践
 summary: 介绍如何使用 Flask + Flask-FlatPages 搭建一个轻量级个人博客，无需数据库。
 
 ## 为什么要用 Flask？

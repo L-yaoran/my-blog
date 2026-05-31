@@ -3,31 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}我的博客{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>{% block title %}AI幻世录·GeoLib{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=20260528f">
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="/" class="nav-brand">My Blog</a>
+            <a href="/" class="nav-brand">AI幻世录·GeoLib</a>
             <button class="nav-toggle" aria-label="Toggle navigation">
                 <span class="hamburger"></span>
             </button>
             <div class="nav-links">
                 <a href="/" class="nav-link">首页</a>
                 <a href="/about" class="nav-link">关于</a>
+                <a href="https://github.com/L-yaoran/my-blog" target="_blank" class="nav-link">GitHub</a>
             </div>
         </div>
     </nav>
 
-    <main class="container">
+    <main>
         {% block content %}{% endblock %}
     </main>
 
     <footer class="footer">
-        <p>&copy; 2026 My Blog — Built with Flask</p>
+        <div class="container" style="text-align:center;">
+            &copy; 2026 <a href="https://829007.xyz">AI幻世录·GeoLib</a> · 保持好奇 · 持续学习
+            <br>
+            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none;">湘ICP备2026020338号</a>
+        </div>
     </footer>
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}?v=20260531"></script>
 </body>
 </html>
