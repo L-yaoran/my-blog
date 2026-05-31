@@ -436,35 +436,12 @@ document.addEventListener('keydown', function(e) {
 // ====== Auto-expand code editor & blank input ======
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.code-editor').forEach(function(editor) {
-    // Auto-expand height
+    // Auto-expand height based on content
     function resizeEditor() {
       editor.style.height = 'auto';
-      editor.style.height = Math.max(80, editor.scrollHeight) + 'px';
+      editor.style.height = editor.scrollHeight + 'px';
     }
 
-    // Try to init CodeMirror if available
-    if (typeof CodeMirror !== 'undefined') {
-      const cm = CodeMirror.fromTextArea(editor, {
-        mode: 'python',
-        theme: 'monokai',
-        lineNumbers: true,
-        indentUnit: 4,
-        tabSize: 4,
-        indentWithTabs: false,
-        lineWrapping: false,
-        extraKeys: { Tab: function(cm) { cm.replaceSelection('    ', 'end'); } },
-      });
-      cm.on('change', function() {
-        resizeEditor();
-        updateProgress();
-      });
-      // Store cm reference for later use
-      editor._codemirror = cm;
-      setTimeout(resizeEditor, 50);
-      return;
-    }
-
-    // Fallback: plain textarea
     editor.addEventListener('input', resizeEditor);
     editor.addEventListener('keydown', function(e) {
       if (e.key === 'Tab' && !submitted) {

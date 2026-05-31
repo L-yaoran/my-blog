@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Python 练习 003</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/monokai.min.css">
-<link rel="stylesheet" href="/static/css/quiz.css?v=20260530">
+<link rel="stylesheet" href="/static/css/quiz.css?v=20260601">
 
 </head>
 <body>
@@ -26,8 +25,8 @@
         <a href="/static/python_basic_test_002.html">练习 002</a>
         <a href="/static/python_basic_test_003.html" class="active">练习 003</a>
         <a href="/static/python_basic_test_004.html">练习 004</a>
-        <a href="/static/python_basic_test_005-1.html">练习 005-1</a>
-        <a href="/static/python_basic_test_005-2.html">练习 005-2</a>
+        <a href="/static/python_basic_test_005.html">练习 005</a>
+        <a href="/static/python_basic_test_006.html">练习 006</a>
       </div>
       </div>
     <a href="/static/python_basic_test_004.html" class="quiz-arrow" title="下一练习">▸</a>
@@ -511,7 +510,7 @@
       <div class="card-header"><span class="card-qnum">第 27 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>闭包基础（必做）</strong></div>
       <div class="card-desc">定义外部函数 <code>func_out(num1)</code>，内部函数 <code>func_inner(num2)</code>。<br>内部函数使用外部变量完成求和并打印。<br>外部函数返回内部函数，创建闭包并调用。<br>解释每一行如何对应"有嵌套/有引用/有返回"三条件。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><pre>def func_out(num1):
     def func_inner(num2):
@@ -531,7 +530,7 @@ f(5)   # 输出：结果: 15</pre></div></div>
       <div class="card-header"><span class="card-qnum">第 28 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>nonlocal 闭包计数器（必做）</strong></div>
       <div class="card-desc">编写 <code>counter()</code>，外层定义 <code>count = 0</code>。<br>内层函数每调用一次 <code>count + 1</code> 并返回新值。<br>必须使用 <code>nonlocal</code>，并连续调用至少 3 次验证状态被保存。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><pre>def counter():
     count = 0
@@ -551,7 +550,7 @@ print(c(), c(), c())  # 输出: 1 2 3</pre></div></div>
       <div class="card-header"><span class="card-qnum">第 29 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>装饰器原始写法与语法糖（必做）</strong></div>
       <div class="card-desc">定义登录校验装饰器 <code>check</code>。<br>用原始方式 <code>comment = check(comment)</code> 装饰一次。<br>再用 <code>@check</code> 语法糖装饰另一个函数。<br>对比两种写法并在注释中写出"等价关系"。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><pre>def check(fn):
     def inner():
@@ -578,7 +577,7 @@ like()</pre></div></div>
       <div class="card-header"><span class="card-qnum">第 30 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>通用装饰器（重点必做）</strong></div>
       <div class="card-desc">编写一个通用装饰器，内部函数使用 <code>*args, **kwargs</code>。<br>要求可装饰四类函数：1) 无参无返回 2) 有参无返回 3) 无参有返回 4) 有参有返回（含关键字参数）。<br>演示调用结果，证明"参数和返回值都不丢失"。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><pre>def universal_decorator(func):
     def inner(*args, **kwargs):
@@ -611,7 +610,7 @@ print(test4(1, 2, c=3))  # 输出: 6</pre></div></div>
       <div class="card-header"><span class="card-qnum">第 31 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>多装饰器执行顺序（重点必做）</strong></div>
       <div class="card-desc">定义两个装饰器 <code>deco1</code>、<code>deco2</code>，分别打印"前/后"日志。<br>同时装饰一个函数，观察执行顺序。<br>用注释写清楚：谁先装饰、谁先执行。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><pre>def deco1(fn):
     def inner():
@@ -648,7 +647,7 @@ work()
       <div class="card-header"><span class="card-qnum">第 32 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>带参数装饰器（重点必做）</strong></div>
       <div class="card-desc">编写 <code>logging(flag)</code>：当 flag 为 <code>'+'</code> 提示加法日志，<code>'-'</code> 提示减法日志。<br>用 <code>@logging('+')</code> 装饰 <code>add(a,b)</code>。<br>用 <code>@logging('-')</code> 装饰 <code>sub(a,b)</code>。<br>输出运算结果并验证装饰器参数生效。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><pre>def logging(flag):
     """最外层接收装饰器参数"""
@@ -682,7 +681,7 @@ print(sub(5, 2))  # 输出: 正在进行减法计算 / 3</pre></div></div>
       <div class="card-header"><span class="card-qnum">第 33 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>挑战题：函数耗时统计装饰器</strong></div>
       <div class="card-desc">实现一个"函数耗时统计装饰器"，输出函数名和执行时长。<br>提示：使用 <code>time.time()</code> 记录开始和结束时间，计算差值。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><pre>import time
 
@@ -710,7 +709,7 @@ print(slow_func())</pre></div></div>
       <div class="card-header"><span class="card-qnum">第 34 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>挑战题：权限装饰器</strong></div>
       <div class="card-desc">实现一个"权限装饰器"：未登录拒绝执行，登录后放行。<br>提示：用一个全局变量模拟登录状态，装饰器内部判断状态后决定是否调用原函数。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><pre># 模拟登录状态
 is_login = False
@@ -745,9 +744,7 @@ view_secret()  # 输出: 这是机密内容...</pre></div></div>
 const STORAGE_KEY = 'py_day03_quiz_history'
 const SAVE_KEY = 'py_day02_saves'
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
-<script src="/static/js/quiz-engine.js?v=20260530"></script>
+<script src="/static/js/quiz-engine.js?v=20260601"></script>
 
 </body>
 </html>

@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Python 练习 004</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/monokai.min.css">
-<link rel="stylesheet" href="/static/css/quiz.css?v=20260530">
+<link rel="stylesheet" href="/static/css/quiz.css?v=20260601">
 
 </head>
 <body>
@@ -26,11 +25,11 @@
         <a href="/static/python_basic_test_002.html">练习 002</a>
         <a href="/static/python_basic_test_003.html">练习 003</a>
         <a href="/static/python_basic_test_004.html" class="active">练习 004</a>
-        <a href="/static/python_basic_test_005-1.html">练习 005-1</a>
-        <a href="/static/python_basic_test_005-2.html">练习 005-2</a>
+        <a href="/static/python_basic_test_005.html">练习 005</a>
+        <a href="/static/python_basic_test_006.html">练习 006</a>
       </div>
       </div>
-    <a href="/static/python_basic_test_005-1.html" class="quiz-arrow" title="下一练习">▸</a>
+    <a href="/static/python_basic_test_005.html" class="quiz-arrow" title="下一练习">▸</a>
   </div>
   <div class="sticky-toolbar">
     <a href="/" class="back-link">&larr; 返回主页</a>
@@ -493,7 +492,7 @@
       <div class="card-header"><span class="card-qnum">第 27 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>最简 TCP 一问一答（必做）</strong></div>
       <div class="card-desc">编写服务端：<code>socket</code> → <code>bind</code> → <code>listen</code> → <code>accept</code> → <code>recv</code> 打印 → <code>send</code> 回复 → <code>close</code> 通信套接字。<br>编写客户端：<code>socket</code> → <code>connect</code> → <code>send</code> → <code>recv</code> 打印 → <code>close</code>。<br>必须使用 <code>encode('utf-8')</code> / <code>decode('utf-8')</code>。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="cm"># 服务端</span>
 <span class="kw">import</span> <span class="fn">socket</span>
@@ -539,7 +538,7 @@ c.close()</div></div>
       <div class="card-header"><span class="card-qnum">第 28 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>循环 accept 接待多个客户端（重点必做）</strong></div>
       <div class="card-desc">用 <code>while True</code> 循环 <code>accept</code>，每接入一个客户端：收一条短消息、回一条"已收到"、关闭与该客户端的通信套接字。<br>监听套接字可保持不关闭，便于继续接下一个。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">while</span> <span class="kw">True</span>:
     conn, addr = server.accept()
@@ -559,7 +558,7 @@ c.close()</div></div>
       <div class="card-header"><span class="card-qnum">第 29 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>文件上传骨架（重点必做）</strong></div>
       <div class="card-desc">服务端：<code>accept</code> 后以 <code>wb</code> 打开目标文件，循环 <code>recv</code>，将收到的 bytes <code>write</code> 进文件；当 <code>recv</code> 得到 <code>b''</code> 时退出循环并关闭。<br>客户端：以 <code>rb</code> 读本地小文件，循环 <code>send</code> 分块发送，发完 <code>close</code>。<br>说明"为什么要分块"的原因（注释）。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="cm"># 服务端</span>
 conn, _ = server.accept()
@@ -613,7 +612,7 @@ conn.close()
       <div class="card-header"><span class="card-qnum">第 30 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>多进程入门（必做）</strong></div>
       <div class="card-desc">定义两个函数，分别打印不同前缀的循环输出。<br>用 <code>multiprocessing.Process</code> 创建两个子进程并 <code>start()</code>。<br>代码放在 <code>if __name__ == '__main__':</code> 中。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">import</span> <span class="fn">multiprocessing</span>
 
@@ -651,7 +650,7 @@ conn.close()
       <div class="card-header"><span class="card-qnum">第 31 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>进程传参与 PID（必做）</strong></div>
       <div class="card-desc">编写 <code>work(name, n)</code>，打印 <code>name</code> 和循环序号。<br>分别用 <code>args=('张三', 5)</code> 与 <code>kwargs</code> 形式各启动一个子进程。<br>在子进程内打印 <code>os.getpid()</code>，在主进程打印子进程的 <code>pid</code>。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">import</span> <span class="fn">os</span>
 <span class="kw">import</span> <span class="fn">multiprocessing</span>
@@ -683,7 +682,7 @@ conn.close()
       <div class="card-header"><span class="card-qnum">第 32 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>多进程/多线程处理客户端（选做）</strong></div>
       <div class="card-desc">尝试在服务端 <code>accept</code> 后使用子进程（或线程）处理单个客户端，避免"一个人聊很久别人排队"（写出思路或伪代码即可）。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="cm"># 思路：每 accept 一个客户端就 fork 一个子进程去处理</span>
 <span class="cm"># 主进程继续 accept，子进程负责与该客户端通信</span>
@@ -758,9 +757,7 @@ conn.close()
 const STORAGE_KEY = 'py_day04_quiz_history'
 const SAVE_KEY = 'py_day02_saves'
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
-<script src="/static/js/quiz-engine.js?v=20260530"></script>
+<script src="/static/js/quiz-engine.js?v=20260601"></script>
 
 </body>
 </html>

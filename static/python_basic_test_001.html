@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Python 练习 001</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/monokai.min.css">
-<link rel="stylesheet" href="/static/css/quiz.css?v=20260530">
+<link rel="stylesheet" href="/static/css/quiz.css?v=20260601">
 
 </head>
 <body>
@@ -26,8 +25,8 @@
         <a href="/static/python_basic_test_002.html">练习 002</a>
         <a href="/static/python_basic_test_003.html">练习 003</a>
         <a href="/static/python_basic_test_004.html">练习 004</a>
-        <a href="/static/python_basic_test_005-1.html">练习 005-1</a>
-        <a href="/static/python_basic_test_005-2.html">练习 005-2</a>
+        <a href="/static/python_basic_test_005.html">练习 005</a>
+        <a href="/static/python_basic_test_006.html">练习 006</a>
       </div>
       </div>
     <a href="/static/python_basic_test_002.html" class="quiz-arrow" title="下一练习">▸</a>
@@ -519,7 +518,7 @@
       <div class="card-header"><span class="card-qnum">第 31 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>定义学生类</strong></div>
       <div class="card-desc">定义 <code>Student</code> 类，要求：<br>1. 使用 <code>__init__</code> 初始化 <code>name</code> 和 <code>age</code>。<br>2. 定义 <code>introduce()</code> 方法，输出学生姓名和年龄。<br>3. 创建两个学生对象，分别调用 <code>introduce()</code>。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">class</span> Student:
     <span class="kw">def</span> __init__(<span class="kw">self</span>, name, age):
@@ -554,7 +553,7 @@ stu2.introduce()</div></div>
       <div class="card-header"><span class="card-qnum">第 32 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>定义手机类并打印对象信息</strong></div>
       <div class="card-desc">定义 <code>Phone</code> 类，要求：<br>1. 使用 <code>__init__</code> 初始化 <code>brand</code> 和 <code>price</code>。<br>2. 定义 <code>call()</code> 方法，输出"某品牌手机正在打电话"。<br>3. 定义 <code>__str__()</code> 方法，打印对象时显示品牌和价格。<br>4. 创建两个手机对象并测试。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">class</span> Phone:
     <span class="kw">def</span> __init__(<span class="kw">self</span>, brand, price):
@@ -591,7 +590,7 @@ phone2.call()</div></div>
       <div class="card-header"><span class="card-qnum">第 33 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>封装账号余额</strong></div>
       <div class="card-desc">定义 <code>Account</code> 类，要求：<br>1. 使用 <code>__init__</code> 初始化用户名和私有余额 <code>__balance</code>。<br>2. 定义 <code>get_balance()</code> 方法，返回余额。<br>3. 定义 <code>deposit(amount)</code> 方法，充值金额。<br>4. 创建对象并测试充值前后余额。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">class</span> Account:
     <span class="kw">def</span> __init__(<span class="kw">self</span>, username, balance):
@@ -634,7 +633,7 @@ account.deposit(<span class="num">50</span>)
       <div class="card-header"><span class="card-qnum">第 34 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>减肥案例升级版</strong></div>
       <div class="card-desc">定义 <code>Person</code> 类，要求：<br>1. 属性：<code>name</code>、<code>weight</code>。<br>2. <code>run()</code>：每次跑步体重减少 <code>0.5kg</code>。<br>3. <code>eat()</code>：每次吃饭体重增加 <code>1kg</code>。<br>4. 创建两个对象，验证两个人体重互不影响。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">class</span> Person:
     <span class="kw">def</span> __init__(<span class="kw">self</span>, name, weight):
@@ -676,7 +675,7 @@ xiaohong.run()
       <div class="card-header"><span class="card-qnum">第 35 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>AI 工具调用额度</strong></div>
       <div class="card-desc">定义 <code>AiToolAccount</code> 类，模拟一个 AI 工具账号，要求：<br>1. 属性：<code>username</code>、私有属性 <code>__quota</code> 表示剩余调用次数。<br>2. <code>call_ai()</code>：每调用一次，额度减少 1。<br>3. 如果额度不足，提示"额度不足，请充值"。<br>4. <code>recharge(count)</code>：增加调用额度。<br>5. <code>get_quota()</code>：查看剩余额度。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">class</span> AiToolAccount:
     <span class="kw">def</span> __init__(<span class="kw">self</span>, username, quota):
@@ -727,7 +726,7 @@ account.recharge(<span class="num">3</span>)
       <div class="card-header"><span class="card-qnum">第 36 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>烤地瓜增加重置功能</strong></div>
       <div class="card-desc">定义 <code>SweetPotato</code> 类，要求：<br>1. 属性：<code>cook_time</code>、<code>cook_state</code>、<code>condiments</code>。<br>2. <code>cook(time)</code>：累计烤制时间，并根据总时间更新状态。<br>3. <code>add_condiment(name)</code>：添加调料。<br>4. <code>reset()</code>：把时间恢复为 0，状态恢复为"生的"，调料清空。<br>5. 定义 <code>__str__()</code> 返回当前状态。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">class</span> SweetPotato:
     <span class="kw">def</span> __init__(<span class="kw">self</span>):
@@ -788,7 +787,7 @@ potato.reset()
       <div class="card-header"><span class="card-qnum">第 37 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>综合案例 1：学生成绩管理</strong></div>
       <div class="card-desc">定义 <code>ScoreStudent</code> 类，要求：<br>1. 属性：<code>name</code>、私有属性 <code>__score</code>。<br>2. 分数必须在 <code>0-100</code> 之间。<br>3. <code>set_score(score)</code>：修改分数，非法分数不允许修改。<br>4. <code>get_score()</code>：返回当前分数。<br>5. <code>is_pass()</code>：判断是否及格。<br>6. <code>__str__()</code>：打印对象时显示学生姓名、分数、是否及格。<br>7. 创建至少两个学生对象测试。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">class</span> ScoreStudent:
     <span class="kw">def</span> __init__(<span class="kw">self</span>, name, score):
@@ -843,7 +842,7 @@ stu2.set_score(<span class="num">70</span>)
       <div class="card-header"><span class="card-qnum">第 38 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>综合案例 2：AI 服务套餐账号</strong></div>
       <div class="card-desc">定义 <code>AiServicePlan</code> 类，模拟一个 AI 服务套餐账号，要求：<br>1. 属性：<code>username</code>、<code>plan_name</code>、私有属性 <code>__remain_tokens</code>。<br>2. <code>use_tokens(count)</code>：使用指定 token 数。<br>3. 如果 token 足够，扣减并提示剩余 token。<br>4. 如果 token 不足，提示"不足以完成本次调用"。<br>5. <code>upgrade_plan(new_plan, add_tokens)</code>：升级套餐并增加 token。<br>6. <code>get_remain_tokens()</code>：查看剩余 token。<br>7. <code>__str__()</code>：返回账号、套餐、剩余 token 信息。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">class</span> AiServicePlan:
     <span class="kw">def</span> __init__(<span class="kw">self</span>, username, plan_name, remain_tokens):
@@ -919,9 +918,7 @@ plan.use_tokens(<span class="num">900</span>)
 const STORAGE_KEY = 'py_oop_quiz_history'
 const SAVE_KEY = 'py_day01_saves'
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
-<script src="/static/js/quiz-engine.js?v=20260530"></script>
+<script src="/static/js/quiz-engine.js?v=20260601"></script>
 
 </body>
 </html>

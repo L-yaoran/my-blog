@@ -78,7 +78,7 @@ body {
 .fill-input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 2px rgba(217,119,6,0.1); }
 .fill-input:disabled { opacity: 0.5; cursor: not-allowed; }
 textarea.fill-input { resize: vertical; min-height: 70px; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; font-size: 0.85rem; }
-.code-editor { background: #f3f4f6; border: 1px solid var(--border); border-radius: 6px; color: #374151; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.82rem; line-height: 1.6; padding: 1rem 1rem 1rem 3rem; width: 100%; min-height: 80px; resize: vertical; tab-size: 4; white-space: pre; overflow: hidden; box-sizing: border-box; }
+.code-editor { background: #f8f9fa; border: 1px solid var(--border); border-radius: 6px; color: #1a1a1a; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.82rem; line-height: 1.6; padding: 0.6rem 0.8rem; width: 100%; min-height: 44px; resize: vertical; tab-size: 4; white-space: pre; overflow-y: auto; box-sizing: border-box; }
 .code-editor:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 2px rgba(217,119,6,0.1); }
 .code-editor:disabled { opacity: 0.55; cursor: not-allowed; }
 .card .ref-toggle { display: inline-block; margin-top: 0.6rem; font-size: 0.78rem; color: var(--gold); cursor: pointer; border-bottom: 1px dashed var(--gold); padding-bottom: 0.1rem; letter-spacing: 0.03em; transition: color 0.2s; }
@@ -173,6 +173,8 @@ textarea.fill-input { resize: vertical; min-height: 70px; font-family: system-ui
   .card-question code { background: #111; color: #d1d5db; }
   .fill-input, .code-editor { background: #1a1a1a; color: #e5e5e5; border-color: #333; }
   .fill-input:focus { border-color: var(--gold); }
+  /* Code editor always stays light even in dark mode */
+  .code-editor { background: #f8f9fa !important; color: #1a1a1a !important; border-color: #333 !important; }
   .option { border-color: #333; color: #9ca3af; }
   .option:hover { background: rgba(255,255,255,0.05); }
   .option.selected { border-color: var(--blue); color: #e5e5e5; background: rgba(37,99,235,0.15); }
@@ -194,13 +196,3 @@ textarea.fill-input { resize: vertical; min-height: 70px; font-family: system-ui
   .toast { background: var(--green); }
 }
 
-/* CodeMirror dark mode override */
-.CodeMirror { background: #1a1a1a !important; color: #e5e5e5 !important; border: 1px solid #333; }
-.cm-s-monokai.CodeMirror { background: #272822 !important; }
-.cm-s-monokai .cm-keyword { color: #f92672 !important; }
-.cm-s-monokai .cm-string { color: #e6db74 !important; }
-.cm-s-monokai .cm-number { color: #ae81ff !important; }
-.cm-s-monokai .cm-def { color: #a6e22e !important; }
-.cm-s-monokai .cm-comment { color: #75715e !important; }
-.cm-s-monokai .cm-property { color: #66d9ef !important; }
-</style>

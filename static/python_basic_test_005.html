@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Python 练习 005-1</title>
+<title>Python 练习 005</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/monokai.min.css">
-<link rel="stylesheet" href="/static/css/quiz.css?v=20260530">
+
+<link rel="stylesheet" href="/static/css/quiz.css?v=20260601">
 
 </head>
 <body>
@@ -14,23 +14,23 @@
 <div class="container">
   <div class="header">
     <div class="badge">交互式练习</div>
-    <h1>Python 练习 005-1</h1>
+    <h1>Python 练习 005</h1>
     <div class="subtitle">34 道题 · 选择题 + 填空题 + 简答题 + 代码实战 · 即时反馈 · 记录保存</div>
   </div>
   <div class="quiz-nav">
     <a href="/static/python_basic_test_004.html" class="quiz-arrow" title="上一练习">◂</a>
     <div class="quiz-dropdown">
-      <button class="quiz-dropdown-btn" onclick="toggleDropdown(this)">练习 005-1 <span class="arrow-icon">▾</span></button>
+      <button class="quiz-dropdown-btn" onclick="toggleDropdown(this)">练习 005 <span class="arrow-icon">▾</span></button>
       <div class="quiz-dropdown-menu">
         <a href="/static/python_basic_test_001.html">练习 001</a>
         <a href="/static/python_basic_test_002.html">练习 002</a>
         <a href="/static/python_basic_test_003.html">练习 003</a>
         <a href="/static/python_basic_test_004.html">练习 004</a>
-        <a href="/static/python_basic_test_005-1.html" class="active">练习 005-1</a>
-        <a href="/static/python_basic_test_005-2.html">练习 005-2</a>
+        <a href="/static/python_basic_test_005.html" class="active">练习 005</a>
+        <a href="/static/python_basic_test_006.html">练习 006</a>
       </div>
       </div>
-    <a href="/static/python_basic_test_005-2.html" class="quiz-arrow" title="下一练习">▸</a>
+    <a href="/static/python_basic_test_006.html" class="quiz-arrow" title="下一练习">▸</a>
   </div>
   <div class="sticky-toolbar">
     <a href="/" class="back-link">&larr; 返回主页</a>
@@ -493,7 +493,7 @@
       <div class="card-header"><span class="card-qnum">第 28 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>多线程入门（必做）</strong></div>
       <div class="card-desc">定义两个无参任务函数（如模拟"写代码""听音乐"打印若干行）。<br>创建两个 <code>threading.Thread</code>，指定 <code>target</code>，调用 <code>start()</code>。<br>观察多次运行输出顺序是否可能不同。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">import</span> <span class="fn">threading</span>
 
@@ -529,7 +529,7 @@ t2.start()</div></div>
       <div class="card-header"><span class="card-qnum">第 29 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>线程传参（必做）</strong></div>
       <div class="card-desc">使用 <code>args=('小明', 3)</code> 按位置传参。<br>使用 <code>kwargs={...}</code> 按关键字传参。<br>说明 args 单元素必须加逗号的原因（注释）。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">def</span> greet(name, times):
     <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(times):
@@ -561,7 +561,7 @@ t2.start()
       <div class="card-header"><span class="card-qnum">第 30 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>全局变量与互斥锁（重点必做）</strong></div>
       <div class="card-desc">定义全局整型 <code>count = 0</code>，两个线程各循环较大次数（如 10 万次）执行 <code>count += 1</code>。<br>先不加锁运行，观察结果是否小于预期。<br>再用同一把 <code>threading.Lock</code> 包裹临界区。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">import</span> <span class="fn">threading</span>
 
@@ -607,7 +607,7 @@ t2.join()
       <div class="card-header"><span class="card-qnum">第 31 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>生成器（必做）</strong></div>
       <div class="card-desc">用生成器推导式创建生成器，并用 for 遍历打印。<br>再写一个含 yield 的生成器函数，用 next 至少取两次，说明每次从何处继续执行（注释）。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">g = (x * <span class="num">2</span> <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(<span class="num">4</span>))
 <span class="kw">for</span> v <span class="kw">in</span> g:
@@ -637,7 +637,7 @@ it = gen(<span class="num">3</span>)
       <div class="card-header"><span class="card-qnum">第 32 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>asyncio 入门与并发任务（重点必做）</strong></div>
       <div class="card-desc">定义 <code>async def work(name):</code> 内 print 开始，<code>await asyncio.sleep(1)</code>，print 结束。<br>定义 async def main()，用 create_task 同时调度至少两个 work，再 await 等待。<br>最外层用 asyncio.run(main())。注释说明并发 vs 串行的耗时区别。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">import</span> <span class="fn">asyncio</span>
 
@@ -673,7 +673,7 @@ async <span class="kw">def</span> main():
       <div class="card-header"><span class="card-qnum">第 33 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>CPU 密集型 vs I/O 密集型（选做）</strong></div>
       <div class="card-desc">用一段话对比：CPU 密集型任务在 CPython 下更适合多进程还是多线程？I/O 密集型更适合线程还是协程？简要说明理由。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">&lt;strong&gt;CPU 密集型&lt;/strong&gt;：在 CPython 下多线程受 GIL 影响，纯 Python 计算往往难以吃满多核，更适合用&lt;strong&gt;多进程&lt;/strong&gt;将任务分配到多核。&lt;strong&gt;I/O 密集型&lt;/strong&gt;：线程可在 I/O 阻塞时让出 CPU；&lt;strong&gt;协程&lt;/strong&gt;在单线程事件循环里通过 <span class="kw">await</span> 挂起等待，大量 I/O 并发时开销更小，适合高并发网络/等待场景。</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">&lt;strong&gt;CPU 密集型&lt;/strong&gt;：在 CPython 下多线程受 GIL 影响，纯 Python 计算往往难以吃满多核，更适合用&lt;strong&gt;多进程&lt;/strong&gt;将任务分配到多核。&lt;strong&gt;I/O 密集型&lt;/strong&gt;：线程可在 I/O 阻塞时让出 CPU；&lt;strong&gt;协程&lt;/strong&gt;在单线程事件循环里通过 <span class="kw">await</span> 挂起等待，大量 I/O 并发时开销更小，适合高并发网络/等待场景。</div></div>
@@ -683,7 +683,7 @@ async <span class="kw">def</span> main():
       <div class="card-header"><span class="card-qnum">第 34 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>join() vs 互斥锁（选做）</strong></div>
       <div class="card-desc">查阅或回忆：<code>join()</code> 等待子线程结束与用互斥锁保护临界区，在"牺牲并行度"方面有何异同（各写一两句）。</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..."></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">&lt;code&gt;join()&lt;/code&gt;：让调用方&lt;strong&gt;等待某个线程先跑完&lt;/strong&gt;，其他线程期间是否并行取决于你 join 的方式，容易写成阶段性串行。&lt;strong&gt;互斥锁&lt;/strong&gt;：只保证&lt;strong&gt;临界区串行&lt;/strong&gt;，锁外其他线程仍可并行，并行度通常好于整条线程顺序 join 的写法，但锁粒度过大也会接近单线程。</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">&lt;code&gt;join()&lt;/code&gt;：让调用方&lt;strong&gt;等待某个线程先跑完&lt;/strong&gt;，其他线程期间是否并行取决于你 join 的方式，容易写成阶段性串行。&lt;strong&gt;互斥锁&lt;/strong&gt;：只保证&lt;strong&gt;临界区串行&lt;/strong&gt;，锁外其他线程仍可并行，并行度通常好于整条线程顺序 join 的写法，但锁粒度过大也会接近单线程。</div></div>
@@ -698,7 +698,7 @@ const SAVE_KEY = 'py_day05_1_saves';
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
-<script src="/static/js/quiz-engine.js?v=20260530"></script>
+<script src="/static/js/quiz-engine.js?v=20260601"></script>
 
 </body>
 </html>
