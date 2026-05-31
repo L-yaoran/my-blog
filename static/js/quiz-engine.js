@@ -439,9 +439,31 @@ document.addEventListener('DOMContentLoaded', function() {
     // Auto-expand height based on content
     function resizeEditor() {
       editor.style.height = 'auto';
-      editor.style.height = editor.scrollHeight + 'px';
+      editor.style.height = Math.max(44, editor.scrollHeight) + 'px';
     }
 
+    // Try to init CodeMirror from local files
+    if (typeof CodeMirror !== 'undefined') {
+      const cm = CodeMirror.fromTextArea(editor, {
+        mode: 'python',
+        theme: 'eclipse',
+        lineNumbers: true,
+        indentUnit: 4,
+        tabSize: 4,
+        indentWithTabs: false,
+        lineWrapping: false,
+        extraKeys: { Tab: function(cm) { cm.replaceSelection('    ', 'end'); } },
+      });
+      cm.on('change', function() {
+        resizeEditor();
+        updateProgress();
+      });
+      editor._codemirror = cm;
+      setTimeout(resizeEditor, 50);
+      return;
+    }
+
+    // Fallback: plain textarea with Tab support
     editor.addEventListener('input', resizeEditor);
     editor.addEventListener('keydown', function(e) {
       if (e.key === 'Tab' && !submitted) {
