@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python 练习 005-1</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/monokai.min.css">
+<link rel="stylesheet" href="/static/css/quiz.css?v=20260530">
+
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div class="badge">交互式练习</div>
+    <h1>Python 练习 005-1</h1>
+    <div class="subtitle">34 道题 · 选择题 + 填空题 + 简答题 + 代码实战 · 即时反馈 · 记录保存</div>
+  </div>
+  <div class="quiz-nav">
+    <a href="/static/python_basic_test_004.html" class="quiz-arrow" title="上一练习">◂</a>
+    <div class="quiz-dropdown">
+      <button class="quiz-dropdown-btn" onclick="toggleDropdown(this)">练习 005-1 <span class="arrow-icon">▾</span></button>
+      <div class="quiz-dropdown-menu">
+        <a href="/static/python_basic_test_001.html">练习 001</a>
+        <a href="/static/python_basic_test_002.html">练习 002</a>
+        <a href="/static/python_basic_test_003.html">练习 003</a>
+        <a href="/static/python_basic_test_004.html">练习 004</a>
+        <a href="/static/python_basic_test_005-1.html" class="active">练习 005-1</a>
+        <a href="/static/python_basic_test_005-2.html">练习 005-2</a>
+      </div>
+      </div>
+    <a href="/static/python_basic_test_005-2.html" class="quiz-arrow" title="下一练习">▸</a>
+  </div>
+  <div class="sticky-toolbar">
+    <a href="/" class="back-link">&larr; 返回主页</a>
+    <div class="score-bar">
+      <div class="score-item"><div class="score-label">客观题</div><div class="score-num"><span id="objDone">0</span>/20</div></div>
+      <div class="score-item"><div class="score-label">主观题</div><div class="score-num"><span id="subjDone">0</span>/14</div></div>
+      <div class="score-item" id="scoreResult" style="display:none"><div class="score-label">得分</div><div class="score-num"><span id="correctCount">0</span></div></div>
+      <div style="flex:1;min-width:0;"></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.35rem;position:relative;">
+        <div style="display:flex;gap:0.5rem;">
+          <button class="score-btn" id="btnSubmit" onclick="submitAll()">提交答案</button>
+          <button class="score-btn" style="background:var(--muted)" onclick="resetAll()">重置进度</button>
+        </div>
+      </div>
+    </div>
+    <div style="width:100%;display:flex;align-items:center;justify-content:space-between;padding-top:0.35rem;border-top:1px dashed var(--border);position:relative;">
+      <span onclick="toggleHistory()" style="cursor:pointer;font-size:0.78rem;color:var(--sub);user-select:none;">做题记录 <span id="historyToggleIcon">▼</span></span>
+      <div style="display:flex;gap:0.5rem;">
+        <button class="score-btn" style="background:var(--green)" onclick="saveProgress()">暂存进度</button>
+        <button class="score-btn" style="background:var(--purple)" onclick="loadProgress()">加载进度</button>
+        <button class="score-btn" style="background:var(--gold)" onclick="exportProgress()">导出数据</button>
+        <button class="score-btn" style="background:var(--blue)" onclick="importProgress()">导入数据</button>
+        <input type="file" id="importFileInput" accept=".json" style="display:none" onchange="handleImportFile(event)">
+      </div>
+      <div class="history-panel" id="historyPanel">
+    <h4>做题记录 <button class="history-clear" onclick="clearHistory()">清空记录</button></h4>
+    <ul class="history-list" id="historyList"></ul>
+    <div class="history-empty" id="historyEmpty">暂无记录</div>
+  </div>
+    </div>
+  </div>
+
+  <!-- History detail modal -->
+  <div class="history-detail-overlay" id="historyDetailOverlay" onclick="closeHistoryDetail()">
+    <div class="history-detail" id="historyDetail" onclick="event.stopPropagation()">
+      <div class="history-detail-header">
+        <h4>答题详情</h4>
+        <button class="history-detail-close" onclick="closeHistoryDetail()">&times;</button>
+      </div>
+      <div class="history-detail-body" id="historyDetailBody"></div>
+    </div>
+  </div>
+
+
+
+<!-- ====== 一、单选题 10题 ====== -->
+<div class="section">
+
+    <div class="section-title"><span class="icon"></span>一、单选题（10 题）</div>
+
+    <!-- Q1: 单选题 -->
+    <div class="card" data-qid="1" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 1 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">在 Python 中，<b>线程</b>相对<b>进程</b>，更准确的描述是（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 线程是资源分配的基本单位
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 线程是 CPU 调度的基本单位，依附于进程存在
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 线程可以脱离进程单独运行
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 进程与线程都不共享内存
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>线程是 CPU 调度的基本单位，必须依附于进程存在。进程才是资源分配的基本单位。
+      </div>
+    </div>
+    <!-- Q2: 单选题 -->
+    <div class="card" data-qid="2" data-type="choice" data-answer="D">
+      <div class="card-header"><span class="card-qnum">第 2 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">创建并启动子线程的正确三步<b>不包含</b>（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> <code>import threading</code>
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> <code>threading.Thread(target=func, ...)</code>
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> <code>线程对象.start()</code>
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> <code>threading.spawn(func)</code>
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong><code>threading.spawn()</code> 不是 Python threading 模块的 API。正确三步：import → Thread() → start()。
+      </div>
+    </div>
+    <!-- Q3: 单选题 -->
+    <div class="card" data-qid="3" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 3 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">关于 <code>Thread</code> 的 <code>target</code> 参数，正确的是（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 应写成 <code>target=func()</code>
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 应写成 <code>target=func</code>
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> <code>target</code> 必须是 lambda
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> <code>target</code> 只能是字符串函数名
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong><code>target=func</code> 传函数引用。<code>target=func()</code> 会在主线程先执行函数，把返回值传给 target。
+      </div>
+    </div>
+    <!-- Q4: 单选题 -->
+    <div class="card" data-qid="4" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 4 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">对<b>只有一个参数</b>的任务函数，使用 <code>args</code> 传参时应写成（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> <code>args=(5)</code>
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> <code>args=(5,)</code>
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> <code>args=5</code>
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> <code>args=[5]</code>
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>单元素元组必须加逗号 <code>(5,)</code>。<code>(5)</code> 只是括号表达式，不是元组。
+      </div>
+    </div>
+    <!-- Q5: 单选题 -->
+    <div class="card" data-qid="5" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 5 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">同一进程内多个线程对<b>全局列表</b>执行 <code>append</code>，一般（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 不需要也不应该共享
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 可以共享，能看到同一份列表
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 每个线程有独立副本
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 必须先 <code>fork</code> 才能共享
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>线程共用同一地址空间，全局列表只有一份，所有线程都能看到。
+      </div>
+    </div>
+    <!-- Q6: 单选题 -->
+    <div class="card" data-qid="6" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 6 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">多个线程并发对同一整型全局变量做 <code>count = count + 1</code> 可能出现结果小于理论值，主要是因为（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> Python 版本太低
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> <code>+1</code> 非原子操作，存在调度交错导致丢更新
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> <code>global</code> 写多了
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 线程不能访问全局变量
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>count += 1 实际是 读取→计算→写入 三步非原子操作，线程可能在中间被切换导致更新丢失。
+      </div>
+    </div>
+    <!-- Q7: 单选题 -->
+    <div class="card" data-qid="7" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 7 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">互斥锁的典型用法正确的是（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 每个线程各自 <code>threading.Lock()</code> 一把新锁
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 多个线程共用<b>同一把</b> Lock 对象，在临界区 acquire/release 或用 <code>with lock:</code>
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 上锁后不必释放
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> Lock 只能用于进程
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>多个线程必须共用同一把 Lock 对象，配合 <code>with lock:</code> 或 acquire/release 保护共享数据。
+      </div>
+    </div>
+    <!-- Q8: 单选题 -->
+    <div class="card" data-qid="8" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 8 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question"><b>CPython</b> 中的 <b>GIL</b> 主要指（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 用户创建的 <code>threading.Lock</code>
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 解释器层的全局锁，同一时刻通常只有一个线程执行 Python 字节码
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 网络全局 IP
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 生成器的全局变量
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>GIL（全局解释器锁）是 CPython 解释器层的锁，限制同一时刻只有一条线程执行 Python 字节码。
+      </div>
+    </div>
+    <!-- Q9: 单选题 -->
+    <div class="card" data-qid="9" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 9 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">下列能得到一个<b>生成器对象</b>的是（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> <code>g = [i for i in range(3)]</code>
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> <code>g = (i for i in range(3))</code>
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> <code>g = {i for i in range(3)}</code>
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> <code>g = list(range(3))</code>
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>列表推导式用[]、集合推导式用{}，生成器推导式用()括号。
+      </div>
+    </div>
+    <!-- Q10: 单选题 -->
+    <div class="card" data-qid="10" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 10 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">关于 <code>async</code> / <code>await</code> 与 <code>asyncio.run</code>，正确的是（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> <code>async def</code> 定义的函数一调用就会执行完
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> <code>await</code> 用于等待可等待对象并把控制权交回事件循环
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> <code>asyncio.run</code> 可以在任意嵌套函数里随意连续调用
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 协程运行在独立进程里
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong><code>await</code> 挂起当前协程等待可等待对象，同时把控制权交回事件循环。
+      </div>
+    </div>
+</div>
+
+<!-- ====== 二、填空题 10题 ====== -->
+
+<div class="section">
+
+    <div class="section-title"><span class="icon"></span>二、填空题（10 题）</div>
+
+    <!-- Q11: 填空题 -->
+    <div class="card" data-qid="11" data-type="fill" data-answer="资源、CPU">
+      <div class="card-header"><span class="card-qnum">第 11 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">进程是操作系统<input type="text" class="blank-input">分配的基本单位；线程是<input type="text" class="blank-input">调度的基本单位。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>进程是资源分配的基本单位；线程是 CPU 调度的基本单位，依附于进程存在。
+      </div>
+    </div>
+    <!-- Q12: 填空题 -->
+    <div class="card" data-qid="12" data-type="fill" data-answer="函数名">
+      <div class="card-header"><span class="card-qnum">第 12 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">创建线程类：<code>threading.Thread(target=</code><input type="text" class="blank-input"><code>, args=..., kwargs=...)</code>。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>target 参数传函数引用（可调用对象），不加括号。
+      </div>
+    </div>
+    <!-- Q13: 填空题 -->
+    <div class="card" data-qid="13" data-type="fill" data-answer="子">
+      <div class="card-header"><span class="card-qnum">第 13 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">主线程默认会等待所有<input type="text" class="blank-input">线程结束后再结束进程（常规情况）。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>主线程默认等待所有非守护子线程结束。
+      </div>
+    </div>
+    <!-- Q14: 填空题 -->
+    <div class="card" data-qid="14" data-type="fill" data-answer="守护">
+      <div class="card-header"><span class="card-qnum">第 14 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">若希望主线程结束时子线程不再继续执行，可设置<input type="text" class="blank-input">线程（<code>daemon=True</code>）。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>daemon=True 将线程设为守护线程，主线程结束时守护线程自动终止。
+      </div>
+    </div>
+    <!-- Q15: 填空题 -->
+    <div class="card" data-qid="15" data-type="fill" data-answer="线程、不">
+      <div class="card-header"><span class="card-qnum">第 15 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">线程之间与进程相比，<input type="text" class="blank-input">之间默认共享进程内全局数据；进程之间默认<input type="text" class="blank-input">共享。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>线程共享地址空间；进程有独立地址空间，默认不共享。
+      </div>
+    </div>
+    <!-- Q16: 填空题 -->
+    <div class="card" data-qid="16" data-type="fill" data-answer="Lock">
+      <div class="card-header"><span class="card-qnum">第 16 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">互斥锁对象的创建方式常为 <code>lock = threading.</code><input type="text" class="blank-input"><code>()</code>。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong><code>threading.Lock()</code> 创建互斥锁对象。
+      </div>
+    </div>
+    <!-- Q17: 填空题 -->
+    <div class="card" data-qid="17" data-type="fill" data-answer="生成器对象">
+      <div class="card-header"><span class="card-qnum">第 17 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">含 <code>yield</code> 的函数称为生成器函数，调用该函数得到的是<input type="text" class="blank-input">。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>调用生成器函数返回生成器对象，不是立即执行函数体。
+      </div>
+    </div>
+    <!-- Q18: 填空题 -->
+    <div class="card" data-qid="18" data-type="fill" data-answer="StopIteration">
+      <div class="card-header"><span class="card-qnum">第 18 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">生成器耗尽后再 <code>next</code>，会抛出<input type="text" class="blank-input">异常；<code>for</code> 遍历时会自动处理。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>生成器元素耗尽后调用 next() 抛出 StopIteration 异常，for 循环自动捕获。
+      </div>
+    </div>
+    <!-- Q19: 填空题 -->
+    <div class="card" data-qid="19" data-type="fill" data-answer="await">
+      <div class="card-header"><span class="card-qnum">第 19 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">协程三要素：<code>async def</code>、<input type="text" class="blank-input">、顶层常用 <code>asyncio.run(...)</code>。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>协程三要素：async def 定义、await 挂起等待、asyncio.run 启动事件循环。
+      </div>
+    </div>
+    <!-- Q20: 填空题 -->
+    <div class="card" data-qid="20" data-type="fill" data-answer="create_task">
+      <div class="card-header"><span class="card-qnum">第 20 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">在同一协程函数里要<b>并发</b>执行多个协程，常用 <code>asyncio.</code><input type="text" class="blank-input"><code></code> 包装成任务。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong><code>asyncio.create_task()</code> 将协程包装为任务实现并发调度。
+      </div>
+    </div>
+</div>
+
+<!-- ====== 三、简答题 7题 ====== -->
+
+<div class="section">
+
+    <div class="section-title"><span class="icon"></span>三、简答题（7 题）</div>
+
+    <!-- Q21: 简答题 -->
+    <div class="card" data-qid="21" data-type="short" data-answer="线程必须依附在进程里运行">
+      <div class="card-header"><span class="card-qnum">第 21 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">进程与线程是什么关系？为什么说"没有进程就没有线程"？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">线程必须<strong>依附在进程</strong>里运行：进程向操作系统申请地址空间、文件描述符等资源，线程是在该进程内部被调度执行的执行流。没有进程作为"容器"和资源边界，线程无法单独存在，因此说没有进程就没有线程。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>线程必须<strong>依附在进程</strong>里运行：进程向操作系统申请地址空间、文件描述符等资源，线程是在该进程内部被调度执行的执行流。没有进程作为"容器"和资源边界，线程无法单独存在，因此说没有进程就没有线程。</div>
+    </div>
+    <!-- Q22: 简答题 -->
+    <div class="card" data-qid="22" data-type="short" data-answer="多个线程的调度顺序由操作系统决定不确定">
+      <div class="card-header"><span class="card-qnum">第 22 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">为什么多线程执行时，打印顺序可能每次运行都不一样？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">多个线程<strong>谁先获得 CPU、执行到哪一行</strong>，由操作系统和解释器的<strong>调度策略</strong>决定，不是代码书写顺序保证的。因此并发时输出顺序<strong>不确定</strong>属正常现象。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>多个线程<strong>谁先获得 CPU、执行到哪一行</strong>，由操作系统和解释器的<strong>调度策略</strong>决定，不是代码书写顺序保证的。因此并发时输出顺序<strong>不确定</strong>属正常现象。</div>
+    </div>
+    <!-- Q23: 简答题 -->
+    <div class="card" data-qid="23" data-type="short" data-answer="线程共用同一地址空间，进程有独立地址空间">
+      <div class="card-header"><span class="card-qnum">第 23 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">线程之间共享全局变量与进程之间不共享，区别的原因是什么？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">同一进程内的线程共用<strong>同一地址空间</strong>，全局变量在同进程内<strong>只有一份</strong>；而每个进程有<strong>独立的虚拟地址空间</strong>，子进程是父进程内存的拷贝，因此各进程的全局变量互不天然共享。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>同一进程内的线程共用<strong>同一地址空间</strong>，全局变量在同进程内<strong>只有一份</strong>；而每个进程有<strong>独立的虚拟地址空间</strong>，子进程是父进程内存的拷贝，因此各进程的全局变量互不天然共享。</div>
+    </div>
+    <!-- Q24: 简答题 -->
+    <div class="card" data-qid="24" data-type="short" data-answer="互斥锁保证同一时刻只有一个线程进入临界区，with自动释放">
+      <div class="card-header"><span class="card-qnum">第 24 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">互斥锁要解决什么问题？使用 <code>with lock:</code> 有什么好处？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">互斥锁用于<strong>线程同步</strong>，保证<strong>同一时刻只有一个线程</strong>进入临界区操作共享数据，避免"读—改—写"被抢占导致的数据竞争。<code>with lock:</code> 在离开代码块时<strong>自动释放锁</strong>，减少忘记 release() 造成的<strong>死锁</strong>问题。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>互斥锁用于<strong>线程同步</strong>，保证<strong>同一时刻只有一个线程</strong>进入临界区操作共享数据，避免"读—改—写"被抢占导致的数据竞争。<code>with lock:</code> 在离开代码块时<strong>自动释放锁</strong>，减少忘记 release() 造成的<strong>死锁</strong>问题。</div>
+    </div>
+    <!-- Q25: 简答题 -->
+    <div class="card" data-qid="25" data-type="short" data-answer="GIL是解释器全局锁，Lock是用户级锁；字节码间仍可能切换">
+      <div class="card-header"><span class="card-qnum">第 25 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">简要说明 GIL 与 <code>threading.Lock</code> 的区别；为什么在 CPython 里有时仍要给共享数据加 Lock？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);"><strong>GIL</strong> 是 CPython 解释器层的<strong>全局解释器锁</strong>，限制同一时刻通常只有一条线程在执行 Python 字节码。<code>threading.Lock</code> 是程序员为保护自己共享数据创建的<strong>显式锁</strong>。即使有 GIL，一条源码语句可能对应<strong>多条字节码</strong>，线程仍可能在中间被切换，因此<strong>业务上的非原子更新</strong>仍可能出错。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><strong>GIL</strong> 是 CPython 解释器层的<strong>全局解释器锁</strong>，限制同一时刻通常只有一条线程在执行 Python 字节码。<code>threading.Lock</code> 是程序员为保护自己共享数据创建的<strong>显式锁</strong>。即使有 GIL，一条源码语句可能对应<strong>多条字节码</strong>，线程仍可能在中间被切换，因此<strong>业务上的非原子更新</strong>仍可能出错。</div>
+    </div>
+    <!-- Q26: 简答题 -->
+    <div class="card" data-qid="26" data-type="short" data-answer="生成器按需产出节省内存，yield暂停产出，return结束函数">
+      <div class="card-header"><span class="card-qnum">第 26 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">生成器相对一次性构造完整列表，主要优点是什么？<code>yield</code> 与 <code>return</code> 在生成器函数中的典型区别？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">生成器<strong>按需产出</strong>元素，不一次性把所有结果放进内存，<strong>节省内存</strong>。<code>yield</code> 会<strong>暂停</strong>当前函数、向外产出一个值，下次从暂停处继续；<code>return</code> 用于<strong>结束</strong>生成器函数（结束迭代）。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>生成器<strong>按需产出</strong>元素，不一次性把所有结果放进内存，<strong>节省内存</strong>。<code>yield</code> 会<strong>暂停</strong>当前函数、向外产出一个值，下次从暂停处继续；<code>return</code> 用于<strong>结束</strong>生成器函数（结束迭代）。</div>
+    </div>
+    <!-- Q27: 简答题 -->
+    <div class="card" data-qid="27" data-type="short" data-answer="async def/await/asyncio.run三要素，run顶层启动，create_task并发包装">
+      <div class="card-header"><span class="card-qnum">第 27 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">协程三要素是什么？<code>asyncio.run</code> 与 <code>asyncio.create_task</code> 分别适合什么场景？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">三要素：<code>async def</code> 定义协程函数、<code>await</code> 等待可等待对象、<code>asyncio.run</code> 启动事件循环。<code>asyncio.run</code> 常用于<strong>最外层</strong>启动整个异步程序；在同一 async def 里要对多个协程<strong>并发</strong>时，用 <code>create_task</code> 将协程包装为任务。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>三要素：<code>async def</code> 定义协程函数、<code>await</code> 等待可等待对象、<code>asyncio.run</code> 启动事件循环。<code>asyncio.run</code> 常用于<strong>最外层</strong>启动整个异步程序；在同一 async def 里要对多个协程<strong>并发</strong>时，用 <code>create_task</code> 将协程包装为任务。</div>
+    </div>
+</div>
+
+<!-- ====== 四、代码实操 7题 ====== -->
+
+<div class="section">
+
+    <div class="section-title"><span class="icon"></span>四、代码实操（7 题）</div>
+
+    <!-- Q28: 代码实战 -->
+    <div class="card" data-qid="28" data-type="write" data-answer="多线程入门：定义两个任务函数，用threading.Thread创建并start">
+      <div class="card-header"><span class="card-qnum">第 28 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>多线程入门（必做）</strong></div>
+      <div class="card-desc">定义两个无参任务函数（如模拟"写代码""听音乐"打印若干行）。<br>创建两个 <code>threading.Thread</code>，指定 <code>target</code>，调用 <code>start()</code>。<br>观察多次运行输出顺序是否可能不同。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> <span class="fn">threading</span>
+
+<span class="kw">def</span> coding():
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">3</span>):
+        <span class="fn">print</span>(<span class="str">"coding"</span>, i)
+
+<span class="kw">def</span> music():
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">3</span>):
+        <span class="fn">print</span>(<span class="str">"music"</span>, i)
+
+t1 = <span class="fn">threading</span>.Thread(target=coding)
+t2 = <span class="fn">threading</span>.Thread(target=music)
+t1.start()
+t2.start()</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> <span class="fn">threading</span>
+
+<span class="kw">def</span> coding():
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">3</span>):
+        <span class="fn">print</span>(<span class="str">"coding"</span>, i)
+
+<span class="kw">def</span> music():
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">3</span>):
+        <span class="fn">print</span>(<span class="str">"music"</span>, i)
+
+t1 = <span class="fn">threading</span>.Thread(target=coding)
+t2 = <span class="fn">threading</span>.Thread(target=music)
+t1.start()
+t2.start()</div></div>
+    </div>
+    <!-- Q29: 代码实战 -->
+    <div class="card" data-qid="29" data-type="write" data-answer="线程传参：args按位置传参，kwargs按关键字传参">
+      <div class="card-header"><span class="card-qnum">第 29 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>线程传参（必做）</strong></div>
+      <div class="card-desc">使用 <code>args=('小明', 3)</code> 按位置传参。<br>使用 <code>kwargs={...}</code> 按关键字传参。<br>说明 args 单元素必须加逗号的原因（注释）。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block"><span class="kw">def</span> greet(name, times):
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(times):
+        <span class="fn">print</span>(name, i)
+
+<span class="kw">def</span> show(**kwargs):
+    <span class="fn">print</span>(kwargs)
+
+t1 = <span class="fn">threading</span>.Thread(target=greet, args=(<span class="str">"小明"</span>, <span class="num">3</span>))
+t2 = <span class="fn">threading</span>.Thread(target=show, kwargs={<span class="str">"a"</span>: <span class="num">1</span>, <span class="str">"b"</span>: <span class="num">2</span>})
+t1.start()
+t2.start()
+<span class="cm"># 单元素元组: args=(5,) 不能写成 args=(5)</span></div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">def</span> greet(name, times):
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(times):
+        <span class="fn">print</span>(name, i)
+
+<span class="kw">def</span> show(**kwargs):
+    <span class="fn">print</span>(kwargs)
+
+t1 = <span class="fn">threading</span>.Thread(target=greet, args=(<span class="str">"小明"</span>, <span class="num">3</span>))
+t2 = <span class="fn">threading</span>.Thread(target=show, kwargs={<span class="str">"a"</span>: <span class="num">1</span>, <span class="str">"b"</span>: <span class="num">2</span>})
+t1.start()
+t2.start()
+<span class="cm"># 单元素元组: args=(5,) 不能写成 args=(5)</span></div></div>
+    </div>
+    <!-- Q30: 代码实战 -->
+    <div class="card" data-qid="30" data-type="write" data-answer="全局变量与互斥锁：不加锁结果不稳定，加锁后稳定为预期值">
+      <div class="card-header"><span class="card-qnum">第 30 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>全局变量与互斥锁（重点必做）</strong></div>
+      <div class="card-desc">定义全局整型 <code>count = 0</code>，两个线程各循环较大次数（如 10 万次）执行 <code>count += 1</code>。<br>先不加锁运行，观察结果是否小于预期。<br>再用同一把 <code>threading.Lock</code> 包裹临界区。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> <span class="fn">threading</span>
+
+count = <span class="num">0</span>
+lock = <span class="fn">threading</span>.Lock()
+N = <span class="num">100000</span>
+
+<span class="kw">def</span> add():
+    <span class="kw">global</span> count
+    <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(N):
+        <span class="kw">with</span> lock:
+            count += <span class="num">1</span>
+
+t1 = <span class="fn">threading</span>.Thread(target=add)
+t2 = <span class="fn">threading</span>.Thread(target=add)
+t1.start()
+t2.start()
+t1.join()
+t2.join()
+<span class="fn">print</span>(count)  <span class="cm"># 200000</span></div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> <span class="fn">threading</span>
+
+count = <span class="num">0</span>
+lock = <span class="fn">threading</span>.Lock()
+N = <span class="num">100000</span>
+
+<span class="kw">def</span> add():
+    <span class="kw">global</span> count
+    <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(N):
+        <span class="kw">with</span> lock:
+            count += <span class="num">1</span>
+
+t1 = <span class="fn">threading</span>.Thread(target=add)
+t2 = <span class="fn">threading</span>.Thread(target=add)
+t1.start()
+t2.start()
+t1.join()
+t2.join()
+<span class="fn">print</span>(count)  <span class="cm"># 200000</span></div></div>
+    </div>
+    <!-- Q31: 代码实战 -->
+    <div class="card" data-qid="31" data-type="write" data-answer="生成器：推导式创建生成器，yield生成器函数">
+      <div class="card-header"><span class="card-qnum">第 31 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>生成器（必做）</strong></div>
+      <div class="card-desc">用生成器推导式创建生成器，并用 for 遍历打印。<br>再写一个含 yield 的生成器函数，用 next 至少取两次，说明每次从何处继续执行（注释）。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">g = (x * <span class="num">2</span> <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(<span class="num">4</span>))
+<span class="kw">for</span> v <span class="kw">in</span> g:
+    <span class="fn">print</span>(v)
+
+<span class="kw">def</span> gen(n):
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(n):
+        <span class="kw">yield</span> i
+
+it = gen(<span class="num">3</span>)
+<span class="fn">print</span>(<span class="fn">next</span>(it))  <span class="cm"># 0</span>
+<span class="fn">print</span>(<span class="fn">next</span>(it))  <span class="cm"># 1</span></div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">g = (x * <span class="num">2</span> <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(<span class="num">4</span>))
+<span class="kw">for</span> v <span class="kw">in</span> g:
+    <span class="fn">print</span>(v)
+
+<span class="kw">def</span> gen(n):
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(n):
+        <span class="kw">yield</span> i
+
+it = gen(<span class="num">3</span>)
+<span class="fn">print</span>(<span class="fn">next</span>(it))  <span class="cm"># 0</span>
+<span class="fn">print</span>(<span class="fn">next</span>(it))  <span class="cm"># 1</span></div></div>
+    </div>
+    <!-- Q32: 代码实战 -->
+    <div class="card" data-qid="32" data-type="write" data-answer="asyncio入门：create_task并发调度，await等待完成">
+      <div class="card-header"><span class="card-qnum">第 32 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>asyncio 入门与并发任务（重点必做）</strong></div>
+      <div class="card-desc">定义 <code>async def work(name):</code> 内 print 开始，<code>await asyncio.sleep(1)</code>，print 结束。<br>定义 async def main()，用 create_task 同时调度至少两个 work，再 await 等待。<br>最外层用 asyncio.run(main())。注释说明并发 vs 串行的耗时区别。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> <span class="fn">asyncio</span>
+
+async <span class="kw">def</span> work(name):
+    <span class="fn">print</span>(<span class="str">"start"</span>, name)
+    <span class="kw">await</span> <span class="fn">asyncio</span>.sleep(<span class="num">1</span>)
+    <span class="fn">print</span>(<span class="str">"end"</span>, name)
+
+async <span class="kw">def</span> main():
+    t1 = <span class="fn">asyncio</span>.create_task(work(<span class="str">"A"</span>))
+    t2 = <span class="fn">asyncio</span>.create_task(work(<span class="str">"B"</span>))
+    <span class="kw">await</span> t1
+    <span class="kw">await</span> t2
+
+<span class="fn">asyncio</span>.run(main())</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> <span class="fn">asyncio</span>
+
+async <span class="kw">def</span> work(name):
+    <span class="fn">print</span>(<span class="str">"start"</span>, name)
+    <span class="kw">await</span> <span class="fn">asyncio</span>.sleep(<span class="num">1</span>)
+    <span class="fn">print</span>(<span class="str">"end"</span>, name)
+
+async <span class="kw">def</span> main():
+    t1 = <span class="fn">asyncio</span>.create_task(work(<span class="str">"A"</span>))
+    t2 = <span class="fn">asyncio</span>.create_task(work(<span class="str">"B"</span>))
+    <span class="kw">await</span> t1
+    <span class="kw">await</span> t2
+
+<span class="fn">asyncio</span>.run(main())</div></div>
+    </div>
+    <!-- Q33: 代码实战 -->
+    <div class="card" data-qid="33" data-type="write" data-answer="CPU密集型更适合多进程，I/O密集型更适合协程">
+      <div class="card-header"><span class="card-qnum">第 33 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>CPU 密集型 vs I/O 密集型（选做）</strong></div>
+      <div class="card-desc">用一段话对比：CPU 密集型任务在 CPython 下更适合多进程还是多线程？I/O 密集型更适合线程还是协程？简要说明理由。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">&lt;strong&gt;CPU 密集型&lt;/strong&gt;：在 CPython 下多线程受 GIL 影响，纯 Python 计算往往难以吃满多核，更适合用&lt;strong&gt;多进程&lt;/strong&gt;将任务分配到多核。&lt;strong&gt;I/O 密集型&lt;/strong&gt;：线程可在 I/O 阻塞时让出 CPU；&lt;strong&gt;协程&lt;/strong&gt;在单线程事件循环里通过 <span class="kw">await</span> 挂起等待，大量 I/O 并发时开销更小，适合高并发网络/等待场景。</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">&lt;strong&gt;CPU 密集型&lt;/strong&gt;：在 CPython 下多线程受 GIL 影响，纯 Python 计算往往难以吃满多核，更适合用&lt;strong&gt;多进程&lt;/strong&gt;将任务分配到多核。&lt;strong&gt;I/O 密集型&lt;/strong&gt;：线程可在 I/O 阻塞时让出 CPU；&lt;strong&gt;协程&lt;/strong&gt;在单线程事件循环里通过 <span class="kw">await</span> 挂起等待，大量 I/O 并发时开销更小，适合高并发网络/等待场景。</div></div>
+    </div>
+    <!-- Q34: 代码实战 -->
+    <div class="card" data-qid="34" data-type="write" data-answer="join等待线程结束，锁保护临界区；join整条线程串行，锁只串行临界区">
+      <div class="card-header"><span class="card-qnum">第 34 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>join() vs 互斥锁（选做）</strong></div>
+      <div class="card-desc">查阅或回忆：<code>join()</code> 等待子线程结束与用互斥锁保护临界区，在"牺牲并行度"方面有何异同（各写一两句）。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">&lt;code&gt;join()&lt;/code&gt;：让调用方&lt;strong&gt;等待某个线程先跑完&lt;/strong&gt;，其他线程期间是否并行取决于你 join 的方式，容易写成阶段性串行。&lt;strong&gt;互斥锁&lt;/strong&gt;：只保证&lt;strong&gt;临界区串行&lt;/strong&gt;，锁外其他线程仍可并行，并行度通常好于整条线程顺序 join 的写法，但锁粒度过大也会接近单线程。</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">&lt;code&gt;join()&lt;/code&gt;：让调用方&lt;strong&gt;等待某个线程先跑完&lt;/strong&gt;，其他线程期间是否并行取决于你 join 的方式，容易写成阶段性串行。&lt;strong&gt;互斥锁&lt;/strong&gt;：只保证&lt;strong&gt;临界区串行&lt;/strong&gt;，锁外其他线程仍可并行，并行度通常好于整条线程顺序 join 的写法，但锁粒度过大也会接近单线程。</div></div>
+    </div>
+</div>
+
+</div>
+
+<script>
+const STORAGE_KEY = 'py_day05_1_quiz_history';
+const SAVE_KEY = 'py_day05_1_saves';
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+<script src="/static/js/quiz-engine.js?v=20260530"></script>
+
+</body>
+</html>

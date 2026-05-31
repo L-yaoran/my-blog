@@ -1,0 +1,27 @@
+/* ===== Shared CSS Variables ===== */
+/* Both style.css (blog) and quiz.css (quiz) import this file */
+
+:root {
+  /* Colors */
+  --void: #faf9f8;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --text: #1a1a1a;
+  --sub: #6c757d;
+  --muted: #9ca3af;
+  --border: #eae6e1;
+  --code-bg: #f3f4f6;
+  --tag-bg: #f1f5f9;
+
+  /* Brand colors */
+  --blue: #2563eb;
+  --purple: #7c3aed;
+  --gold: #d97706;
+  --green: #059669;
+  --red: #dc2626;
+
+  /* Layout */
+  --nav-height: 64px;
+  --max-width: 1100px;
+  --max-width-content: 960px;
+}

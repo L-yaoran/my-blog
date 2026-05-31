@@ -1,0 +1,416 @@
+{% extends "base.html" %}
+
+{% block title %}AI幻世录·GeoLib{% endblock %}
+
+{% block extra_css %}
+<style>
+section { padding: 80px 0; border-bottom: 1px solid #eae6e1; }
+section:last-child { border-bottom: none; }
+
+.grid-2col { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+
+.hero { text-align: center; background: linear-gradient(145deg, #ffffff 0%, #f3f4f6 100%); border-radius: 2rem; margin: 2rem 0; padding: 3rem 2rem; box-shadow: 0 8px 20px rgba(0,0,0,0.02); }
+.hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+.ai-highlight { background: linear-gradient(135deg, #a78bfa, #7c3aed, #6366f1); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero .tagline { font-size: 1.3rem; color: var(--blue); font-weight: 500; margin-bottom: 0.4rem; }
+.hero .tagline-en { font-size: 1.05rem; color: #6b7280; font-weight: 400; letter-spacing: 0.06em; margin-bottom: 1rem; }
+.hero .bio { max-width: 640px; margin: 1.2rem auto 0; color: #4b5563; line-height: 1.9; font-size: 0.95rem; }
+
+.card { background: white; border-radius: 1.5rem; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.04); transition: all 0.2s ease; border: 1px solid #edf2f7; display: flex; flex-direction: column; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1); border-color: #cbd5e1; }
+.card-badge { font-size: 0.75rem; text-transform: uppercase; background: #eef2ff; color: var(--blue); padding: 0.2rem 0.8rem; border-radius: 30px; display: inline-block; margin-bottom: 1rem; font-weight: 600; }
+.card-badge.green { background: #ecfdf5; color: var(--green); }
+.card-badge.purple { background: #f5f3ff; color: var(--purple); }
+.card-badge.gold { background: #fffbeb; color: var(--gold); }
+.card h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+.card .meta { color: #6c757d; font-size: 0.85rem; margin-bottom: 1rem; }
+.card p { color: #2d3e50; margin-bottom: 1.2rem; flex: 1; }
+.card-link { color: var(--blue); font-weight: 500; text-decoration: none; display: inline-block; margin-top: auto; }
+.card-link:hover { text-decoration: underline; }
+
+.featured-card { border: 2px solid #c7d2fe; background: linear-gradient(135deg, #ffffff 0%, #eef2ff 100%); }
+.featured-card:hover { border-color: #818cf8; }
+
+.progress-wrapper { margin: 1rem 0 0.5rem; }
+.progress-label { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.3rem; color: #4b5563; }
+.progress-bar { background: #e2e8f0; border-radius: 20px; height: 8px; overflow: hidden; }
+.progress-fill { background: linear-gradient(90deg, var(--blue), var(--purple)); height: 100%; border-radius: 20px; }
+
+.tag-group { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.tag { background: var(--tag-bg); padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.7rem; color: #1e293b; white-space: nowrap; }
+.tag-group.nowrap { flex-wrap: nowrap; overflow: hidden; }
+.tag-more { background: var(--tag-bg); padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.7rem; color: #94a3b8; flex-shrink: 0; }
+
+.btn { background: var(--blue); color: white; border: none; padding: 0.6rem 1.4rem; border-radius: 2rem; font-weight: 500; cursor: pointer; font-family: inherit; font-size: 0.9rem; }
+.btn:hover { opacity: 0.9; }
+
+.about-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.info-box { background: white; border-radius: 1.5rem; padding: 2rem; border: 1px solid #edf2f7; }
+
+.tech-list { list-style: none; padding: 0; }
+.tech-list li { font-size: 0.88rem; color: #4b5563; line-height: 2; display: flex; align-items: center; gap: 0.5rem; }
+.tech-list li em { font-style: normal; font-weight: 600; font-size: 0.72rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.06em; min-width: 32px; flex-shrink: 0; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+.dot.green { background: var(--green); }
+.dot.gold { background: var(--gold); }
+.dot.purple { background: var(--purple); }
+
+.social-links { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+.social-links a { background: var(--tag-bg); padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; color: #1f2937; font-size: 0.9rem; }
+.social-links a:hover { background: #e2e8f0; }
+
+.contact-box { background: white; border-radius: 1.5rem; padding: 1.5rem 2rem; border: 1px solid #edf2f7; margin-top: 1.5rem; }
+.contact-box h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.04em; text-transform: uppercase; color: #6c757d; }
+.contact-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.contact-item { display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.9rem; background: #f9fafb; border-radius: 0.75rem; text-decoration: none; color: inherit; transition: all 0.2s; }
+a.contact-item:hover { background: #eef2ff; }
+.contact-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
+.contact-icon.email { background: #eef2ff; color: var(--blue); }
+.contact-icon.qq { background: #12B7F5; }
+.contact-icon.wechat { background: #07C160; }
+.contact-label { font-size: 0.7rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em; width: 28px; flex-shrink: 0; }
+.contact-value { font-size: 0.85rem; color: #1f2937; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+@media (max-width: 700px) {
+    .about-contact { grid-template-columns: 1fr; }
+    .contact-bar { grid-template-columns: 1fr; }
+    .contact-box { padding: 1.25rem; }
+    section { padding: 50px 0; }
+    .hero h1 { font-size: 2.2rem; }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="container">
+        <div class="hero">
+            <h1>你好，欢迎来到<span class="ai-highlight">AI</span>的世界</h1>
+            <div class="tagline">用代码构建 · 用文字记录 · 用实践验证</div>
+            <div class="tagline-en">Generate · Express · Optimize</div>
+            <div class="bio">
+              我是明屿(Geoff)，一个与 AI 共进化的人。<br>
+              不恐惧浪潮，只好奇边界；不担心被替代，只怕自己进化得不够快。<br>
+              这里记录我与人工智能协作的发生、表达与优化，一座荒岛，在 AI 时代焕发生机的过程。<br>
+              如果你也相信技术是自我的延伸，欢迎同行。
+            </div>
+        </div>
+
+        <!-- 1. 博客 -->
+        <section>
+            <h2 class="section-title">最新·博客</h2>
+            <div class="grid-2col">
+                {% for post in posts %}
+                <div class="card">
+                    <div class="card-badge">{{ post.meta.get('badge', '技术文章') }}</div>
+                    <h3>{{ post.meta.title }}</h3>
+                    <div class="meta">{{ post.meta.date }}</div>
+                    <p>{{ post.meta.summary }}</p>
+                    <a href="/{{ post.path }}/" class="card-link">阅读文章 →</a>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- 2. 学习板块 -->
+        <section id="section-practice">
+            <h2 class="section-title">学习·练习</h2>
+
+            <div class="grid-2col">
+                <!-- Python 练习 005-2 -->
+                <div class="card featured-card" style="border-color: #a5b4fc; background: linear-gradient(135deg, #ffffff 0%, #eef2ff 100%);">
+                    <div class="card-badge purple">交互式练习</div>
+                    <h3>Python 练习 005-2</h3>
+                    <div class="meta">32 道练习题 · 选择题 + 填空题 + 简答题 + 代码实战</div>
+                    <p>配套 Day05 补充课程的课后作业，涵盖 threading 模块、死锁、GIL、生成器推导式与 yield、斐波那契生成器、async/await 协程、互斥锁实战、线程安全卖票系统、无限素数生成器等核心考点。</p>
+                    <div class="progress-wrapper">
+                        <div class="progress-label">
+                            <span>涵盖知识点</span>
+                            <span>8 个模块</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="tag-group nowrap">
+                        <span class="tag">线程</span>
+                        <span class="tag">死锁</span>
+                        <span class="tag">GIL</span>
+                        <span class="tag">生成器</span>
+                        <span class="tag">斐波那契</span>
+                        <span class="tag">协程</span>
+                        <span class="tag">卖票系统</span>
+                        <span class="tag">素数</span>
+                    </div>
+                    <a href="/static/python_basic_test_005-2.html" class="btn" style="margin-top: 1.2rem; display: inline-block; text-decoration: none; color: white; background: #7c3aed;">开始练习 →</a>
+                </div>
+
+                <!-- Python 练习 005-1 -->
+                <div class="card featured-card" style="border-color: #86efac; background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);">
+                    <div class="card-badge green">交互式练习</div>
+                    <h3>Python 练习 005-1</h3>
+                    <div class="meta">34 道练习题 · 选择题 + 填空题 + 简答题 + 代码实战</div>
+                    <p>配套 Day05 课程的课后作业，涵盖线程基础、线程传参、全局变量与互斥锁、GIL、生成器、async/await 协程、asyncio 并发等核心考点。全部四类题型，提交后自动打分，做题记录本地保存。</p>
+                    <div class="progress-wrapper">
+                        <div class="progress-label">
+                            <span>涵盖知识点</span>
+                            <span>7 个模块</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="tag-group nowrap">
+                        <span class="tag">线程</span>
+                        <span class="tag">互斥锁</span>
+                        <span class="tag">GIL</span>
+                        <span class="tag">生成器</span>
+                        <span class="tag">协程</span>
+                        <span class="tag">asyncio</span>
+                        <span class="tag">并发</span>
+                        <span class="tag-more">…</span>
+                    </div>
+                    <a href="/static/python_basic_test_005-1.html" class="btn" style="margin-top: 1.2rem; display: inline-block; text-decoration: none; color: white; background: #059669;">开始练习 →</a>
+                </div>
+
+                <!-- Python 练习 004 -->
+                <div class="card featured-card" style="border-color: #fbbf24; background: linear-gradient(135deg, #ffffff 0%, #fffbeb 100%);">
+                    <div class="card-badge gold">交互式练习</div>
+                    <h3>Python 练习 004</h3>
+                    <div class="meta">33 道练习题 · 选择题 + 填空题 + 简答题 + 代码实战</div>
+                    <p>配套 Day04 课程的课后作业，涵盖 IP/端口、TCP/UDP、三次握手、套接字编程、循环 accept、文件传输、多进程与 IPC 等核心考点。全部四类题型，提交后自动打分，做题记录本地保存。</p>
+                    <div class="progress-wrapper">
+                        <div class="progress-label">
+                            <span>涵盖知识点</span>
+                            <span>5 个模块</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="tag-group nowrap">
+                        <span class="tag">TCP/UDP</span>
+                        <span class="tag">socket</span>
+                        <span class="tag">三次握手</span>
+                        <span class="tag">多进程</span>
+                        <span class="tag">IPC</span>
+                        <span class="tag">文件传输</span>
+                        <span class="tag">accept</span>
+                        <span class="tag-more">…</span>
+                    </div>
+                    <a href="/static/python_basic_test_004.html" class="btn" style="margin-top: 1.2rem; display: inline-block; text-decoration: none; color: white; background: #d97706;">开始练习 →</a>
+                </div>
+
+                <!-- Python 练习 003 -->
+                <div class="card featured-card" style="border-color: #c7d2fe; background: linear-gradient(135deg, #ffffff 0%, #f5f3ff 100%);">
+                    <div class="card-badge purple">交互式练习</div>
+                    <h3>Python 练习 003</h3>
+                    <div class="meta">34 道练习题 · 选择题 + 填空题 + 简答题 + 代码实战</div>
+                    <p>配套 Day03 课程的课后作业，涵盖闭包、nonlocal 关键字、装饰器原理、语法糖、通用装饰器、带参数装饰器、多装饰器叠加等核心考点。全部四类题型，提交后自动打分，做题记录本地保存。</p>
+                    <div class="progress-wrapper">
+                        <div class="progress-label">
+                            <span>涵盖知识点</span>
+                            <span>5 个模块</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="tag-group nowrap">
+                        <span class="tag">闭包</span>
+                        <span class="tag">nonlocal</span>
+                        <span class="tag">装饰器</span>
+                        <span class="tag">语法糖</span>
+                        <span class="tag">通用装饰器</span>
+                        <span class="tag">多装饰器</span>
+                        <span class="tag">带参装饰器</span>
+                        <span class="tag">权限装饰器</span>
+                        <span class="tag-more">…</span>
+                    </div>
+                    <a href="/static/python_basic_test_003.html" class="btn" style="margin-top: 1.2rem; display: inline-block; text-decoration: none; color: white; background: #7c3aed;">开始练习 →</a>
+                </div>
+
+                <!-- Python 练习 002 -->
+                <div class="card featured-card" style="border-color: #d1d5db; background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);">
+                    <div class="card-badge green">交互式练习</div>
+                    <h3>Python 练习 002</h3>
+                    <div class="meta">38 道练习题 · 选择题 + 填空题 + 简答题 + 代码实战</div>
+                    <p>配套 Day02 课程的课后作业，涵盖封装、继承语法、方法重写、super()、鸭子类型、类方法/静态方法等核心考点。全部四类题型，提交后自动打分，做题记录本地保存。</p>
+                    <div class="progress-wrapper">
+                        <div class="progress-label">
+                            <span>涵盖知识点</span>
+                            <span>6 个模块</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="tag-group nowrap">
+                        <span class="tag">封装</span>
+                        <span class="tag">继承</span>
+                        <span class="tag">方法重写</span>
+                        <span class="tag">super()</span>
+                        <span class="tag">鸭子类型</span>
+                        <span class="tag">类方法</span>
+                        <span class="tag">静态方法</span>
+                        <span class="tag">MRO</span>
+                        <span class="tag-more">…</span>
+                    </div>
+                    <a href="/static/python_basic_test_002.html" class="btn" style="margin-top: 1.2rem; display: inline-block; text-decoration: none; color: white; background: #059669;">开始练习 →</a>
+                </div>
+
+                <!-- Python 练习 001 -->
+                <div class="card featured-card">
+                    <div class="card-badge gold">交互式练习</div>
+                    <h3>Python 练习 001</h3>
+                    <div class="meta">38 道练习题 · 选择题 + 填空题 + 简答题 + 代码实战</div>
+                    <p>配套 Day01 课程的课后作业，涵盖类与对象的关系、self 关键字的作用、__init__ 初始化方法、封装与私有属性、__str__ 方法重写等核心考点。全部四类题型，提交后自动打分，做题记录本地保存。</p>
+                    <div class="progress-wrapper">
+                        <div class="progress-label">
+                            <span>涵盖知识点</span>
+                            <span>6 个模块</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="tag-group nowrap">
+                        <span class="tag">类与对象</span>
+                        <span class="tag">self</span>
+                        <span class="tag">__init__</span>
+                        <span class="tag">封装</span>
+                        <span class="tag">私有属性</span>
+                        <span class="tag">__str__</span>
+                        <span class="tag">综合案例</span>
+                        <span class="tag-more">…</span>
+                    </div>
+                    <a href="/static/python_basic_test_001.html" class="btn" style="margin-top: 1.2rem; display: inline-block; text-decoration: none; color: white;">开始练习 →</a>
+                </div>
+
+                <!-- 占位卡片：奇数个练习时自动显示 -->
+                <div class="card placeholder-card" id="placeholderCard" style="display:none; border-style: dashed; opacity: 0.55; background: rgba(255,255,255,0.5);">
+                    <div class="card-badge" style="background: #f1f5f9; color: #9ca3af;">敬请期待</div>
+                    <h3 style="color: #9ca3af;">更多练习</h3>
+                    <div class="meta">持续更新中…</div>
+                    <p>后续课程配套练习题即将上线，覆盖更多 Python 核心知识点与实战项目。</p>
+                    <span class="card-link" style="color: #9ca3af; cursor: default;">敬请期待 →</span>
+                </div>
+            </div>
+
+            <script>
+            (function() {
+              var grid = document.querySelector('#section-practice .grid-2col');
+              if (!grid) return;
+              var cards = grid.querySelectorAll('.card:not(.placeholder-card)');
+              if (cards.length % 2 !== 0) {
+                var ph = document.getElementById('placeholderCard');
+                if (ph) ph.style.display = 'flex';
+              }
+            })();
+            </script>
+
+            <!-- 其他学习卡片 -->
+            <div class="grid-2col">
+                <div class="card">
+                    <div class="card-badge green">📖 学习笔记</div>
+                    <h3>Python 基础回顾</h3>
+                    <div class="meta">数据类型 · 流程控制 · 函数</div>
+                    <p>Python 基础知识梳理，为进阶学习打下扎实基础。</p>
+                    <div class="progress-wrapper">
+                        <div class="progress-label"><span>整理进度</span><span>规划中</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 10%;"></div></div>
+                    </div>
+                    <span class="card-link" style="color: #9ca3af; cursor: default;">即将上线</span>
+                </div>
+                <div class="card">
+                    <div class="card-badge green">🌱 计划中</div>
+                    <h3>Flask Web 开发实战</h3>
+                    <div class="meta">路由 · 模板 · 数据库 · 部署</div>
+                    <p>从零搭建 Flask 应用的完整流程，包含实战项目和部署指南。</p>
+                    <div class="progress-wrapper">
+                        <div class="progress-label"><span>整理进度</span><span>规划中</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 5%;"></div></div>
+                    </div>
+                    <span class="card-link" style="color: #9ca3af; cursor: default;">即将上线</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 项目作品 -->
+        <section>
+            <h2 class="section-title">实践·项目</h2>
+            <div class="grid-2col">
+                <div class="card">
+                    <div class="card-badge">全栈应用</div>
+                    <h3>My Blog — AI幻世录·GeoLib</h3>
+                    <div class="meta">Flask · Nginx · Gunicorn · 阿里云 ECS</div>
+                    <p>从零搭建的全栈个人网站，博客文章 + Python 交互练习，Markdown 写作、包豪斯风格浅色主题、HTTPS 公网部署。</p>
+                    <div class="tag-group">
+                        <span class="tag">Flask</span>
+                        <span class="tag">Markdown</span>
+                        <span class="tag">Nginx</span>
+                        <span class="tag">ECS</span>
+                    </div>
+                    <a href="https://github.com/L-yaoran/my-blog" target="_blank" class="card-link">查看源码 →</a>
+                </div>
+                <div class="card">
+                    <div class="card-badge purple">交互练习</div>
+                    <h3>Python 交互练习场</h3>
+                    <div class="meta">3 套练习 · 110 道题 · 即时反馈 · 进度保存</div>
+                    <p>选择题 + 填空题 + 简答题 + 代码实战，覆盖面向对象、闭包、装饰器等核心概念的交互式练习合集。</p>
+                    <div class="tag-group">
+                        <span class="tag">Python</span>
+                        <span class="tag">OOP</span>
+                        <span class="tag">闭包</span>
+                        <span class="tag">装饰器</span>
+                    </div>
+                    <a href="/static/python_basic_test_001.html" class="card-link">预览项目 →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 关于 -->
+        <section>
+            <h2 class="section-title">关于·联系</h2>
+            <div class="about-contact">
+                <div class="info-box">
+                    <h3 style="margin-bottom: 1rem;">关于我</h3>
+                    <p style="margin-bottom: 1rem;"><strong>明屿</strong> / 与 AI 共进化的开发者<br><br>不追求权威的结论，只记录真实的探索轨迹；从生成一行语法开始，到每一个项目落地，带着问题出发，用实践验证理解。<br>如果你也在用 AI 构建自己的世界，欢迎同行，一起迷路，再一起找到路。</p>
+                </div>
+                <div class="info-box">
+                    <h3 style="margin-bottom: 1rem;">关于本站</h3>
+                    <ul class="tech-list">
+                        <li><span class="dot blue"></span><em>应用</em> Flask + Jinja2 渲染，Markdown 写作</li>
+                        <li><span class="dot green"></span><em>交互</em> 练习页面，纯前端实现</li>
+                        <li><span class="dot gold"></span><em>服务</em> Nginx 反向代理 + Gunicorn</li>
+                        <li><span class="dot purple"></span><em>环境</em> Python 3.10 · venv 虚拟环境</li>
+                        <li><span class="dot"></span><em>安全</em> Let's Encrypt SSL 证书，自动续签</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contact-box">
+                <h3>联系</h3>
+                <div class="contact-bar">
+                    <div class="contact-item">
+                        <span class="contact-icon email">✉</span>
+                        <span class="contact-label">邮箱</span>
+                        <span class="contact-value">yaoran@petalmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon qq">
+                            <svg viewBox="0 0 32 32" width="14" height="14"><ellipse cx="16" cy="19" rx="8" ry="9" fill="none" stroke="white" stroke-width="2.5"/><circle cx="16" cy="10" r="6" fill="none" stroke="white" stroke-width="2.5"/><circle cx="13" cy="9" r="1.3" fill="white"/><circle cx="19" cy="9" r="1.3" fill="white"/><path d="M13.5 13 L16 15.5 L18.5 13" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="16" cy="20" rx="4" ry="5" fill="none" stroke="white" stroke-width="1.5"/></svg>
+                        </span>
+                        <span class="contact-label">QQ</span>
+                        <span class="contact-value">370566979</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon wechat">
+                            <svg viewBox="0 0 32 32" width="14" height="14"><path d="M12 4c-6 0-10 3.5-10 8 0 2.5 2 5 4 6l-1 3 4-2c1 .3 2 .5 3 .5.3 0 .7 0 1-.1C12.5 18 12 16.5 12 15c0-4.5 4.5-8 10-8 .5 0 1 0 1.5.1C21.5 4.5 17 4 12 4z" fill="white"/><path d="M22 12c-5 0-9 3-9 7s4 7 9 7c1 0 2-.2 3-.5l3 2-1-3c2-1.5 3-3.5 3-5.5 0-4-4-7-8-7z" fill="white"/></svg>
+                        </span>
+                        <span class="contact-label">微信</span>
+                        <span class="contact-value">P-YAORAN</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

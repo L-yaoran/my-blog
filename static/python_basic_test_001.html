@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python 练习 001</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/monokai.min.css">
+<link rel="stylesheet" href="/static/css/quiz.css?v=20260530">
+
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div class="badge">交互式练习</div>
+    <h1>Python 练习 001</h1>
+    <div class="subtitle">38 道题 · 选择题 + 填空题 + 简答题 + 代码实战 · 即时反馈 · 记录保存</div>
+  </div>
+  <div class="quiz-nav">
+    <span class="quiz-arrow disabled" title="已是第一个">◂</span>
+    <div class="quiz-dropdown">
+      <button class="quiz-dropdown-btn" onclick="toggleDropdown(this)">练习 001 <span class="arrow-icon">▾</span></button>
+      <div class="quiz-dropdown-menu">
+        <a href="/static/python_basic_test_001.html" class="active">练习 001</a>
+        <a href="/static/python_basic_test_002.html">练习 002</a>
+        <a href="/static/python_basic_test_003.html">练习 003</a>
+        <a href="/static/python_basic_test_004.html">练习 004</a>
+        <a href="/static/python_basic_test_005-1.html">练习 005-1</a>
+        <a href="/static/python_basic_test_005-2.html">练习 005-2</a>
+      </div>
+      </div>
+    <a href="/static/python_basic_test_002.html" class="quiz-arrow" title="下一练习">▸</a>
+  </div>
+  <div class="sticky-toolbar">
+    <a href="/" class="back-link">&larr; 返回主页</a>
+    <div class="score-bar">
+      <div class="score-item"><div class="score-label">客观题</div><div class="score-num"><span id="objDone">0</span>/20</div></div>
+      <div class="score-item"><div class="score-label">主观题</div><div class="score-num"><span id="subjDone">0</span>/18</div></div>
+      <div class="score-item" id="scoreResult" style="display:none"><div class="score-label">得分</div><div class="score-num"><span id="correctCount">0</span></div></div>
+      <div style="flex:1;min-width:0;"></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.35rem;position:relative;">
+        <div style="display:flex;gap:0.5rem;">
+          <button class="score-btn" id="btnSubmit" onclick="submitAll()">提交答案</button>
+          <button class="score-btn" style="background:var(--muted)" onclick="resetAll()">重置进度</button>
+        </div>
+      </div>
+    </div>
+    <div style="width:100%;display:flex;align-items:center;justify-content:space-between;padding-top:0.35rem;border-top:1px dashed var(--border);position:relative;">
+      <span onclick="toggleHistory()" style="cursor:pointer;font-size:0.78rem;color:var(--sub);user-select:none;">做题记录 <span id="historyToggleIcon">▼</span></span>
+      <div style="display:flex;gap:0.5rem;">
+        <button class="score-btn" style="background:var(--green)" onclick="saveProgress()">暂存进度</button>
+        <button class="score-btn" style="background:var(--purple)" onclick="loadProgress()">加载进度</button>
+        <button class="score-btn" style="background:var(--gold)" onclick="exportProgress()">导出数据</button>
+        <button class="score-btn" style="background:var(--blue)" onclick="importProgress()">导入数据</button>
+        <input type="file" id="importFileInput" accept=".json" style="display:none" onchange="handleImportFile(event)">
+      </div>
+      <div class="history-panel" id="historyPanel">
+    <h4>做题记录 <button class="history-clear" onclick="clearHistory()">清空记录</button></h4>
+    <ul class="history-list" id="historyList"></ul>
+    <div class="history-empty" id="historyEmpty">暂无记录</div>
+  </div>
+    </div>
+  </div>
+
+  <!-- History detail modal -->
+  <div class="history-detail-overlay" id="historyDetailOverlay" onclick="closeHistoryDetail()">
+    <div class="history-detail" id="historyDetail" onclick="event.stopPropagation()">
+      <div class="history-detail-header">
+        <h4>答题详情</h4>
+        <button class="history-detail-close" onclick="closeHistoryDetail()">&times;</button>
+      </div>
+      <div class="history-detail-body" id="historyDetailBody"></div>
+    </div>
+  </div>
+
+<!-- ====== 一、选择题（10 题） ====== -->
+
+  <div class="section">
+
+    <div class="section-title"><span class="icon"></span>一、选择题（10 题）</div>
+
+    <!-- Q1: 选择题 -->
+    <div class="card" data-qid="1" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 1 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">关于"类"和"对象"的关系，正确的是（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 类是具体存在的对象，对象是抽象模板</div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 类是抽象模板，对象是由类创建出来的具体实例</div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 类和对象完全没有关系</div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 对象只能有一个，类可以有很多个</div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>类是抽象模板（蓝图），对象是根据类创建的具体实例。一个类可以创建多个对象。
+      </div>
+    </div>
+
+    <!-- Q2: 选择题 -->
+    <div class="card" data-qid="2" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 2 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">在 Python 中，定义类使用的关键字是（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> `def`</div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> `class`</div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> `object`</div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> `self`</div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong><code>class</code> 是 Python 定义类的关键字，<code>def</code> 定义函数，<code>self</code> 表示对象自身。
+      </div>
+    </div>
+
+    <!-- Q3: 选择题 -->
+    <div class="card" data-qid="3" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 3 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">如果已经定义了 <code>Student</code> 类，创建对象的正确写法是（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> `stu = Student()`</div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> `stu = new Student()`</div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> `stu = class Student()`</div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> `stu = Student[]`</div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>Python 创建对象直接使用 <code>类名()</code>，不需要 <code>new</code> 关键字（Java 才需要）。
+      </div>
+    </div>
+
+    <!-- Q4: 选择题 -->
+    <div class="card" data-qid="4" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 4 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">关于 <code>self</code> 的说法，正确的是（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> `self` 指向调用当前方法的对象</div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> `self` 固定指向类本身</div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> `self` 只能在类外部使用</div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> `self` 是字符串类型</div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong><code>self</code> 指向调用方法的那个具体对象，不同对象调用同一方法时 <code>self</code> 指向不同对象。
+      </div>
+    </div>
+
+    <!-- Q5: 选择题 -->
+    <div class="card" data-qid="5" data-type="choice" data-answer="C">
+      <div class="card-header"><span class="card-qnum">第 5 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question"><code>__init__</code> 方法通常在什么时候自动调用？（ ）</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 每次打印对象时</div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 每次删除对象时</div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 创建对象时</div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 导入模块时</div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong><code>__init__</code> 在创建对象时自动调用，用于初始化对象属性，不需要手动调用。
+      </div>
+    </div>
+
+    <!-- Q6: 选择题 -->
+    <div class="card" data-qid="6" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 6 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question"><code>__init__</code> 方法最主要的作用是（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 给对象初始化属性</div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 删除对象属性</div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 强制退出程序</div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 复制一个对象</div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong><code>__init__</code> 的核心作用是在对象创建时为对象设置初始属性值。
+      </div>
+    </div>
+
+    <!-- Q7: 选择题 -->
+    <div class="card" data-qid="7" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 7 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">在类内部访问当前对象的属性，通常使用（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> `class.属性名`</div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> `self.属性名`</div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> `对象->属性名`</div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> `属性名::self`</div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>在类内部通过 <code>self.属性名</code> 访问和设置当前对象的属性。
+      </div>
+    </div>
+
+    <!-- Q8: 选择题 -->
+    <div class="card" data-qid="8" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 8 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">关于封装，下列说法正确的是（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 封装就是把属性和方法组织到类中，并控制访问方式</div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 封装意味着所有代码都不能访问属性</div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 封装会让代码完全不能复用</div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 封装只和函数有关，和类无关</div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>封装是将数据（属性）和操作数据的方法组织到类中，通过访问控制保护数据安全。
+      </div>
+    </div>
+
+    <!-- Q9: 选择题 -->
+    <div class="card" data-qid="9" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 9 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question">Python 中，通常把属性名前加双下划线 <code>__</code> 表示（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 普通属性</div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 私有属性</div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 全局变量</div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 模块名</div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>属性名前加 <code>__</code>（双下划线）表示私有属性，外部不应直接访问。
+      </div>
+    </div>
+
+    <!-- Q10: 选择题 -->
+    <div class="card" data-qid="10" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 10 题</span><span class="card-type choice">选择题</span></div>
+      <div class="card-question"><code>print(对象)</code> 时，如果想输出一段可读的对象信息，通常需要重写（ ）。</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> `__init__`</div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> `__str__`</div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> `__del__`</div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> `__add__`</div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>重写 <code>__str__</code> 方法后，<code>print(对象)</code> 会显示自定义的可读信息，而不是默认的内存地址。
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ====== 二、填空题（10 题） ====== -->
+
+  <div class="section">
+
+    <div class="section-title"><span class="icon"></span>二、填空题（10 题）</div>
+
+    <!-- Q11: 填空题 -->
+    <div class="card" data-qid="11" data-type="fill" data-answer="模板；具体实例">
+      <div class="card-header"><span class="card-qnum">第 11 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">面向对象编程中，类可以理解为（<input type="text" class="blank-input">），对象可以理解为（<input type="text" class="blank-input">）。</div>
+      
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>类相当于设计图（模板），对象相当于根据设计图造出来的具体东西（实例）。
+      </div>
+    </div>
+
+    <!-- Q12: 填空题 -->
+    <div class="card" data-qid="12" data-type="fill" data-answer="大驼峰">
+      <div class="card-header"><span class="card-qnum">第 12 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">定义类时推荐使用（<input type="text" class="blank-input">）命名法，例如 <code>StudentInfo</code>。</div>
+      
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>类名推荐使用大驼峰命名法（每个单词首字母大写），如 <code>StudentInfo</code>、<code>HttpRequest</code>。
+      </div>
+    </div>
+
+    <!-- Q13: 填空题 -->
+    <div class="card" data-qid="13" data-type="fill" data-answer="类名">
+      <div class="card-header"><span class="card-qnum">第 13 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">创建对象的语法通常是：<code>对象名 = （</code><input type="text" class="blank-input"><code>）()</code>。</div>
+      
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>创建对象的语法为 <code>对象名 = 类名()</code>，如 <code>stu = Student()</code>。
+      </div>
+    </div>
+
+    <!-- Q14: 填空题 -->
+    <div class="card" data-qid="14" data-type="fill" data-answer="调用当前方法的对象">
+      <div class="card-header"><span class="card-qnum">第 14 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question"><code>self</code> 表示（<input type="text" class="blank-input">）。</div>
+      
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong><code>self</code> 代表调用当前方法的那个具体对象，不同对象调用时 <code>self</code> 指向不同。
+      </div>
+    </div>
+
+    <!-- Q15: 填空题 -->
+    <div class="card" data-qid="15" data-type="fill" data-answer="属性">
+      <div class="card-header"><span class="card-qnum">第 15 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question"><code>__init__</code> 方法用于初始化对象的（<input type="text" class="blank-input">）。</div>
+      
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong><code>__init__</code> 在对象创建时自动执行，用于给对象设置初始属性值。
+      </div>
+    </div>
+
+    <!-- Q16: 填空题 -->
+    <div class="card" data-qid="16" data-type="fill" data-answer="self">
+      <div class="card-header"><span class="card-qnum">第 16 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">在类内部定义方法时，第一个参数通常写成（<input type="text" class="blank-input">）。</div>
+      
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>虽然第一个参数名字可以自定义，但 Python 社区约定俗成使用 <code>self</code>。
+      </div>
+    </div>
+
+    <!-- Q17: 填空题 -->
+    <div class="card" data-qid="17" data-type="fill" data-answer="__str__">
+      <div class="card-header"><span class="card-qnum">第 17 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question"><code>print(对象)</code> 时，如果想显示自定义信息，可以重写（<input type="text" class="blank-input">）方法。</div>
+      
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>重写 <code>__str__()</code> 方法并返回字符串，即可自定义 <code>print()</code> 输出。
+      </div>
+    </div>
+
+    <!-- Q18: 填空题 -->
+    <div class="card" data-qid="18" data-type="fill" data-answer="可维护性">
+      <div class="card-header"><span class="card-qnum">第 18 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">封装的好处之一是可以让属性和方法组织更清晰，提高代码的（<input type="text" class="blank-input">）。</div>
+      
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>封装让代码结构清晰、数据安全、便于维护。这里填"可维护性"或"复用性"都合理。
+      </div>
+    </div>
+
+    <!-- Q19: 填空题 -->
+    <div class="card" data-qid="19" data-type="fill" data-answer="双下划线__">
+      <div class="card-header"><span class="card-qnum">第 19 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">私有属性通常在属性名前加（<input type="text" class="blank-input">）。</div>
+      
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>在属性名前加 <code>__</code>（双下划线），如 <code>self.__balance</code>，表示私有属性。
+      </div>
+    </div>
+
+    <!-- Q20: 填空题 -->
+    <div class="card" data-qid="20" data-type="fill" data-answer="get_xxx">
+      <div class="card-header"><span class="card-qnum">第 20 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">如果想安全读取私有属性，通常可以在类中提供（<input type="text" class="blank-input">）方法。</div>
+      
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>提供类似 <code>get_balance()</code> 的公开方法来安全读取私有属性，是封装的标准做法。
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ====== 三、简答题（10 题） ====== -->
+
+  <div class="section">
+
+    <div class="section-title"><span class="icon"></span>三、简答题（10 题）</div>
+
+    <!-- Q21: 简答题 -->
+    <div class="card" data-qid="21" data-type="short" data-answer="类是对一类事物的抽象描述,对象是根据类创建的具体个体">
+      <div class="card-header"><span class="card-qnum">第 21 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">请用自己的话说明什么是类，什么是对象。</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">类是对一类事物的抽象描述，比如学生类、手机类；对象是根据类创建出来的具体个体，比如张三这个学生、小米手机这个对象。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>类是对一类事物的抽象描述，比如学生类、手机类；对象是根据类创建出来的具体个体，比如张三这个学生、小米手机这个对象。</div>
+    </div>
+
+    <!-- Q22: 简答题 -->
+    <div class="card" data-qid="22" data-type="short" data-answer="类相当于设计图,先有设计图才能造出具体东西">
+      <div class="card-header"><span class="card-qnum">第 22 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">为什么说"先有类，再有对象"？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">类相当于设计图，对象相当于根据设计图造出来的具体东西，所以通常先定义类，再根据类创建对象。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>类相当于设计图，对象相当于根据设计图造出来的具体东西，所以通常先定义类，再根据类创建对象。</div>
+    </div>
+
+    <!-- Q23: 简答题 -->
+    <div class="card" data-qid="23" data-type="short" data-answer="self指向调用方法的对象,不同对象调用时self不同">
+      <div class="card-header"><span class="card-qnum">第 23 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question"><code>self</code> 的作用是什么？请举一个两个对象调用同一个方法的例子。</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);"><code>self</code> 表示调用当前方法的对象。比如 <code>stu1.introduce()</code> 时，<code>self</code> 指向 <code>stu1</code>；<code>stu2.introduce()</code> 时，<code>self</code> 指向 <code>stu2</code>。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><code>self</code> 表示调用当前方法的对象。比如 <code>stu1.introduce()</code> 时，<code>self</code> 指向 <code>stu1</code>；<code>stu2.introduce()</code> 时，<code>self</code> 指向 <code>stu2</code>。</div>
+    </div>
+
+    <!-- Q24: 简答题 -->
+    <div class="card" data-qid="24" data-type="short" data-answer="保证每个对象创建时属性结构一致,避免外部临时添加导致混乱">
+      <div class="card-header"><span class="card-qnum">第 24 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">为什么推荐在 <code>__init__</code> 中统一初始化对象属性？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">在 <code>__init__</code> 中统一初始化属性，可以保证每个对象创建出来时都有相同的属性结构，避免类外部随意添加属性导致代码混乱。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>在 <code>__init__</code> 中统一初始化属性，可以保证每个对象创建出来时都有相同的属性结构，避免类外部随意添加属性导致代码混乱。</div>
+    </div>
+
+    <!-- Q25: 简答题 -->
+    <div class="card" data-qid="25" data-type="short" data-answer="__init__在创建对象时自动调用用于初始化属性,普通方法需主动调用">
+      <div class="card-header"><span class="card-qnum">第 25 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question"><code>__init__</code> 和普通方法有什么区别？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);"><code>__init__</code> 会在创建对象时自动调用，主要用于初始化属性；普通方法需要通过对象主动调用。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><code>__init__</code> 会在创建对象时自动调用，主要用于初始化属性；普通方法需要通过对象主动调用。</div>
+    </div>
+
+    <!-- Q26: 简答题 -->
+    <div class="card" data-qid="26" data-type="short" data-answer="自定义print输出,不写会看到对象类型和内存地址">
+      <div class="card-header"><span class="card-qnum">第 26 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question"><code>__str__</code> 的作用是什么？如果不写 <code>__str__</code>，直接打印对象通常会看到什么？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);"><code>__str__</code> 用于自定义 <code>print(对象)</code> 时显示的内容。如果不写，通常会看到对象类型和内存地址，不方便阅读。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><code>__str__</code> 用于自定义 <code>print(对象)</code> 时显示的内容。如果不写，通常会看到对象类型和内存地址，不方便阅读。</div>
+    </div>
+
+    <!-- Q27: 简答题 -->
+    <div class="card" data-qid="27" data-type="short" data-answer="把属性和方法组织到类中并通过方法控制访问,结构清晰安全性好">
+      <div class="card-header"><span class="card-qnum">第 27 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">什么是封装？封装有什么好处？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">封装是把属性和方法组织到类中，并通过方法控制属性访问。好处是结构清晰、安全性更好、维护更方便。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>封装是把属性和方法组织到类中，并通过方法控制属性访问。好处是结构清晰、安全性更好、维护更方便。</div>
+    </div>
+
+    <!-- Q28: 简答题 -->
+    <div class="card" data-qid="28" data-type="short" data-answer="可能导致对象状态不合法,如余额变负数">
+      <div class="card-header"><span class="card-qnum">第 28 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">私有属性为什么不能随便从类外部直接修改？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">私有属性通常代表不希望外部随意修改的数据，如果类外部可以随便改，可能导致对象状态不合法，比如余额变成负数、分数超过 100。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>私有属性通常代表不希望外部随意修改的数据，如果类外部可以随便改，可能导致对象状态不合法，比如余额变成负数、分数超过 100。</div>
+    </div>
+
+    <!-- Q29: 简答题 -->
+    <div class="card" data-qid="29" data-type="short" data-answer="会导致不同对象属性结构不一致,维护和排错困难">
+      <div class="card-header"><span class="card-qnum">第 29 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">"类外部临时给对象添加属性"为什么不推荐？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">类外部临时添加属性会导致不同对象属性结构不一致，后期维护和排错会更困难。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>类外部临时添加属性会导致不同对象属性结构不一致，后期维护和排错会更困难。</div>
+    </div>
+
+    <!-- Q30: 简答题 -->
+    <div class="card" data-qid="30" data-type="short" data-answer="每个对象独立保存自己的属性和状态,扩展更清晰易维护">
+      <div class="card-header"><span class="card-qnum">第 30 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">面向对象相比面向过程，在"多个学生、多个商品、多个 AI 工具账号"这种场景下有什么优势？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">面向对象可以把每个学生、商品、AI 工具账号都封装成独立对象，每个对象保存自己的属性和状态，扩展多个对象时更清晰、更容易维护。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>面向对象可以把每个学生、商品、AI 工具账号都封装成独立对象，每个对象保存自己的属性和状态，扩展多个对象时更清晰、更容易维护。</div>
+    </div>
+
+  </div>
+
+  <!-- ====== 四、代码实战（8 题） ====== -->
+
+  <div class="section">
+
+    <div class="section-title"><span class="icon"></span>四、代码实战（8 题）</div>
+
+    <!-- Q31: 代码实战 -->
+    <div class="card" data-qid="31" data-type="write" data-answer="正确定义Student类，__init__初始化name和age，introduce()输出信息，创建两个对象并调用">
+      <div class="card-header"><span class="card-qnum">第 31 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>定义学生类</strong></div>
+      <div class="card-desc">定义 <code>Student</code> 类，要求：<br>1. 使用 <code>__init__</code> 初始化 <code>name</code> 和 <code>age</code>。<br>2. 定义 <code>introduce()</code> 方法，输出学生姓名和年龄。<br>3. 创建两个学生对象，分别调用 <code>introduce()</code>。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block"><span class="kw">class</span> Student:
+    <span class="kw">def</span> __init__(<span class="kw">self</span>, name, age):
+        <span class="cm"># self.name 表示当前对象自己的 name 属性。</span>
+        <span class="cm"># 外部传入的 name 会保存到当前对象中。</span>
+        <span class="kw">self</span>.name = name
+
+        <span class="cm"># self.age 表示当前对象自己的 age 属性。</span>
+        <span class="cm"># 每个对象都有自己独立的 age。</span>
+        <span class="kw">self</span>.age = age
+
+    <span class="kw">def</span> introduce(<span class="kw">self</span>):
+        <span class="cm"># self 指向调用 introduce 方法的对象。</span>
+        <span class="cm"># 如果 stu1 调用，self 就是 stu1。</span>
+        <span class="cm"># 如果 stu2 调用，self 就是 stu2。</span>
+        <span class="fn">print</span>(<span class="str">f"大家好，我叫{self.name}，今年{self.age}岁。"</span>)
+
+
+<span class="cm"># 创建第一个学生对象。</span>
+stu1 = Student(<span class="str">"张三"</span>, <span class="num">18</span>)
+
+<span class="cm"># 创建第二个学生对象。</span>
+stu2 = Student(<span class="str">"李四"</span>, <span class="num">20</span>)
+
+<span class="cm"># 两个对象分别调用同一个方法，但 self 指向不同对象。</span>
+stu1.introduce()
+stu2.introduce()</div></div>
+    </div>
+
+    <!-- Q32: 代码实战 -->
+    <div class="card" data-qid="32" data-type="write" data-answer="定义Phone类，__init__初始化brand和price，call()输出品牌，__str__()返回品牌和价格，创建两个对象测试">
+      <div class="card-header"><span class="card-qnum">第 32 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>定义手机类并打印对象信息</strong></div>
+      <div class="card-desc">定义 <code>Phone</code> 类，要求：<br>1. 使用 <code>__init__</code> 初始化 <code>brand</code> 和 <code>price</code>。<br>2. 定义 <code>call()</code> 方法，输出"某品牌手机正在打电话"。<br>3. 定义 <code>__str__()</code> 方法，打印对象时显示品牌和价格。<br>4. 创建两个手机对象并测试。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block"><span class="kw">class</span> Phone:
+    <span class="kw">def</span> __init__(<span class="kw">self</span>, brand, price):
+        <span class="cm"># 初始化手机品牌。</span>
+        <span class="kw">self</span>.brand = brand
+
+        <span class="cm"># 初始化手机价格。</span>
+        <span class="kw">self</span>.price = price
+
+    <span class="kw">def</span> call(<span class="kw">self</span>):
+        <span class="cm"># 使用对象自己的 brand 属性输出信息。</span>
+        <span class="fn">print</span>(<span class="str">f"{self.brand} 手机正在打电话。"</span>)
+
+    <span class="kw">def</span> __str__(<span class="kw">self</span>):
+        <span class="cm"># 当 print(对象) 时，会自动调用 __str__。</span>
+        <span class="cm"># 返回值必须是字符串。</span>
+        <span class="kw">return</span> <span class="str">f"手机品牌：{self.brand}，价格：{self.price} 元"</span>
+
+
+phone1 = Phone(<span class="str">"华为"</span>, <span class="num">4999</span>)
+phone2 = Phone(<span class="str">"小米"</span>, <span class="num">2999</span>)
+
+<span class="cm"># print 对象时，会触发 __str__，显示更友好的对象信息。</span>
+<span class="fn">print</span>(phone1)
+<span class="fn">print</span>(phone2)
+
+<span class="cm"># 调用对象方法。</span>
+phone1.call()
+phone2.call()</div></div>
+    </div>
+
+    <!-- Q33: 代码实战 -->
+    <div class="card" data-qid="33" data-type="write" data-answer="定义Account类，__balance为私有属性，get_balance()返回余额，deposit()充值并校验，创建对象测试">
+      <div class="card-header"><span class="card-qnum">第 33 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>封装账号余额</strong></div>
+      <div class="card-desc">定义 <code>Account</code> 类，要求：<br>1. 使用 <code>__init__</code> 初始化用户名和私有余额 <code>__balance</code>。<br>2. 定义 <code>get_balance()</code> 方法，返回余额。<br>3. 定义 <code>deposit(amount)</code> 方法，充值金额。<br>4. 创建对象并测试充值前后余额。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block"><span class="kw">class</span> Account:
+    <span class="kw">def</span> __init__(<span class="kw">self</span>, username, balance):
+        <span class="cm"># 普通属性：用户名可以正常访问。</span>
+        <span class="kw">self</span>.username = username
+
+        <span class="cm"># 私有属性：余额不希望类外部随意修改。</span>
+        <span class="cm"># 加双下划线后，类外部不能直接通过 对象.__balance 访问。</span>
+        <span class="kw">self</span>.__balance = balance
+
+    <span class="kw">def</span> get_balance(<span class="kw">self</span>):
+        <span class="cm"># 提供一个公开方法，用来安全读取私有余额。</span>
+        <span class="kw">return</span> <span class="kw">self</span>.__balance
+
+    <span class="kw">def</span> deposit(<span class="kw">self</span>, amount):
+        <span class="cm"># 充值前先判断金额是否合法。</span>
+        <span class="kw">if</span> amount &amp;lt;= <span class="num">0</span>:
+            <span class="fn">print</span>(<span class="str">"充值金额必须大于 0"</span>)
+            <span class="kw">return</span>
+
+        <span class="cm"># 修改私有属性时，在类内部完成。</span>
+        <span class="kw">self</span>.__balance += amount
+        <span class="fn">print</span>(<span class="str">f"{self.username} 充值 {amount} 元成功，当前余额：{self.__balance} 元"</span>)
+
+
+account = Account(<span class="str">"张三"</span>, <span class="num">100</span>)
+
+<span class="cm"># 通过 get_balance 安全读取余额。</span>
+<span class="fn">print</span>(<span class="str">"充值前余额："</span>, account.get_balance())
+
+<span class="cm"># 调用充值方法。</span>
+account.deposit(<span class="num">50</span>)
+
+<span class="cm"># 再次查看余额。</span>
+<span class="fn">print</span>(<span class="str">"充值后余额："</span>, account.get_balance())</div></div>
+    </div>
+
+    <!-- Q34: 代码实战 -->
+    <div class="card" data-qid="34" data-type="write" data-answer="定义Person类，run()减0.5kg，eat()增1kg，两个对象数据独立">
+      <div class="card-header"><span class="card-qnum">第 34 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>减肥案例升级版</strong></div>
+      <div class="card-desc">定义 <code>Person</code> 类，要求：<br>1. 属性：<code>name</code>、<code>weight</code>。<br>2. <code>run()</code>：每次跑步体重减少 <code>0.5kg</code>。<br>3. <code>eat()</code>：每次吃饭体重增加 <code>1kg</code>。<br>4. 创建两个对象，验证两个人体重互不影响。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block"><span class="kw">class</span> Person:
+    <span class="kw">def</span> __init__(<span class="kw">self</span>, name, weight):
+        <span class="cm"># 姓名属性。</span>
+        <span class="kw">self</span>.name = name
+
+        <span class="cm"># 体重属性。</span>
+        <span class="cm"># 每个对象都有自己的 weight，互不影响。</span>
+        <span class="kw">self</span>.weight = weight
+
+    <span class="kw">def</span> run(<span class="kw">self</span>):
+        <span class="cm"># 跑步后，当前对象自己的体重减少 0.5。</span>
+        <span class="kw">self</span>.weight -= <span class="num">0.5</span>
+        <span class="fn">print</span>(<span class="str">f"{self.name} 跑步后体重为：{self.weight}kg"</span>)
+
+    <span class="kw">def</span> eat(<span class="kw">self</span>):
+        <span class="cm"># 吃饭后，当前对象自己的体重增加 1。</span>
+        <span class="kw">self</span>.weight += <span class="num">1</span>
+        <span class="fn">print</span>(<span class="str">f"{self.name} 吃饭后体重为：{self.weight}kg"</span>)
+
+
+xiaoming = Person(<span class="str">"小明"</span>, <span class="num">80</span>)
+xiaohong = Person(<span class="str">"小红"</span>, <span class="num">55</span>)
+
+<span class="cm"># 小明的行为只影响小明自己的体重。</span>
+xiaoming.run()
+xiaoming.eat()
+
+<span class="cm"># 小红的行为只影响小红自己的体重。</span>
+xiaohong.run()
+
+<span class="cm"># 打印结果可以看到两个对象的数据互不影响。</span>
+<span class="fn">print</span>(<span class="str">"小明最终体重："</span>, xiaoming.weight)
+<span class="fn">print</span>(<span class="str">"小红最终体重："</span>, xiaohong.weight)</div></div>
+    </div>
+
+    <!-- Q35: 代码实战 -->
+    <div class="card" data-qid="35" data-type="write" data-answer="定义AiToolAccount类，__quota为私有属性，call_ai()扣减额度并判断不足，recharge()充值，get_quota()查看">
+      <div class="card-header"><span class="card-qnum">第 35 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>AI 工具调用额度</strong></div>
+      <div class="card-desc">定义 <code>AiToolAccount</code> 类，模拟一个 AI 工具账号，要求：<br>1. 属性：<code>username</code>、私有属性 <code>__quota</code> 表示剩余调用次数。<br>2. <code>call_ai()</code>：每调用一次，额度减少 1。<br>3. 如果额度不足，提示"额度不足，请充值"。<br>4. <code>recharge(count)</code>：增加调用额度。<br>5. <code>get_quota()</code>：查看剩余额度。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block"><span class="kw">class</span> AiToolAccount:
+    <span class="kw">def</span> __init__(<span class="kw">self</span>, username, quota):
+        <span class="cm"># 用户名，表示当前 AI 工具账号是谁的。</span>
+        <span class="kw">self</span>.username = username
+
+        <span class="cm"># 私有属性：剩余调用次数。</span>
+        <span class="cm"># 不建议外部直接修改，避免额度被随意改成负数或异常值。</span>
+        <span class="kw">self</span>.__quota = quota
+
+    <span class="kw">def</span> call_ai(<span class="kw">self</span>):
+        <span class="cm"># 如果额度不足，不能继续调用。</span>
+        <span class="kw">if</span> <span class="kw">self</span>.__quota &amp;lt;= <span class="num">0</span>:
+            <span class="fn">print</span>(<span class="str">"额度不足，请充值"</span>)
+            <span class="kw">return</span>
+
+        <span class="cm"># 每调用一次 AI，额度减少 1。</span>
+        <span class="kw">self</span>.__quota -= <span class="num">1</span>
+        <span class="fn">print</span>(<span class="str">f"{self.username} 调用 AI 成功，剩余额度：{self.__quota}"</span>)
+
+    <span class="kw">def</span> recharge(<span class="kw">self</span>, count):
+        <span class="cm"># 充值次数必须大于 0。</span>
+        <span class="kw">if</span> count &amp;lt;= <span class="num">0</span>:
+            <span class="fn">print</span>(<span class="str">"充值次数必须大于 0"</span>)
+            <span class="kw">return</span>
+
+        <span class="cm"># 在类内部修改私有属性。</span>
+        <span class="kw">self</span>.__quota += count
+        <span class="fn">print</span>(<span class="str">f"充值成功，当前额度：{self.__quota}"</span>)
+
+    <span class="kw">def</span> get_quota(<span class="kw">self</span>):
+        <span class="cm"># 提供公开方法查看私有额度。</span>
+        <span class="kw">return</span> <span class="kw">self</span>.__quota
+
+
+account = AiToolAccount(<span class="str">"关同学"</span>, <span class="num">2</span>)
+
+account.call_ai()
+account.call_ai()
+account.call_ai()
+
+account.recharge(<span class="num">3</span>)
+<span class="fn">print</span>(<span class="str">"当前剩余额度："</span>, account.get_quota())</div></div>
+    </div>
+
+    <!-- Q36: 代码实战 -->
+    <div class="card" data-qid="36" data-type="write" data-answer="定义SweetPotato类，cook()累计时间更新状态，add_condiment()加调料，reset()重置，__str__()返回状态">
+      <div class="card-header"><span class="card-qnum">第 36 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>烤地瓜增加重置功能</strong></div>
+      <div class="card-desc">定义 <code>SweetPotato</code> 类，要求：<br>1. 属性：<code>cook_time</code>、<code>cook_state</code>、<code>condiments</code>。<br>2. <code>cook(time)</code>：累计烤制时间，并根据总时间更新状态。<br>3. <code>add_condiment(name)</code>：添加调料。<br>4. <code>reset()</code>：把时间恢复为 0，状态恢复为"生的"，调料清空。<br>5. 定义 <code>__str__()</code> 返回当前状态。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block"><span class="kw">class</span> SweetPotato:
+    <span class="kw">def</span> __init__(<span class="kw">self</span>):
+        <span class="cm"># 烤制总时间，初始为 0。</span>
+        <span class="kw">self</span>.cook_time = <span class="num">0</span>
+
+        <span class="cm"># 当前状态，初始是生的。</span>
+        <span class="kw">self</span>.cook_state = <span class="str">"生的"</span>
+
+        <span class="cm"># 调料列表，初始为空。</span>
+        <span class="kw">self</span>.condiments = []
+
+    <span class="kw">def</span> cook(<span class="kw">self</span>, time):
+        <span class="cm"># 注意这里必须使用 +=。</span>
+        <span class="cm"># 因为烤制时间应该累计，而不是每次覆盖。</span>
+        <span class="kw">self</span>.cook_time += time
+
+        <span class="cm"># 根据累计时间更新状态。</span>
+        <span class="kw">if</span> <span class="num">0</span> &amp;lt;= <span class="kw">self</span>.cook_time &amp;lt; <span class="num">3</span>:
+            <span class="kw">self</span>.cook_state = <span class="str">"生的"</span>
+        <span class="kw">elif</span> <span class="num">3</span> &amp;lt;= <span class="kw">self</span>.cook_time &amp;lt; <span class="num">7</span>:
+            <span class="kw">self</span>.cook_state = <span class="str">"半生不熟"</span>
+        <span class="kw">elif</span> <span class="num">7</span> &amp;lt;= <span class="kw">self</span>.cook_time &amp;lt;= <span class="num">12</span>:
+            <span class="kw">self</span>.cook_state = <span class="str">"熟了"</span>
+        <span class="kw">else</span>:
+            <span class="kw">self</span>.cook_state = <span class="str">"糊了"</span>
+
+    <span class="kw">def</span> add_condiment(<span class="kw">self</span>, name):
+        <span class="cm"># append 用来给列表追加一个调料。</span>
+        <span class="kw">self</span>.condiments.append(name)
+
+    <span class="kw">def</span> reset(<span class="kw">self</span>):
+        <span class="cm"># 重置时间。</span>
+        <span class="kw">self</span>.cook_time = <span class="num">0</span>
+
+        <span class="cm"># 重置状态。</span>
+        <span class="kw">self</span>.cook_state = <span class="str">"生的"</span>
+
+        <span class="cm"># 清空调料。</span>
+        <span class="kw">self</span>.condiments = []
+
+    <span class="kw">def</span> __str__(<span class="kw">self</span>):
+        <span class="cm"># 返回对象当前状态，方便 print(对象)。</span>
+        <span class="kw">return</span> <span class="str">f"烤制时间：{self.cook_time}分钟，状态：{self.cook_state}，调料：{self.condiments}"</span>
+
+
+potato = SweetPotato()
+potato.cook(<span class="num">5</span>)
+potato.add_condiment(<span class="str">"辣椒面"</span>)
+<span class="fn">print</span>(potato)
+
+potato.reset()
+<span class="fn">print</span>(<span class="str">"重置后："</span>, potato)</div></div>
+    </div>
+
+    <!-- Q37: 代码实战 -->
+    <div class="card" data-qid="37" data-type="write" data-answer="定义ScoreStudent类，__score私有，set_score()校验范围，get_score()读取，is_pass()判断及格，__str__()输出">
+      <div class="card-header"><span class="card-qnum">第 37 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>综合案例 1：学生成绩管理</strong></div>
+      <div class="card-desc">定义 <code>ScoreStudent</code> 类，要求：<br>1. 属性：<code>name</code>、私有属性 <code>__score</code>。<br>2. 分数必须在 <code>0-100</code> 之间。<br>3. <code>set_score(score)</code>：修改分数，非法分数不允许修改。<br>4. <code>get_score()</code>：返回当前分数。<br>5. <code>is_pass()</code>：判断是否及格。<br>6. <code>__str__()</code>：打印对象时显示学生姓名、分数、是否及格。<br>7. 创建至少两个学生对象测试。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block"><span class="kw">class</span> ScoreStudent:
+    <span class="kw">def</span> __init__(<span class="kw">self</span>, name, score):
+        <span class="cm"># 学生姓名。</span>
+        <span class="kw">self</span>.name = name
+
+        <span class="cm"># 私有分数属性。</span>
+        <span class="cm"># 为了保证分数始终合法，不让外部随便改。</span>
+        <span class="kw">self</span>.__score = <span class="num">0</span>
+
+        <span class="cm"># 初始化时也通过 set_score 进行校验。</span>
+        <span class="kw">self</span>.set_score(score)
+
+    <span class="kw">def</span> set_score(<span class="kw">self</span>, score):
+        <span class="cm"># 分数必须在 0 到 100 之间。</span>
+        <span class="kw">if</span> <span class="num">0</span> &amp;lt;= score &amp;lt;= <span class="num">100</span>:
+            <span class="kw">self</span>.__score = score
+        <span class="kw">else</span>:
+            <span class="fn">print</span>(<span class="str">"分数必须在 0-100 之间，本次修改无效"</span>)
+
+    <span class="kw">def</span> get_score(<span class="kw">self</span>):
+        <span class="cm"># 通过公开方法读取私有分数。</span>
+        <span class="kw">return</span> <span class="kw">self</span>.__score
+
+    <span class="kw">def</span> is_pass(<span class="kw">self</span>):
+        <span class="cm"># 分数大于等于 60 表示及格。</span>
+        <span class="kw">return</span> <span class="kw">self</span>.__score &amp;gt;= <span class="num">60</span>
+
+    <span class="kw">def</span> __str__(<span class="kw">self</span>):
+        <span class="cm"># 根据 is_pass 的结果生成文字。</span>
+        result = <span class="str">"及格"</span> <span class="kw">if</span> <span class="kw">self</span>.is_pass() <span class="kw">else</span> <span class="str">"不及格"</span>
+        <span class="kw">return</span> <span class="str">f"学生：{self.name}，分数：{self.__score}，结果：{result}"</span>
+
+
+stu1 = ScoreStudent(<span class="str">"张三"</span>, <span class="num">88</span>)
+stu2 = ScoreStudent(<span class="str">"李四"</span>, <span class="num">50</span>)
+
+<span class="fn">print</span>(stu1)
+<span class="fn">print</span>(stu2)
+
+<span class="cm"># 尝试设置非法分数。</span>
+stu1.set_score(<span class="num">150</span>)
+<span class="fn">print</span>(stu1)
+
+<span class="cm"># 设置合法分数。</span>
+stu2.set_score(<span class="num">70</span>)
+<span class="fn">print</span>(stu2)</div></div>
+    </div>
+
+    <!-- Q38: 代码实战 -->
+    <div class="card" data-qid="38" data-type="write" data-answer="定义AiServicePlan类，__remain_tokens私有，use_tokens()扣减校验，upgrade_plan()升级，get_remain_tokens()查看，__str__()输出">
+      <div class="card-header"><span class="card-qnum">第 38 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>综合案例 2：AI 服务套餐账号</strong></div>
+      <div class="card-desc">定义 <code>AiServicePlan</code> 类，模拟一个 AI 服务套餐账号，要求：<br>1. 属性：<code>username</code>、<code>plan_name</code>、私有属性 <code>__remain_tokens</code>。<br>2. <code>use_tokens(count)</code>：使用指定 token 数。<br>3. 如果 token 足够，扣减并提示剩余 token。<br>4. 如果 token 不足，提示"不足以完成本次调用"。<br>5. <code>upgrade_plan(new_plan, add_tokens)</code>：升级套餐并增加 token。<br>6. <code>get_remain_tokens()</code>：查看剩余 token。<br>7. <code>__str__()</code>：返回账号、套餐、剩余 token 信息。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block"><span class="kw">class</span> AiServicePlan:
+    <span class="kw">def</span> __init__(<span class="kw">self</span>, username, plan_name, remain_tokens):
+        <span class="cm"># 用户名。</span>
+        <span class="kw">self</span>.username = username
+
+        <span class="cm"># 套餐名称，例如 basic、pro、team。</span>
+        <span class="kw">self</span>.plan_name = plan_name
+
+        <span class="cm"># 私有属性：剩余 token 数。</span>
+        <span class="cm"># token 是大模型调用中常见的计量单位。</span>
+        <span class="kw">self</span>.__remain_tokens = remain_tokens
+
+    <span class="kw">def</span> use_tokens(<span class="kw">self</span>, count):
+        <span class="cm"># 使用 token 数必须大于 0。</span>
+        <span class="kw">if</span> count &amp;lt;= <span class="num">0</span>:
+            <span class="fn">print</span>(<span class="str">"使用 token 数必须大于 0"</span>)
+            <span class="kw">return</span>
+
+        <span class="cm"># 如果剩余 token 不够，则不能扣减。</span>
+        <span class="kw">if</span> count &amp;gt; <span class="kw">self</span>.__remain_tokens:
+            <span class="fn">print</span>(<span class="str">"不足以完成本次调用，请升级套餐或充值 token"</span>)
+            <span class="kw">return</span>
+
+        <span class="cm"># 扣减 token。</span>
+        <span class="kw">self</span>.__remain_tokens -= count
+        <span class="fn">print</span>(<span class="str">f"本次使用 {count} token，剩余 {self.__remain_tokens} token"</span>)
+
+    <span class="kw">def</span> upgrade_plan(<span class="kw">self</span>, new_plan, add_tokens):
+        <span class="cm"># 升级套餐名称。</span>
+        <span class="kw">self</span>.plan_name = new_plan
+
+        <span class="cm"># 增加 token 数。</span>
+        <span class="kw">self</span>.__remain_tokens += add_tokens
+        <span class="fn">print</span>(<span class="str">f"套餐升级为 {self.plan_name}，增加 {add_tokens} token"</span>)
+
+    <span class="kw">def</span> get_remain_tokens(<span class="kw">self</span>):
+        <span class="cm"># 提供公开方法查看私有 token。</span>
+        <span class="kw">return</span> <span class="kw">self</span>.__remain_tokens
+
+    <span class="kw">def</span> __str__(<span class="kw">self</span>):
+        <span class="cm"># 返回账号当前信息。</span>
+        <span class="kw">return</span> <span class="str">f"用户：{self.username}，套餐：{self.plan_name}，剩余 token：{self.__remain_tokens}"</span>
+
+
+plan = AiServicePlan(<span class="str">"小明"</span>, <span class="str">"basic"</span>, <span class="num">1000</span>)
+
+<span class="fn">print</span>(plan)
+
+<span class="cm"># 第一次调用，token 足够。</span>
+plan.use_tokens(<span class="num">300</span>)
+
+<span class="cm"># 第二次调用，token 不足。</span>
+plan.use_tokens(<span class="num">900</span>)
+
+<span class="cm"># 升级套餐并增加 token。</span>
+plan.upgrade_plan(<span class="str">"pro"</span>, <span class="num">3000</span>)
+
+<span class="cm"># 再次调用。</span>
+plan.use_tokens(<span class="num">900</span>)
+
+<span class="fn">print</span>(plan)
+<span class="fn">print</span>(<span class="str">"剩余 token："</span>, plan.get_remain_tokens())</div></div>
+    </div>
+
+  </div>
+
+</div><!-- /container -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+const STORAGE_KEY = 'py_oop_quiz_history'
+const SAVE_KEY = 'py_day01_saves'
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+<script src="/static/js/quiz-engine.js?v=20260530"></script>
+
+</body>
+</html>
