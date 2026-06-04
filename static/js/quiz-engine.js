@@ -19,7 +19,7 @@ function updateProgress() {
     else if (t === 'fill') {
       var inps = card.querySelectorAll('.blank-input');
       var filled = true;
-      inps.forEach(function(inp) { if (!inp.value.trim()) filled = false; });
+      inps.forEach(function(inp) { var v = inp.value !== undefined ? inp.value.trim() : (inp.textContent || '').trim(); if (!v) filled = false; });
       if (filled) obj++;
     }
     else if (t === 'short') { var ta = card.querySelector('.fill-input'); if (ta && ta.value.trim()) subj++; }
@@ -44,7 +44,10 @@ function submitAll() {
     else if (t === 'fill') {
       const inps = card.querySelectorAll('.blank-input');
       let allFilled = true;
-      inps.forEach(function(inp) { if (!inp.value.trim()) allFilled = false; });
+      inps.forEach(function(inp) { 
+        var v = inp.value !== undefined ? inp.value.trim() : (inp.textContent || '').trim();
+        if (!v) allFilled = false; 
+      });
       if (!allFilled) unanswered++;
     }
   });
@@ -72,7 +75,7 @@ function submitAll() {
     } else if (type === 'fill') {
       const inps = card.querySelectorAll('.blank-input');
       let uaParts = [];
-      inps.forEach(function(inp) { uaParts.push(inp.value.trim()); });
+      inps.forEach(function(inp) { uaParts.push(inp.value !== undefined ? inp.value.trim() : (inp.textContent || '').trim()); });
       const ua = uaParts.join('、');
       const isCorrect = normalize(ua) === normalize(answer);
       if (isCorrect) correct++; scores[qid] = isCorrect;
@@ -82,7 +85,7 @@ function submitAll() {
       const fb = card.querySelector('.feedback'), tag = fb.querySelector('.result-tag');
       if (isCorrect) { card.classList.add('correct'); inps.forEach(function(inp) { inp.classList.add('correct-fill'); }); fb.classList.add('correct-fb','show'); tag.className='result-tag correct-tag'; tag.textContent='✓ 正确'; }
       else { card.classList.add('wrong');
-        inps.forEach(function(inp) { if (!inp.value.trim()) { inp.classList.add('wrong-fill'); inp.value='(空)'; } else { inp.classList.add('wrong-fill'); } });
+        inps.forEach(function(inp) { var v = inp.value !== undefined ? inp.value.trim() : (inp.textContent || '').trim(); if (!v) { inp.classList.add('wrong-fill'); inp.textContent='(空)'; } else { inp.classList.add('wrong-fill'); } });
         fb.classList.add('wrong-fb','show'); tag.className='result-tag wrong-tag'; tag.textContent = ua ? '✗ 错误' : '— 未作答';
         const ans=document.createElement('div'); ans.className='correct-answer'; ans.style.cssText='margin-top:0.4rem;color:var(--green)'; ans.textContent=`正确答案：${answer}`; fb.appendChild(ans); }
     } else if (type === 'short') {
@@ -132,7 +135,7 @@ function resetAll() {
     const fb = card.querySelector('.feedback');
     if (fb) { fb.classList.remove('show','correct-fb','wrong-fb'); const ca=fb.querySelector('.correct-answer'); if(ca) ca.remove(); }
     const fillInps = card.querySelectorAll('.blank-input');
-    fillInps.forEach(function(inp) { inp.classList.remove('correct-fill','wrong-fill','filled'); inp.value=''; inp.disabled=false; });
+    fillInps.forEach(function(inp) { inp.classList.remove('correct-fill','wrong-fill','filled'); if (inp.value !== undefined) inp.value=''; else inp.textContent=''; });
     const input = card.querySelector('.fill-input');
     if (input) { input.value=''; input.disabled=false; }
     const editor = card.querySelector('.code-editor');
@@ -254,7 +257,7 @@ function collectAnswers() {
     else if (type === 'fill') {
       const inps = card.querySelectorAll('.blank-input');
       let parts = [];
-      inps.forEach(function(inp) { parts.push(inp.value.trim()); });
+      inps.forEach(function(inp) { parts.push(inp.value !== undefined ? inp.value.trim() : (inp.textContent || '').trim()); });
       const val = parts.join('、');
       if (val) data[qid] = { type, value: val };
     }
@@ -272,7 +275,7 @@ function restoreAnswers(data) {
     const fb = card.querySelector('.feedback');
     if (fb) { fb.classList.remove('show','correct-fb','wrong-fb'); const ca=fb.querySelector('.correct-answer'); if(ca) ca.remove(); }
     const fillInps = card.querySelectorAll('.blank-input');
-    fillInps.forEach(function(inp) { inp.classList.remove('correct-fill','wrong-fill','filled'); inp.value=''; });
+    fillInps.forEach(function(inp) { inp.classList.remove('correct-fill','wrong-fill','filled'); if (inp.value !== undefined) inp.value=''; else inp.textContent=''; });
     const inp = card.querySelector('.fill-input'); if (inp) { inp.value=''; inp.disabled=false; }
     const ce = card.querySelector('.code-editor'); if (ce) { ce.value=''; ce.disabled=false; }
   });
@@ -287,7 +290,7 @@ function restoreAnswers(data) {
       else if (d.type === 'fill') {
         const inps = card.querySelectorAll('.blank-input');
         var parts = d.value.split('、');
-        inps.forEach(function(inp, idx) { if (idx < parts.length) { inp.value = parts[idx]; inp.classList.toggle('filled', parts[idx].length > 0); } });
+        inps.forEach(function(inp, idx) { if (idx < parts.length) { if (inp.value !== undefined) inp.value = parts[idx]; else inp.textContent = parts[idx]; inp.classList.toggle('filled', parts[idx].length > 0); } });
       }
       else if (d.type === 'short') { const ta = card.querySelector('.fill-input'); if (ta) { ta.value = d.value; ta.dispatchEvent(new Event('input')); } }
       else if (d.type === 'write') { const ed = card.querySelector('.code-editor'); if (ed) { ed.value = d.value; ed.dispatchEvent(new Event('input')); } }
@@ -481,7 +484,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Track blank fill state
   document.querySelectorAll('.blank-input').forEach(function(inp) {
     inp.addEventListener('input', function() {
-      this.classList.toggle('filled', this.value.trim().length > 0);
+      var val = this.value !== undefined ? this.value.trim() : (this.textContent || '').trim();
+      this.classList.toggle('filled', val.length > 0);
       updateProgress();
     });
   });

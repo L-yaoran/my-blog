@@ -1,0 +1,86 @@
+{
+  "id": "001",
+  "title": "Python 练习 001",
+  "subtitle": "38 道题 · 选择题 + 填空题 + 简答题 + 代码实战",
+  "storage_key": "py_oop_quiz_history",
+  "save_key": "py_day01_saves",
+  "nav": {
+    "prev": null,
+    "next": "002",
+    "quizzes": [
+      {"id": "001", "label": "练习 001"},
+      {"id": "002", "label": "练习 002"},
+      {"id": "003", "label": "练习 003"},
+      {"id": "004", "label": "练习 004"},
+      {"id": "005", "label": "练习 005"},
+      {"id": "006", "label": "练习 006"},
+      {"id": "007", "label": "练习 007"},
+      {"id": "008", "label": "练习 008"},
+      {"id": "009", "label": "练习 009"}
+    ]
+  },
+  "sections": [
+    {
+      "title": "一、选择题（10 题）",
+      "type": "choice",
+      "questions": [
+        {"qid": 1, "question": "关于"类"和"对象"的关系，正确的是（ ）。", "options": ["类是具体存在的对象，对象是抽象模板", "类是抽象模板，对象是由类创建出来的具体实例", "类和对象完全没有关系", "对象只能有一个，类可以有很多个"], "answer": "B", "explanation": "类是抽象模板（蓝图），对象是根据类创建的具体实例。一个类可以创建多个对象。"},
+        {"qid": 2, "question": "在 Python 中，定义类使用的关键字是（ ）。", "options": ["`def`", "`class`", "`object`", "`self`"], "answer": "B", "explanation": "`class` 是 Python 定义类的关键字，`def` 定义函数，`self` 表示对象自身。"},
+        {"qid": 3, "question": "如果已经定义了 `Student` 类，创建对象的正确写法是（ ）。", "options": ["`stu = Student()`", "`stu = new Student()`", "`stu = class Student()`", "`stu = Student[]`"], "answer": "A", "explanation": "Python 创建对象直接使用 `类名()`，不需要 `new` 关键字（Java 才需要）。"},
+        {"qid": 4, "question": "关于 `self` 的说法，正确的是（ ）。", "options": ["`self` 指向调用当前方法的对象", "`self` 固定指向类本身", "`self` 只能在类外部使用", "`self` 是字符串类型"], "answer": "A", "explanation": "`self` 指向调用方法的那个具体对象，不同对象调用同一方法时 `self` 指向不同对象。"},
+        {"qid": 5, "question": "`__init__` 方法通常在什么时候自动调用？（ ）。", "options": ["每次打印对象时", "每次删除对象时", "创建对象时", "导入模块时"], "answer": "C", "explanation": "`__init__` 在创建对象时自动调用，用于初始化对象属性，不需要手动调用。"},
+        {"qid": 6, "question": "`__init__` 方法最主要的作用是（ ）。", "options": ["给对象初始化属性", "删除对象属性", "强制退出程序", "复制一个对象"], "answer": "A", "explanation": "`__init__` 的核心作用是在对象创建时为对象设置初始属性值。"},
+        {"qid": 7, "question": "在类内部访问当前对象的属性，通常使用（ ）。", "options": ["`class.属性名`", "`self.属性名`", "`对象->属性名`", "`属性名::self`"], "answer": "B", "explanation": "在类内部通过 `self.属性名` 访问和设置当前对象的属性。"},
+        {"qid": 8, "question": "关于封装，下列说法正确的是（ ）。", "options": ["封装就是把属性和方法组织到类中，并控制访问方式", "封装意味着所有代码都不能访问属性", "封装会让代码完全不能复用", "封装只和函数有关，和类无关"], "answer": "A", "explanation": "封装是将数据（属性）和操作数据的方法组织到类中，通过访问控制保护数据安全。"},
+        {"qid": 9, "question": "Python 中，通常把属性名前加双下划线 `__` 表示（ ）。", "options": ["普通属性", "私有属性", "全局变量", "模块名"], "answer": "B", "explanation": "属性名前加 `__`（双下划线）表示私有属性，外部不应直接访问。"},
+        {"qid": 10, "question": "`print(对象)` 时，如果想输出一段可读的对象信息，通常需要重写（ ）。", "options": ["`__init__`", "`__str__`", "`__del__`", "`__add__`"], "answer": "B", "explanation": "重写 `__str__` 方法后，`print(对象)` 会显示自定义的可读信息，而不是默认的内存地址。"}
+      ]
+    },
+    {
+      "title": "二、填空题（10 题）",
+      "type": "fill",
+      "questions": [
+        {"qid": 11, "question": "面向对象编程中，类可以理解为（<input type=\"text\" class=\"blank-input\">），对象可以理解为（<input type=\"text\" class=\"blank-input\">）。", "answer": "模板；具体实例", "explanation": "类相当于设计图（模板），对象相当于根据设计图造出来的具体东西（实例）。"},
+        {"qid": 12, "question": "定义类时推荐使用（<input type=\"text\" class=\"blank-input\">）命名法，例如 `StudentInfo`。", "answer": "大驼峰", "explanation": "类名推荐使用大驼峰命名法（每个单词首字母大写），如 `StudentInfo`、`HttpRequest`。"},
+        {"qid": 13, "question": "创建对象的语法通常是：`对象名 = （<input type=\"text\" class=\"blank-input\">）()`。", "answer": "类名", "explanation": "创建对象的语法为 `对象名 = 类名()`，如 `stu = Student()`。"},
+        {"qid": 14, "question": "`self` 表示（<input type=\"text\" class=\"blank-input\">）。", "answer": "调用当前方法的对象", "explanation": "`self` 代表调用当前方法的那个具体对象，不同对象调用时 `self` 指向不同。"},
+        {"qid": 15, "question": "`__init__` 方法用于初始化对象的（<input type=\"text\" class=\"blank-input\">）。", "answer": "属性", "explanation": "`__init__` 在对象创建时自动执行，用于给对象设置初始属性值。"},
+        {"qid": 16, "question": "在类内部定义方法时，第一个参数通常写成（<input type=\"text\" class=\"blank-input\">）。", "answer": "self", "explanation": "虽然第一个参数名字可以自定义，但 Python 社区约定俗成使用 `self`。"},
+        {"qid": 17, "question": "`print(对象)` 时，如果想显示自定义信息，可以重写（<input type=\"text\" class=\"blank-input\">）方法。", "answer": "__str__", "explanation": "重写 `__str__()` 方法并返回字符串，即可自定义 `print()` 输出。"},
+        {"qid": 18, "question": "封装的好处之一是可以让属性和方法组织更清晰，提高代码的（<input type=\"text\" class=\"blank-input\">）。", "answer": "可维护性", "explanation": "封装让代码结构清晰、数据安全、便于维护。这里填\"可维护性\"或\"复用性\"都合理。"},
+        {"qid": 19, "question": "私有属性通常在属性名前加（<input type=\"text\" class=\"blank-input\">）。", "answer": "双下划线__", "explanation": "在属性名前加 `__`（双下划线），如 `self.__balance`，表示私有属性。"},
+        {"qid": 20, "question": "如果想安全读取私有属性，通常可以在类中提供（<input type=\"text\" class=\"blank-input\">）方法。", "answer": "get_xxx", "explanation": "提供类似 `get_balance()` 的公开方法来安全读取私有属性，是封装的标准做法。"}
+      ]
+    },
+    {
+      "title": "三、简答题（10 题）",
+      "type": "short",
+      "questions": [
+        {"qid": 21, "question": "请用自己的话说明什么是类，什么是对象。", "answer": "类是对一类事物的抽象描述，对象是根据类创建的具体个体", "explanation": "类是对一类事物的抽象描述，比如学生类、手机类；对象是根据类创建出来的具体个体，比如张三这个学生、小米手机这个对象。"},
+        {"qid": 22, "question": "为什么说"先有类，再有对象"？", "answer": "类相当于设计图，对象相当于根据设计图造出来的具体东西", "explanation": "类相当于设计图，对象相当于根据设计图造出来的具体东西，所以通常先定义类，再根据类创建对象。"},
+        {"qid": 23, "question": "`self` 的作用是什么？请举一个两个对象调用同一个方法的例子。", "answer": "self指向调用方法的对象，不同对象调用时self不同", "explanation": "`self` 表示调用当前方法的对象。比如 `stu1.introduce()` 时，`self` 指向 `stu1`；`stu2.introduce()` 时，`self` 指向 `stu2`。"},
+        {"qid": 24, "question": "为什么推荐在 `__init__` 中统一初始化对象属性？", "answer": "保证每个对象创建时属性结构一致，避免外部临时添加导致混乱", "explanation": "在 `__init__` 中统一初始化属性，可以保证每个对象创建出来时都有相同的属性结构，避免类外部随意添加属性导致代码混乱。"},
+        {"qid": 25, "question": "`__init__` 和普通方法有什么区别？", "answer": "__init__在创建对象时自动调用用于初始化属性，普通方法需主动调用", "explanation": "`__init__` 会在创建对象时自动调用，主要用于初始化属性；普通方法需要通过对象主动调用。"},
+        {"qid": 26, "question": "`__str__` 的作用是什么？如果不写 `__str__`，直接打印对象通常会看到什么？", "answer": "自定义print输出，不写会看到对象类型和内存地址", "explanation": "`__str__` 用于自定义 `print(对象)` 时显示的内容。如果不写，通常会看到对象类型和内存地址，不方便阅读。"},
+        {"qid": 27, "question": "什么是封装？封装有什么好处？", "answer": "把属性和方法组织到类中并通过方法控制访问，结构清晰安全性好", "explanation": "封装是把属性和方法组织到类中，并通过方法控制属性访问。好处是结构清晰、安全性更好、维护更方便。"},
+        {"qid": 28, "question": "私有属性为什么不能随便从类外部直接修改？", "answer": "可能导致对象状态不合法，如余额变负数", "explanation": "私有属性通常代表不希望外部随意修改的数据，如果类外部可以随便改，可能导致对象状态不合法，比如余额变成负数、分数超过 100。"},
+        {"qid": 29, "question": ""类外部临时给对象添加属性"为什么不推荐？", "answer": "会导致不同对象属性结构不一致，维护和排错困难", "explanation": "类外部临时添加属性会导致不同对象属性结构不一致，后期维护和排错会更困难。"},
+        {"qid": 30, "question": "面向对象相比面向过程，在"多个学生、多个商品、多个 AI 工具账号"这种场景下有什么优势？", "answer": "每个对象独立保存自己的属性和状态，扩展更清晰易维护", "explanation": "面向对象可以把每个学生、商品、AI 工具账号都封装成独立对象，每个对象保存自己的属性和状态，扩展多个对象时更清晰、更容易维护。"}
+      ]
+    },
+    {
+      "title": "四、代码实战（8 题）",
+      "type": "write",
+      "questions": [
+        {"qid": 31, "task": "定义学生类", "desc": "定义 `Student` 类，要求：<br>1. 使用 `__init__` 初始化 `name` 和 `age`。<br>2. 定义 `introduce()` 方法，输出学生姓名和年龄。<br>3. 创建两个学生对象，分别调用 `introduce()`。", "answer_ref": "class Student:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n    def introduce(self):\n        print(f\"大家好，我叫{self.name}，今年{self.age}岁。\")\nstu1 = Student(\"张三\", 18)\nstu2 = Student(\"李四\", 20)\nstu1.introduce()\nstu2.introduce()"},
+        {"qid": 32, "task": "定义手机类并打印对象信息", "desc": "定义 `Phone` 类，要求：<br>1. 使用 `__init__` 初始化 `brand` 和 `price`。<br>2. 定义 `call()` 方法，输出\"某品牌手机正在打电话\"。<br>3. 定义 `__str__()` 方法，打印对象时显示品牌和价格。<br>4. 创建两个手机对象并测试。", "answer_ref": "class Phone:\n    def __init__(self, brand, price):\n        self.brand = brand\n        self.price = price\n    def call(self):\n        print(f\"{self.brand} 手机正在打电话。\")\n    def __str__(self):\n        return f\"手机品牌：{self.brand}，价格：{self.price} 元\"\nphone1 = Phone(\"华为\", 4999)\nphone2 = Phone(\"小米\", 2999)\nprint(phone1)\nprint(phone2)\nphone1.call()\nphone2.call()"},
+        {"qid": 33, "task": "封装账号余额", "desc": "定义 `Account` 类，要求：<br>1. 使用 `__init__` 初始化用户名和私有余额 `__balance`。<br>2. 定义 `get_balance()` 方法，返回余额。<br>3. 定义 `deposit(amount)` 方法，充值金额。<br>4. 创建对象并测试充值前后余额。", "answer_ref": "class Account:\n    def __init__(self, username, balance):\n        self.username = username\n        self.__balance = balance\n    def get_balance(self):\n        return self.__balance\n    def deposit(self, amount):\n        if amount <= 0:\n            print(\"充值金额必须大于 0\")\n            return\n        self.__balance += amount\n        print(f\"{self.username} 充值 {amount} 元成功，当前余额：{self.__balance} 元\")\naccount = Account(\"张三\", 100)\nprint(\"充值前余额：\", account.get_balance())\naccount.deposit(50)\nprint(\"充值后余额：\", account.get_balance())"},
+        {"qid": 34, "task": "减肥案例升级版", "desc": "定义 `Person` 类，要求：<br>1. 属性：`name`、`weight`。<br>2. `run()`：每次跑步体重减少 `0.5kg`。<br>3. `eat()`：每次吃饭体重增加 `1kg`。<br>4. 创建两个对象，验证两个人体重互不影响。", "answer_ref": "class Person:\n    def __init__(self, name, weight):\n        self.name = name\n        self.weight = weight\n    def run(self):\n        self.weight -= 0.5\n        print(f\"{self.name} 跑步后体重为：{self.weight}kg\")\n    def eat(self):\n        self.weight += 1\n        print(f\"{self.name} 吃饭后体重为：{self.weight}kg\")\nxiaoming = Person(\"小明\", 80)\nxiaohong = Person(\"小红\", 55)\nxiaoming.run()\nxiaoming.eat()\nxiaohong.run()\nprint(\"小明最终体重：\", xiaoming.weight)\nprint(\"小红最终体重：\", xiaohong.weight)"},
+        {"qid": 35, "task": "AI 工具调用额度", "desc": "定义 `AiToolAccount` 类，要求：<br>1. 属性：`username`、私有属性 `__quota`。<br>2. `call_ai()`：每调用一次，额度减少 1。<br>3. 如果额度不足，提示\"额度不足，请充值\"。<br>4. `recharge(count)`：增加调用额度。<br>5. `get_quota()`：查看剩余额度。", "answer_ref": "class AiToolAccount:\n    def __init__(self, username, quota):\n        self.username = username\n        self.__quota = quota\n    def call_ai(self):\n        if self.__quota <= 0:\n            print(\"额度不足，请充值\")\n            return\n        self.__quota -= 1\n        print(f\"{self.username} 调用 AI 成功，剩余额度：{self.__quota}\")\n    def recharge(self, count):\n        if count <= 0:\n            print(\"充值次数必须大于 0\")\n            return\n        self.__quota += count\n        print(f\"充值成功，当前额度：{self.__quota}\")\n    def get_quota(self):\n        return self.__quota\naccount = AiToolAccount(\"关同学\", 2)\naccount.call_ai()\naccount.call_ai()\naccount.call_ai()\naccount.recharge(3)\nprint(\"当前剩余额度：\", account.get_quota())"},
+        {"qid": 36, "task": "烤地瓜增加重置功能", "desc": "定义 `SweetPotato` 类，要求：<br>1. 属性：`cook_time`、`cook_state`、`condiments`。<br>2. `cook(time)`：累计烤制时间，并根据总时间更新状态。<br>3. `add_condiment(name)`：添加调料。<br>4. `reset()`：把时间恢复为 0，状态恢复为\"生的\"，调料清空。<br>5. 定义 `__str__()` 返回当前状态。", "answer_ref": "class SweetPotato:\n    def __init__(self):\n        self.cook_time = 0\n        self.cook_state = \"生的\"\n        self.condiments = []\n    def cook(self, time):\n        self.cook_time += time\n        if 0 <= self.cook_time < 3:\n            self.cook_state = \"生的\"\n        elif 3 <= self.cook_time < 7:\n            self.cook_state = \"半生不熟\"\n        elif 7 <= self.cook_time <= 12:\n            self.cook_state = \"熟了\"\n        else:\n            self.cook_state = \"糊了\"\n    def add_condiment(self, name):\n        self.condiments.append(name)\n    def reset(self):\n        self.cook_time = 0\n        self.cook_state = \"生的\"\n        self.condiments = []\n    def __str__(self):\n        return f\"烤制时间：{self.cook_time}分钟，状态：{self.cook_state}，调料：{self.condiments}\"\npotato = SweetPotato()\npotato.cook(5)\npotato.add_condiment(\"辣椒面\")\nprint(potato)\npotato.reset()\nprint(\"重置后：\", potato)"},
+        {"qid": 37, "task": "综合案例 1：学生成绩管理", "desc": "定义 `ScoreStudent` 类，要求：<br>1. 属性：`name`、私有属性 `__score`。<br>2. 分数必须在 `0-100` 之间。<br>3. `set_score(score)`：修改分数，非法分数不允许修改。<br>4. `get_score()`：返回当前分数。<br>5. `is_pass()`：判断是否及格。<br>6. `__str__()`：打印对象时显示学生姓名、分数、是否及格。<br>7. 创建至少两个学生对象测试。", "answer_ref": "class ScoreStudent:\n    def __init__(self, name, score):\n        self.name = name\n        self.__score = 0\n        self.set_score(score)\n    def set_score(self, score):\n        if 0 <= score <= 100:\n            self.__score = score\n        else:\n            print(\"分数必须在 0-100 之间，本次修改无效\")\n    def get_score(self):\n        return self.__score\n    def is_pass(self):\n        return self.__score >= 60\n    def __str__(self):\n        result = \"及格\" if self.is_pass() else \"不及格\"\n        return f\"学生：{self.name}，分数：{self.__score}，结果：{result}\"\nstu1 = ScoreStudent(\"张三\", 88)\nstu2 = ScoreStudent(\"李四\", 50)\nprint(stu1)\nprint(stu2)\nstu1.set_score(150)\nprint(stu1)\nstu2.set_score(70)\nprint(stu2)"},
+        {"qid": 38, "task": "综合案例 2：AI 服务套餐账号", "desc": "定义 `AiServicePlan` 类，要求：<br>1. 属性：`username`、`plan_name`、私有属性 `__remain_tokens`。<br>2. `use_tokens(count)`：使用指定 token 数。<br>3. 如果 token 足够，扣减并提示剩余 token。<br>4. 如果 token 不足，提示\"不足以完成本次调用\"。<br>5. `upgrade_plan(new_plan, add_tokens)`：升级套餐并增加 token。<br>6. `get_remain_tokens()`：查看剩余 token。<br>7. `__str__()`：返回账号、套餐、剩余 token 信息。", "answer_ref": "class AiServicePlan:\n    def __init__(self, username, plan_name, remain_tokens):\n        self.username = username\n        self.plan_name = plan_name\n        self.__remain_tokens = remain_tokens\n    def use_tokens(self, count):\n        if count <= 0:\n            print(\"使用 token 数必须大于 0\")\n            return\n        if count > self.__remain_tokens:\n            print(\"不足以完成本次调用，请升级套餐或充值 token\")\n            return\n        self.__remain_tokens -= count\n        print(f\"本次使用 {count} token，剩余 {self.__remain_tokens} token\")\n    def upgrade_plan(self, new_plan, add_tokens):\n        self.plan_name = new_plan\n        self.__remain_tokens += add_tokens\n        print(f\"套餐升级为 {self.plan_name}，增加 {add_tokens} token\")\n    def get_remain_tokens(self):\n        return self.__remain_tokens\n    def __str__(self):\n        return f\"用户：{self.username}，套餐：{self.plan_name}，剩余 token：{self.__remain_tokens}\"\nplan = AiServicePlan(\"小明\", \"basic\", 1000)\nprint(plan)\nplan.use_tokens(300)\nplan.use_tokens(900)\nplan.upgrade_plan(\"pro\", 3000)\nplan.use_tokens(900)\nprint(plan)\nprint(\"剩余 token：\", plan.get_remain_tokens())"}
+      ]
+    }
+  ]
+}

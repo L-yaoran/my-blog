@@ -6,7 +6,7 @@
 <title>{{ quiz.title }}</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/monokai.min.css">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}?v=20260531">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}?v=20260602">
 <style>
 {% block extra_css %}{% endblock %}
 </style>
@@ -142,7 +142,7 @@ const SAVE_KEY = '{{ quiz.save_key }}';
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
-<script src="{{ url_for('static', filename='js/quiz-engine.js') }}?v=20260531"></script>
+<script src="{{ url_for('static', filename='js/quiz-engine.js') }}?v=20260602"></script>
 
 </body>
 </html>

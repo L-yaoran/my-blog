@@ -7,5 +7,3 @@ venv/
 .DS_Store
 *.log
 回收站/
-data/
-__pycache__/

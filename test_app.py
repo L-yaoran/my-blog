@@ -36,8 +36,11 @@ class TestFlaskApp(unittest.TestCase):
             '/static/python_basic_test_002.html',
             '/static/python_basic_test_003.html',
             '/static/python_basic_test_004.html',
-            '/static/python_basic_test_005-1.html',
-            '/static/python_basic_test_005-2.html',
+            '/static/python_basic_test_005.html',
+            '/static/python_basic_test_006.html',
+            '/static/python_basic_test_007.html',
+            '/static/python_basic_test_008.html',
+            '/static/python_basic_test_009.html',
         ]
         for path in pages:
             resp = self.client.get(path)
