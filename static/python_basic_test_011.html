@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LLM 练习 011</title>
 <link rel="stylesheet" href="/static/js/codemirror/codemirror.min.css?v=20260602">
-
+<link rel="stylesheet" href="/static/js/codemirror/theme/eclipse.min.css?v=20260602">
 <link rel="stylesheet" href="/static/css/quiz.css?v=20260602">
-
 </head>
 <body>
 
@@ -17,7 +16,7 @@
     <h1>LLM 练习 011</h1>
     <div class="subtitle">38 道题 · 选择题 + 填空题 + 简答题 + 代码实战 · 即时反馈 · 记录保存</div>
   </div>
-    <div   <div class="quiz-nav">
+  <div class="quiz-nav">
     <a href="/static/python_basic_test_010.html" class="quiz-arrow" title="上一练习">◂</a>
     <div class="quiz-dropdown">
       <button class="quiz-dropdown-btn" onclick="toggleDropdown(this)">练习 011 <span class="arrow-icon">▾</span></button>
@@ -34,7 +33,7 @@
         <a href="/static/python_basic_test_010.html">练习 010</a>
         <a href="/static/python_basic_test_011.html" class="active">练习 011</a>
       </div>
-      </div>
+    </div>
     <span class="quiz-arrow disabled" title="已是最后一个">▸</span>
   </div>
   <div class="sticky-toolbar">
@@ -68,7 +67,6 @@
     </div>
   </div>
 
-  <!-- History detail modal -->
   <div class="history-detail-overlay" id="historyDetailOverlay" onclick="closeHistoryDetail()">
     <div class="history-detail" id="historyDetail" onclick="event.stopPropagation()">
       <div class="history-detail-header">
@@ -79,12 +77,10 @@
     </div>
   </div>
 
-<!-- ====== 一、单选题 10题 ====== -->
 <div class="section">
 
     <div class="section-title"><span class="icon"></span>一、单选题（10 题）</div>
 
-    <!-- Q1: 单选题 -->
     <div class="card" data-qid="1" data-type="choice" data-answer="A">
       <div class="card-header"><span class="card-qnum">第 1 题</span><span class="card-type choice">单选题</span></div>
       <div class="card-question">Python 数据分析三剑客通常指（ ）</div>
@@ -103,7 +99,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>数据分析三剑客是 NumPy（数值计算）、Pandas（表格处理）、Matplotlib（数据可视化）。
       </div>
     </div>
@@ -125,7 +121,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>ndarray 是 NumPy 的多维数组对象，支持向量化运算，效率远高于 Python 列表。
       </div>
     </div>
@@ -147,7 +143,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>DataFrame 是 Pandas 的二维表格结构，Series 是一维带标签数组。
       </div>
     </div>
@@ -169,7 +165,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>Matplotlib 是 Python 最常用的绑图库，支持折线图、柱状图、散点图等。
       </div>
     </div>
@@ -191,7 +187,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>shape 返回数组的形状（各维度大小），如 (3,4) 表示 3 行 4 列。
       </div>
     </div>
@@ -213,7 +209,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>* 是逐元素乘法（对应位置相乘），@ 是矩阵乘法。
       </div>
     </div>
@@ -235,7 +231,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>iloc 按整数位置索引，loc 按标签索引。
       </div>
     </div>
@@ -257,7 +253,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>Pandas 多条件筛选用 &（与）和 |（或），每个条件必须加括号。
       </div>
     </div>
@@ -279,7 +275,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>groupby 按部门分组，["sal"].mean() 计算每个部门的平均工资。
       </div>
     </div>
@@ -301,24 +297,21 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>折线图适合展示数据随时间或顺序的变化趋势。
       </div>
     </div>
 </div>
 
-<!-- ====== 二、填空题 10题 ====== -->
-
 <div class="section">
 
     <div class="section-title"><span class="icon"></span>二、填空题（10 题）</div>
 
-    <!-- Q11: 填空题 -->
     <div class="card" data-qid="11" data-type="fill" data-answer="np">
       <div class="card-header"><span class="card-qnum">第 11 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">NumPy 通常使用 import numpy as<span class="blank-input" contenteditable="true"></span>导入。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>约定俗成的别名是 np，如 import numpy as np。
       </div>
     </div>
@@ -326,7 +319,7 @@
       <div class="card-header"><span class="card-qnum">第 12 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">Pandas 通常使用 import pandas as<span class="blank-input" contenteditable="true"></span>导入。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>约定俗成的别名是 pd，如 import pandas as pd。
       </div>
     </div>
@@ -334,7 +327,7 @@
       <div class="card-header"><span class="card-qnum">第 13 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">Matplotlib 的 pyplot 通常使用 import matplotlib.pyplot as<span class="blank-input" contenteditable="true"></span>导入。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>约定俗成的别名是 plt，如 import matplotlib.pyplot as plt。
       </div>
     </div>
@@ -342,7 +335,7 @@
       <div class="card-header"><span class="card-qnum">第 14 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">NumPy 中，ndim 表示数组的<span class="blank-input" contenteditable="true"></span>。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>ndim 返回数组的维度数，如一维数组返回 1，二维数组返回 2。
       </div>
     </div>
@@ -350,7 +343,7 @@
       <div class="card-header"><span class="card-qnum">第 15 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">NumPy 中，size 表示数组的<span class="blank-input" contenteditable="true"></span>。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>size 返回数组中元素的总数，不关心数组是几行几列。
       </div>
     </div>
@@ -358,7 +351,7 @@
       <div class="card-header"><span class="card-qnum">第 16 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">reshape 改变数组形状时，前后元素总数必须<span class="blank-input" contenteditable="true"></span>。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>reshape 前后的元素总数必须一致，否则会报错。
       </div>
     </div>
@@ -366,7 +359,7 @@
       <div class="card-header"><span class="card-qnum">第 17 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">Pandas 中，Series 是<span class="blank-input" contenteditable="true"></span>维带标签数组。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>Series 是一维的，类似带标签的列表或字典。
       </div>
     </div>
@@ -374,7 +367,7 @@
       <div class="card-header"><span class="card-qnum">第 18 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">Pandas 中，DataFrame 是<span class="blank-input" contenteditable="true"></span>维表格结构。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>DataFrame 是二维的，有行索引和列名，类似 Excel 表格。
       </div>
     </div>
@@ -382,7 +375,7 @@
       <div class="card-header"><span class="card-qnum">第 19 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">缺失值统计常用 isnull().<span class="blank-input" contenteditable="true"></span>。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>isnull() 返回布尔值，sum() 统计 True 的个数，即缺失值数量。
       </div>
     </div>
@@ -390,114 +383,108 @@
       <div class="card-header"><span class="card-qnum">第 20 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">Matplotlib 中，展示图形窗口通常使用 plt.<span class="blank-input" contenteditable="true"></span>。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>plt.show() 打开图形窗口展示绘制的图表。
       </div>
     </div>
 </div>
 
-<!-- ====== 三、简答题 5题 ====== -->
-
 <div class="section">
 
     <div class="section-title"><span class="icon"></span>三、简答题（10 题）</div>
 
-    <!-- Q21: 简答题 -->
     <div class="card" data-qid="21" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 21 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">请分别说明 NumPy、Pandas、Matplotlib 的作用。</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">NumPy 用于高效数值计算，Pandas 用于表格数据处理，Matplotlib 用于数据可视化。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>NumPy 用于高效数值计算，Pandas 用于表格数据处理，Matplotlib 用于数据可视化。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>NumPy 用于高效数值计算，Pandas 用于表格数据处理，Matplotlib 用于数据可视化。</div>
     </div>
     <div class="card" data-qid="22" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 22 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">NumPy 数组相比 Python 列表，在数据分析中有什么优势？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">NumPy 数组支持向量化运算，底层效率高，适合大批量数值计算。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>NumPy 数组支持向量化运算，底层效率高，适合大批量数值计算。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>NumPy 数组支持向量化运算，底层效率高，适合大批量数值计算。</div>
     </div>
     <div class="card" data-qid="23" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 23 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">shape、size、dtype 分别表示什么？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">shape 表示数组形状，size 表示元素总数，dtype 表示元素数据类型。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>shape 表示数组形状，size 表示元素总数，dtype 表示元素数据类型。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>shape 表示数组形状，size 表示元素总数，dtype 表示元素数据类型。</div>
     </div>
     <div class="card" data-qid="24" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 24 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">reshape 使用时最容易犯什么错误？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">最容易犯的错误是新形状需要的元素数量和原数组元素数量不一致。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>最容易犯的错误是新形状需要的元素数量和原数组元素数量不一致。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>最容易犯的错误是新形状需要的元素数量和原数组元素数量不一致。</div>
     </div>
     <div class="card" data-qid="25" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 25 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">* 和 @ 在 NumPy 中有什么区别？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">* 是逐元素乘法，@ 是矩阵乘法。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>* 是逐元素乘法，@ 是矩阵乘法。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>* 是逐元素乘法，@ 是矩阵乘法。</div>
     </div>
     <div class="card" data-qid="26" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 26 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">axis=0 和 axis=1 在二维数组统计中分别表示什么？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">axis=0 通常得到每列统计结果，axis=1 通常得到每行统计结果。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>axis=0 通常得到每列统计结果，axis=1 通常得到每行统计结果。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>axis=0 通常得到每列统计结果，axis=1 通常得到每行统计结果。</div>
     </div>
     <div class="card" data-qid="27" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 27 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">Series 和 DataFrame 有什么区别？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">Series 是一维带标签数组，DataFrame 是二维表格结构。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>Series 是一维带标签数组，DataFrame 是二维表格结构。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>Series 是一维带标签数组，DataFrame 是二维表格结构。</div>
     </div>
     <div class="card" data-qid="28" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 28 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">loc 和 iloc 的核心区别是什么？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">loc 按标签取数据，iloc 按整数位置取数据。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>loc 按标签取数据，iloc 按整数位置取数据。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>loc 按标签取数据，iloc 按整数位置取数据。</div>
     </div>
     <div class="card" data-qid="29" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 29 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">Pandas 多条件筛选为什么每个条件都要加括号？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">因为 & 的优先级会影响表达式计算，每个条件加括号可以明确每个布尔条件的范围。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>因为 & 的优先级会影响表达式计算，每个条件加括号可以明确每个布尔条件的范围。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>因为 & 的优先级会影响表达式计算，每个条件加括号可以明确每个布尔条件的范围。</div>
     </div>
     <div class="card" data-qid="30" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 30 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">缺失值处理时，为什么不能无脑删除所有缺失行？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">因为缺失值可能有业务含义，无脑删除可能丢失大量有效数据，应该根据业务选择删除或填充。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>因为缺失值可能有业务含义，无脑删除可能丢失大量有效数据，应该根据业务选择删除或填充。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>因为缺失值可能有业务含义，无脑删除可能丢失大量有效数据，应该根据业务选择删除或填充。</div>
     </div>
 </div>
-
-<!-- ====== 四、代码实操 7题 ====== -->
 
 <div class="section">
 
     <div class="section-title"><span class="icon"></span>四、代码实战（8 题）</div>
 
-    <!-- Q26: 代码实战 -->
     <div class="card" data-qid="31" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 31 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>模仿题 1：创建 NumPy 数组</strong></div>
       <div class="card-desc">创建一维数组 [10, 20, 30, 40]，打印它的维度、形状、元素总数。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">import numpy as np
 
 arr = np.array([10, 20, 30, 40])
@@ -505,7 +492,7 @@ arr = np.array([10, 20, 30, 40])
 print("维度：", arr.ndim)
 print("形状：", arr.shape)
 print("元素总数：", arr.size)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">import numpy as np
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import numpy as np
 
 arr = np.array([10, 20, 30, 40])
 
@@ -518,7 +505,7 @@ print("元素总数：", arr.size)</div></div>
       <div class="card-question"><strong>模仿题 2：创建 DataFrame</strong></div>
       <div class="card-desc">创建一个员工 DataFrame，包含 name、dept、sal 三列，并打印表格。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">import pandas as pd
 
 df = pd.DataFrame({
@@ -528,7 +515,7 @@ df = pd.DataFrame({
 })
 
 print(df)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">import pandas as pd
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import pandas as pd
 
 df = pd.DataFrame({
     "name": ["张三", "李四", "王五"],
@@ -543,7 +530,7 @@ print(df)</div></div>
       <div class="card-question"><strong>模仿题 3：绘制简单折线图</strong></div>
       <div class="card-desc">用 Matplotlib 绘制 1-6 月销量折线图。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">import matplotlib
 matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
@@ -562,7 +549,7 @@ plt.ylabel("销量")
 plt.grid()
 plt.legend()
 plt.show()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">import matplotlib
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import matplotlib
 matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
 import numpy as np
@@ -586,7 +573,7 @@ plt.show()</div></div>
       <div class="card-question"><strong>变体题 1：NumPy 每行求和</strong></div>
       <div class="card-desc">创建 3 行 3 列数组，分别计算每列总和和每行总和。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">import numpy as np
 
 arr = np.array([[1, 2, 3],
@@ -595,7 +582,7 @@ arr = np.array([[1, 2, 3],
 
 print("每列总和：", np.sum(arr, axis=0))
 print("每行总和：", np.sum(arr, axis=1))</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">import numpy as np
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import numpy as np
 
 arr = np.array([[1, 2, 3],
                 [4, 5, 6],
@@ -609,7 +596,7 @@ print("每行总和：", np.sum(arr, axis=1))</div></div>
       <div class="card-question"><strong>变体题 2：Pandas 条件筛选</strong></div>
       <div class="card-desc">读取 emp.txt，筛选工资大于 6000 的员工。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">import pandas as pd
 
 df = pd.read_csv("emp.txt", sep="-")
@@ -617,7 +604,7 @@ df = pd.read_csv("emp.txt", sep="-")
 result = df[df["sal"] > 6000]
 
 print(result)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">import pandas as pd
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import pandas as pd
 
 df = pd.read_csv("emp.txt", sep="-")
 
@@ -630,7 +617,7 @@ print(result)</div></div>
       <div class="card-question"><strong>变体题 3：Pandas 分组统计</strong></div>
       <div class="card-desc">读取 emp.txt，按部门统计平均工资。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">import pandas as pd
 
 df = pd.read_csv("emp.txt", sep="-")
@@ -638,7 +625,7 @@ df = pd.read_csv("emp.txt", sep="-")
 result = df.groupby("dept")["sal"].mean()
 
 print(result)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">import pandas as pd
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import pandas as pd
 
 df = pd.read_csv("emp.txt", sep="-")
 
@@ -651,7 +638,7 @@ print(result)</div></div>
       <div class="card-question"><strong>综合案例 1：员工筛选和排序</strong></div>
       <div class="card-desc">读取 emp.txt，筛选销售部员工，并按工资降序排序。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">import pandas as pd
 
 df = pd.read_csv("emp.txt", sep="-")
@@ -661,7 +648,7 @@ sales_df = df[df["dept"] == "销售部"]
 result = sales_df.sort_values("sal", ascending=False)
 
 print(result)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">import pandas as pd
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import pandas as pd
 
 df = pd.read_csv("emp.txt", sep="-")
 
@@ -676,7 +663,7 @@ print(result)</div></div>
       <div class="card-question"><strong>综合案例 2：销量数据分析和绘图</strong></div>
       <div class="card-desc">创建 1-6 月销量数据，使用 Pandas 保存为 DataFrame，计算平均销量，并用 Matplotlib 画折线图。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">import matplotlib
 matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
@@ -703,7 +690,7 @@ plt.ylabel("销量")
 plt.grid()
 plt.legend()
 plt.show()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">import matplotlib
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import matplotlib
 matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -734,12 +721,12 @@ plt.show()</div></div>
 
 </div>
 
+<div class="toast" id="toast"></div>
+
 <script>
 const STORAGE_KEY = 'py_day09_quiz_history';
 const SAVE_KEY = 'py_day09_saves';
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
 <script src="/static/js/codemirror/codemirror.min.js?v=20260602"></script>
 <script src="/static/js/codemirror/mode/python/python.min.js?v=20260602"></script>
 <script src="/static/js/quiz-engine.js?v=20260602"></script>

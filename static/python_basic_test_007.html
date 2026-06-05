@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LLM 练习 007</title>
 <link rel="stylesheet" href="/static/js/codemirror/codemirror.min.css?v=20260602">
-
+<link rel="stylesheet" href="/static/js/codemirror/theme/eclipse.min.css?v=20260602">
 <link rel="stylesheet" href="/static/css/quiz.css?v=20260602">
-
 </head>
 <body>
 
@@ -17,7 +16,7 @@
     <h1>LLM 练习 007</h1>
     <div class="subtitle">38 道题 · 选择题 + 填空题 + 简答题 + 代码实战 · 即时反馈 · 记录保存</div>
   </div>
-    <div   <div class="quiz-nav">
+  <div class="quiz-nav">
     <a href="/static/python_basic_test_006.html" class="quiz-arrow" title="上一练习">◂</a>
     <div class="quiz-dropdown">
       <button class="quiz-dropdown-btn" onclick="toggleDropdown(this)">练习 007 <span class="arrow-icon">▾</span></button>
@@ -34,14 +33,14 @@
         <a href="/static/python_basic_test_010.html">练习 010</a>
         <a href="/static/python_basic_test_011.html">练习 011</a>
       </div>
-      </div>
+    </div>
     <a href="/static/python_basic_test_008.html" class="quiz-arrow" title="下一练习">▸</a>
   </div>
   <div class="sticky-toolbar">
     <a href="/" class="back-link">&larr; 返回主页</a>
     <div class="score-bar">
       <div class="score-item"><div class="score-label">客观题</div><div class="score-num"><span id="objDone">0</span>/20</div></div>
-      <div class="score-item"><div class="score-label">主观题</div><div class="score-num"><span id="subjDone">0</span>/12</div></div>
+      <div class="score-item"><div class="score-label">主观题</div><div class="score-num"><span id="subjDone">0</span>/18</div></div>
       <div class="score-item" id="scoreResult" style="display:none"><div class="score-label">得分</div><div class="score-num"><span id="correctCount">0</span></div></div>
       <div style="flex:1;min-width:0;"></div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.35rem;position:relative;">
@@ -68,7 +67,6 @@
     </div>
   </div>
 
-  <!-- History detail modal -->
   <div class="history-detail-overlay" id="historyDetailOverlay" onclick="closeHistoryDetail()">
     <div class="history-detail" id="historyDetail" onclick="event.stopPropagation()">
       <div class="history-detail-header">
@@ -79,12 +77,10 @@
     </div>
   </div>
 
-<!-- ====== 一、单选题 10题 ====== -->
 <div class="section">
 
     <div class="section-title"><span class="icon"></span>一、单选题（10 题）</div>
 
-    <!-- Q1: 单选题 -->
     <div class="card" data-qid="1" data-type="choice" data-answer="B">
       <div class="card-header"><span class="card-qnum">第 1 题</span><span class="card-type choice">单选题</span></div>
       <div class="card-question">正则表达式最适合解决下面哪类问题？</div>
@@ -103,7 +99,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>正则表达式专门用于从文本中提取符合某种规则的内容，如手机号、邮箱、订单号等。
       </div>
     </div>
@@ -125,7 +121,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong><code>re</code> 是 Python 内置的正则表达式模块，使用前需要 <code>import re</code>。
       </div>
     </div>
@@ -147,7 +143,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong><code>re.match()</code> 只从字符串开头位置尝试匹配，不扫描全文。
       </div>
     </div>
@@ -169,7 +165,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong><code>re.findall()</code> 扫描整个字符串，返回所有符合规则的非重叠匹配列表。
       </div>
     </div>
@@ -191,7 +187,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong><code>\d</code> 表示匹配一个数字字符，等价于 <code>[0-9]</code>。
       </div>
     </div>
@@ -213,7 +209,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong><code>^1\d{10}$</code> 要求字符串以 1 开头、后面正好 10 位数字，从头到尾完整匹配。
       </div>
     </div>
@@ -235,7 +231,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong><code>.*</code> 是贪婪匹配，<code>.*?</code> 是非贪婪（最小匹配）。
       </div>
     </div>
@@ -257,7 +253,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>DDL（Data Definition Language）用于创建、修改、删除数据库和表结构，如 CREATE、DROP、ALTER。
       </div>
     </div>
@@ -279,7 +275,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>DML（Data Manipulation Language）负责对表中数据进行新增（INSERT）、修改（UPDATE）、删除（DELETE）。
       </div>
     </div>
@@ -301,24 +297,21 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>多表查询缺少 JOIN 条件时会产生笛卡尔积（所有记录两两组合），数据量成倍放大。
       </div>
     </div>
 </div>
 
-<!-- ====== 二、填空题 10题 ====== -->
-
 <div class="section">
 
     <div class="section-title"><span class="icon"></span>二、填空题（10 题）</div>
 
-    <!-- Q11: 填空题 -->
     <div class="card" data-qid="11" data-type="fill" data-answer="字符串">
       <div class="card-header"><span class="card-qnum">第 11 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">正则表达式的核心作用是用一套规则去匹配一类（<span class="blank-input" contenteditable="true"></span>）。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>正则表达式用一套规则描述一类字符串模式，用来匹配和提取文本。
       </div>
     </div>
@@ -326,7 +319,7 @@
       <div class="card-header"><span class="card-qnum">第 12 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question"><code>re.search()</code> 会扫描整个字符串，并返回第（<span class="blank-input" contenteditable="true"></span>）个匹配成功的结果。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong><code>re.search()</code> 扫描整个字符串，找到第一个匹配就返回，不是返回所有。
       </div>
     </div>
@@ -334,7 +327,7 @@
       <div class="card-header"><span class="card-qnum">第 13 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question"><code>re.findall()</code> 的常见返回结果是一个（<span class="blank-input" contenteditable="true"></span>）。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong><code>re.findall()</code> 返回所有匹配组成的列表，无匹配时返回空列表。
       </div>
     </div>
@@ -342,7 +335,7 @@
       <div class="card-header"><span class="card-qnum">第 14 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">正则表达式中，<code>\s</code> 表示匹配（<span class="blank-input" contenteditable="true"></span>）字符。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong><code>\s</code> 匹配空白字符，包括空格、制表符、换行符等。
       </div>
     </div>
@@ -350,7 +343,7 @@
       <div class="card-header"><span class="card-qnum">第 15 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">正则表达式中，<code>{m,n}</code> 表示前一个字符出现（<span class="blank-input" contenteditable="true"></span>）到（<span class="blank-input" contenteditable="true"></span>）次。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong><code>{m,n}</code> 表示前一个字符出现至少 m 次、至多 n 次，如 <code>{2,5}</code>。
       </div>
     </div>
@@ -358,7 +351,7 @@
       <div class="card-header"><span class="card-qnum">第 16 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">在手机号完整校验中，<code>^</code> 表示字符串（<span class="blank-input" contenteditable="true"></span>），<code>$</code> 表示字符串（<span class="blank-input" contenteditable="true"></span>）。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong><code>^</code> 锚定字符串开头，<code>$</code> 锚定字符串结尾，二者配合实现完整校验。
       </div>
     </div>
@@ -366,7 +359,7 @@
       <div class="card-header"><span class="card-qnum">第 17 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">正则表达式中，使用（<span class="blank-input" contenteditable="true"></span>）可以把匹配结果中的一部分单独提取出来。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>分组用小括号 <code>()</code> 构成捕获组，从匹配结果中单独提取某部分内容。
       </div>
     </div>
@@ -374,7 +367,7 @@
       <div class="card-header"><span class="card-qnum">第 18 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">SQL 中，<code>SELECT</code> 语句属于（<span class="blank-input" contenteditable="true"></span>）语言，主要用于查询数据。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>SELECT 属于 DQL（Data Query Language），专门用于从数据库中查询数据。
       </div>
     </div>
@@ -382,7 +375,7 @@
       <div class="card-header"><span class="card-qnum">第 19 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">更新或删除数据时，如果忘记写（<span class="blank-input" contenteditable="true"></span>）条件，可能会影响整张表。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong><code>UPDATE</code> 和 <code>DELETE</code> 没有 WHERE 条件时，会作用于全部记录。
       </div>
     </div>
@@ -390,123 +383,117 @@
       <div class="card-header"><span class="card-qnum">第 20 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">多表查询的核心思想是把多张表按照关系连接成一张（<span class="blank-input" contenteditable="true"></span>）结果表，再进行查询。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>多表查询在内存中按连接条件生成临时结果集，再从中筛选数据。
       </div>
     </div>
 </div>
 
-<!-- ====== 三、简答题 5题 ====== -->
-
 <div class="section">
 
     <div class="section-title"><span class="icon"></span>三、简答题（10 题）</div>
 
-    <!-- Q21: 简答题 -->
     <div class="card" data-qid="21" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 21 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">正则表达式相比普通字符串查找强在哪里？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">普通字符串查找只能匹配固定内容，正则表达式可以描述一类规则（如所有手机号、所有邮箱、所有日期）。它支持<strong>模糊匹配</strong>、<strong>字符类</strong>、<strong>数量词</strong>、<strong>边界定位</strong>等，这是普通字符串查找做不到的。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>普通字符串查找只能匹配固定内容，正则表达式可以描述一类规则（如所有手机号、所有邮箱、所有日期）。它支持<strong>模糊匹配</strong>、<strong>字符类</strong>、<strong>数量词</strong>、<strong>边界定位</strong>等，这是普通字符串查找做不到的。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>普通字符串查找只能匹配固定内容，正则表达式可以描述一类规则（如所有手机号、所有邮箱、所有日期）。它支持<strong>模糊匹配</strong>、<strong>字符类</strong>、<strong>数量词</strong>、<strong>边界定位</strong>等，这是普通字符串查找做不到的。</div>
     </div>
     <div class="card" data-qid="22" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 22 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">请说明 <code>re.match()</code>、<code>re.search()</code>、<code>re.findall()</code> 的区别。</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);"><code>re.match()</code> 从字符串开头匹配，不成功返回 None；<code>re.search()</code> 扫描整个字符串，返回第一个匹配；<code>re.findall()</code> 扫描整个字符串，返回所有匹配组成的列表。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><code>re.match()</code> 从字符串开头匹配，不成功返回 None；<code>re.search()</code> 扫描整个字符串，返回第一个匹配；<code>re.findall()</code> 扫描整个字符串，返回所有匹配组成的列表。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><code>re.match()</code> 从字符串开头匹配，不成功返回 None；<code>re.search()</code> 扫描整个字符串，返回第一个匹配；<code>re.findall()</code> 扫描整个字符串，返回所有匹配组成的列表。</div>
     </div>
     <div class="card" data-qid="23" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 23 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">为什么手机号校验不能只写 <code>\d+</code>？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);"><code>\d+</code> 只表示一个或多个连续数字，不限制位数，也不限制字符串边界。12 位数字也会被匹配，含有非数字字符的字符串也会匹配出其中的数字片段。完整手机号校验需要 <code>^1\d{10}$</code>。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><code>\d+</code> 只表示一个或多个连续数字，不限制位数，也不限制字符串边界。12 位数字也会被匹配，含有非数字字符的字符串也会匹配出其中的数字片段。完整手机号校验需要 <code>^1\d{10}$</code>。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><code>\d+</code> 只表示一个或多个连续数字，不限制位数，也不限制字符串边界。12 位数字也会被匹配，含有非数字字符的字符串也会匹配出其中的数字片段。完整手机号校验需要 <code>^1\d{10}$</code>。</div>
     </div>
     <div class="card" data-qid="24" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 24 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">什么是正则分组？它有什么用？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">分组用小括号 <code>()</code> 把正则的一部分规则包起来。它可以从完整匹配中<strong>单独提取</strong>子部分，例如从日期字符串 <code>2026-06-01</code> 中分别提取年、月、日。也便于<strong>分组引用</strong>和<strong>替换</strong>。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>分组用小括号 <code>()</code> 把正则的一部分规则包起来。它可以从完整匹配中<strong>单独提取</strong>子部分，例如从日期字符串 <code>2026-06-01</code> 中分别提取年、月、日。也便于<strong>分组引用</strong>和<strong>替换</strong>。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>分组用小括号 <code>()</code> 把正则的一部分规则包起来。它可以从完整匹配中<strong>单独提取</strong>子部分，例如从日期字符串 <code>2026-06-01</code> 中分别提取年、月、日。也便于<strong>分组引用</strong>和<strong>替换</strong>。</div>
     </div>
     <div class="card" data-qid="25" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 25 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">贪婪模式和非贪婪模式有什么区别？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">贪婪模式在匹配成功的前提下会<strong>尽可能多</strong>地匹配字符；非贪婪模式会<strong>尽可能少</strong>匹配，只到满足匹配条件的最小长度。常见例子：<code>.*</code>（贪婪）vs <code>.*?</code>（非贪婪）。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>贪婪模式在匹配成功的前提下会<strong>尽可能多</strong>地匹配字符；非贪婪模式会<strong>尽可能少</strong>匹配，只到满足匹配条件的最小长度。常见例子：<code>.*</code>（贪婪）vs <code>.*?</code>（非贪婪）。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>贪婪模式在匹配成功的前提下会<strong>尽可能多</strong>地匹配字符；非贪婪模式会<strong>尽可能少</strong>匹配，只到满足匹配条件的最小长度。常见例子：<code>.*</code>（贪婪）vs <code>.*?</code>（非贪婪）。</div>
     </div>
     <div class="card" data-qid="26" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 26 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">RAG 文档清洗中，正则表达式可以用来做什么？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">可以删除页码、页眉页脚、内部标记（如【内部资料】）、重复空行；也可以提取标题，时间、编号、URL 等结构化信息；还能清洗特殊符号，统一文本格式，为后续向量化和检索做准备。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>可以删除页码、页眉页脚、内部标记（如【内部资料】）、重复空行；也可以提取标题，时间、编号、URL 等结构化信息；还能清洗特殊符号，统一文本格式，为后续向量化和检索做准备。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>可以删除页码、页眉页脚、内部标记（如【内部资料】）、重复空行；也可以提取标题，时间、编号、URL 等结构化信息；还能清洗特殊符号，统一文本格式，为后续向量化和检索做准备。</div>
     </div>
     <div class="card" data-qid="27" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 27 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">数据库、数据表和字段之间是什么关系？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);"><strong>数据库</strong>是存储和管理数据的容器；<strong>数据表</strong>是数据库中某一类数据的结构；<strong>字段</strong>是表中的列，描述每条记录的属性。关系：数据库包含多张表，一张表包含多个字段。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><strong>数据库</strong>是存储和管理数据的容器；<strong>数据表</strong>是数据库中某一类数据的结构；<strong>字段</strong>是表中的列，描述每条记录的属性。关系：数据库包含多张表，一张表包含多个字段。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><strong>数据库</strong>是存储和管理数据的容器；<strong>数据表</strong>是数据库中某一类数据的结构；<strong>字段</strong>是表中的列，描述每条记录的属性。关系：数据库包含多张表，一张表包含多个字段。</div>
     </div>
     <div class="card" data-qid="28" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 28 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">DDL、DML、DQL 分别负责什么？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);"><strong>DDL</strong>（Data Definition Language）负责定义和管理数据库及表结构：CREATE、DROP、ALTER。<strong>DML</strong>（Data Manipulation Language）负责对表数据进行增删改：INSERT、UPDATE、DELETE。<strong>DQL</strong>（Data Query Language）负责查询数据：SELECT。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><strong>DDL</strong>（Data Definition Language）负责定义和管理数据库及表结构：CREATE、DROP、ALTER。<strong>DML</strong>（Data Manipulation Language）负责对表数据进行增删改：INSERT、UPDATE、DELETE。<strong>DQL</strong>（Data Query Language）负责查询数据：SELECT。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><strong>DDL</strong>（Data Definition Language）负责定义和管理数据库及表结构：CREATE、DROP、ALTER。<strong>DML</strong>（Data Manipulation Language）负责对表数据进行增删改：INSERT、UPDATE、DELETE。<strong>DQL</strong>（Data Query Language）负责查询数据：SELECT。</div>
     </div>
     <div class="card" data-qid="29" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 29 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">为什么 <code>UPDATE</code> 和 <code>DELETE</code> 必须谨慎使用 <code>WHERE</code>？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">没有 WHERE 条件的 UPDATE 或 DELETE 会作用于表中<strong>所有记录</strong>，导致全部数据被修改或清空。生产环境中这是极其危险的操作，可能造成不可逆的数据损失。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>没有 WHERE 条件的 UPDATE 或 DELETE 会作用于表中<strong>所有记录</strong>，导致全部数据被修改或清空。生产环境中这是极其危险的操作，可能造成不可逆的数据损失。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>没有 WHERE 条件的 UPDATE 或 DELETE 会作用于表中<strong>所有记录</strong>，导致全部数据被修改或清空。生产环境中这是极其危险的操作，可能造成不可逆的数据损失。</div>
     </div>
     <div class="card" data-qid="30" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 30 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">多表查询为什么重要？它解决什么问题？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">真实业务中，数据通常分散在多张表中（如商品表和分类表）。多表查询通过表之间的关系（外键）把数据<strong>连接</strong>起来，生成完整结果，避免数据冗余和一致性问题。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>真实业务中，数据通常分散在多张表中（如商品表和分类表）。多表查询通过表之间的关系（外键）把数据<strong>连接</strong>起来，生成完整结果，避免数据冗余和一致性问题。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>真实业务中，数据通常分散在多张表中（如商品表和分类表）。多表查询通过表之间的关系（外键）把数据<strong>连接</strong>起来，生成完整结果，避免数据冗余和一致性问题。</div>
     </div>
 </div>
-
-<!-- ====== 四、代码实操 7题 ====== -->
 
 <div class="section">
 
     <div class="section-title"><span class="icon"></span>四、代码实战（8 题）</div>
 
-    <!-- Q26: 代码实战 -->
     <div class="card" data-qid="31" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 31 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>提取手机号（模仿）</strong></div>
       <div class="card-desc">使用正则表达式从文本中提取所有 11 位手机号。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
-      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> re
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">import re
 
-text = <span class="str">"联系人A: 13800138000, 联系人B: 13900139000, 编号: A1001"</span>
-phones = re.findall(r<span class="str">"\\d{11}"</span>, text)
+text = "联系人A: 13800138000, 联系人B: 13900139000, 编号: A1001"
+phones = re.findall(r"\\d{11}", text)
 print(phones)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> re
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import re
 
-text = <span class="str">"联系人A: 13800138000, 联系人B: 13900139000, 编号: A1001"</span>
-phones = re.findall(r<span class="str">"\\d{11}"</span>, text)
+text = "联系人A: 13800138000, 联系人B: 13900139000, 编号: A1001"
+phones = re.findall(r"\\d{11}", text)
 print(phones)</div></div>
     </div>
     <div class="card" data-qid="32" data-type="write" data-answer="">
@@ -514,18 +501,18 @@ print(phones)</div></div>
       <div class="card-question"><strong>创建学生表（模仿）</strong></div>
       <div class="card-desc">创建 student 表，包含 id（主键自增）、name（非空字符串）、age（整数）、score（decimal）。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
-      <div class="ref-answer"><div class="code-block"><span class="kw">CREATE</span> <span class="kw">TABLE</span> student (
-    id <span class="kw">INT</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> <span class="kw">AUTO_INCREMENT</span>,
-    name <span class="kw">VARCHAR</span>(<span class="num">50</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,
-    age <span class="kw">INT</span>,
-    score <span class="kw">DECIMAL</span>(<span class="num">5</span>, <span class="num">2</span>)
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">CREATE TABLE student (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    age INT,
+    score DECIMAL(5, 2)
 );</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">CREATE</span> <span class="kw">TABLE</span> student (
-    id <span class="kw">INT</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> <span class="kw">AUTO_INCREMENT</span>,
-    name <span class="kw">VARCHAR</span>(<span class="num">50</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,
-    age <span class="kw">INT</span>,
-    score <span class="kw">DECIMAL</span>(<span class="num">5</span>, <span class="num">2</span>)
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">CREATE TABLE student (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    age INT,
+    score DECIMAL(5, 2)
 );</div></div>
     </div>
     <div class="card" data-qid="33" data-type="write" data-answer="">
@@ -533,25 +520,25 @@ print(phones)</div></div>
       <div class="card-question"><strong>查询指定列（模仿）</strong></div>
       <div class="card-desc">从 product 表中查询商品名称 name 和价格 price。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
-      <div class="ref-answer"><div class="code-block"><span class="kw">SELECT</span> name, price <span class="kw">FROM</span> product;</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">SELECT</span> name, price <span class="kw">FROM</span> product;</div></div>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">SELECT name, price FROM product;</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">SELECT name, price FROM product;</div></div>
     </div>
     <div class="card" data-qid="34" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 34 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>提取订单号（变体）</strong></div>
       <div class="card-desc">从文本中提取所有以 P 开头、后面跟 4 位数字的订单号。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
-      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> re
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">import re
 
-text = <span class="str">"订单号: P1001, P2030, X999, P8888"</span>
-orders = re.findall(r<span class="str">"P\\d{4}"</span>, text)
+text = "订单号: P1001, P2030, X999, P8888"
+orders = re.findall(r"P\\d{4}", text)
 print(orders)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> re
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import re
 
-text = <span class="str">"订单号: P1001, P2030, X999, P8888"</span>
-orders = re.findall(r<span class="str">"P\\d{4}"</span>, text)
+text = "订单号: P1001, P2030, X999, P8888"
+orders = re.findall(r"P\\d{4}", text)
 print(orders)</div></div>
     </div>
     <div class="card" data-qid="35" data-type="write" data-answer="">
@@ -559,18 +546,18 @@ print(orders)</div></div>
       <div class="card-question"><strong>完整校验手机号（变体）</strong></div>
       <div class="card-desc">判断列表中哪些是完整合法的 11 位手机号格式。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
-      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> re
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">import re
 
-phones = [<span class="str">"13800138000"</span>, <span class="str">"电话13800138000"</span>, <span class="str">"13800138000123"</span>, <span class="str">"13900139000"</span>]
-<span class="kw">for</span> phone <span class="kw">in</span> phones:
-    <span class="kw">if</span> re.match(r<span class="str">"^1\\d{10}$"</span>, phone):
+phones = ["13800138000", "电话13800138000", "13800138000123", "13900139000"]
+for phone in phones:
+    if re.match(r"^1\\d{10}$", phone):
         print(phone)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> re
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import re
 
-phones = [<span class="str">"13800138000"</span>, <span class="str">"电话13800138000"</span>, <span class="str">"13800138000123"</span>, <span class="str">"13900139000"</span>]
-<span class="kw">for</span> phone <span class="kw">in</span> phones:
-    <span class="kw">if</span> re.match(r<span class="str">"^1\\d{10}$"</span>, phone):
+phones = ["13800138000", "电话13800138000", "13800138000123", "13900139000"]
+for phone in phones:
+    if re.match(r"^1\\d{10}$", phone):
         print(phone)</div></div>
     </div>
     <div class="card" data-qid="36" data-type="write" data-answer="">
@@ -578,54 +565,54 @@ phones = [<span class="str">"13800138000"</span>, <span class="str">"电话13800
       <div class="card-question"><strong>条件查询加排序（变体）</strong></div>
       <div class="card-desc">查询 product 表中价格大于 100 的商品，并按价格从高到低排序。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
-      <div class="ref-answer"><div class="code-block"><span class="kw">SELECT</span> * <span class="kw">FROM</span> product <span class="kw">WHERE</span> price &gt; <span class="num">100</span> <span class="kw">ORDER</span> <span class="kw">BY</span> price <span class="kw">DESC</span>;</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">SELECT</span> * <span class="kw">FROM</span> product <span class="kw">WHERE</span> price &gt; <span class="num">100</span> <span class="kw">ORDER</span> <span class="kw">BY</span> price <span class="kw">DESC</span>;</div></div>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">SELECT * FROM product WHERE price > 100 ORDER BY price DESC;</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">SELECT * FROM product WHERE price > 100 ORDER BY price DESC;</div></div>
     </div>
     <div class="card" data-qid="37" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 37 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>RAG 文档清洗（综合）</strong></div>
       <div class="card-desc">提取手机号、删除页码、内部标记、页脚，压缩重复空行。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
-      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> re
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">import re
 
-raw = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;第 <span class="num">1</span> 页\
+raw = """第 1 页\
 【内部资料】课程答疑记录\
 \
-学生手机号：<span class="num">13800138000</span>\
+学生手机号：13800138000\
 问题：re.match 和 re.search 有什么区别？\
 \
 \
-页脚：仅供学习&quot;&quot;&quot;&lt;/span&gt;
+页脚：仅供学习"""
 
-phones = re.findall(r<span class="str">"\\d{11}"</span>, raw)
-cleaned = re.sub(r<span class="str">"第\\s*\\d+\\s*页"</span>, <span class="str">""</span>, raw)
-cleaned = re.sub(r<span class="str">"【.*?】"</span>, <span class="str">""</span>, cleaned)
-cleaned = re.sub(r<span class="str">"页脚：.*"</span>, <span class="str">""</span>, cleaned)
-cleaned = re.sub(r&quot;\
-{<span class="num">2</span>,}<span class="str">", "</span>\
-&quot;, cleaned).strip()
+phones = re.findall(r"\\d{11}", raw)
+cleaned = re.sub(r"第\\s*\\d+\\s*页", "", raw)
+cleaned = re.sub(r"【.*?】", "", cleaned)
+cleaned = re.sub(r"页脚：.*", "", cleaned)
+cleaned = re.sub(r"\
+{2,}", "\
+", cleaned).strip()
 print(phones)
 print(cleaned)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> re
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import re
 
-raw = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;第 <span class="num">1</span> 页\
+raw = """第 1 页\
 【内部资料】课程答疑记录\
 \
-学生手机号：<span class="num">13800138000</span>\
+学生手机号：13800138000\
 问题：re.match 和 re.search 有什么区别？\
 \
 \
-页脚：仅供学习&quot;&quot;&quot;&lt;/span&gt;
+页脚：仅供学习"""
 
-phones = re.findall(r<span class="str">"\\d{11}"</span>, raw)
-cleaned = re.sub(r<span class="str">"第\\s*\\d+\\s*页"</span>, <span class="str">""</span>, raw)
-cleaned = re.sub(r<span class="str">"【.*?】"</span>, <span class="str">""</span>, cleaned)
-cleaned = re.sub(r<span class="str">"页脚：.*"</span>, <span class="str">""</span>, cleaned)
-cleaned = re.sub(r&quot;\
-{<span class="num">2</span>,}<span class="str">", "</span>\
-&quot;, cleaned).strip()
+phones = re.findall(r"\\d{11}", raw)
+cleaned = re.sub(r"第\\s*\\d+\\s*页", "", raw)
+cleaned = re.sub(r"【.*?】", "", cleaned)
+cleaned = re.sub(r"页脚：.*", "", cleaned)
+cleaned = re.sub(r"\
+{2,}", "\
+", cleaned).strip()
 print(phones)
 print(cleaned)</div></div>
     </div>
@@ -634,40 +621,40 @@ print(cleaned)</div></div>
       <div class="card-question"><strong>电商商品数据查询（综合）</strong></div>
       <div class="card-desc">基于 category 和 product 表完成：1.商品名称+价格+分类名；2.价格>平均价的商品；3.每个分类商品数量；4.库存最低的前3个商品。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
-      <div class="ref-answer"><div class="code-block">-- <span class="num">1</span>. 商品名称、价格、分类名称（<span class="kw">INNER</span> <span class="kw">JOIN</span>）
-<span class="kw">SELECT</span> p.name, p.price, c.name <span class="kw">FROM</span> product p <span class="kw">INNER</span> <span class="kw">JOIN</span> category c <span class="kw">ON</span> p.category_id = c.id;
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">-- 1. 商品名称、价格、分类名称（INNER JOIN）
+SELECT p.name, p.price, c.name FROM product p INNER JOIN category c ON p.category_id = c.id;
 
--- <span class="num">2</span>. 价格高于平均价的商品（子查询）
-<span class="kw">SELECT</span> * <span class="kw">FROM</span> product <span class="kw">WHERE</span> price &gt; (<span class="kw">SELECT</span> <span class="kw">AVG</span>(price) <span class="kw">FROM</span> product);
+-- 2. 价格高于平均价的商品（子查询）
+SELECT * FROM product WHERE price > (SELECT AVG(price) FROM product);
 
--- <span class="num">3</span>. 每个分类商品数量（<span class="kw">GROUP</span> <span class="kw">BY</span>）
-<span class="kw">SELECT</span> category_id, <span class="kw">COUNT</span>(*) <span class="kw">AS</span> product_count <span class="kw">FROM</span> product <span class="kw">GROUP</span> <span class="kw">BY</span> category_id;
+-- 3. 每个分类商品数量（GROUP BY）
+SELECT category_id, COUNT(*) AS product_count FROM product GROUP BY category_id;
 
--- <span class="num">4</span>. 库存最低的前3个商品（<span class="kw">ORDER</span> <span class="kw">BY</span> + <span class="kw">LIMIT</span>）
-<span class="kw">SELECT</span> * <span class="kw">FROM</span> product <span class="kw">ORDER</span> <span class="kw">BY</span> stock <span class="kw">ASC</span> <span class="kw">LIMIT</span> <span class="num">0</span>, <span class="num">3</span>;</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">-- <span class="num">1</span>. 商品名称、价格、分类名称（<span class="kw">INNER</span> <span class="kw">JOIN</span>）
-<span class="kw">SELECT</span> p.name, p.price, c.name <span class="kw">FROM</span> product p <span class="kw">INNER</span> <span class="kw">JOIN</span> category c <span class="kw">ON</span> p.category_id = c.id;
+-- 4. 库存最低的前3个商品（ORDER BY + LIMIT）
+SELECT * FROM product ORDER BY stock ASC LIMIT 0, 3;</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">-- 1. 商品名称、价格、分类名称（INNER JOIN）
+SELECT p.name, p.price, c.name FROM product p INNER JOIN category c ON p.category_id = c.id;
 
--- <span class="num">2</span>. 价格高于平均价的商品（子查询）
-<span class="kw">SELECT</span> * <span class="kw">FROM</span> product <span class="kw">WHERE</span> price &gt; (<span class="kw">SELECT</span> <span class="kw">AVG</span>(price) <span class="kw">FROM</span> product);
+-- 2. 价格高于平均价的商品（子查询）
+SELECT * FROM product WHERE price > (SELECT AVG(price) FROM product);
 
--- <span class="num">3</span>. 每个分类商品数量（<span class="kw">GROUP</span> <span class="kw">BY</span>）
-<span class="kw">SELECT</span> category_id, <span class="kw">COUNT</span>(*) <span class="kw">AS</span> product_count <span class="kw">FROM</span> product <span class="kw">GROUP</span> <span class="kw">BY</span> category_id;
+-- 3. 每个分类商品数量（GROUP BY）
+SELECT category_id, COUNT(*) AS product_count FROM product GROUP BY category_id;
 
--- <span class="num">4</span>. 库存最低的前3个商品（<span class="kw">ORDER</span> <span class="kw">BY</span> + <span class="kw">LIMIT</span>）
-<span class="kw">SELECT</span> * <span class="kw">FROM</span> product <span class="kw">ORDER</span> <span class="kw">BY</span> stock <span class="kw">ASC</span> <span class="kw">LIMIT</span> <span class="num">0</span>, <span class="num">3</span>;</div></div>
+-- 4. 库存最低的前3个商品（ORDER BY + LIMIT）
+SELECT * FROM product ORDER BY stock ASC LIMIT 0, 3;</div></div>
     </div>
 </div>
 
 </div>
 
+<div class="toast" id="toast"></div>
+
 <script>
 const STORAGE_KEY = 'py_day06_quiz_history';
 const SAVE_KEY = 'py_day06_saves';
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
 <script src="/static/js/codemirror/codemirror.min.js?v=20260602"></script>
 <script src="/static/js/codemirror/mode/python/python.min.js?v=20260602"></script>
 <script src="/static/js/quiz-engine.js?v=20260602"></script>

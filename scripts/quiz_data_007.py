@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""Generate python_basic_test_007.html (Day06)"""
-import re
+"""练习 007 的题目数据。"""
 
 choices = [
     {'qid': 1, 'question': '正则表达式最适合解决下面哪类问题？', 'options': ['计算两个整数之和', '从一段文本中提取所有手机号', '创建 MySQL 数据库', '绘制折线图'], 'answer': 'B', 'analysis': '正则表达式专门用于从文本中提取符合某种规则的内容，如手机号、邮箱、订单号等。'},
@@ -14,6 +13,7 @@ choices = [
     {'qid': 9, 'question': '对表记录进行新增、修改、删除，主要属于哪类 SQL？', 'options': ['DDL', 'DML', 'DQL', 'DCL'], 'answer': 'B', 'analysis': 'DML（Data Manipulation Language）负责对表中数据进行新增（INSERT）、修改（UPDATE）、删除（DELETE）。'},
     {'qid': 10, 'question': '多表查询中，如果漏写连接条件，最容易出现什么问题？', 'options': ['查询速度一定变快', '产生大量错误组合，也就是笛卡尔积', '自动删除重复数据', '自动创建外键'], 'answer': 'B', 'analysis': '多表查询缺少 JOIN 条件时会产生笛卡尔积（所有记录两两组合），数据量成倍放大。'},
 ]
+
 fills = [
     {'qid': 11, 'question': '正则表达式的核心作用是用一套规则去匹配一类（________）。', 'answer': '字符串', 'analysis': '正则表达式用一套规则描述一类字符串模式，用来匹配和提取文本。'},
     {'qid': 12, 'question': '<code>re.search()</code> 会扫描整个字符串，并返回第（________）个匹配成功的结果。', 'answer': '一', 'analysis': '<code>re.search()</code> 扫描整个字符串，找到第一个匹配就返回，不是返回所有。'},
@@ -26,6 +26,7 @@ fills = [
     {'qid': 19, 'question': '更新或删除数据时，如果忘记写（________）条件，可能会影响整张表。', 'answer': 'WHERE', 'analysis': '<code>UPDATE</code> 和 <code>DELETE</code> 没有 WHERE 条件时，会作用于全部记录。'},
     {'qid': 20, 'question': '多表查询的核心思想是把多张表按照关系连接成一张（________）结果表，再进行查询。', 'answer': '临时', 'analysis': '多表查询在内存中按连接条件生成临时结果集，再从中筛选数据。'},
 ]
+
 shorts = [
     {'qid': 21, 'question': '正则表达式相比普通字符串查找强在哪里？', 'reference': '普通字符串查找只能匹配固定内容，正则表达式可以描述一类规则（如所有手机号、所有邮箱、所有日期）。它支持<strong>模糊匹配</strong>、<strong>字符类</strong>、<strong>数量词</strong>、<strong>边界定位</strong>等，这是普通字符串查找做不到的。'},
     {'qid': 22, 'question': '请说明 <code>re.match()</code>、<code>re.search()</code>、<code>re.findall()</code> 的区别。', 'reference': '<code>re.match()</code> 从字符串开头匹配，不成功返回 None；<code>re.search()</code> 扫描整个字符串，返回第一个匹配；<code>re.findall()</code> 扫描整个字符串，返回所有匹配组成的列表。'},
@@ -38,6 +39,7 @@ shorts = [
     {'qid': 29, 'question': '为什么 <code>UPDATE</code> 和 <code>DELETE</code> 必须谨慎使用 <code>WHERE</code>？', 'reference': '没有 WHERE 条件的 UPDATE 或 DELETE 会作用于表中<strong>所有记录</strong>，导致全部数据被修改或清空。生产环境中这是极其危险的操作，可能造成不可逆的数据损失。'},
     {'qid': 30, 'question': '多表查询为什么重要？它解决什么问题？', 'reference': '真实业务中，数据通常分散在多张表中（如商品表和分类表）。多表查询通过表之间的关系（外键）把数据<strong>连接</strong>起来，生成完整结果，避免数据冗余和一致性问题。'},
 ]
+
 writes = [
     {'qid': 31, 'title': '提取手机号（模仿）', 'desc': '使用正则表达式从文本中提取所有 11 位手机号。', 'reference': 'import re\\n\\ntext = "联系人A: 13800138000, 联系人B: 13900139000, 编号: A1001"\\nphones = re.findall(r"\\\\d{11}", text)\\nprint(phones)'},
     {'qid': 32, 'title': '创建学生表（模仿）', 'desc': '创建 student 表，包含 id（主键自增）、name（非空字符串）、age（整数）、score（decimal）。', 'reference': 'CREATE TABLE student (\\n    id INT PRIMARY KEY AUTO_INCREMENT,\\n    name VARCHAR(50) NOT NULL,\n    age INT,\n    score DECIMAL(5, 2)\\n);'},
@@ -49,131 +51,3 @@ writes = [
     {'qid': 38, 'title': '电商商品数据查询（综合）', 'desc': '基于 category 和 product 表完成：1.商品名称+价格+分类名；2.价格>平均价的商品；3.每个分类商品数量；4.库存最低的前3个商品。', 'reference': '-- 1. 商品名称、价格、分类名称（INNER JOIN）\\nSELECT p.name, p.price, c.name FROM product p INNER JOIN category c ON p.category_id = c.id;\\n\\n-- 2. 价格高于平均价的商品（子查询）\\nSELECT * FROM product WHERE price > (SELECT AVG(price) FROM product);\\n\\n-- 3. 每个分类商品数量（GROUP BY）\\nSELECT category_id, COUNT(*) AS product_count FROM product GROUP BY category_id;\\n\\n-- 4. 库存最低的前3个商品（ORDER BY + LIMIT）\\nSELECT * FROM product ORDER BY stock ASC LIMIT 0, 3;'},
 ]
 
-def gc(q):
-    letters = 'ABCD'
-    opts = '\n'.join(f'            <div class="option" data-opt="{letters[i]}" onclick="selectOption(this)">\n              <span class="option-letter">{letters[i]}</span> {o}\n            </div>' for i,o in enumerate(q['options']))
-    return f'''    <div class="card" data-qid="{q["qid"]}" data-type="choice" data-answer="{q["answer"]}">
-      <div class="card-header"><span class="card-qnum">第 {q["qid"]} 题</span><span class="card-type choice">单选题</span></div>
-      <div class="card-question">{q["question"]}</div>
-      <div class="options">
-{opts}
-      </div>
-      <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
-        <strong>解析：</strong>{q["analysis"]}
-      </div>
-    </div>'''
-
-def gf(q):
-    qt = q['question'].replace('________', '<span class="blank-input" contenteditable="true"></span>')
-    return f'''    <div class="card" data-qid="{q["qid"]}" data-type="fill" data-answer="{q["answer"]}">
-      <div class="card-header"><span class="card-qnum">第 {q["qid"]} 题</span><span class="card-type fill">填空题</span></div>
-      <div class="card-question">{qt}</div>
-      <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
-        <strong>解析：</strong>{q["analysis"]}
-      </div>
-    </div>'''
-
-def gs(q):
-    return f'''    <div class="card" data-qid="{q["qid"]}" data-type="short" data-answer="">
-      <div class="card-header"><span class="card-qnum">第 {q["qid"]} 题</span><span class="card-type short">简答题</span></div>
-      <div class="card-question">{q["question"]}</div>
-      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
-      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">{q["reference"]}</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>{q["reference"]}</div>
-    </div>'''
-
-def gw(q):
-    ref = q['reference'].replace('\\n', '\n')
-    return f'''    <div class="card" data-qid="{q["qid"]}" data-type="write" data-answer="">
-      <div class="card-header"><span class="card-qnum">第 {q["qid"]} 题</span><span class="card-type write">代码实战</span></div>
-      <div class="card-question"><strong>{q["title"]}</strong></div>
-      <div class="card-desc">{q["desc"]}</div>
-      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
-      <div class="ref-answer"><div class="code-block">{ref}</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">{ref}</div></div>
-    </div>'''
-
-choice_cards = '\n'.join(gc(q) for q in choices)
-fill_cards = '\n'.join(gf(q) for q in fills)
-short_cards = '\n'.join(gs(q) for q in shorts)
-write_cards = '\n'.join(gw(q) for q in writes)
-
-total = len(choices) + len(fills) + len(shorts) + len(writes)
-obj = len(choices) + len(fills)
-subj = len(shorts) + len(writes)
-
-with open('E:/AI_itheima/VS_code/my_blog/static/python_basic_test_006.html', 'r', encoding='utf-8') as f:
-    content = f.read()
-
-lines = content.split('\n')
-
-# Find section div indices and section boundaries using depth tracking
-sec_info = []
-for i, l in enumerate(lines):
-    if '<div class="section">' in l:
-        # Track depth to find matching </div>
-        depth = 0
-        for k in range(i, len(lines)):
-            depth += lines[k].count('<div')
-            depth -= lines[k].count('</div>')
-            if depth == 0 and k > i:
-                sec_info.append((i, k))
-                break
-print(f'Sections found: {[(s, e) for s, e in sec_info]}')
-
-# For each section: find first card line index
-ranges = []
-for idx, (sec_start, sec_end) in enumerate(sec_info):
-    first_card = None
-    for k in range(sec_start + 1, sec_end):
-        if '<div class="card"' in lines[k]:
-            first_card = k
-            break
-    # end_div is sec_end (the matching </div>)
-    ranges.append((first_card, sec_end))
-    print(f'Section {idx}: cards from line {first_card} to {sec_end}')
-
-# Replace from bottom to top to preserve indices
-new_cards_list = [choice_cards, fill_cards, short_cards, write_cards]
-for (fc, ed), nc in sorted(zip(ranges, new_cards_list), key=lambda x: -x[0][0] if x[0][0] is not None else 999999):
-    if fc is None: continue
-    lines = lines[:fc] + nc.split('\n') + lines[ed:]
-
-content = '\n'.join(lines)
-
-# Text replacements
-content = content.replace('<title>LLM 练习 006</title>', '<title>LLM 练习 007</title>')
-content = content.replace('<h1>LLM 练习 006</h1>', '<h1>LLM 练习 007</h1>')
-content = content.replace('32 道题', f'{total} 道题')
-content = content.replace("const STORAGE_KEY = 'py_day05_2_quiz_history';", "const STORAGE_KEY = 'py_day06_quiz_history';")
-content = content.replace("const SAVE_KEY = 'py_day05_2_saves';", "const SAVE_KEY = 'py_day06_saves';")
-content = content.replace('<span id="objDone">0</span>/20', f'<span id="objDone">0</span>/{obj}')
-content = content.replace('<span id="subjDone">0</span>/18', f'<span id="subjDone">0</span>/{subj}')
-content = content.replace('一、单选题（10 题）', f'一、单选题（{len(choices)} 题）')
-content = content.replace('二、填空题（10 题）', f'二、填空题（{len(fills)} 题）')
-content = content.replace('三、简答题（5 题）', f'三、简答题（{len(shorts)} 题）')
-content = content.replace('四、代码实操（7 题）', f'四、代码实战（{len(writes)} 题）')
-content = content.replace(
-    '<a href="/static/python_basic_test_005.html" class="quiz-arrow" title="上一练习">◂</a>',
-    '<a href="/static/python_basic_test_006.html" class="quiz-arrow" title="上一练习">◂</a>')
-content = content.replace(
-    '<a href="/static/python_basic_test_006.html" class="active">练习 006</a>',
-    '<a href="/static/python_basic_test_006.html">练习 006</a>\n        <a href="/static/python_basic_test_007.html" class="active">练习 007</a>')
-content = content.replace(
-    '<span class="quiz-arrow disabled" title="已是最后一个">▸</span>',
-    '<a href="/static/python_basic_test_007.html" class="quiz-arrow" title="下一练习">▸</a>')
-
-out = 'E:/AI_itheima/VS_code/my_blog/static/python_basic_test_007.html'
-with open(out, 'w', encoding='utf-8') as f:
-    f.write(content)
-
-v = open(out, 'r', encoding='utf-8').read()
-print(f'\nOutput: {len(v)} chars')
-print(f'data-qid count: {v.count("data-qid=")}')
-print(f'LLM 练习 007: {"LLM 练习 007" in v}')
-print(f'py_day06_quiz_history: {"py_day06_quiz_history" in v}')
-print(f'qid 38: {"data-qid=\"38\"" in v}')

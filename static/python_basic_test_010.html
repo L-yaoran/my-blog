@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LLM 练习 010</title>
 <link rel="stylesheet" href="/static/js/codemirror/codemirror.min.css?v=20260602">
-
+<link rel="stylesheet" href="/static/js/codemirror/theme/eclipse.min.css?v=20260602">
 <link rel="stylesheet" href="/static/css/quiz.css?v=20260602">
-
 </head>
 <body>
 
@@ -17,7 +16,7 @@
     <h1>LLM 练习 010</h1>
     <div class="subtitle">38 道题 · 选择题 + 填空题 + 简答题 + 代码实战 · 即时反馈 · 记录保存</div>
   </div>
-    <div   <div class="quiz-nav">
+  <div class="quiz-nav">
     <a href="/static/python_basic_test_009.html" class="quiz-arrow" title="上一练习">◂</a>
     <div class="quiz-dropdown">
       <button class="quiz-dropdown-btn" onclick="toggleDropdown(this)">练习 010 <span class="arrow-icon">▾</span></button>
@@ -34,7 +33,7 @@
         <a href="/static/python_basic_test_010.html" class="active">练习 010</a>
         <a href="/static/python_basic_test_011.html">练习 011</a>
       </div>
-      </div>
+    </div>
     <a href="/static/python_basic_test_011.html" class="quiz-arrow" title="下一练习">▸</a>
   </div>
   <div class="sticky-toolbar">
@@ -68,7 +67,6 @@
     </div>
   </div>
 
-  <!-- History detail modal -->
   <div class="history-detail-overlay" id="historyDetailOverlay" onclick="closeHistoryDetail()">
     <div class="history-detail" id="historyDetail" onclick="event.stopPropagation()">
       <div class="history-detail-header">
@@ -79,12 +77,10 @@
     </div>
   </div>
 
-<!-- ====== 一、单选题 10题 ====== -->
 <div class="section">
 
     <div class="section-title"><span class="icon"></span>一、单选题（10 题）</div>
 
-    <!-- Q1: 单选题 -->
     <div class="card" data-qid="1" data-type="choice" data-answer="B">
       <div class="card-header"><span class="card-qnum">第 1 题</span><span class="card-type choice">单选题</span></div>
       <div class="card-question">PyMySQL 的主要作用是（ ）</div>
@@ -103,7 +99,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>PyMySQL 是 Python 操作 MySQL 数据库的第三方库，负责连接 MySQL 并执行 SQL。
       </div>
     </div>
@@ -125,7 +121,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>fetchall() 用于获取查询结果的全部行。commit() 提交事务，rollback() 回滚，close() 关闭连接。
       </div>
     </div>
@@ -147,7 +143,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>UPDATE 会改变数据库内容，必须 commit() 后才真正保存。SELECT、DESC、SHOW 都是只读操作。
       </div>
     </div>
@@ -169,7 +165,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>rollback() 撤销本次未提交的修改，常用于出错时回滚，保证数据一致性。
       </div>
     </div>
@@ -191,7 +187,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>Redis 基于内存读写，速度远快于磁盘数据库，适合缓存和高速访问场景。
       </div>
     </div>
@@ -213,7 +209,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>pip install redis 安装的是 redis-py，即 Python 操作 Redis 的客户端库，不是 Redis 服务本身。
       </div>
     </div>
@@ -235,7 +231,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>Redis String 是最基本的数据类型，适合缓存、计数器、会话存储等场景。
       </div>
     </div>
@@ -257,7 +253,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>Redis Hash 适合存储对象的多个字段，如用户信息（name、age、city）。
       </div>
     </div>
@@ -279,7 +275,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>Sorted Set 每个成员都有分数，Redis 会按分数自动排序，天然适合排行榜场景。
       </div>
     </div>
@@ -301,24 +297,21 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>TTL（Time To Live）过期时间可以让 key 在指定时间后自动删除，避免内存浪费和旧数据残留。
       </div>
     </div>
 </div>
 
-<!-- ====== 二、填空题 10题 ====== -->
-
 <div class="section">
 
     <div class="section-title"><span class="icon"></span>二、填空题（10 题）</div>
 
-    <!-- Q11: 填空题 -->
     <div class="card" data-qid="11" data-type="fill" data-answer="MySQL">
       <div class="card-header"><span class="card-qnum">第 11 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">PyMySQL 是 Python 操作<span class="blank-input" contenteditable="true"></span>数据库的第三方库。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>PyMySQL 是 Python 操作 MySQL 数据库的第三方库，提供连接、执行 SQL、获取结果等功能。
       </div>
     </div>
@@ -326,7 +319,7 @@
       <div class="card-header"><span class="card-qnum">第 12 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">查询语句执行后，如果要获取全部结果，可以使用<span class="blank-input" contenteditable="true"></span>方法。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>fetchall() 返回查询结果的所有行，每行是一个元组。
       </div>
     </div>
@@ -334,7 +327,7 @@
       <div class="card-header"><span class="card-qnum">第 13 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">INSERT、UPDATE、DELETE 会改变数据库内容，执行成功后通常需要<span class="blank-input" contenteditable="true"></span>。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>增删改操作必须 commit() 提交事务后，修改才会真正保存到数据库。
       </div>
     </div>
@@ -342,7 +335,7 @@
       <div class="card-header"><span class="card-qnum">第 14 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">出错时撤销本次未提交修改，可以使用<span class="blank-input" contenteditable="true"></span>。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>rollback() 撤销当前事务中所有未提交的修改，常用于异常处理。
       </div>
     </div>
@@ -350,7 +343,7 @@
       <div class="card-header"><span class="card-qnum">第 15 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">修改和删除语句必须写清楚<span class="blank-input" contenteditable="true"></span>条件，避免误改或误删整张表。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>UPDATE 和 DELETE 不带 WHERE 条件会影响全部记录，必须加上 WHERE 限定范围。
       </div>
     </div>
@@ -358,7 +351,7 @@
       <div class="card-header"><span class="card-qnum">第 16 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">Redis 是一种基于内存的<span class="blank-input" contenteditable="true"></span>存储数据库。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>Redis 是键值对（Key-Value）数据库，所有数据都以 key-value 形式存储。
       </div>
     </div>
@@ -366,7 +359,7 @@
       <div class="card-header"><span class="card-qnum">第 17 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">Python 操作 Redis 的客户端库通常叫 redis-py，安装命令是 pip install<span class="blank-input" contenteditable="true"></span>。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>pip install redis 安装的是 redis-py 客户端库，不是 Redis 服务本身。
       </div>
     </div>
@@ -374,7 +367,7 @@
       <div class="card-header"><span class="card-qnum">第 18 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">Redis 的 setex 可以设置值，并同时设置<span class="blank-input" contenteditable="true"></span>时间。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>setex（Set EXpire）在设置值的同时指定过期秒数，到期后 key 自动删除。
       </div>
     </div>
@@ -382,7 +375,7 @@
       <div class="card-header"><span class="card-qnum">第 19 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">Redis 的 incr 常用于阅读数、点赞数等<span class="blank-input" contenteditable="true"></span>场景。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>incr 对 key 的值加 1，原子操作，适合阅读量、点赞数等计数场景。
       </div>
     </div>
@@ -390,114 +383,108 @@
       <div class="card-header"><span class="card-qnum">第 20 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">Redis 的 ttl 用于查看 key 的剩余<span class="blank-input" contenteditable="true"></span>时间。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>ttl（Time To Live）返回 key 的剩余生存时间，-1 表示永不过期，-2 表示已过期。
       </div>
     </div>
 </div>
 
-<!-- ====== 三、简答题 5题 ====== -->
-
 <div class="section">
 
     <div class="section-title"><span class="icon"></span>三、简答题（10 题）</div>
 
-    <!-- Q21: 简答题 -->
     <div class="card" data-qid="21" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 21 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">请说明 Python、PyMySQL、MySQL 三者关系。</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">Python 负责业务逻辑，PyMySQL 负责连接 MySQL 并执行 SQL，MySQL 负责真正存储和管理数据。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>Python 负责业务逻辑，PyMySQL 负责连接 MySQL 并执行 SQL，MySQL 负责真正存储和管理数据。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>Python 负责业务逻辑，PyMySQL 负责连接 MySQL 并执行 SQL，MySQL 负责真正存储和管理数据。</div>
     </div>
     <div class="card" data-qid="22" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 22 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">为什么查询语句不需要 commit()，但增删改需要？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">查询只是读取数据，不改变数据库内容，所以不需要提交；增删改会改变数据库内容，必须提交后才真正保存。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>查询只是读取数据，不改变数据库内容，所以不需要提交；增删改会改变数据库内容，必须提交后才真正保存。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>查询只是读取数据，不改变数据库内容，所以不需要提交；增删改会改变数据库内容，必须提交后才真正保存。</div>
     </div>
     <div class="card" data-qid="23" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 23 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">fetchall() 和 commit() 分别适合什么场景？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">fetchall() 适合查询场景，用来把查询结果取回 Python；commit() 适合新增、删除、修改场景，用来提交事务。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>fetchall() 适合查询场景，用来把查询结果取回 Python；commit() 适合新增、删除、修改场景，用来提交事务。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>fetchall() 适合查询场景，用来把查询结果取回 Python；commit() 适合新增、删除、修改场景，用来提交事务。</div>
     </div>
     <div class="card" data-qid="24" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 24 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">为什么修改数据时要检查 row_count？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">因为 row_count 可以确认本次操作影响了几行数据，避免没有修改到目标数据，或误改多行数据。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>因为 row_count 可以确认本次操作影响了几行数据，避免没有修改到目标数据，或误改多行数据。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>因为 row_count 可以确认本次操作影响了几行数据，避免没有修改到目标数据，或误改多行数据。</div>
     </div>
     <div class="card" data-qid="25" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 25 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">请用小明给小妹转账 520 的例子说明为什么需要事务。</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">转账 520 至少包含小明扣款和小妹加钱两步。如果小明扣款成功但小妹没收到，就出现数据错误。事务可以保证两步要么都成功，要么都失败。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>转账 520 至少包含小明扣款和小妹加钱两步。如果小明扣款成功但小妹没收到，就出现数据错误。事务可以保证两步要么都成功，要么都失败。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>转账 520 至少包含小明扣款和小妹加钱两步。如果小明扣款成功但小妹没收到，就出现数据错误。事务可以保证两步要么都成功，要么都失败。</div>
     </div>
     <div class="card" data-qid="26" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 26 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">Redis 和 MySQL 的核心区别是什么？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">MySQL 是关系型数据库，适合存结构化核心数据，支持 SQL 和复杂查询；Redis 是基于内存的键值数据库，适合缓存、会话、计数、排行榜等高速访问场景。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>MySQL 是关系型数据库，适合存结构化核心数据，支持 SQL 和复杂查询；Redis 是基于内存的键值数据库，适合缓存、会话、计数、排行榜等高速访问场景。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>MySQL 是关系型数据库，适合存结构化核心数据，支持 SQL 和复杂查询；Redis 是基于内存的键值数据库，适合缓存、会话、计数、排行榜等高速访问场景。</div>
     </div>
     <div class="card" data-qid="27" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 27 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">Redis 为什么常用于缓存？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">因为 Redis 主要基于内存读写，速度快，适合保存热点数据，减少 MySQL 的重复查询压力。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>因为 Redis 主要基于内存读写，速度快，适合保存热点数据，减少 MySQL 的重复查询压力。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>因为 Redis 主要基于内存读写，速度快，适合保存热点数据，减少 MySQL 的重复查询压力。</div>
     </div>
     <div class="card" data-qid="28" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 28 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">Redis 服务和 redis-py 有什么区别？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">Redis 服务是真正存储数据的数据库程序；redis-py 是 Python 操作 Redis 的客户端库。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>Redis 服务是真正存储数据的数据库程序；redis-py 是 Python 操作 Redis 的客户端库。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>Redis 服务是真正存储数据的数据库程序；redis-py 是 Python 操作 Redis 的客户端库。</div>
     </div>
     <div class="card" data-qid="29" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 29 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">请分别举例说明 Redis 的 String、Hash、List、Set、Sorted Set 适合什么场景。</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">String 适合缓存和计数器；Hash 适合用户对象；List 适合任务队列；Set 适合去重和共同标签；Sorted Set 适合排行榜。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>String 适合缓存和计数器；Hash 适合用户对象；List 适合任务队列；Set 适合去重和共同标签；Sorted Set 适合排行榜。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>String 适合缓存和计数器；Hash 适合用户对象；List 适合任务队列；Set 适合去重和共同标签；Sorted Set 适合排行榜。</div>
     </div>
     <div class="card" data-qid="30" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 30 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">为什么缓存和会话通常要设置过期时间？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">因为缓存和会话通常是临时数据，设置过期时间可以避免旧数据长期存在，也能减少 Redis 内存占用。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>因为缓存和会话通常是临时数据，设置过期时间可以避免旧数据长期存在，也能减少 Redis 内存占用。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>因为缓存和会话通常是临时数据，设置过期时间可以避免旧数据长期存在，也能减少 Redis 内存占用。</div>
     </div>
 </div>
-
-<!-- ====== 四、代码实操 7题 ====== -->
 
 <div class="section">
 
     <div class="section-title"><span class="icon"></span>四、代码实战（8 题）</div>
 
-    <!-- Q26: 代码实战 -->
     <div class="card" data-qid="31" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 31 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>模仿题 1：PyMySQL 查询 AI 工具</strong></div>
       <div class="card-desc">连接 ai_work_demo 数据库，查询 ai_tools 表中所有工具的 name 和 status。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">import pymysql
 
 conn = pymysql.connect(
@@ -523,7 +510,7 @@ try:
 finally:
     cursor.close()
     conn.close()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">import pymysql
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import pymysql
 
 conn = pymysql.connect(
     host="127.0.0.1",
@@ -554,7 +541,7 @@ finally:
       <div class="card-question"><strong>模仿题 2：redis-py 连接测试</strong></div>
       <div class="card-desc">使用 redis-py 连接本机 Redis，执行 ping()，并设置 day08:name 为张三。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">import redis
 
 r = redis.Redis(
@@ -571,7 +558,7 @@ try:
 
 finally:
     r.close()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">import redis
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import redis
 
 r = redis.Redis(
     host="localhost",
@@ -593,7 +580,7 @@ finally:
       <div class="card-question"><strong>模仿题 3：Redis String 计数器</strong></div>
       <div class="card-desc">使用 Redis String 记录文章 1001 的阅读数，初始化为 0，然后自增 3 次。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">import redis
 
 r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
@@ -608,7 +595,7 @@ try:
 
 finally:
     r.close()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">import redis
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import redis
 
 r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
 
@@ -628,7 +615,7 @@ finally:
       <div class="card-question"><strong>变体题 1：PyMySQL 启用 LangChain</strong></div>
       <div class="card-desc">把 MySQL 中 LangChain 的状态从未启用改成已启用，要求使用 commit() 和 rollback()。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">import pymysql
 
 conn = pymysql.connect(
@@ -660,7 +647,7 @@ except Exception as error:
 finally:
     cursor.close()
     conn.close()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">import pymysql
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import pymysql
 
 conn = pymysql.connect(
     host="127.0.0.1",
@@ -697,7 +684,7 @@ finally:
       <div class="card-question"><strong>变体题 2：Redis Hash 存储用户信息</strong></div>
       <div class="card-desc">使用 Redis Hash 保存用户 user:2001 的 name、age、city，并打印完整用户信息。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">import redis
 
 r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
@@ -713,7 +700,7 @@ try:
 
 finally:
     r.close()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">import redis
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import redis
 
 r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
 
@@ -734,7 +721,7 @@ finally:
       <div class="card-question"><strong>变体题 3：Redis Set 做标签去重</strong></div>
       <div class="card-desc">向 Redis Set 中添加 python、redis、python、ai 四个标签，观察去重效果。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">import redis
 
 r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
@@ -747,7 +734,7 @@ try:
 
 finally:
     r.close()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">import redis
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import redis
 
 r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
 
@@ -765,7 +752,7 @@ finally:
       <div class="card-question"><strong>综合案例 1：MySQL 查询 + Redis 缓存</strong></div>
       <div class="card-desc">先用 PyMySQL 查询 ai_tools 表中已启用的工具；再把查询结果写入 Redis，key 为 day08:enabled_tools，设置 60 秒过期时间。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">import json
 import pymysql
 import redis
@@ -798,7 +785,7 @@ finally:
     mysql_cursor.close()
     mysql_conn.close()
     redis_client.close()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">import json
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import json
 import pymysql
 import redis
 
@@ -836,7 +823,7 @@ finally:
       <div class="card-question"><strong>综合案例 2：Redis 排行榜</strong></div>
       <div class="card-desc">使用 Redis Sorted Set 保存 AI 工具热度榜：ChatGPT 1000 分，DeepSeek 900 分，Dify 800 分；查询并打印热度从高到低的排行榜。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">import redis
 
 r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
@@ -858,7 +845,7 @@ try:
 
 finally:
     r.close()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block">import redis
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import redis
 
 r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
 
@@ -884,12 +871,12 @@ finally:
 
 </div>
 
+<div class="toast" id="toast"></div>
+
 <script>
 const STORAGE_KEY = 'py_day08_quiz_history';
 const SAVE_KEY = 'py_day08_saves';
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
 <script src="/static/js/codemirror/codemirror.min.js?v=20260602"></script>
 <script src="/static/js/codemirror/mode/python/python.min.js?v=20260602"></script>
 <script src="/static/js/quiz-engine.js?v=20260602"></script>

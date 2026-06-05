@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LLM 练习 008</title>
 <link rel="stylesheet" href="/static/js/codemirror/codemirror.min.css?v=20260602">
-
+<link rel="stylesheet" href="/static/js/codemirror/theme/eclipse.min.css?v=20260602">
 <link rel="stylesheet" href="/static/css/quiz.css?v=20260602">
-
 </head>
 <body>
 
@@ -17,7 +16,7 @@
     <h1>LLM 练习 008</h1>
     <div class="subtitle">32 道题 · 选择题 + 填空题 + 简答题 + 代码实战 · 即时反馈 · 记录保存</div>
   </div>
-    <div   <div class="quiz-nav">
+  <div class="quiz-nav">
     <a href="/static/python_basic_test_007.html" class="quiz-arrow" title="上一练习">◂</a>
     <div class="quiz-dropdown">
       <button class="quiz-dropdown-btn" onclick="toggleDropdown(this)">练习 008 <span class="arrow-icon">▾</span></button>
@@ -34,7 +33,7 @@
         <a href="/static/python_basic_test_010.html">练习 010</a>
         <a href="/static/python_basic_test_011.html">练习 011</a>
       </div>
-      </div>
+    </div>
     <a href="/static/python_basic_test_009.html" class="quiz-arrow" title="下一练习">▸</a>
   </div>
   <div class="sticky-toolbar">
@@ -68,7 +67,6 @@
     </div>
   </div>
 
-  <!-- History detail modal -->
   <div class="history-detail-overlay" id="historyDetailOverlay" onclick="closeHistoryDetail()">
     <div class="history-detail" id="historyDetail" onclick="event.stopPropagation()">
       <div class="history-detail-header">
@@ -79,12 +77,10 @@
     </div>
   </div>
 
-<!-- ====== 一、单选题 10题 ====== -->
 <div class="section">
 
     <div class="section-title"><span class="icon"></span>一、单选题（10 题）</div>
 
-    <!-- Q1: 单选题 -->
     <div class="card" data-qid="1" data-type="choice" data-answer="C">
       <div class="card-header"><span class="card-qnum">第 1 题</span><span class="card-type choice">单选题</span></div>
       <div class="card-question">正则表达式最典型的用途，<strong>不恰当</strong>的选项是（ ）</div>
@@ -103,7 +99,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>正则表达式用于文本模式匹配，不能替代 if-else 做业务分支判断。
       </div>
     </div>
@@ -125,7 +121,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong><code>re.match()</code> 从字符串开头位置尝试匹配，匹配失败返回 <code>None</code>。
       </div>
     </div>
@@ -147,7 +143,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong><code>re.search()</code> 扫描整个字符串找第一个匹配，<code>re.match()</code> 只从字符串开头匹配。
       </div>
     </div>
@@ -169,7 +165,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong><code>re.findall()</code> 返回所有匹配组成的列表，无匹配时返回空列表 <code>[]</code>。
       </div>
     </div>
@@ -191,7 +187,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>DCL（Data Control Language）负责权限管理（如 GRANT、REVOKE），不是排序分组。
       </div>
     </div>
@@ -213,7 +209,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>没有 WHERE 条件的 DELETE 会删除表中所有行，但表结构（列定义等）仍然保留。
       </div>
     </div>
@@ -235,7 +231,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>主键用于唯一标识表中一行，不可重复且非空，通常每张表设计一个主键。
       </div>
     </div>
@@ -257,7 +253,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>外键约束保证引用完整性，要求子表的外键值必须在父表的主键中存在。
       </div>
     </div>
@@ -279,7 +275,7 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>分组查询中，SELECT 的字段要么在 GROUP BY 中声明，要么必须包裹在聚合函数内。
       </div>
     </div>
@@ -301,24 +297,21 @@
             </div>
       </div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>WHERE 在分组前过滤原始数据，HAVING 在分组聚合后过滤结果，HAVING 可以使用聚合函数。
       </div>
     </div>
 </div>
 
-<!-- ====== 二、填空题 10题 ====== -->
-
 <div class="section">
 
     <div class="section-title"><span class="icon"></span>二、填空题（10 题）</div>
 
-    <!-- Q11: 填空题 -->
     <div class="card" data-qid="11" data-type="fill" data-answer="findall">
       <div class="card-header"><span class="card-qnum">第 11 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">在 Python 中，<code>re</code> 模块三种常用匹配方式为 <code>match</code>、<code>search</code> 和 <span class="blank-input" contenteditable="true"></span>。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>re 模块三种常用匹配方式：match（开头匹配）、search（全文第一个匹配）、findall（返回所有匹配列表）。
       </div>
     </div>
@@ -326,7 +319,7 @@
       <div class="card-header"><span class="card-qnum">第 12 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question"><code>match</code>/<code>search</code> 匹配成功时常返回 <strong>Match 对象</strong>，取出匹配文本常用方法 <span class="blank-input" contenteditable="true"></span>（无分组时）。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>Match 对象的 <code>.group()</code> 方法用于取出匹配文本，<code>.group(0)</code> 或 <code>.group()</code> 取完整匹配。
       </div>
     </div>
@@ -334,7 +327,7 @@
       <div class="card-header"><span class="card-qnum">第 13 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">正则中量词默认多为 <strong><span class="blank-input" contenteditable="true"></span></strong> 模式；在其后加 <strong><code>?</code></strong> 常表示 <strong><span class="blank-input" contenteditable="true"></span></strong> 模式。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>量词默认贪婪（尽可能多匹配），加 <code>?</code> 变为非贪婪（尽可能少匹配）。
       </div>
     </div>
@@ -342,7 +335,7 @@
       <div class="card-header"><span class="card-qnum">第 14 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">小括号 <code>(...)</code> 在正则中常用于 <strong><span class="blank-input" contenteditable="true"></span></strong>，便于后续按序号取出子串。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>小括号用于创建捕获组，可通过 <code>.group(1)</code>、<code>.group(2)</code> 分别提取第一组、第二组匹配内容。
       </div>
     </div>
@@ -350,7 +343,7 @@
       <div class="card-header"><span class="card-qnum">第 15 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">常见修饰符：<code>re.I</code> 表示忽略大小写；<code>re.S</code> 常使 <strong>.</strong> 能匹配包括 <span class="blank-input" contenteditable="true"></span> 在内的更多情况（与默认"点"行为相关，按课堂理解填写）。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong><code>re.S</code>（即 re.DOTALL）使 <code>.</code> 能匹配包括换行符在内的任意字符，默认情况下 <code>.</code> 不匹配换行。
       </div>
     </div>
@@ -358,7 +351,7 @@
       <div class="card-header"><span class="card-qnum">第 16 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">数据库按存储形式大致分为关系型（表格行列）与 <span class="blank-input" contenteditable="true"></span> 型（如键值、文档等）。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>数据库分为关系型（如 MySQL）和非关系型（NoSQL，如 Redis、MongoDB）。
       </div>
     </div>
@@ -366,7 +359,7 @@
       <div class="card-header"><span class="card-qnum">第 17 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">创建数据表属于 <span class="blank-input" contenteditable="true"></span>（填 <code>DDL</code> / <code>DML</code> / <code>DQL</code>）范畴。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>DDL（Data Definition Language）负责定义数据库对象，创建表属于 DDL。
       </div>
     </div>
@@ -374,7 +367,7 @@
       <div class="card-header"><span class="card-qnum">第 18 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">更新表记录的典型格式：<code>UPDATE 表名 SET 字段=值 [<span class="blank-input" contenteditable="true"></span> 条件];</code>。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>UPDATE 语句必须带 WHERE 条件，否则会更新整张表所有记录。
       </div>
     </div>
@@ -382,7 +375,7 @@
       <div class="card-header"><span class="card-qnum">第 19 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">分页查询中限制返回行数的关键字常写为：<code>LIMIT</code>（搭配 <code>OFFSET</code> 或双参数写法，按你课堂笔记填写一种即可）<span class="blank-input" contenteditable="true"></span>。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>MySQL 分页用 LIMIT m,n 表示从第 m 条开始取 n 条，或 LIMIT n 等价于 LIMIT 0,n。
       </div>
     </div>
@@ -390,225 +383,219 @@
       <div class="card-header"><span class="card-qnum">第 20 题</span><span class="card-type fill">填空题</span></div>
       <div class="card-question">多表查询时，把两张表按关联条件连成结果集的语句中常出现关键字 <strong><span class="blank-input" contenteditable="true"></span></strong>。</div>
       <div class="feedback">
-        <div class="result-tag correct-tag">正确</div>
+        <div class="result-tag correct-tag">✓ 正确</div>
         <strong>解析：</strong>多表查询通过 JOIN 关键字将表按关联条件连接，如 INNER JOIN、LEFT JOIN 等。
       </div>
     </div>
 </div>
 
-<!-- ====== 三、简答题 5题 ====== -->
-
 <div class="section">
 
     <div class="section-title"><span class="icon"></span>三、简答题（7 题）</div>
 
-    <!-- Q21: 简答题 -->
     <div class="card" data-qid="21" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 21 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">用自己的话说明：正则表达式主要解决什么问题？在哪些场景会用到？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">正则表达式用一套模式描述"长什么样"的字符串，用于在大文本里做检索、校验、替换、提取。常见场景包括：手机号/邮箱/身份证等格式校验、日志与文本解析、爬虫从网页中批量抽取链接或标签内容等。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>正则表达式用一套模式描述"长什么样"的字符串，用于在大文本里做检索、校验、替换、提取。常见场景包括：手机号/邮箱/身份证等格式校验、日志与文本解析、爬虫从网页中批量抽取链接或标签内容等。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>正则表达式用一套模式描述"长什么样"的字符串，用于在大文本里做检索、校验、替换、提取。常见场景包括：手机号/邮箱/身份证等格式校验、日志与文本解析、爬虫从网页中批量抽取链接或标签内容等。</div>
     </div>
     <div class="card" data-qid="22" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 22 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">对比说明 <code>re.match</code>、<code>re.search</code>、<code>re.findall</code> 的匹配范围、返回值以及是否需要 <code>.group()</code>。</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);"><strong>match</strong>：从字符串开头匹配，成功返回 Match 对象，失败 None，取内容用 .group()（需先判空）。<strong>search</strong>：在整串里找第一个匹配，返回值与 group 用法类似。<strong>findall</strong>：找所有匹配，通常返回字符串列表（或按分组规则返回元组列表），一般不再对单个结果调 .group()。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><strong>match</strong>：从字符串开头匹配，成功返回 Match 对象，失败 None，取内容用 .group()（需先判空）。<strong>search</strong>：在整串里找第一个匹配，返回值与 group 用法类似。<strong>findall</strong>：找所有匹配，通常返回字符串列表（或按分组规则返回元组列表），一般不再对单个结果调 .group()。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><strong>match</strong>：从字符串开头匹配，成功返回 Match 对象，失败 None，取内容用 .group()（需先判空）。<strong>search</strong>：在整串里找第一个匹配，返回值与 group 用法类似。<strong>findall</strong>：找所有匹配，通常返回字符串列表（或按分组规则返回元组列表），一般不再对单个结果调 .group()。</div>
     </div>
     <div class="card" data-qid="23" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 23 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">什么是正则的"贪婪"与"非贪婪"？为什么爬虫抽取时往往要注意二者区别？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">贪婪：量词默认尽量多匹配；非贪婪：在量词后加 ? 尽量少匹配。爬虫里若模式写得太贪婪，可能一次吃掉过多 HTML，拿不到想要的每条细粒度内容；适当用非贪婪可一段段匹配标题、链接等。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>贪婪：量词默认尽量多匹配；非贪婪：在量词后加 ? 尽量少匹配。爬虫里若模式写得太贪婪，可能一次吃掉过多 HTML，拿不到想要的每条细粒度内容；适当用非贪婪可一段段匹配标题、链接等。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>贪婪：量词默认尽量多匹配；非贪婪：在量词后加 ? 尽量少匹配。爬虫里若模式写得太贪婪，可能一次吃掉过多 HTML，拿不到想要的每条细粒度内容；适当用非贪婪可一段段匹配标题、链接等。</div>
     </div>
     <div class="card" data-qid="24" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 24 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">关系型数据库里"库、表、行、列"分别对应什么含义？各举一句生活类或商品类例子说明。</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">库：一类业务的数据集合（如 shop）。表：同一类实体的二维表（如 goods 商品表）。行：表中的一条记录（如一件具体商品）。列：记录的属性字段（如 name、price）。例：goods 表一行就是一款商品，各列是它的名称、价格等。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>库：一类业务的数据集合（如 shop）。表：同一类实体的二维表（如 goods 商品表）。行：表中的一条记录（如一件具体商品）。列：记录的属性字段（如 name、price）。例：goods 表一行就是一款商品，各列是它的名称、价格等。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>库：一类业务的数据集合（如 shop）。表：同一类实体的二维表（如 goods 商品表）。行：表中的一条记录（如一件具体商品）。列：记录的属性字段（如 name、price）。例：goods 表一行就是一款商品，各列是它的名称、价格等。</div>
     </div>
     <div class="card" data-qid="25" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 25 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">简述 <code>DDL</code>、<code>DML</code>、<code>DQL</code> 各管什么，并各举一个关键字。</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);"><strong>DDL</strong>：定义数据库对象（库/表/列），如 CREATE、DROP、ALTER。<strong>DML</strong>：对表中数据行做增删改，如 INSERT、UPDATE、DELETE。<strong>DQL</strong>：查询数据，核心 SELECT。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><strong>DDL</strong>：定义数据库对象（库/表/列），如 CREATE、DROP、ALTER。<strong>DML</strong>：对表中数据行做增删改，如 INSERT、UPDATE、DELETE。<strong>DQL</strong>：查询数据，核心 SELECT。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><strong>DDL</strong>：定义数据库对象（库/表/列），如 CREATE、DROP、ALTER。<strong>DML</strong>：对表中数据行做增删改，如 INSERT、UPDATE、DELETE。<strong>DQL</strong>：查询数据，核心 SELECT。</div>
     </div>
     <div class="card" data-qid="26" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 26 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">什么时候用 <code>WHERE</code>，什么时候用 <code>HAVING</code>？能否在 <code>WHERE</code> 里直接写 <code>COUNT(*) > 5</code> 这类条件？为什么？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">WHERE 在分组前过滤原始行。HAVING 在 GROUP BY 与聚合之后对分组结果再过滤，且 HAVING 中可以使用聚合函数。一般不能在 WHERE 里直接写 COUNT(*) > 5，因为 WHERE 阶段尚未完成分组聚合，聚合值尚未形成；课堂顺序常记为：WHERE → GROUP BY → 聚合 → HAVING。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>WHERE 在分组前过滤原始行。HAVING 在 GROUP BY 与聚合之后对分组结果再过滤，且 HAVING 中可以使用聚合函数。一般不能在 WHERE 里直接写 COUNT(*) > 5，因为 WHERE 阶段尚未完成分组聚合，聚合值尚未形成；课堂顺序常记为：WHERE → GROUP BY → 聚合 → HAVING。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>WHERE 在分组前过滤原始行。HAVING 在 GROUP BY 与聚合之后对分组结果再过滤，且 HAVING 中可以使用聚合函数。一般不能在 WHERE 里直接写 COUNT(*) > 5，因为 WHERE 阶段尚未完成分组聚合，聚合值尚未形成；课堂顺序常记为：WHERE → GROUP BY → 聚合 → HAVING。</div>
     </div>
     <div class="card" data-qid="27" data-type="short" data-answer="">
       <div class="card-header"><span class="card-qnum">第 27 题</span><span class="card-type short">简答题</span></div>
       <div class="card-question">主键与外键有什么区别？外键约束带来的直接好处是什么？</div>
       <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">主键：本表内唯一标识一行，不可重复且非空。外键：本表某列取值须引用另一张表主键（或唯一键）已存在的值。好处是：保证引用完整性，减少"孤儿数据"，让表间关系在插入/更新时由数据库强制检查。</div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong>主键：本表内唯一标识一行，不可重复且非空。外键：本表某列取值须引用另一张表主键（或唯一键）已存在的值。好处是：保证引用完整性，减少"孤儿数据"，让表间关系在插入/更新时由数据库强制检查。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>主键：本表内唯一标识一行，不可重复且非空。外键：本表某列取值须引用另一张表主键（或唯一键）已存在的值。好处是：保证引用完整性，减少"孤儿数据"，让表间关系在插入/更新时由数据库强制检查。</div>
     </div>
 </div>
 
-<!-- ====== 四、代码实操 7题 ====== -->
-
 <div class="section">
 
-    <div class="section-title"><span class="icon"></span>四、代码实战（8 题）</div>
+    <div class="section-title"><span class="icon"></span>四、代码实战（5 题）</div>
 
-    <!-- Q26: 代码实战 -->
     <div class="card" data-qid="28" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 28 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>re 三种匹配方式对比（必做）</strong></div>
       <div class="card-desc">准备同一长字符串（含重复关键词），分别调用 re.match、re.search、re.findall，打印返回值类型及内容。用注释说明：为何有些情况 match 得到 None 而 search 仍能匹配。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
-      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> re
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">import re
 
-s = <span class="str">"我学 Python，你也学 Python 吗？"</span>
-p = <span class="str">"Python"</span>
-
-m = re.match(p, s)
-print(<span class="str">"match:"</span>, m)  <span class="cm"># None（开头不是 Python）</span>
-
-sr = re.search(p, s)
-<span class="kw">if</span> sr:
-    print(<span class="str">"search:"</span>, sr.<span class="kw">group</span>())  <span class="cm"># Python</span>
-
-fa = re.findall(p, s)
-print(<span class="str">"findall:"</span>, fa)  <span class="cm"># [<span class="str">"Python"</span>, <span class="str">"Python"</span>]&lt;/span&gt;</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> re
-
-s = <span class="str">"我学 Python，你也学 Python 吗？"</span>
-p = <span class="str">"Python"</span>
+s = "我学 Python，你也学 Python 吗？"
+p = "Python"
 
 m = re.match(p, s)
-print(<span class="str">"match:"</span>, m)  <span class="cm"># None（开头不是 Python）</span>
+print("match:", m)  # None（开头不是 Python）
 
 sr = re.search(p, s)
-<span class="kw">if</span> sr:
-    print(<span class="str">"search:"</span>, sr.<span class="kw">group</span>())  <span class="cm"># Python</span>
+if sr:
+    print("search:", sr.group())  # Python
 
 fa = re.findall(p, s)
-print(<span class="str">"findall:"</span>, fa)  <span class="cm"># [<span class="str">"Python"</span>, <span class="str">"Python"</span>]&lt;/span&gt;</div></div>
+print("findall:", fa)  # ["Python", "Python"]</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import re
+
+s = "我学 Python，你也学 Python 吗？"
+p = "Python"
+
+m = re.match(p, s)
+print("match:", m)  # None（开头不是 Python）
+
+sr = re.search(p, s)
+if sr:
+    print("search:", sr.group())  # Python
+
+fa = re.findall(p, s)
+print("findall:", fa)  # ["Python", "Python"]</div></div>
     </div>
     <div class="card" data-qid="29" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 29 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>分组提取（必做）</strong></div>
       <div class="card-desc">写一条正则，从示例串中提取区号和本地号码（如 010-12345678）。使用分组，通过 Match 的 group(0/1/2) 分别打印整段匹配、第一组、第二组。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
-      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> re
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">import re
 
-s = <span class="str">"客服电话：010-12345678"</span>
-r = re.search(r<span class="str">"(\d{3,4})-(\d{6,8})"</span>, s)
-<span class="kw">if</span> r:
-    print(r.<span class="kw">group</span>(<span class="num">0</span>))  <span class="cm"># 010-12345678</span>
-    print(r.<span class="kw">group</span>(<span class="num">1</span>))  <span class="cm"># 010</span>
-    print(r.<span class="kw">group</span>(<span class="num">2</span>))  <span class="cm"># 12345678</span></div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> re
+s = "客服电话：010-12345678"
+r = re.search(r"(\d{3,4})-(\d{6,8})", s)
+if r:
+    print(r.group(0))  # 010-12345678
+    print(r.group(1))  # 010
+    print(r.group(2))  # 12345678</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import re
 
-s = <span class="str">"客服电话：010-12345678"</span>
-r = re.search(r<span class="str">"(\d{3,4})-(\d{6,8})"</span>, s)
-<span class="kw">if</span> r:
-    print(r.<span class="kw">group</span>(<span class="num">0</span>))  <span class="cm"># 010-12345678</span>
-    print(r.<span class="kw">group</span>(<span class="num">1</span>))  <span class="cm"># 010</span>
-    print(r.<span class="kw">group</span>(<span class="num">2</span>))  <span class="cm"># 12345678</span></div></div>
+s = "客服电话：010-12345678"
+r = re.search(r"(\d{3,4})-(\d{6,8})", s)
+if r:
+    print(r.group(0))  # 010-12345678
+    print(r.group(1))  # 010
+    print(r.group(2))  # 12345678</div></div>
     </div>
     <div class="card" data-qid="30" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 30 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>MySQL 建库建表与插入（必做）</strong></div>
       <div class="card-desc">设计一张商品表（至少含：id 主键、name、price、category_id）。写出 CREATE TABLE（类型与约束合理）、至少 2 条 INSERT。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
-      <div class="ref-answer"><div class="code-block"><span class="kw">CREATE</span> <span class="kw">TABLE</span> goods (
-    id <span class="kw">INT</span> UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> <span class="kw">AUTO_INCREMENT</span>,
-    name <span class="kw">VARCHAR</span>(<span class="num">100</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,
-    price <span class="kw">DECIMAL</span>(<span class="num">10</span>,<span class="num">2</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,
-    category_id <span class="kw">INT</span> UNSIGNED <span class="kw">NOT</span> <span class="kw">NULL</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">CREATE TABLE goods (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    category_id INT UNSIGNED NOT NULL
 );
 
-<span class="kw">INSERT</span> <span class="kw">INTO</span> goods (name, price, category_id) <span class="kw">VALUES</span> (<span class="str">"苹果"</span>, <span class="num">5.50</span>, <span class="num">1</span>);
-<span class="kw">INSERT</span> <span class="kw">INTO</span> goods (name, price, category_id) <span class="kw">VALUES</span> (<span class="str">"牛奶"</span>, <span class="num">12.00</span>, <span class="num">2</span>);</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">CREATE</span> <span class="kw">TABLE</span> goods (
-    id <span class="kw">INT</span> UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> <span class="kw">AUTO_INCREMENT</span>,
-    name <span class="kw">VARCHAR</span>(<span class="num">100</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,
-    price <span class="kw">DECIMAL</span>(<span class="num">10</span>,<span class="num">2</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,
-    category_id <span class="kw">INT</span> UNSIGNED <span class="kw">NOT</span> <span class="kw">NULL</span>
+INSERT INTO goods (name, price, category_id) VALUES ("苹果", 5.50, 1);
+INSERT INTO goods (name, price, category_id) VALUES ("牛奶", 12.00, 2);</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">CREATE TABLE goods (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    category_id INT UNSIGNED NOT NULL
 );
 
-<span class="kw">INSERT</span> <span class="kw">INTO</span> goods (name, price, category_id) <span class="kw">VALUES</span> (<span class="str">"苹果"</span>, <span class="num">5.50</span>, <span class="num">1</span>);
-<span class="kw">INSERT</span> <span class="kw">INTO</span> goods (name, price, category_id) <span class="kw">VALUES</span> (<span class="str">"牛奶"</span>, <span class="num">12.00</span>, <span class="num">2</span>);</div></div>
+INSERT INTO goods (name, price, category_id) VALUES ("苹果", 5.50, 1);
+INSERT INTO goods (name, price, category_id) VALUES ("牛奶", 12.00, 2);</div></div>
     </div>
     <div class="card" data-qid="31" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 31 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>MySQL 单表条件、排序与分页（必做）</strong></div>
       <div class="card-desc">基于上一题的表，写一条 SELECT：带 WHERE（如价格区间或分类）、ORDER BY、LIMIT 只取前几条。注释说明：无 WHERE 的 UPDATE/DELETE 在生产环境的风险。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
-      <div class="ref-answer"><div class="code-block"><span class="kw">SELECT</span> id, name, price
-<span class="kw">FROM</span> goods
-<span class="kw">WHERE</span> price <span class="kw">BETWEEN</span> <span class="num">5</span> <span class="kw">AND</span> <span class="num">20</span>
-<span class="kw">ORDER</span> <span class="kw">BY</span> price <span class="kw">DESC</span>
-<span class="kw">LIMIT</span> <span class="num">10</span>;
--- 无 <span class="kw">WHERE</span> 的 <span class="kw">UPDATE</span>/<span class="kw">DELETE</span> 易误伤全表，生产环境须谨慎</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">SELECT</span> id, name, price
-<span class="kw">FROM</span> goods
-<span class="kw">WHERE</span> price <span class="kw">BETWEEN</span> <span class="num">5</span> <span class="kw">AND</span> <span class="num">20</span>
-<span class="kw">ORDER</span> <span class="kw">BY</span> price <span class="kw">DESC</span>
-<span class="kw">LIMIT</span> <span class="num">10</span>;
--- 无 <span class="kw">WHERE</span> 的 <span class="kw">UPDATE</span>/<span class="kw">DELETE</span> 易误伤全表，生产环境须谨慎</div></div>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">SELECT id, name, price
+FROM goods
+WHERE price BETWEEN 5 AND 20
+ORDER BY price DESC
+LIMIT 10;
+-- 无 WHERE 的 UPDATE/DELETE 易误伤全表，生产环境须谨慎</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">SELECT id, name, price
+FROM goods
+WHERE price BETWEEN 5 AND 20
+ORDER BY price DESC
+LIMIT 10;
+-- 无 WHERE 的 UPDATE/DELETE 易误伤全表，生产环境须谨慎</div></div>
     </div>
     <div class="card" data-qid="32" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 32 题</span><span class="card-type write">代码实战</span></div>
       <div class="card-question"><strong>MySQL 两表关联查询（重点必做）</strong></div>
       <div class="card-desc">再建一张分类表（id、category_name），商品表的 category_id 引用分类表 id。写一条多表 JOIN 查询：查出商品名、价格、分类名称。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
-      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案</span>
-      <div class="ref-answer"><div class="code-block"><span class="kw">CREATE</span> <span class="kw">TABLE</span> category (
-    id <span class="kw">INT</span> UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> <span class="kw">AUTO_INCREMENT</span>,
-    category_name <span class="kw">VARCHAR</span>(<span class="num">50</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">CREATE TABLE category (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    category_name VARCHAR(50) NOT NULL
 );
 
-<span class="kw">INSERT</span> <span class="kw">INTO</span> category (id, category_name)
-<span class="kw">VALUES</span> (<span class="num">1</span>, <span class="str">"水果"</span>), (<span class="num">2</span>, <span class="str">"乳品"</span>);
+INSERT INTO category (id, category_name)
+VALUES (1, "水果"), (2, "乳品");
 
-<span class="kw">SELECT</span> g.name, g.price, c.category_name
-<span class="kw">FROM</span> goods g
-<span class="kw">JOIN</span> category c <span class="kw">ON</span> g.category_id = c.id;</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">CREATE</span> <span class="kw">TABLE</span> category (
-    id <span class="kw">INT</span> UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> <span class="kw">AUTO_INCREMENT</span>,
-    category_name <span class="kw">VARCHAR</span>(<span class="num">50</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>
+SELECT g.name, g.price, c.category_name
+FROM goods g
+JOIN category c ON g.category_id = c.id;</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">CREATE TABLE category (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    category_name VARCHAR(50) NOT NULL
 );
 
-<span class="kw">INSERT</span> <span class="kw">INTO</span> category (id, category_name)
-<span class="kw">VALUES</span> (<span class="num">1</span>, <span class="str">"水果"</span>), (<span class="num">2</span>, <span class="str">"乳品"</span>);
+INSERT INTO category (id, category_name)
+VALUES (1, "水果"), (2, "乳品");
 
-<span class="kw">SELECT</span> g.name, g.price, c.category_name
-<span class="kw">FROM</span> goods g
-<span class="kw">JOIN</span> category c <span class="kw">ON</span> g.category_id = c.id;</div></div>
+SELECT g.name, g.price, c.category_name
+FROM goods g
+JOIN category c ON g.category_id = c.id;</div></div>
     </div>
 </div>
 
 </div>
 
+<div class="toast" id="toast"></div>
+
 <script>
 const STORAGE_KEY = 'py_day06_new_quiz_history';
 const SAVE_KEY = 'py_day06_new_saves';
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
 <script src="/static/js/codemirror/codemirror.min.js?v=20260602"></script>
 <script src="/static/js/codemirror/mode/python/python.min.js?v=20260602"></script>
 <script src="/static/js/quiz-engine.js?v=20260602"></script>
