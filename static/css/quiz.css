@@ -2,9 +2,8 @@
 @import url('variables.css');
 
 :root {
-  --void: #faf9f8; --surface: #ffffff; --card: #ffffff; --gold: #d97706; --blue: #2563eb;
-  --green: #059669; --red: #dc2626; --purple: #7c3aed; --text: #1a1a1a; --sub: #6c757d;
-  --muted: #9ca3af; --border: #e5e7eb; --code-bg: #f3f4f6; --grid: rgba(0,0,0,0.02);
+  --card: #ffffff;
+  --grid: rgba(0,0,0,0.02);
 }
 body {
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
@@ -195,4 +194,28 @@ textarea.fill-input { resize: vertical; min-height: 70px; font-family: system-ui
   .card.wrong { border-color: var(--red); }
   .toast { background: var(--green); }
 }
+
+/* Dark mode via .dark-mode class (manual toggle) */
+.dark-mode { --void: #0d0d0d; --surface: #1a1a1a; --card: #222222; --text: #e5e5e5; --sub: #9ca3af; --muted: #6c757d; --border: #333333; --code-bg: #111111; --grid: rgba(255,255,255,0.03); }
+.dark-mode body, .dark-mode { background: #0d0d0d; color: #e5e5e5; }
+.dark-mode .card { border-color: #333; }
+.dark-mode .card-question code { background: #111; color: #d1d5db; }
+.dark-mode .fill-input, .dark-mode .code-editor { background: #1a1a1a; color: #e5e5e5; border-color: #333; }
+.dark-mode .code-editor { background: #f8f9fa !important; color: #1a1a1a !important; }
+.dark-mode .option { border-color: #333; color: #9ca3af; }
+.dark-mode .option:hover { background: rgba(255,255,255,0.05); }
+.dark-mode .option.selected { border-color: var(--blue); color: #e5e5e5; background: rgba(37,99,235,0.15); }
+.dark-mode .history-panel { background: #1a1a1a; border-color: #333; }
+.dark-mode .history-item { border-bottom-color: #333; }
+.dark-mode .history-item:hover { background: #111; }
+.dark-mode .quiz-dropdown-btn { background: #1a1a1a; border-color: #333; color: #e5e5e5; }
+.dark-mode .quiz-dropdown-menu { background: #1a1a1a; border-color: #333; }
+.dark-mode .quiz-nav .quiz-arrow { border-color: #333; color: #9ca3af; }
+.dark-mode .sticky-toolbar { border-bottom-color: #333; }
+.dark-mode .code-block { background: #111; border-color: #333; }
+.dark-mode .card-type { background: rgba(255,255,255,0.1); }
+.dark-mode .card.correct { border-color: var(--green); }
+.dark-mode .card.wrong { border-color: var(--red); }
+.dark-mode .back-link { color: #9ca3af; }
+.dark-mode .back-link:hover { color: #e5e5e5; }
 

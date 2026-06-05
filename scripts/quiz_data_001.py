@@ -15,16 +15,16 @@ choices = [
 ]
 
 fills = [
-    {'qid': 11, 'question': '面向对象编程中，类可以理解为（<input type="text" class="blank-input">），对象可以理解为（<input type="text" class="blank-input">）。', 'answer': '模板；具体实例', 'analysis': '类相当于设计图（模板），对象相当于根据设计图造出来的具体东西（实例）。'},
-    {'qid': 12, 'question': '定义类时推荐使用（<input type="text" class="blank-input">）命名法，例如 <code>StudentInfo</code>。', 'answer': '大驼峰', 'analysis': '类名推荐使用大驼峰命名法（每个单词首字母大写），如 <code>StudentInfo</code>、<code>HttpRequest</code>。'},
-    {'qid': 13, 'question': '创建对象的语法通常是：<code>对象名 = （</code><input type="text" class="blank-input"><code>）()</code>。', 'answer': '类名', 'analysis': '创建对象的语法为 <code>对象名 = 类名()</code>，如 <code>stu = Student()</code>。'},
-    {'qid': 14, 'question': '<code>self</code> 表示（<input type="text" class="blank-input">）。', 'answer': '调用当前方法的对象', 'analysis': '<code>self</code> 代表调用当前方法的那个具体对象，不同对象调用时 <code>self</code> 指向不同。'},
-    {'qid': 15, 'question': '<code>__init__</code> 方法用于初始化对象的（<input type="text" class="blank-input">）。', 'answer': '属性', 'analysis': '<code>__init__</code> 在对象创建时自动执行，用于给对象设置初始属性值。'},
-    {'qid': 16, 'question': '在类内部定义方法时，第一个参数通常写成（<input type="text" class="blank-input">）。', 'answer': 'self', 'analysis': '虽然第一个参数名字可以自定义，但 Python 社区约定俗成使用 <code>self</code>。'},
-    {'qid': 17, 'question': '<code>print(对象)</code> 时，如果想显示自定义信息，可以重写（<input type="text" class="blank-input">）方法。', 'answer': '__str__', 'analysis': '重写 <code>__str__()</code> 方法并返回字符串，即可自定义 <code>print()</code> 输出。'},
-    {'qid': 18, 'question': '封装的好处之一是可以让属性和方法组织更清晰，提高代码的（<input type="text" class="blank-input">）。', 'answer': '可维护性', 'analysis': '封装让代码结构清晰、数据安全、便于维护。这里填"可维护性"或"复用性"都合理。'},
-    {'qid': 19, 'question': '私有属性通常在属性名前加（<input type="text" class="blank-input">）。', 'answer': '双下划线__', 'analysis': '在属性名前加 <code>__</code>（双下划线），如 <code>self.__balance</code>，表示私有属性。'},
-    {'qid': 20, 'question': '如果想安全读取私有属性，通常可以在类中提供（<input type="text" class="blank-input">）方法。', 'answer': 'get_xxx', 'analysis': '提供类似 <code>get_balance()</code> 的公开方法来安全读取私有属性，是封装的标准做法。'},
+    {'qid': 11, 'question': '面向对象编程中，类可以理解为（________），对象可以理解为（________）。', 'answer': '模板；具体实例', 'analysis': '类相当于设计图（模板），对象相当于根据设计图造出来的具体东西（实例）。'},
+    {'qid': 12, 'question': '定义类时推荐使用（________）命名法，例如 <code>StudentInfo</code>。', 'answer': '大驼峰', 'analysis': '类名推荐使用大驼峰命名法（每个单词首字母大写），如 <code>StudentInfo</code>、<code>HttpRequest</code>。'},
+    {'qid': 13, 'question': '创建对象的语法通常是：<code>对象名 = （</code>________<code>）()</code>。', 'answer': '类名', 'analysis': '创建对象的语法为 <code>对象名 = 类名()</code>，如 <code>stu = Student()</code>。'},
+    {'qid': 14, 'question': '<code>self</code> 表示（________）。', 'answer': '调用当前方法的对象', 'analysis': '<code>self</code> 代表调用当前方法的那个具体对象，不同对象调用时 <code>self</code> 指向不同。'},
+    {'qid': 15, 'question': '<code>__init__</code> 方法用于初始化对象的（________）。', 'answer': '属性', 'analysis': '<code>__init__</code> 在对象创建时自动执行，用于给对象设置初始属性值。'},
+    {'qid': 16, 'question': '在类内部定义方法时，第一个参数通常写成（________）。', 'answer': 'self', 'analysis': '虽然第一个参数名字可以自定义，但 Python 社区约定俗成使用 <code>self</code>。'},
+    {'qid': 17, 'question': '<code>print(对象)</code> 时，如果想显示自定义信息，可以重写（________）方法。', 'answer': '__str__', 'analysis': '重写 <code>__str__()</code> 方法并返回字符串，即可自定义 <code>print()</code> 输出。'},
+    {'qid': 18, 'question': '封装的好处之一是可以让属性和方法组织更清晰，提高代码的（________）。', 'answer': '可维护性', 'analysis': '封装让代码结构清晰、数据安全、便于维护。这里填"可维护性"或"复用性"都合理。'},
+    {'qid': 19, 'question': '私有属性通常在属性名前加（________）。', 'answer': '双下划线__', 'analysis': '在属性名前加 <code>__</code>（双下划线），如 <code>self.__balance</code>，表示私有属性。'},
+    {'qid': 20, 'question': '如果想安全读取私有属性，通常可以在类中提供（________）方法。', 'answer': 'get_xxx', 'analysis': '提供类似 <code>get_balance()</code> 的公开方法来安全读取私有属性，是封装的标准做法。'},
 ]
 
 shorts = [
