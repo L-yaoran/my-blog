@@ -1,6 +1,6 @@
 {
   "id": "001",
-  "title": "Python 练习 001",
+  "title": "LLM 练习 001",
   "subtitle": "38 道题 · 选择题 + 填空题 + 简答题 + 代码实战",
   "storage_key": "py_oop_quiz_history",
   "save_key": "py_day01_saves",
@@ -16,7 +16,9 @@
       {"id": "006", "label": "练习 006"},
       {"id": "007", "label": "练习 007"},
       {"id": "008", "label": "练习 008"},
-      {"id": "009", "label": "练习 009"}
+      {"id": "009", "label": "练习 009"},
+      {"id": "010", "label": "练习 010"},
+      {"id": "011", "label": "练习 011"}
     ]
   },
   "sections": [
