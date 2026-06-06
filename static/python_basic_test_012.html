@@ -487,14 +487,14 @@
       <div class="card-desc">在家目录下创建 linux_homework 目录，进入该目录，并查看当前位置。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">cd ~
-mkdir linux_homework
-cd linux_homework
-pwd</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">cd ~
-mkdir linux_homework
-cd linux_homework
-pwd</div></div>
+      <div class="ref-answer"><div class="code-block"><span class="kw">cd</span> ~
+<span class="kw">mkdir</span> linux_homework
+<span class="kw">cd</span> linux_homework
+<span class="kw">pwd</span></div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">cd</span> ~
+<span class="kw">mkdir</span> linux_homework
+<span class="kw">cd</span> linux_homework
+<span class="kw">pwd</span></div></div>
     </div>
     <div class="card" data-qid="32" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 32 题</span><span class="card-type write">代码实战</span></div>
@@ -504,11 +504,11 @@ pwd</div></div>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">cd ~/linux_homework
 touch notes.txt
-echo "Linux homework day10" > notes.txt
+echo <span class="str">"Linux homework day10"</span> &gt; notes.txt
 cat notes.txt</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">cd ~/linux_homework
 touch notes.txt
-echo "Linux homework day10" > notes.txt
+echo <span class="str">"Linux homework day10"</span> &gt; notes.txt
 cat notes.txt</div></div>
     </div>
     <div class="card" data-qid="33" data-type="write" data-answer="">
@@ -517,12 +517,12 @@ cat notes.txt</div></div>
       <div class="card-desc">在 linux_homework 目录下创建 project/data/raw 多级目录，并查看 project 下的内容。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">cd ~/linux_homework
-mkdir -p project/data/raw
-ls project</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">cd ~/linux_homework
-mkdir -p project/data/raw
-ls project</div></div>
+      <div class="ref-answer"><div class="code-block"><span class="kw">cd</span> ~/linux_homework
+<span class="kw">mkdir</span> -p project/data/raw
+<span class="kw">ls</span> project</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">cd</span> ~/linux_homework
+<span class="kw">mkdir</span> -p project/data/raw
+<span class="kw">ls</span> project</div></div>
     </div>
     <div class="card" data-qid="34" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 34 题</span><span class="card-type write">代码实战</span></div>
@@ -531,10 +531,10 @@ ls project</div></div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">cd ~/linux_homework
-echo "Linux is useful for AI deployment" >> notes.txt
+echo <span class="str">"Linux is useful for AI deployment"</span> &gt;&gt; notes.txt
 cat notes.txt</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">cd ~/linux_homework
-echo "Linux is useful for AI deployment" >> notes.txt
+echo <span class="str">"Linux is useful for AI deployment"</span> &gt;&gt; notes.txt
 cat notes.txt</div></div>
     </div>
     <div class="card" data-qid="35" data-type="write" data-answer="">
@@ -543,14 +543,14 @@ cat notes.txt</div></div>
       <div class="card-desc">把 notes.txt 复制到 project/data/raw/notes_copy.txt，再把它移动为 project/data/raw/notes_final.txt。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">cd ~/linux_homework
-cp notes.txt project/data/raw/notes_copy.txt
-mv project/data/raw/notes_copy.txt project/data/raw/notes_final.txt
-ls project/data/raw</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">cd ~/linux_homework
-cp notes.txt project/data/raw/notes_copy.txt
-mv project/data/raw/notes_copy.txt project/data/raw/notes_final.txt
-ls project/data/raw</div></div>
+      <div class="ref-answer"><div class="code-block"><span class="kw">cd</span> ~/linux_homework
+<span class="kw">cp</span> notes.txt project/data/raw/notes_copy.txt
+<span class="kw">mv</span> project/data/raw/notes_copy.txt project/data/raw/notes_final.txt
+<span class="kw">ls</span> project/data/raw</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">cd</span> ~/linux_homework
+<span class="kw">cp</span> notes.txt project/data/raw/notes_copy.txt
+<span class="kw">mv</span> project/data/raw/notes_copy.txt project/data/raw/notes_final.txt
+<span class="kw">ls</span> project/data/raw</div></div>
     </div>
     <div class="card" data-qid="36" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 36 题</span><span class="card-type write">代码实战</span></div>
@@ -558,12 +558,12 @@ ls project/data/raw</div></div>
       <div class="card-desc">把 project 目录打包成 project.tar.gz。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">cd ~/linux_homework
-tar -zcvf project.tar.gz project
-ls</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">cd ~/linux_homework
-tar -zcvf project.tar.gz project
-ls</div></div>
+      <div class="ref-answer"><div class="code-block"><span class="kw">cd</span> ~/linux_homework
+<span class="kw">tar</span> -zcvf project.<span class="kw">tar</span>.gz project
+<span class="kw">ls</span></div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">cd</span> ~/linux_homework
+<span class="kw">tar</span> -zcvf project.<span class="kw">tar</span>.gz project
+<span class="kw">ls</span></div></div>
     </div>
     <div class="card" data-qid="37" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 37 题</span><span class="card-type write">代码实战</span></div>
@@ -574,14 +574,14 @@ ls</div></div>
       <div class="ref-answer"><div class="code-block">cd ~/linux_homework
 mkdir -p ai_app/logs ai_app/config ai_app/scripts
 touch ai_app/logs/app.log
-echo "app started" > ai_app/logs/app.log
-echo "first request success" >> ai_app/logs/app.log
+echo <span class="str">"app started"</span> &gt; ai_app/logs/app.log
+echo <span class="str">"first request success"</span> &gt;&gt; ai_app/logs/app.log
 cat ai_app/logs/app.log</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">cd ~/linux_homework
 mkdir -p ai_app/logs ai_app/config ai_app/scripts
 touch ai_app/logs/app.log
-echo "app started" > ai_app/logs/app.log
-echo "first request success" >> ai_app/logs/app.log
+echo <span class="str">"app started"</span> &gt; ai_app/logs/app.log
+echo <span class="str">"first request success"</span> &gt;&gt; ai_app/logs/app.log
 cat ai_app/logs/app.log</div></div>
     </div>
     <div class="card" data-qid="38" data-type="write" data-answer="">
@@ -592,18 +592,18 @@ cat ai_app/logs/app.log</div></div>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block">cd ~/linux_homework
 vim ai_app/config/app.conf
-# 按 i 进入输入模式，输入:
-# port=8000
-# env=dev
-# 按 Esc，输入 :wq 保存退出
+<span class="cm"># 按 i 进入输入模式，输入:</span>
+<span class="cm"># port=8000</span>
+<span class="cm"># env=dev</span>
+<span class="cm"># 按 Esc，输入 :wq 保存退出</span>
 
 cat ai_app/config/app.conf</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">cd ~/linux_homework
 vim ai_app/config/app.conf
-# 按 i 进入输入模式，输入:
-# port=8000
-# env=dev
-# 按 Esc，输入 :wq 保存退出
+<span class="cm"># 按 i 进入输入模式，输入:</span>
+<span class="cm"># port=8000</span>
+<span class="cm"># env=dev</span>
+<span class="cm"># 按 Esc，输入 :wq 保存退出</span>
 
 cat ai_app/config/app.conf</div></div>
     </div>

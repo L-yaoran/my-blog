@@ -487,54 +487,54 @@
       <div class="card-desc">连接 ai_work_demo 数据库，查询 ai_tools 表中所有工具的 name 和 status。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import pymysql
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> pymysql
 
 conn = pymysql.connect(
-    host="127.0.0.1",
-    port=3306,
-    user="root",
-    password="123456",
-    database="ai_work_demo",
-    charset="utf8mb4"
+    host=<span class="str">"127.0.0.1"</span>,
+    port=<span class="num">3306</span>,
+    user=<span class="str">"root"</span>,
+    password=<span class="str">"123456"</span>,
+    <span class="kw">database</span>=<span class="str">"ai_work_demo"</span>,
+    <span class="kw">charset</span>=<span class="str">"utf8mb4"</span>
 )
 
 cursor = conn.cursor()
 
-try:
-    sql = "SELECT name, status FROM ai_tools;"
+<span class="kw">try</span>:
+    sql = <span class="str">"SELECT name, status FROM ai_tools;"</span>
     cursor.execute(sql)
     rows = cursor.fetchall()
 
-    for name, status in rows:
-        status_text = "已启用" if status == 1 else "未启用"
-        print(f"工具：{name}，状态：{status_text}")
+    <span class="kw">for</span> name, status <span class="kw">in</span> rows:
+        status_text = <span class="str">"已启用"</span> <span class="kw">if</span> status == <span class="num">1</span> <span class="kw">else</span> <span class="str">"未启用"</span>
+        print(<span class="str">f"工具：{name}，状态：{status_text}"</span>)
 
-finally:
+<span class="kw">finally</span>:
     cursor.close()
     conn.close()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import pymysql
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> pymysql
 
 conn = pymysql.connect(
-    host="127.0.0.1",
-    port=3306,
-    user="root",
-    password="123456",
-    database="ai_work_demo",
-    charset="utf8mb4"
+    host=<span class="str">"127.0.0.1"</span>,
+    port=<span class="num">3306</span>,
+    user=<span class="str">"root"</span>,
+    password=<span class="str">"123456"</span>,
+    <span class="kw">database</span>=<span class="str">"ai_work_demo"</span>,
+    <span class="kw">charset</span>=<span class="str">"utf8mb4"</span>
 )
 
 cursor = conn.cursor()
 
-try:
-    sql = "SELECT name, status FROM ai_tools;"
+<span class="kw">try</span>:
+    sql = <span class="str">"SELECT name, status FROM ai_tools;"</span>
     cursor.execute(sql)
     rows = cursor.fetchall()
 
-    for name, status in rows:
-        status_text = "已启用" if status == 1 else "未启用"
-        print(f"工具：{name}，状态：{status_text}")
+    <span class="kw">for</span> name, status <span class="kw">in</span> rows:
+        status_text = <span class="str">"已启用"</span> <span class="kw">if</span> status == <span class="num">1</span> <span class="kw">else</span> <span class="str">"未启用"</span>
+        print(<span class="str">f"工具：{name}，状态：{status_text}"</span>)
 
-finally:
+<span class="kw">finally</span>:
     cursor.close()
     conn.close()</div></div>
     </div>
@@ -544,37 +544,37 @@ finally:
       <div class="card-desc">使用 redis-py 连接本机 Redis，执行 ping()，并设置 day08:name 为张三。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import redis
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> redis
 
 r = redis.Redis(
-    host="localhost",
-    port=6379,
-    db=0,
-    decode_responses=True
+    host=<span class="str">"localhost"</span>,
+    port=<span class="num">6379</span>,
+    db=<span class="num">0</span>,
+    decode_responses=<span class="kw">True</span>
 )
 
-try:
+<span class="kw">try</span>:
     print(r.ping())
-    r.set("day08:name", "张三")
-    print(r.get("day08:name"))
+    r.<span class="kw">set</span>(<span class="str">"day08:name"</span>, <span class="str">"张三"</span>)
+    print(r.get(<span class="str">"day08:name"</span>))
 
-finally:
+<span class="kw">finally</span>:
     r.close()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import redis
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> redis
 
 r = redis.Redis(
-    host="localhost",
-    port=6379,
-    db=0,
-    decode_responses=True
+    host=<span class="str">"localhost"</span>,
+    port=<span class="num">6379</span>,
+    db=<span class="num">0</span>,
+    decode_responses=<span class="kw">True</span>
 )
 
-try:
+<span class="kw">try</span>:
     print(r.ping())
-    r.set("day08:name", "张三")
-    print(r.get("day08:name"))
+    r.<span class="kw">set</span>(<span class="str">"day08:name"</span>, <span class="str">"张三"</span>)
+    print(r.get(<span class="str">"day08:name"</span>))
 
-finally:
+<span class="kw">finally</span>:
     r.close()</div></div>
     </div>
     <div class="card" data-qid="33" data-type="write" data-answer="">
@@ -583,33 +583,33 @@ finally:
       <div class="card-desc">使用 Redis String 记录文章 1001 的阅读数，初始化为 0，然后自增 3 次。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import redis
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> redis
 
-r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
+r = redis.Redis(host=<span class="str">"localhost"</span>, port=<span class="num">6379</span>, db=<span class="num">0</span>, decode_responses=<span class="kw">True</span>)
 
-try:
-    view_key = "day08:article:1001:views"
-    r.set(view_key, "0")
+<span class="kw">try</span>:
+    view_key = <span class="str">"day08:article:1001:views"</span>
+    r.<span class="kw">set</span>(view_key, <span class="str">"0"</span>)
     r.incr(view_key)
     r.incr(view_key)
     r.incr(view_key)
-    print("当前阅读数：", r.get(view_key))
+    print(<span class="str">"当前阅读数："</span>, r.get(view_key))
 
-finally:
+<span class="kw">finally</span>:
     r.close()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import redis
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> redis
 
-r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
+r = redis.Redis(host=<span class="str">"localhost"</span>, port=<span class="num">6379</span>, db=<span class="num">0</span>, decode_responses=<span class="kw">True</span>)
 
-try:
-    view_key = "day08:article:1001:views"
-    r.set(view_key, "0")
+<span class="kw">try</span>:
+    view_key = <span class="str">"day08:article:1001:views"</span>
+    r.<span class="kw">set</span>(view_key, <span class="str">"0"</span>)
     r.incr(view_key)
     r.incr(view_key)
     r.incr(view_key)
-    print("当前阅读数：", r.get(view_key))
+    print(<span class="str">"当前阅读数："</span>, r.get(view_key))
 
-finally:
+<span class="kw">finally</span>:
     r.close()</div></div>
     </div>
     <div class="card" data-qid="34" data-type="write" data-answer="">
@@ -618,66 +618,66 @@ finally:
       <div class="card-desc">把 MySQL 中 LangChain 的状态从未启用改成已启用，要求使用 commit() 和 rollback()。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import pymysql
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> pymysql
 
 conn = pymysql.connect(
-    host="127.0.0.1",
-    port=3306,
-    user="root",
-    password="123456",
-    database="ai_work_demo",
-    charset="utf8mb4"
+    host=<span class="str">"127.0.0.1"</span>,
+    port=<span class="num">3306</span>,
+    user=<span class="str">"root"</span>,
+    password=<span class="str">"123456"</span>,
+    <span class="kw">database</span>=<span class="str">"ai_work_demo"</span>,
+    <span class="kw">charset</span>=<span class="str">"utf8mb4"</span>
 )
 
 cursor = conn.cursor()
 
-try:
-    sql = "UPDATE ai_tools SET status = %s WHERE name = %s AND status = %s;"
-    params = (1, "LangChain", 0)
+<span class="kw">try</span>:
+    sql = <span class="str">"UPDATE ai_tools SET status = %s WHERE name = %s AND status = %s;"</span>
+    params = (<span class="num">1</span>, <span class="str">"LangChain"</span>, <span class="num">0</span>)
     row_count = cursor.execute(sql, params)
 
-    if row_count != 1:
-        raise Exception(f"期望修改 1 行，实际修改了 {row_count} 行")
+    <span class="kw">if</span> row_count != <span class="num">1</span>:
+        <span class="kw">raise</span> Exception(<span class="str">f"期望修改 1 行，实际修改了 {row_count} 行"</span>)
 
     conn.commit()
-    print("LangChain 已启用")
+    print(<span class="str">"LangChain 已启用"</span>)
 
-except Exception as error:
+<span class="kw">except</span> Exception <span class="kw">as</span> error:
     conn.rollback()
-    print("启用失败，已回滚：", error)
+    print(<span class="str">"启用失败，已回滚："</span>, error)
 
-finally:
+<span class="kw">finally</span>:
     cursor.close()
     conn.close()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import pymysql
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> pymysql
 
 conn = pymysql.connect(
-    host="127.0.0.1",
-    port=3306,
-    user="root",
-    password="123456",
-    database="ai_work_demo",
-    charset="utf8mb4"
+    host=<span class="str">"127.0.0.1"</span>,
+    port=<span class="num">3306</span>,
+    user=<span class="str">"root"</span>,
+    password=<span class="str">"123456"</span>,
+    <span class="kw">database</span>=<span class="str">"ai_work_demo"</span>,
+    <span class="kw">charset</span>=<span class="str">"utf8mb4"</span>
 )
 
 cursor = conn.cursor()
 
-try:
-    sql = "UPDATE ai_tools SET status = %s WHERE name = %s AND status = %s;"
-    params = (1, "LangChain", 0)
+<span class="kw">try</span>:
+    sql = <span class="str">"UPDATE ai_tools SET status = %s WHERE name = %s AND status = %s;"</span>
+    params = (<span class="num">1</span>, <span class="str">"LangChain"</span>, <span class="num">0</span>)
     row_count = cursor.execute(sql, params)
 
-    if row_count != 1:
-        raise Exception(f"期望修改 1 行，实际修改了 {row_count} 行")
+    <span class="kw">if</span> row_count != <span class="num">1</span>:
+        <span class="kw">raise</span> Exception(<span class="str">f"期望修改 1 行，实际修改了 {row_count} 行"</span>)
 
     conn.commit()
-    print("LangChain 已启用")
+    print(<span class="str">"LangChain 已启用"</span>)
 
-except Exception as error:
+<span class="kw">except</span> Exception <span class="kw">as</span> error:
     conn.rollback()
-    print("启用失败，已回滚：", error)
+    print(<span class="str">"启用失败，已回滚："</span>, error)
 
-finally:
+<span class="kw">finally</span>:
     cursor.close()
     conn.close()</div></div>
     </div>
@@ -687,35 +687,35 @@ finally:
       <div class="card-desc">使用 Redis Hash 保存用户 user:2001 的 name、age、city，并打印完整用户信息。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import redis
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> redis
 
-r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
+r = redis.Redis(host=<span class="str">"localhost"</span>, port=<span class="num">6379</span>, db=<span class="num">0</span>, decode_responses=<span class="kw">True</span>)
 
-try:
-    user_key = "day08:user:2001"
+<span class="kw">try</span>:
+    user_key = <span class="str">"day08:user:2001"</span>
     r.hset(user_key, mapping={
-        "name": "王五",
-        "age": "28",
-        "city": "广州"
+        <span class="str">"name"</span>: <span class="str">"王五"</span>,
+        <span class="str">"age"</span>: <span class="str">"28"</span>,
+        <span class="str">"city"</span>: <span class="str">"广州"</span>
     })
     print(r.hgetall(user_key))
 
-finally:
+<span class="kw">finally</span>:
     r.close()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import redis
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> redis
 
-r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
+r = redis.Redis(host=<span class="str">"localhost"</span>, port=<span class="num">6379</span>, db=<span class="num">0</span>, decode_responses=<span class="kw">True</span>)
 
-try:
-    user_key = "day08:user:2001"
+<span class="kw">try</span>:
+    user_key = <span class="str">"day08:user:2001"</span>
     r.hset(user_key, mapping={
-        "name": "王五",
-        "age": "28",
-        "city": "广州"
+        <span class="str">"name"</span>: <span class="str">"王五"</span>,
+        <span class="str">"age"</span>: <span class="str">"28"</span>,
+        <span class="str">"city"</span>: <span class="str">"广州"</span>
     })
     print(r.hgetall(user_key))
 
-finally:
+<span class="kw">finally</span>:
     r.close()</div></div>
     </div>
     <div class="card" data-qid="36" data-type="write" data-answer="">
@@ -724,29 +724,29 @@ finally:
       <div class="card-desc">向 Redis Set 中添加 python、redis、python、ai 四个标签，观察去重效果。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import redis
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> redis
 
-r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
+r = redis.Redis(host=<span class="str">"localhost"</span>, port=<span class="num">6379</span>, db=<span class="num">0</span>, decode_responses=<span class="kw">True</span>)
 
-try:
-    tag_key = "day08:tags"
-    r.delete(tag_key)
-    r.sadd(tag_key, "python", "redis", "python", "ai")
+<span class="kw">try</span>:
+    tag_key = <span class="str">"day08:tags"</span>
+    r.<span class="kw">delete</span>(tag_key)
+    r.sadd(tag_key, <span class="str">"python"</span>, <span class="str">"redis"</span>, <span class="str">"python"</span>, <span class="str">"ai"</span>)
     print(r.smembers(tag_key))
 
-finally:
+<span class="kw">finally</span>:
     r.close()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import redis
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> redis
 
-r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
+r = redis.Redis(host=<span class="str">"localhost"</span>, port=<span class="num">6379</span>, db=<span class="num">0</span>, decode_responses=<span class="kw">True</span>)
 
-try:
-    tag_key = "day08:tags"
-    r.delete(tag_key)
-    r.sadd(tag_key, "python", "redis", "python", "ai")
+<span class="kw">try</span>:
+    tag_key = <span class="str">"day08:tags"</span>
+    r.<span class="kw">delete</span>(tag_key)
+    r.sadd(tag_key, <span class="str">"python"</span>, <span class="str">"redis"</span>, <span class="str">"python"</span>, <span class="str">"ai"</span>)
     print(r.smembers(tag_key))
 
-finally:
+<span class="kw">finally</span>:
     r.close()</div></div>
     </div>
     <div class="card" data-qid="37" data-type="write" data-answer="">
@@ -755,67 +755,67 @@ finally:
       <div class="card-desc">先用 PyMySQL 查询 ai_tools 表中已启用的工具；再把查询结果写入 Redis，key 为 day08:enabled_tools，设置 60 秒过期时间。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import json
-import pymysql
-import redis
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> json
+<span class="kw">import</span> pymysql
+<span class="kw">import</span> redis
 
 mysql_conn = pymysql.connect(
-    host="127.0.0.1",
-    port=3306,
-    user="root",
-    password="123456",
-    database="ai_work_demo",
-    charset="utf8mb4"
+    host=<span class="str">"127.0.0.1"</span>,
+    port=<span class="num">3306</span>,
+    user=<span class="str">"root"</span>,
+    password=<span class="str">"123456"</span>,
+    <span class="kw">database</span>=<span class="str">"ai_work_demo"</span>,
+    <span class="kw">charset</span>=<span class="str">"utf8mb4"</span>
 )
 mysql_cursor = mysql_conn.cursor()
-redis_client = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
+redis_client = redis.Redis(host=<span class="str">"localhost"</span>, port=<span class="num">6379</span>, db=<span class="num">0</span>, decode_responses=<span class="kw">True</span>)
 
-try:
-    sql = "SELECT name, scene FROM ai_tools WHERE status = %s;"
-    mysql_cursor.execute(sql, (1,))
+<span class="kw">try</span>:
+    sql = <span class="str">"SELECT name, scene FROM ai_tools WHERE status = %s;"</span>
+    mysql_cursor.execute(sql, (<span class="num">1</span>,))
     rows = mysql_cursor.fetchall()
 
     enabled_tools = []
-    for name, scene in rows:
-        enabled_tools.append({"name": name, "scene": scene})
+    <span class="kw">for</span> name, scene <span class="kw">in</span> rows:
+        enabled_tools.append({<span class="str">"name"</span>: name, <span class="str">"scene"</span>: scene})
 
-    cache_key = "day08:enabled_tools"
-    redis_client.setex(cache_key, 60, json.dumps(enabled_tools, ensure_ascii=False))
-    print("已启用工具已写入 Redis 缓存：", enabled_tools)
+    cache_key = <span class="str">"day08:enabled_tools"</span>
+    redis_client.setex(cache_key, <span class="num">60</span>, json.dumps(enabled_tools, ensure_ascii=<span class="kw">False</span>))
+    print(<span class="str">"已启用工具已写入 Redis 缓存："</span>, enabled_tools)
 
-finally:
+<span class="kw">finally</span>:
     mysql_cursor.close()
     mysql_conn.close()
     redis_client.close()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import json
-import pymysql
-import redis
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> json
+<span class="kw">import</span> pymysql
+<span class="kw">import</span> redis
 
 mysql_conn = pymysql.connect(
-    host="127.0.0.1",
-    port=3306,
-    user="root",
-    password="123456",
-    database="ai_work_demo",
-    charset="utf8mb4"
+    host=<span class="str">"127.0.0.1"</span>,
+    port=<span class="num">3306</span>,
+    user=<span class="str">"root"</span>,
+    password=<span class="str">"123456"</span>,
+    <span class="kw">database</span>=<span class="str">"ai_work_demo"</span>,
+    <span class="kw">charset</span>=<span class="str">"utf8mb4"</span>
 )
 mysql_cursor = mysql_conn.cursor()
-redis_client = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
+redis_client = redis.Redis(host=<span class="str">"localhost"</span>, port=<span class="num">6379</span>, db=<span class="num">0</span>, decode_responses=<span class="kw">True</span>)
 
-try:
-    sql = "SELECT name, scene FROM ai_tools WHERE status = %s;"
-    mysql_cursor.execute(sql, (1,))
+<span class="kw">try</span>:
+    sql = <span class="str">"SELECT name, scene FROM ai_tools WHERE status = %s;"</span>
+    mysql_cursor.execute(sql, (<span class="num">1</span>,))
     rows = mysql_cursor.fetchall()
 
     enabled_tools = []
-    for name, scene in rows:
-        enabled_tools.append({"name": name, "scene": scene})
+    <span class="kw">for</span> name, scene <span class="kw">in</span> rows:
+        enabled_tools.append({<span class="str">"name"</span>: name, <span class="str">"scene"</span>: scene})
 
-    cache_key = "day08:enabled_tools"
-    redis_client.setex(cache_key, 60, json.dumps(enabled_tools, ensure_ascii=False))
-    print("已启用工具已写入 Redis 缓存：", enabled_tools)
+    cache_key = <span class="str">"day08:enabled_tools"</span>
+    redis_client.setex(cache_key, <span class="num">60</span>, json.dumps(enabled_tools, ensure_ascii=<span class="kw">False</span>))
+    print(<span class="str">"已启用工具已写入 Redis 缓存："</span>, enabled_tools)
 
-finally:
+<span class="kw">finally</span>:
     mysql_cursor.close()
     mysql_conn.close()
     redis_client.close()</div></div>
@@ -826,47 +826,47 @@ finally:
       <div class="card-desc">使用 Redis Sorted Set 保存 AI 工具热度榜：ChatGPT 1000 分，DeepSeek 900 分，Dify 800 分；查询并打印热度从高到低的排行榜。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import redis
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> redis
 
-r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
+r = redis.Redis(host=<span class="str">"localhost"</span>, port=<span class="num">6379</span>, db=<span class="num">0</span>, decode_responses=<span class="kw">True</span>)
 
-try:
-    rank_key = "day08:ai_tool_hot_rank"
-    r.delete(rank_key)
+<span class="kw">try</span>:
+    rank_key = <span class="str">"day08:ai_tool_hot_rank"</span>
+    r.<span class="kw">delete</span>(rank_key)
 
     r.zadd(rank_key, {
-        "ChatGPT": 1000,
-        "DeepSeek": 900,
-        "Dify": 800
+        <span class="str">"ChatGPT"</span>: <span class="num">1000</span>,
+        <span class="str">"DeepSeek"</span>: <span class="num">900</span>,
+        <span class="str">"Dify"</span>: <span class="num">800</span>
     })
 
-    ranks = r.zrevrange(rank_key, 0, -1, withscores=True)
+    ranks = r.zrevrange(rank_key, <span class="num">0</span>, -<span class="num">1</span>, withscores=<span class="kw">True</span>)
 
-    for index, (tool_name, score) in enumerate(ranks, start=1):
-        print(f"第 {index} 名：{tool_name}，热度：{score}")
+    <span class="kw">for</span> <span class="kw">index</span>, (tool_name, score) <span class="kw">in</span> enumerate(ranks, start=<span class="num">1</span>):
+        print(<span class="str">f"第 {index} 名：{tool_name}，热度：{score}"</span>)
 
-finally:
+<span class="kw">finally</span>:
     r.close()</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import redis
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> redis
 
-r = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
+r = redis.Redis(host=<span class="str">"localhost"</span>, port=<span class="num">6379</span>, db=<span class="num">0</span>, decode_responses=<span class="kw">True</span>)
 
-try:
-    rank_key = "day08:ai_tool_hot_rank"
-    r.delete(rank_key)
+<span class="kw">try</span>:
+    rank_key = <span class="str">"day08:ai_tool_hot_rank"</span>
+    r.<span class="kw">delete</span>(rank_key)
 
     r.zadd(rank_key, {
-        "ChatGPT": 1000,
-        "DeepSeek": 900,
-        "Dify": 800
+        <span class="str">"ChatGPT"</span>: <span class="num">1000</span>,
+        <span class="str">"DeepSeek"</span>: <span class="num">900</span>,
+        <span class="str">"Dify"</span>: <span class="num">800</span>
     })
 
-    ranks = r.zrevrange(rank_key, 0, -1, withscores=True)
+    ranks = r.zrevrange(rank_key, <span class="num">0</span>, -<span class="num">1</span>, withscores=<span class="kw">True</span>)
 
-    for index, (tool_name, score) in enumerate(ranks, start=1):
-        print(f"第 {index} 名：{tool_name}，热度：{score}")
+    <span class="kw">for</span> <span class="kw">index</span>, (tool_name, score) <span class="kw">in</span> enumerate(ranks, start=<span class="num">1</span>):
+        print(<span class="str">f"第 {index} 名：{tool_name}，热度：{score}"</span>)
 
-finally:
+<span class="kw">finally</span>:
     r.close()</div></div>
     </div>
 </div>

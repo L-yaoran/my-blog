@@ -487,15 +487,15 @@
       <div class="card-desc">使用正则表达式从文本中提取所有 11 位手机号。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import re
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> re
 
-text = "联系人A: 13800138000, 联系人B: 13900139000, 编号: A1001"
-phones = re.findall(r"\\d{11}", text)
+text = <span class="str">"联系人A: 13800138000, 联系人B: 13900139000, 编号: A1001"</span>
+phones = re.findall(r<span class="str">"\\d{11}"</span>, text)
 print(phones)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import re
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> re
 
-text = "联系人A: 13800138000, 联系人B: 13900139000, 编号: A1001"
-phones = re.findall(r"\\d{11}", text)
+text = <span class="str">"联系人A: 13800138000, 联系人B: 13900139000, 编号: A1001"</span>
+phones = re.findall(r<span class="str">"\\d{11}"</span>, text)
 print(phones)</div></div>
     </div>
     <div class="card" data-qid="32" data-type="write" data-answer="">
@@ -504,17 +504,17 @@ print(phones)</div></div>
       <div class="card-desc">创建 student 表，包含 id（主键自增）、name（非空字符串）、age（整数）、score（decimal）。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">CREATE TABLE student (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(50) NOT NULL,
-    age INT,
-    score DECIMAL(5, 2)
+      <div class="ref-answer"><div class="code-block"><span class="kw">CREATE</span> <span class="kw">TABLE</span> student (
+    id <span class="kw">INT</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> <span class="kw">AUTO_INCREMENT</span>,
+    name <span class="kw">VARCHAR</span>(<span class="num">50</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,
+    age <span class="kw">INT</span>,
+    score <span class="kw">DECIMAL</span>(<span class="num">5</span>, <span class="num">2</span>)
 );</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">CREATE TABLE student (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(50) NOT NULL,
-    age INT,
-    score DECIMAL(5, 2)
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">CREATE</span> <span class="kw">TABLE</span> student (
+    id <span class="kw">INT</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> <span class="kw">AUTO_INCREMENT</span>,
+    name <span class="kw">VARCHAR</span>(<span class="num">50</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,
+    age <span class="kw">INT</span>,
+    score <span class="kw">DECIMAL</span>(<span class="num">5</span>, <span class="num">2</span>)
 );</div></div>
     </div>
     <div class="card" data-qid="33" data-type="write" data-answer="">
@@ -523,8 +523,8 @@ print(phones)</div></div>
       <div class="card-desc">从 product 表中查询商品名称 name 和价格 price。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">SELECT name, price FROM product;</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">SELECT name, price FROM product;</div></div>
+      <div class="ref-answer"><div class="code-block"><span class="kw">SELECT</span> name, price <span class="kw">FROM</span> product;</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">SELECT</span> name, price <span class="kw">FROM</span> product;</div></div>
     </div>
     <div class="card" data-qid="34" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 34 题</span><span class="card-type write">代码实战</span></div>
@@ -532,15 +532,15 @@ print(phones)</div></div>
       <div class="card-desc">从文本中提取所有以 P 开头、后面跟 4 位数字的订单号。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import re
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> re
 
-text = "订单号: P1001, P2030, X999, P8888"
-orders = re.findall(r"P\\d{4}", text)
+text = <span class="str">"订单号: P1001, P2030, X999, P8888"</span>
+orders = re.findall(r<span class="str">"P\\d{4}"</span>, text)
 print(orders)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import re
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> re
 
-text = "订单号: P1001, P2030, X999, P8888"
-orders = re.findall(r"P\\d{4}", text)
+text = <span class="str">"订单号: P1001, P2030, X999, P8888"</span>
+orders = re.findall(r<span class="str">"P\\d{4}"</span>, text)
 print(orders)</div></div>
     </div>
     <div class="card" data-qid="35" data-type="write" data-answer="">
@@ -549,17 +549,17 @@ print(orders)</div></div>
       <div class="card-desc">判断列表中哪些是完整合法的 11 位手机号格式。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import re
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> re
 
-phones = ["13800138000", "电话13800138000", "13800138000123", "13900139000"]
-for phone in phones:
-    if re.match(r"^1\\d{10}$", phone):
+phones = [<span class="str">"13800138000"</span>, <span class="str">"电话13800138000"</span>, <span class="str">"13800138000123"</span>, <span class="str">"13900139000"</span>]
+<span class="kw">for</span> phone <span class="kw">in</span> phones:
+    <span class="kw">if</span> re.match(r<span class="str">"^1\\d{10}$"</span>, phone):
         print(phone)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import re
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> re
 
-phones = ["13800138000", "电话13800138000", "13800138000123", "13900139000"]
-for phone in phones:
-    if re.match(r"^1\\d{10}$", phone):
+phones = [<span class="str">"13800138000"</span>, <span class="str">"电话13800138000"</span>, <span class="str">"13800138000123"</span>, <span class="str">"13900139000"</span>]
+<span class="kw">for</span> phone <span class="kw">in</span> phones:
+    <span class="kw">if</span> re.match(r<span class="str">"^1\\d{10}$"</span>, phone):
         print(phone)</div></div>
     </div>
     <div class="card" data-qid="36" data-type="write" data-answer="">
@@ -568,8 +568,8 @@ for phone in phones:
       <div class="card-desc">查询 product 表中价格大于 100 的商品，并按价格从高到低排序。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">SELECT * FROM product WHERE price > 100 ORDER BY price DESC;</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">SELECT * FROM product WHERE price > 100 ORDER BY price DESC;</div></div>
+      <div class="ref-answer"><div class="code-block"><span class="kw">SELECT</span> * <span class="kw">FROM</span> product <span class="kw">WHERE</span> price &gt; <span class="num">100</span> <span class="kw">ORDER</span> <span class="kw">BY</span> price <span class="kw">DESC</span>;</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">SELECT</span> * <span class="kw">FROM</span> product <span class="kw">WHERE</span> price &gt; <span class="num">100</span> <span class="kw">ORDER</span> <span class="kw">BY</span> price <span class="kw">DESC</span>;</div></div>
     </div>
     <div class="card" data-qid="37" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 37 题</span><span class="card-type write">代码实战</span></div>
@@ -577,44 +577,44 @@ for phone in phones:
       <div class="card-desc">提取手机号、删除页码、内部标记、页脚，压缩重复空行。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import re
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> re
 
-raw = """第 1 页\
+raw = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;第 <span class="num">1</span> 页\
 【内部资料】课程答疑记录\
 \
-学生手机号：13800138000\
+学生手机号：<span class="num">13800138000</span>\
 问题：re.match 和 re.search 有什么区别？\
 \
 \
-页脚：仅供学习"""
+页脚：仅供学习&quot;&quot;&quot;&lt;/span&gt;
 
-phones = re.findall(r"\\d{11}", raw)
-cleaned = re.sub(r"第\\s*\\d+\\s*页", "", raw)
-cleaned = re.sub(r"【.*?】", "", cleaned)
-cleaned = re.sub(r"页脚：.*", "", cleaned)
-cleaned = re.sub(r"\
-{2,}", "\
-", cleaned).strip()
+phones = re.findall(r<span class="str">"\\d{11}"</span>, raw)
+cleaned = re.sub(r<span class="str">"第\\s*\\d+\\s*页"</span>, <span class="str">""</span>, raw)
+cleaned = re.sub(r<span class="str">"【.*?】"</span>, <span class="str">""</span>, cleaned)
+cleaned = re.sub(r<span class="str">"页脚：.*"</span>, <span class="str">""</span>, cleaned)
+cleaned = re.sub(r&quot;\
+{<span class="num">2</span>,}<span class="str">", "</span>\
+&quot;, cleaned).strip()
 print(phones)
 print(cleaned)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import re
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> re
 
-raw = """第 1 页\
+raw = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;第 <span class="num">1</span> 页\
 【内部资料】课程答疑记录\
 \
-学生手机号：13800138000\
+学生手机号：<span class="num">13800138000</span>\
 问题：re.match 和 re.search 有什么区别？\
 \
 \
-页脚：仅供学习"""
+页脚：仅供学习&quot;&quot;&quot;&lt;/span&gt;
 
-phones = re.findall(r"\\d{11}", raw)
-cleaned = re.sub(r"第\\s*\\d+\\s*页", "", raw)
-cleaned = re.sub(r"【.*?】", "", cleaned)
-cleaned = re.sub(r"页脚：.*", "", cleaned)
-cleaned = re.sub(r"\
-{2,}", "\
-", cleaned).strip()
+phones = re.findall(r<span class="str">"\\d{11}"</span>, raw)
+cleaned = re.sub(r<span class="str">"第\\s*\\d+\\s*页"</span>, <span class="str">""</span>, raw)
+cleaned = re.sub(r<span class="str">"【.*?】"</span>, <span class="str">""</span>, cleaned)
+cleaned = re.sub(r<span class="str">"页脚：.*"</span>, <span class="str">""</span>, cleaned)
+cleaned = re.sub(r&quot;\
+{<span class="num">2</span>,}<span class="str">", "</span>\
+&quot;, cleaned).strip()
 print(phones)
 print(cleaned)</div></div>
     </div>
@@ -624,28 +624,28 @@ print(cleaned)</div></div>
       <div class="card-desc">基于 category 和 product 表完成：1.商品名称+价格+分类名；2.价格>平均价的商品；3.每个分类商品数量；4.库存最低的前3个商品。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">-- 1. 商品名称、价格、分类名称（INNER JOIN）
-SELECT p.name, p.price, c.name FROM product p INNER JOIN category c ON p.category_id = c.id;
+      <div class="ref-answer"><div class="code-block">-- <span class="num">1</span>. 商品名称、价格、分类名称（<span class="kw">INNER</span> <span class="kw">JOIN</span>）
+<span class="kw">SELECT</span> p.name, p.price, c.name <span class="kw">FROM</span> product p <span class="kw">INNER</span> <span class="kw">JOIN</span> category c <span class="kw">ON</span> p.category_id = c.id;
 
--- 2. 价格高于平均价的商品（子查询）
-SELECT * FROM product WHERE price > (SELECT AVG(price) FROM product);
+-- <span class="num">2</span>. 价格高于平均价的商品（子查询）
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> product <span class="kw">WHERE</span> price &gt; (<span class="kw">SELECT</span> <span class="kw">AVG</span>(price) <span class="kw">FROM</span> product);
 
--- 3. 每个分类商品数量（GROUP BY）
-SELECT category_id, COUNT(*) AS product_count FROM product GROUP BY category_id;
+-- <span class="num">3</span>. 每个分类商品数量（<span class="kw">GROUP</span> <span class="kw">BY</span>）
+<span class="kw">SELECT</span> category_id, <span class="kw">COUNT</span>(*) <span class="kw">AS</span> product_count <span class="kw">FROM</span> product <span class="kw">GROUP</span> <span class="kw">BY</span> category_id;
 
--- 4. 库存最低的前3个商品（ORDER BY + LIMIT）
-SELECT * FROM product ORDER BY stock ASC LIMIT 0, 3;</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">-- 1. 商品名称、价格、分类名称（INNER JOIN）
-SELECT p.name, p.price, c.name FROM product p INNER JOIN category c ON p.category_id = c.id;
+-- <span class="num">4</span>. 库存最低的前3个商品（<span class="kw">ORDER</span> <span class="kw">BY</span> + <span class="kw">LIMIT</span>）
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> product <span class="kw">ORDER</span> <span class="kw">BY</span> stock <span class="kw">ASC</span> <span class="kw">LIMIT</span> <span class="num">0</span>, <span class="num">3</span>;</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">-- <span class="num">1</span>. 商品名称、价格、分类名称（<span class="kw">INNER</span> <span class="kw">JOIN</span>）
+<span class="kw">SELECT</span> p.name, p.price, c.name <span class="kw">FROM</span> product p <span class="kw">INNER</span> <span class="kw">JOIN</span> category c <span class="kw">ON</span> p.category_id = c.id;
 
--- 2. 价格高于平均价的商品（子查询）
-SELECT * FROM product WHERE price > (SELECT AVG(price) FROM product);
+-- <span class="num">2</span>. 价格高于平均价的商品（子查询）
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> product <span class="kw">WHERE</span> price &gt; (<span class="kw">SELECT</span> <span class="kw">AVG</span>(price) <span class="kw">FROM</span> product);
 
--- 3. 每个分类商品数量（GROUP BY）
-SELECT category_id, COUNT(*) AS product_count FROM product GROUP BY category_id;
+-- <span class="num">3</span>. 每个分类商品数量（<span class="kw">GROUP</span> <span class="kw">BY</span>）
+<span class="kw">SELECT</span> category_id, <span class="kw">COUNT</span>(*) <span class="kw">AS</span> product_count <span class="kw">FROM</span> product <span class="kw">GROUP</span> <span class="kw">BY</span> category_id;
 
--- 4. 库存最低的前3个商品（ORDER BY + LIMIT）
-SELECT * FROM product ORDER BY stock ASC LIMIT 0, 3;</div></div>
+-- <span class="num">4</span>. 库存最低的前3个商品（<span class="kw">ORDER</span> <span class="kw">BY</span> + <span class="kw">LIMIT</span>）
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> product <span class="kw">ORDER</span> <span class="kw">BY</span> stock <span class="kw">ASC</span> <span class="kw">LIMIT</span> <span class="num">0</span>, <span class="num">3</span>;</div></div>
     </div>
 </div>
 

@@ -447,24 +447,24 @@
       <div class="card-desc">使用 re.match() 严格匹配以 1 开头、第二位 3-9、后面 9 位数字的手机号（^1[3-9]\d{9}$），测试合法和非合法号码。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import re
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> re
 
-pattern = r"^1[3-9]\d{9}$"
+pattern = r<span class="str">"^1[3-9]\d{9}$"</span>
 
-result1 = re.match(pattern, "13812345678")
-print(result1.group() if result1 else "匹配失败")
+result1 = re.match(pattern, <span class="str">"13812345678"</span>)
+print(result1.<span class="kw">group</span>() <span class="kw">if</span> result1 <span class="kw">else</span> <span class="str">"匹配失败"</span>)
 
-result2 = re.match(pattern, "23812345678")
-print(result2.group() if result2 else "匹配失败")</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import re
+result2 = re.match(pattern, <span class="str">"23812345678"</span>)
+print(result2.<span class="kw">group</span>() <span class="kw">if</span> result2 <span class="kw">else</span> <span class="str">"匹配失败"</span>)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> re
 
-pattern = r"^1[3-9]\d{9}$"
+pattern = r<span class="str">"^1[3-9]\d{9}$"</span>
 
-result1 = re.match(pattern, "13812345678")
-print(result1.group() if result1 else "匹配失败")
+result1 = re.match(pattern, <span class="str">"13812345678"</span>)
+print(result1.<span class="kw">group</span>() <span class="kw">if</span> result1 <span class="kw">else</span> <span class="str">"匹配失败"</span>)
 
-result2 = re.match(pattern, "23812345678")
-print(result2.group() if result2 else "匹配失败")</div></div>
+result2 = re.match(pattern, <span class="str">"23812345678"</span>)
+print(result2.<span class="kw">group</span>() <span class="kw">if</span> result2 <span class="kw">else</span> <span class="str">"匹配失败"</span>)</div></div>
     </div>
     <div class="card" data-qid="27" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 27 题</span><span class="card-type write">代码实战</span></div>
@@ -472,26 +472,26 @@ print(result2.group() if result2 else "匹配失败")</div></div>
       <div class="card-desc">使用 re.search() 和分组从"我的工作邮箱是 admin@heima.com，请查收。"中提取用户名和域名。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import re
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> re
 
-text = "我的工作邮箱是 admin@heima.com，请查收。"
-pattern = r"([a-zA-Z0-9_]+)@([a-zA-Z0-9_]+\.[a-zA-Z0-9_]+)"
-
-result = re.search(pattern, text)
-if result:
-    print(f"完整邮箱: {result.group(0)}")
-    print(f"用户名: {result.group(1)}")
-    print(f"域名: {result.group(2)}")</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import re
-
-text = "我的工作邮箱是 admin@heima.com，请查收。"
-pattern = r"([a-zA-Z0-9_]+)@([a-zA-Z0-9_]+\.[a-zA-Z0-9_]+)"
+text = <span class="str">"我的工作邮箱是 admin<span class="op">@heima</span>.com，请查收。&quot;&lt;/span&gt;
+pattern = r<span class="str">"([a-zA-Z0-9_]+)@([a-zA-Z0-9_]+\.[a-zA-Z0-9_]+)"</span>
 
 result = re.search(pattern, text)
-if result:
-    print(f"完整邮箱: {result.group(0)}")
-    print(f"用户名: {result.group(1)}")
-    print(f"域名: {result.group(2)}")</div></div>
+<span class="kw">if</span> result:
+    print(<span class="str">f"完整邮箱: {result.group(0)}"</span>)
+    print(<span class="str">f"用户名: {result.group(1)}"</span>)
+    print(<span class="str">f"域名: {result.group(2)}"</span>)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> re
+
+text = <span class="str">"我的工作邮箱是 admin<span class="op">@heima</span>.com，请查收。&quot;&lt;/span&gt;
+pattern = r<span class="str">"([a-zA-Z0-9_]+)@([a-zA-Z0-9_]+\.[a-zA-Z0-9_]+)"</span>
+
+result = re.search(pattern, text)
+<span class="kw">if</span> result:
+    print(<span class="str">f"完整邮箱: {result.group(0)}"</span>)
+    print(<span class="str">f"用户名: {result.group(1)}"</span>)
+    print(<span class="str">f"域名: {result.group(2)}"</span>)</div></div>
     </div>
     <div class="card" data-qid="28" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 28 题</span><span class="card-type write">代码实战</span></div>
@@ -499,30 +499,30 @@ if result:
       <div class="card-desc">创建 school_db 数据库和 students 表，包含 id、name、age 字段，完成 INSERT、UPDATE、DELETE 各一条。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">CREATE DATABASE IF NOT EXISTS school_db CHARSET=utf8;
-USE school_db;
+      <div class="ref-answer"><div class="code-block"><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="kw">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> school_db <span class="kw">CHARSET</span>=<span class="kw">utf8</span>;
+<span class="kw">USE</span> school_db;
 
-CREATE TABLE students(
-    id INT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    age INT
+<span class="kw">CREATE</span> <span class="kw">TABLE</span> students(
+    id <span class="kw">INT</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,
+    name <span class="kw">VARCHAR</span>(<span class="num">50</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,
+    age <span class="kw">INT</span>
 );
 
-INSERT INTO students(id, name, age) VALUES(1, "张三", 20);
-UPDATE students SET age = 21 WHERE name = "张三";
-DELETE FROM students WHERE age > 25;</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">CREATE DATABASE IF NOT EXISTS school_db CHARSET=utf8;
-USE school_db;
+<span class="kw">INSERT</span> <span class="kw">INTO</span> students(id, name, age) <span class="kw">VALUES</span>(<span class="num">1</span>, <span class="str">"张三"</span>, <span class="num">20</span>);
+<span class="kw">UPDATE</span> students <span class="kw">SET</span> age = <span class="num">21</span> <span class="kw">WHERE</span> name = <span class="str">"张三"</span>;
+<span class="kw">DELETE</span> <span class="kw">FROM</span> students <span class="kw">WHERE</span> age &gt; <span class="num">25</span>;</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="kw">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> school_db <span class="kw">CHARSET</span>=<span class="kw">utf8</span>;
+<span class="kw">USE</span> school_db;
 
-CREATE TABLE students(
-    id INT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    age INT
+<span class="kw">CREATE</span> <span class="kw">TABLE</span> students(
+    id <span class="kw">INT</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,
+    name <span class="kw">VARCHAR</span>(<span class="num">50</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,
+    age <span class="kw">INT</span>
 );
 
-INSERT INTO students(id, name, age) VALUES(1, "张三", 20);
-UPDATE students SET age = 21 WHERE name = "张三";
-DELETE FROM students WHERE age > 25;</div></div>
+<span class="kw">INSERT</span> <span class="kw">INTO</span> students(id, name, age) <span class="kw">VALUES</span>(<span class="num">1</span>, <span class="str">"张三"</span>, <span class="num">20</span>);
+<span class="kw">UPDATE</span> students <span class="kw">SET</span> age = <span class="num">21</span> <span class="kw">WHERE</span> name = <span class="str">"张三"</span>;
+<span class="kw">DELETE</span> <span class="kw">FROM</span> students <span class="kw">WHERE</span> age &gt; <span class="num">25</span>;</div></div>
     </div>
     <div class="card" data-qid="29" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 29 题</span><span class="card-type write">代码实战</span></div>
@@ -530,16 +530,16 @@ DELETE FROM students WHERE age > 25;</div></div>
       <div class="card-desc">基于 products 表（id, name, price, category_id）完成：价格>100查询、分组统计、排序取前3。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">SELECT name, price FROM products WHERE price > 100;
+      <div class="ref-answer"><div class="code-block"><span class="kw">SELECT</span> name, price <span class="kw">FROM</span> products <span class="kw">WHERE</span> price &gt; <span class="num">100</span>;
 
-SELECT category_id, COUNT(*) FROM products GROUP BY category_id;
+<span class="kw">SELECT</span> category_id, <span class="kw">COUNT</span>(*) <span class="kw">FROM</span> products <span class="kw">GROUP</span> <span class="kw">BY</span> category_id;
 
-SELECT * FROM products ORDER BY price DESC LIMIT 0, 3;</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">SELECT name, price FROM products WHERE price > 100;
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> products <span class="kw">ORDER</span> <span class="kw">BY</span> price <span class="kw">DESC</span> <span class="kw">LIMIT</span> <span class="num">0</span>, <span class="num">3</span>;</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">SELECT</span> name, price <span class="kw">FROM</span> products <span class="kw">WHERE</span> price &gt; <span class="num">100</span>;
 
-SELECT category_id, COUNT(*) FROM products GROUP BY category_id;
+<span class="kw">SELECT</span> category_id, <span class="kw">COUNT</span>(*) <span class="kw">FROM</span> products <span class="kw">GROUP</span> <span class="kw">BY</span> category_id;
 
-SELECT * FROM products ORDER BY price DESC LIMIT 0, 3;</div></div>
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> products <span class="kw">ORDER</span> <span class="kw">BY</span> price <span class="kw">DESC</span> <span class="kw">LIMIT</span> <span class="num">0</span>, <span class="num">3</span>;</div></div>
     </div>
     <div class="card" data-qid="30" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 30 题</span><span class="card-type write">代码实战</span></div>
@@ -547,20 +547,20 @@ SELECT * FROM products ORDER BY price DESC LIMIT 0, 3;</div></div>
       <div class="card-desc">基于 users 和 orders 表，用 INNER JOIN 和 LEFT JOIN 查询用户订单。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">SELECT u.username, o.order_no
-FROM users u
-INNER JOIN orders o ON u.id = o.user_id;
+      <div class="ref-answer"><div class="code-block"><span class="kw">SELECT</span> u.username, o.order_no
+<span class="kw">FROM</span> users u
+<span class="kw">INNER</span> <span class="kw">JOIN</span> orders o <span class="kw">ON</span> u.id = o.user_id;
 
-SELECT u.username, o.order_no
-FROM users u
-LEFT JOIN orders o ON u.id = o.user_id;</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">SELECT u.username, o.order_no
-FROM users u
-INNER JOIN orders o ON u.id = o.user_id;
+<span class="kw">SELECT</span> u.username, o.order_no
+<span class="kw">FROM</span> users u
+<span class="kw">LEFT</span> <span class="kw">JOIN</span> orders o <span class="kw">ON</span> u.id = o.user_id;</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">SELECT</span> u.username, o.order_no
+<span class="kw">FROM</span> users u
+<span class="kw">INNER</span> <span class="kw">JOIN</span> orders o <span class="kw">ON</span> u.id = o.user_id;
 
-SELECT u.username, o.order_no
-FROM users u
-LEFT JOIN orders o ON u.id = o.user_id;</div></div>
+<span class="kw">SELECT</span> u.username, o.order_no
+<span class="kw">FROM</span> users u
+<span class="kw">LEFT</span> <span class="kw">JOIN</span> orders o <span class="kw">ON</span> u.id = o.user_id;</div></div>
     </div>
 </div>
 

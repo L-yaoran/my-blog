@@ -463,34 +463,34 @@
       <div class="card-desc">准备同一长字符串（含重复关键词），分别调用 re.match、re.search、re.findall，打印返回值类型及内容。用注释说明：为何有些情况 match 得到 None 而 search 仍能匹配。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import re
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> re
 
-s = "我学 Python，你也学 Python 吗？"
-p = "Python"
-
-m = re.match(p, s)
-print("match:", m)  # None（开头不是 Python）
-
-sr = re.search(p, s)
-if sr:
-    print("search:", sr.group())  # Python
-
-fa = re.findall(p, s)
-print("findall:", fa)  # ["Python", "Python"]</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import re
-
-s = "我学 Python，你也学 Python 吗？"
-p = "Python"
+s = <span class="str">"我学 Python，你也学 Python 吗？"</span>
+p = <span class="str">"Python"</span>
 
 m = re.match(p, s)
-print("match:", m)  # None（开头不是 Python）
+print(<span class="str">"match:"</span>, m)  <span class="cm"># None（开头不是 Python）</span>
 
 sr = re.search(p, s)
-if sr:
-    print("search:", sr.group())  # Python
+<span class="kw">if</span> sr:
+    print(<span class="str">"search:"</span>, sr.<span class="kw">group</span>())  <span class="cm"># Python</span>
 
 fa = re.findall(p, s)
-print("findall:", fa)  # ["Python", "Python"]</div></div>
+print(<span class="str">"findall:"</span>, fa)  <span class="cm"># [<span class="str">"Python"</span>, <span class="str">"Python"</span>]&lt;/span&gt;</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> re
+
+s = <span class="str">"我学 Python，你也学 Python 吗？"</span>
+p = <span class="str">"Python"</span>
+
+m = re.match(p, s)
+print(<span class="str">"match:"</span>, m)  <span class="cm"># None（开头不是 Python）</span>
+
+sr = re.search(p, s)
+<span class="kw">if</span> sr:
+    print(<span class="str">"search:"</span>, sr.<span class="kw">group</span>())  <span class="cm"># Python</span>
+
+fa = re.findall(p, s)
+print(<span class="str">"findall:"</span>, fa)  <span class="cm"># [<span class="str">"Python"</span>, <span class="str">"Python"</span>]&lt;/span&gt;</div></div>
     </div>
     <div class="card" data-qid="29" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 29 题</span><span class="card-type write">代码实战</span></div>
@@ -498,22 +498,22 @@ print("findall:", fa)  # ["Python", "Python"]</div></div>
       <div class="card-desc">写一条正则，从示例串中提取区号和本地号码（如 010-12345678）。使用分组，通过 Match 的 group(0/1/2) 分别打印整段匹配、第一组、第二组。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import re
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> re
 
-s = "客服电话：010-12345678"
-r = re.search(r"(\d{3,4})-(\d{6,8})", s)
-if r:
-    print(r.group(0))  # 010-12345678
-    print(r.group(1))  # 010
-    print(r.group(2))  # 12345678</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import re
+s = <span class="str">"客服电话：010-12345678"</span>
+r = re.search(r<span class="str">"(\d{3,4})-(\d{6,8})"</span>, s)
+<span class="kw">if</span> r:
+    print(r.<span class="kw">group</span>(<span class="num">0</span>))  <span class="cm"># 010-12345678</span>
+    print(r.<span class="kw">group</span>(<span class="num">1</span>))  <span class="cm"># 010</span>
+    print(r.<span class="kw">group</span>(<span class="num">2</span>))  <span class="cm"># 12345678</span></div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> re
 
-s = "客服电话：010-12345678"
-r = re.search(r"(\d{3,4})-(\d{6,8})", s)
-if r:
-    print(r.group(0))  # 010-12345678
-    print(r.group(1))  # 010
-    print(r.group(2))  # 12345678</div></div>
+s = <span class="str">"客服电话：010-12345678"</span>
+r = re.search(r<span class="str">"(\d{3,4})-(\d{6,8})"</span>, s)
+<span class="kw">if</span> r:
+    print(r.<span class="kw">group</span>(<span class="num">0</span>))  <span class="cm"># 010-12345678</span>
+    print(r.<span class="kw">group</span>(<span class="num">1</span>))  <span class="cm"># 010</span>
+    print(r.<span class="kw">group</span>(<span class="num">2</span>))  <span class="cm"># 12345678</span></div></div>
     </div>
     <div class="card" data-qid="30" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 30 题</span><span class="card-type write">代码实战</span></div>
@@ -521,24 +521,24 @@ if r:
       <div class="card-desc">设计一张商品表（至少含：id 主键、name、price、category_id）。写出 CREATE TABLE（类型与约束合理）、至少 2 条 INSERT。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">CREATE TABLE goods (
-    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    price DECIMAL(10,2) NOT NULL,
-    category_id INT UNSIGNED NOT NULL
+      <div class="ref-answer"><div class="code-block"><span class="kw">CREATE</span> <span class="kw">TABLE</span> goods (
+    id <span class="kw">INT</span> UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> <span class="kw">AUTO_INCREMENT</span>,
+    name <span class="kw">VARCHAR</span>(<span class="num">100</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,
+    price <span class="kw">DECIMAL</span>(<span class="num">10</span>,<span class="num">2</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,
+    category_id <span class="kw">INT</span> UNSIGNED <span class="kw">NOT</span> <span class="kw">NULL</span>
 );
 
-INSERT INTO goods (name, price, category_id) VALUES ("苹果", 5.50, 1);
-INSERT INTO goods (name, price, category_id) VALUES ("牛奶", 12.00, 2);</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">CREATE TABLE goods (
-    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    price DECIMAL(10,2) NOT NULL,
-    category_id INT UNSIGNED NOT NULL
+<span class="kw">INSERT</span> <span class="kw">INTO</span> goods (name, price, category_id) <span class="kw">VALUES</span> (<span class="str">"苹果"</span>, <span class="num">5.50</span>, <span class="num">1</span>);
+<span class="kw">INSERT</span> <span class="kw">INTO</span> goods (name, price, category_id) <span class="kw">VALUES</span> (<span class="str">"牛奶"</span>, <span class="num">12.00</span>, <span class="num">2</span>);</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">CREATE</span> <span class="kw">TABLE</span> goods (
+    id <span class="kw">INT</span> UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> <span class="kw">AUTO_INCREMENT</span>,
+    name <span class="kw">VARCHAR</span>(<span class="num">100</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,
+    price <span class="kw">DECIMAL</span>(<span class="num">10</span>,<span class="num">2</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,
+    category_id <span class="kw">INT</span> UNSIGNED <span class="kw">NOT</span> <span class="kw">NULL</span>
 );
 
-INSERT INTO goods (name, price, category_id) VALUES ("苹果", 5.50, 1);
-INSERT INTO goods (name, price, category_id) VALUES ("牛奶", 12.00, 2);</div></div>
+<span class="kw">INSERT</span> <span class="kw">INTO</span> goods (name, price, category_id) <span class="kw">VALUES</span> (<span class="str">"苹果"</span>, <span class="num">5.50</span>, <span class="num">1</span>);
+<span class="kw">INSERT</span> <span class="kw">INTO</span> goods (name, price, category_id) <span class="kw">VALUES</span> (<span class="str">"牛奶"</span>, <span class="num">12.00</span>, <span class="num">2</span>);</div></div>
     </div>
     <div class="card" data-qid="31" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 31 题</span><span class="card-type write">代码实战</span></div>
@@ -546,18 +546,18 @@ INSERT INTO goods (name, price, category_id) VALUES ("牛奶", 12.00, 2);</div><
       <div class="card-desc">基于上一题的表，写一条 SELECT：带 WHERE（如价格区间或分类）、ORDER BY、LIMIT 只取前几条。注释说明：无 WHERE 的 UPDATE/DELETE 在生产环境的风险。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">SELECT id, name, price
-FROM goods
-WHERE price BETWEEN 5 AND 20
-ORDER BY price DESC
-LIMIT 10;
--- 无 WHERE 的 UPDATE/DELETE 易误伤全表，生产环境须谨慎</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">SELECT id, name, price
-FROM goods
-WHERE price BETWEEN 5 AND 20
-ORDER BY price DESC
-LIMIT 10;
--- 无 WHERE 的 UPDATE/DELETE 易误伤全表，生产环境须谨慎</div></div>
+      <div class="ref-answer"><div class="code-block"><span class="kw">SELECT</span> id, name, price
+<span class="kw">FROM</span> goods
+<span class="kw">WHERE</span> price <span class="kw">BETWEEN</span> <span class="num">5</span> <span class="kw">AND</span> <span class="num">20</span>
+<span class="kw">ORDER</span> <span class="kw">BY</span> price <span class="kw">DESC</span>
+<span class="kw">LIMIT</span> <span class="num">10</span>;
+-- 无 <span class="kw">WHERE</span> 的 <span class="kw">UPDATE</span>/<span class="kw">DELETE</span> 易误伤全表，生产环境须谨慎</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">SELECT</span> id, name, price
+<span class="kw">FROM</span> goods
+<span class="kw">WHERE</span> price <span class="kw">BETWEEN</span> <span class="num">5</span> <span class="kw">AND</span> <span class="num">20</span>
+<span class="kw">ORDER</span> <span class="kw">BY</span> price <span class="kw">DESC</span>
+<span class="kw">LIMIT</span> <span class="num">10</span>;
+-- 无 <span class="kw">WHERE</span> 的 <span class="kw">UPDATE</span>/<span class="kw">DELETE</span> 易误伤全表，生产环境须谨慎</div></div>
     </div>
     <div class="card" data-qid="32" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 32 题</span><span class="card-type write">代码实战</span></div>
@@ -565,28 +565,28 @@ LIMIT 10;
       <div class="card-desc">再建一张分类表（id、category_name），商品表的 category_id 引用分类表 id。写一条多表 JOIN 查询：查出商品名、价格、分类名称。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">CREATE TABLE category (
-    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    category_name VARCHAR(50) NOT NULL
+      <div class="ref-answer"><div class="code-block"><span class="kw">CREATE</span> <span class="kw">TABLE</span> category (
+    id <span class="kw">INT</span> UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> <span class="kw">AUTO_INCREMENT</span>,
+    category_name <span class="kw">VARCHAR</span>(<span class="num">50</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>
 );
 
-INSERT INTO category (id, category_name)
-VALUES (1, "水果"), (2, "乳品");
+<span class="kw">INSERT</span> <span class="kw">INTO</span> category (id, category_name)
+<span class="kw">VALUES</span> (<span class="num">1</span>, <span class="str">"水果"</span>), (<span class="num">2</span>, <span class="str">"乳品"</span>);
 
-SELECT g.name, g.price, c.category_name
-FROM goods g
-JOIN category c ON g.category_id = c.id;</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">CREATE TABLE category (
-    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    category_name VARCHAR(50) NOT NULL
+<span class="kw">SELECT</span> g.name, g.price, c.category_name
+<span class="kw">FROM</span> goods g
+<span class="kw">JOIN</span> category c <span class="kw">ON</span> g.category_id = c.id;</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">CREATE</span> <span class="kw">TABLE</span> category (
+    id <span class="kw">INT</span> UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> <span class="kw">AUTO_INCREMENT</span>,
+    category_name <span class="kw">VARCHAR</span>(<span class="num">50</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>
 );
 
-INSERT INTO category (id, category_name)
-VALUES (1, "水果"), (2, "乳品");
+<span class="kw">INSERT</span> <span class="kw">INTO</span> category (id, category_name)
+<span class="kw">VALUES</span> (<span class="num">1</span>, <span class="str">"水果"</span>), (<span class="num">2</span>, <span class="str">"乳品"</span>);
 
-SELECT g.name, g.price, c.category_name
-FROM goods g
-JOIN category c ON g.category_id = c.id;</div></div>
+<span class="kw">SELECT</span> g.name, g.price, c.category_name
+<span class="kw">FROM</span> goods g
+<span class="kw">JOIN</span> category c <span class="kw">ON</span> g.category_id = c.id;</div></div>
     </div>
 </div>
 

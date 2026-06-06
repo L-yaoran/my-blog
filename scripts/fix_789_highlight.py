@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Fix code highlighting for 007, 008, 009"""
+"""Fix code highlighting for all quiz pages"""
 import re, html as html_mod
 
 PY_KW = ['def','return','if','elif','else','for','while','import','from','class','True','False','None','self','nonlocal','global','in','not','and','or','is','with','as','try','except','finally','raise','pass','break','continue','yield','lambda']
 PY_BI = ['print','range','len','type','int','str','list','dict','tuple','set','input','isinstance','super','open','enumerate','zip','map','filter','sorted','reversed','abs','min','max','sum','round','socket','Process','Queue','multiprocessing','os','threading','time','re','findall','match','search','sub','group','count','keys','values','items','update','sleep']
 SQL_KW = ['CREATE','TABLE','INSERT','INTO','UPDATE','DELETE','SELECT','FROM','WHERE','ORDER','BY','GROUP','HAVING','JOIN','ON','LIMIT','ASC','DESC','DISTINCT','AVG','COUNT','MAX','MIN','SUM','INNER','LEFT','RIGHT','OUTER','PRIMARY','KEY','FOREIGN','REFERENCES','NOT','NULL','AUTO_INCREMENT','VARCHAR','INT','DECIMAL','CHARSET','UTF8','USE','IF','EXISTS','VALUES','SET','BETWEEN','AND','OR','IN','LIKE','AS','INNER','OUTER','FULL','CROSS','UNION','ALL','LIMIT','OFFSET','DESC','ASC','COUNT','SUM','AVG','MAX','MIN','LIKE','IS','NULL','TRUE','FALSE','AUTO_INCREMENT','DEFAULT','CHARSET','ENGINE','DATABASE','SHOW','DESCRIBE','ALTER','DROP','INDEX','UNIQUE','CHECK','CONSTRAINT','FOREIGN','KEY','REFERENCES','CASCADE']
+BASH_KW = ['cd','ls','pwd','mkdir','touch','rm','cp','mv','cat','more','head','tail','echo','clear','chmod','chown','grep','find','tar','wget','curl','ssh','scp','apt','yum','dnf','vim','vi','nano','man','history','whoami','df','du','ps','top','kill','ping','ifconfig','ip','systemctl','nginx','gunicorn','pip','python','python3','node','git','docker','make','sudo','su','exit','logout']
 
-ALL_KW = PY_KW + SQL_KW
+ALL_KW = PY_KW + SQL_KW + BASH_KW
 KW_PAT = re.compile(r'\b(' + '|'.join(ALL_KW) + r')\b', re.IGNORECASE)
 NUM_PAT = re.compile(r'\b(\d+\.?\d*)\b')
 STR_PAT = re.compile(r"(f?\"\"\"[\s\S]*?\"\"\"|f?'''[\s\S]*?'''|f?\"(?:\\.|[^\"\\])*\"|f?'(?:\\.|[^'\\])*')")
@@ -72,6 +73,9 @@ def fix_file(path):
         f.write(new_html)
     print(f'{path.split(chr(92))[-1]}: {highlighted} spans, {total_blocks} blocks')
 
-fix_file(r'E:\AI_itheima\VS_code\my_blog\static\python_basic_test_007.html')
-fix_file(r'E:\AI_itheima\VS_code\my_blog\static\python_basic_test_008.html')
-fix_file(r'E:\AI_itheima\VS_code\my_blog\static\python_basic_test_009.html')
+import os
+base = os.path.join(os.path.dirname(__file__), '..', 'static')
+for i in range(1, 13):
+    path = os.path.join(base, f'python_basic_test_{i:03d}.html')
+    if os.path.exists(path):
+        fix_file(path)
