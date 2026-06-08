@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LLM 练习 011</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/static/js/codemirror/codemirror.min.css?v=20260602">
 <link rel="stylesheet" href="/static/js/codemirror/theme/eclipse.min.css?v=20260602">
 <link rel="stylesheet" href="/static/css/quiz.css?v=20260602">
@@ -34,6 +37,7 @@
         <a href="/static/python_basic_test_010.html">练习 010</a>
         <a href="/static/python_basic_test_011.html" class="active">练习 011</a>
         <a href="/static/python_basic_test_012.html">练习 012</a>
+        <a href="/static/python_basic_test_013.html">练习 013</a>
       </div>
     </div>
     <a href="/static/python_basic_test_012.html" class="quiz-arrow" title="下一练习">▸</a>
@@ -510,22 +514,22 @@ print(<span class="str">"元素总数："</span>, arr.size)</div></div>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">import</span> pandas <span class="kw">as</span> pd
 
-df = pd.DataFrame({
+<span class="kw">df</span> = pd.DataFrame({
     <span class="str">"name"</span>: [<span class="str">"张三"</span>, <span class="str">"李四"</span>, <span class="str">"王五"</span>],
     <span class="str">"dept"</span>: [<span class="str">"技术部"</span>, <span class="str">"销售部"</span>, <span class="str">"技术部"</span>],
     <span class="str">"sal"</span>: [<span class="num">5000</span>, <span class="num">7000</span>, <span class="num">6000</span>]
 })
 
-print(df)</div></div>
+print(<span class="kw">df</span>)</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> pandas <span class="kw">as</span> pd
 
-df = pd.DataFrame({
+<span class="kw">df</span> = pd.DataFrame({
     <span class="str">"name"</span>: [<span class="str">"张三"</span>, <span class="str">"李四"</span>, <span class="str">"王五"</span>],
     <span class="str">"dept"</span>: [<span class="str">"技术部"</span>, <span class="str">"销售部"</span>, <span class="str">"技术部"</span>],
     <span class="str">"sal"</span>: [<span class="num">5000</span>, <span class="num">7000</span>, <span class="num">6000</span>]
 })
 
-print(df)</div></div>
+print(<span class="kw">df</span>)</div></div>
     </div>
     <div class="card" data-qid="33" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 33 题</span><span class="card-type write">代码实战</span></div>
@@ -601,16 +605,16 @@ print(<span class="str">"每行总和："</span>, np.<span class="kw">sum</span>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">import</span> pandas <span class="kw">as</span> pd
 
-df = pd.read_csv(<span class="str">"emp.txt"</span>, sep=<span class="str">"-"</span>)
+<span class="kw">df</span> = pd.read_csv(<span class="str">"emp.txt"</span>, sep=<span class="str">"-"</span>)
 
-result = df[df[<span class="str">"sal"</span>] &gt; <span class="num">6000</span>]
+result = <span class="kw">df</span>[<span class="kw">df</span>[<span class="str">"sal"</span>] &gt; <span class="num">6000</span>]
 
 print(result)</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> pandas <span class="kw">as</span> pd
 
-df = pd.read_csv(<span class="str">"emp.txt"</span>, sep=<span class="str">"-"</span>)
+<span class="kw">df</span> = pd.read_csv(<span class="str">"emp.txt"</span>, sep=<span class="str">"-"</span>)
 
-result = df[df[<span class="str">"sal"</span>] &gt; <span class="num">6000</span>]
+result = <span class="kw">df</span>[<span class="kw">df</span>[<span class="str">"sal"</span>] &gt; <span class="num">6000</span>]
 
 print(result)</div></div>
     </div>
@@ -622,16 +626,16 @@ print(result)</div></div>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">import</span> pandas <span class="kw">as</span> pd
 
-df = pd.read_csv(<span class="str">"emp.txt"</span>, sep=<span class="str">"-"</span>)
+<span class="kw">df</span> = pd.read_csv(<span class="str">"emp.txt"</span>, sep=<span class="str">"-"</span>)
 
-result = df.groupby(<span class="str">"dept"</span>)[<span class="str">"sal"</span>].mean()
+result = <span class="kw">df</span>.groupby(<span class="str">"dept"</span>)[<span class="str">"sal"</span>].mean()
 
 print(result)</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> pandas <span class="kw">as</span> pd
 
-df = pd.read_csv(<span class="str">"emp.txt"</span>, sep=<span class="str">"-"</span>)
+<span class="kw">df</span> = pd.read_csv(<span class="str">"emp.txt"</span>, sep=<span class="str">"-"</span>)
 
-result = df.groupby(<span class="str">"dept"</span>)[<span class="str">"sal"</span>].mean()
+result = <span class="kw">df</span>.groupby(<span class="str">"dept"</span>)[<span class="str">"sal"</span>].mean()
 
 print(result)</div></div>
     </div>
@@ -643,18 +647,18 @@ print(result)</div></div>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
       <div class="ref-answer"><div class="code-block"><span class="kw">import</span> pandas <span class="kw">as</span> pd
 
-df = pd.read_csv(<span class="str">"emp.txt"</span>, sep=<span class="str">"-"</span>)
+<span class="kw">df</span> = pd.read_csv(<span class="str">"emp.txt"</span>, sep=<span class="str">"-"</span>)
 
-sales_df = df[df[<span class="str">"dept"</span>] == <span class="str">"销售部"</span>]
+sales_df = <span class="kw">df</span>[<span class="kw">df</span>[<span class="str">"dept"</span>] == <span class="str">"销售部"</span>]
 
 result = sales_df.sort_values(<span class="str">"sal"</span>, ascending=<span class="kw">False</span>)
 
 print(result)</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> pandas <span class="kw">as</span> pd
 
-df = pd.read_csv(<span class="str">"emp.txt"</span>, sep=<span class="str">"-"</span>)
+<span class="kw">df</span> = pd.read_csv(<span class="str">"emp.txt"</span>, sep=<span class="str">"-"</span>)
 
-sales_df = df[df[<span class="str">"dept"</span>] == <span class="str">"销售部"</span>]
+sales_df = <span class="kw">df</span>[<span class="kw">df</span>[<span class="str">"dept"</span>] == <span class="str">"销售部"</span>]
 
 result = sales_df.sort_values(<span class="str">"sal"</span>, ascending=<span class="kw">False</span>)
 
@@ -678,14 +682,14 @@ plt.rcParams[<span class="str">"axes.unicode_minus"</span>] = <span class="kw">F
 month = np.array([<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>, <span class="num">6</span>])
 sales = np.array([<span class="num">100</span>, <span class="num">120</span>, <span class="num">90</span>, <span class="num">150</span>, <span class="num">180</span>, <span class="num">200</span>])
 
-df = pd.DataFrame({
+<span class="kw">df</span> = pd.DataFrame({
     <span class="str">"月份"</span>: month,
     <span class="str">"销量"</span>: sales
 })
 
-print(<span class="str">"平均销量："</span>, df[<span class="str">"销量"</span>].mean())
+print(<span class="str">"平均销量："</span>, <span class="kw">df</span>[<span class="str">"销量"</span>].mean())
 
-plt.plot(df[<span class="str">"月份"</span>], df[<span class="str">"销量"</span>], marker=<span class="str">"o"</span>, label=<span class="str">"销量"</span>)
+plt.plot(<span class="kw">df</span>[<span class="str">"月份"</span>], <span class="kw">df</span>[<span class="str">"销量"</span>], marker=<span class="str">"o"</span>, label=<span class="str">"销量"</span>)
 plt.title(<span class="str">"1-6 月销量趋势"</span>)
 plt.xlabel(<span class="str">"月份"</span>)
 plt.ylabel(<span class="str">"销量"</span>)
@@ -704,14 +708,14 @@ plt.rcParams[<span class="str">"axes.unicode_minus"</span>] = <span class="kw">F
 month = np.array([<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>, <span class="num">6</span>])
 sales = np.array([<span class="num">100</span>, <span class="num">120</span>, <span class="num">90</span>, <span class="num">150</span>, <span class="num">180</span>, <span class="num">200</span>])
 
-df = pd.DataFrame({
+<span class="kw">df</span> = pd.DataFrame({
     <span class="str">"月份"</span>: month,
     <span class="str">"销量"</span>: sales
 })
 
-print(<span class="str">"平均销量："</span>, df[<span class="str">"销量"</span>].mean())
+print(<span class="str">"平均销量："</span>, <span class="kw">df</span>[<span class="str">"销量"</span>].mean())
 
-plt.plot(df[<span class="str">"月份"</span>], df[<span class="str">"销量"</span>], marker=<span class="str">"o"</span>, label=<span class="str">"销量"</span>)
+plt.plot(<span class="kw">df</span>[<span class="str">"月份"</span>], <span class="kw">df</span>[<span class="str">"销量"</span>], marker=<span class="str">"o"</span>, label=<span class="str">"销量"</span>)
 plt.title(<span class="str">"1-6 月销量趋势"</span>)
 plt.xlabel(<span class="str">"月份"</span>)
 plt.ylabel(<span class="str">"销量"</span>)

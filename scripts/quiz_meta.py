@@ -110,4 +110,13 @@ QUIZZES = [
         'obj_total': 20,
         'subj_total': 18,
     },
+    {
+        'id': '013',
+        'title': 'LLM 练习 013',
+        'subtitle': '38 道题 · 选择题 + 填空题 + 简答题 + 代码实战',
+        'storage_key': 'py_s2_day01_quiz_history',
+        'save_key': 'py_s2_day01_saves',
+        'obj_total': 20,
+        'subj_total': 18,
+    },
 ]

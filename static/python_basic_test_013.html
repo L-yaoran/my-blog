@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM 练习 013</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/js/codemirror/codemirror.min.css?v=20260602">
+<link rel="stylesheet" href="/static/js/codemirror/theme/eclipse.min.css?v=20260602">
+<link rel="stylesheet" href="/static/css/quiz.css?v=20260602">
+</head>
+<body>
+
+<div class="container">
+  <div class="header" style="position:relative;">
+    <span class="theme-toggle" onclick="toggleTheme()" title="切换深色/浅色模式" style="position:absolute;top:0;right:0;cursor:pointer;font-size:1.2rem;">🌙</span>
+    <div class="badge">交互式练习</div>
+    <h1>LLM 练习 013</h1>
+    <div class="subtitle">38 道题 · 选择题 + 填空题 + 简答题 + 代码实战 · 即时反馈 · 记录保存</div>
+  </div>
+  <div class="quiz-nav">
+    <a href="/static/python_basic_test_012.html" class="quiz-arrow" title="上一练习">◂</a>
+    <div class="quiz-dropdown">
+      <button class="quiz-dropdown-btn" onclick="toggleDropdown(this)">练习 013 <span class="arrow-icon">▾</span></button>
+      <div class="quiz-dropdown-menu">
+        <a href="/static/python_basic_test_001.html">练习 001</a>
+        <a href="/static/python_basic_test_002.html">练习 002</a>
+        <a href="/static/python_basic_test_003.html">练习 003</a>
+        <a href="/static/python_basic_test_004.html">练习 004</a>
+        <a href="/static/python_basic_test_005.html">练习 005</a>
+        <a href="/static/python_basic_test_006.html">练习 006</a>
+        <a href="/static/python_basic_test_007.html">练习 007</a>
+        <a href="/static/python_basic_test_008.html">练习 008</a>
+        <a href="/static/python_basic_test_009.html">练习 009</a>
+        <a href="/static/python_basic_test_010.html">练习 010</a>
+        <a href="/static/python_basic_test_011.html">练习 011</a>
+        <a href="/static/python_basic_test_012.html">练习 012</a>
+        <a href="/static/python_basic_test_013.html" class="active">练习 013</a>
+      </div>
+    </div>
+    <span class="quiz-arrow disabled" title="已是最后一个">▸</span>
+  </div>
+  <div class="sticky-toolbar">
+    <a href="/" class="back-link">&larr; 返回主页</a>
+    <div class="score-bar">
+      <div class="score-item"><div class="score-label">客观题</div><div class="score-num"><span id="objDone">0</span>/20</div></div>
+      <div class="score-item"><div class="score-label">主观题</div><div class="score-num"><span id="subjDone">0</span>/18</div></div>
+      <div class="score-item" id="scoreResult" style="display:none"><div class="score-label">得分</div><div class="score-num"><span id="correctCount">0</span></div></div>
+      <div style="flex:1;min-width:0;"></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.35rem;position:relative;">
+        <div style="display:flex;gap:0.5rem;">
+          <button type="button" class="score-btn" id="btnSubmit" onclick="submitAll()">提交答案</button>
+          <button type="button" class="score-btn" style="background:var(--muted)" onclick="resetAll()">重置进度</button>
+        </div>
+      </div>
+    </div>
+    <div style="width:100%;display:flex;align-items:center;justify-content:space-between;padding-top:0.35rem;border-top:1px dashed var(--border);position:relative;">
+      <span onclick="toggleHistory()" style="cursor:pointer;font-size:0.78rem;color:var(--sub);user-select:none;">做题记录 <span id="historyToggleIcon">▼</span></span>
+      <div style="display:flex;gap:0.5rem;">
+        <button type="button" class="score-btn" style="background:var(--green)" onclick="saveProgress()">暂存进度</button>
+        <button type="button" class="score-btn" style="background:var(--purple)" onclick="loadProgress()">加载进度</button>
+        <button type="button" class="score-btn" style="background:var(--gold)" onclick="exportProgress()">导出数据</button>
+        <button type="button" class="score-btn" style="background:var(--blue)" onclick="importProgress()">导入数据</button>
+        <input type="file" id="importFileInput" accept=".json" style="display:none" onchange="handleImportFile(event)">
+      </div>
+      <div class="history-panel" id="historyPanel">
+    <h4>做题记录 <button class="history-clear" onclick="clearHistory()">清空记录</button></h4>
+    <ul class="history-list" id="historyList"></ul>
+    <div class="history-empty" id="historyEmpty">暂无记录</div>
+  </div>
+    </div>
+  </div>
+
+  <div class="history-detail-overlay" id="historyDetailOverlay" onclick="closeHistoryDetail()">
+    <div class="history-detail" id="historyDetail" onclick="event.stopPropagation()">
+      <div class="history-detail-header">
+        <h4>答题详情</h4>
+        <button class="history-detail-close" onclick="closeHistoryDetail()">&times;</button>
+      </div>
+      <div class="history-detail-body" id="historyDetailBody"></div>
+    </div>
+  </div>
+
+<div class="section">
+
+    <div class="section-title"><span class="icon"></span>一、单选题（10 题）</div>
+
+    <div class="card" data-qid="1" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 1 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">人工智能发展的三个核心驱动力是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 数据、算法、算力
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 电脑、鼠标、键盘
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 前端、后端、数据库
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 图片、视频、音频
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>AI 的三大核心驱动力是数据（训练素材）、算法（模型架构）和算力（计算资源）。
+      </div>
+    </div>
+    <div class="card" data-qid="2" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 2 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">关于提示词的说法，正确的是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 提示词只等于用户最后输入的问题
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 提示词可以包含角色、规则、资料、示例和输出格式
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 提示词越短越好，不能写长
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 提示词只在网页聊天中有用，代码调用时没有用
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>提示词不仅包含用户问题，还可以包含角色设定、业务规则、参考资料、示例和输出格式等。
+      </div>
+    </div>
+    <div class="card" data-qid="3" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 3 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">下面哪种情况更像事实性幻觉？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 要求只输出 JSON，模型多输出解释
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 模型把不存在的公司新闻说成真实发生
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 模型回复太长
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 模型没有使用表格
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>事实性幻觉指模型生成的内容与现实事实不一致，如编造不存在的事件、人物或时间。
+      </div>
+    </div>
+    <div class="card" data-qid="4" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 4 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">下面哪种情况更像忠实性幻觉？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 模型没有遵守"只输出 JSON"的要求
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 模型说了一个错误年份
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 模型编造了不存在的人名
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 模型把别人的作品说成某歌手作品
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>忠实性幻觉指模型没有遵守用户指令或上下文要求，如要求只输出 JSON 却额外输出解释。
+      </div>
+    </div>
+    <div class="card" data-qid="5" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 5 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">RAG 更适合解决什么问题？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 让模型改变底层参数
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 让模型检索外部资料后再回答
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 让模型自动点击网页
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 让模型不需要提示词
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>RAG（检索增强生成）通过检索外部资料后交给模型回答，类似"开卷考试"。
+      </div>
+    </div>
+    <div class="card" data-qid="6" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 6 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">微调更像下面哪种说法？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 给模型一份临时参考资料
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 让模型回炉深造，长期学习某类能力
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 让模型调用天气接口
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 让模型把回答变短
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>微调是对模型进行二次训练或参数调整，让模型长期适配某类任务，类似"回炉深造"。
+      </div>
+    </div>
+    <div class="card" data-qid="7" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 7 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">Agent 的核心理解是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 模型只负责生成图片
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 模型做决策，程序负责调用工具执行
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 模型不能和程序结合
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> Agent 等于普通聊天窗口
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>Agent 的核心是模型负责决策和推理，程序负责调用工具执行具体操作。
+      </div>
+    </div>
+    <div class="card" data-qid="8" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 8 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">在 messages 中，system 角色主要用于？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 提供模型身份、规则和输出边界
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 表示用户本次提问
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 表示数据库连接
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 表示 Python 文件名
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>system 角色用于设定模型的身份、任务规则和输出边界，是提示词工程的核心。
+      </div>
+    </div>
+    <div class="card" data-qid="9" data-type="choice" data-answer="C">
+      <div class="card-header"><span class="card-qnum">第 9 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">API Key 的正确使用方式是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 直接写进代码并发给同学
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 截图发到群里方便大家复制
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 放到环境变量或安全配置中读取
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 随便写一个字符串即可
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>API Key 是账户密钥，应放到环境变量或安全配置中读取，不能写进公开代码。
+      </div>
+    </div>
+    <div class="card" data-qid="10" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 10 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">为什么很多 AI 项目要求模型输出 JSON？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> JSON 看起来更复杂
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> JSON 方便程序继续解析和处理
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> JSON 只能给人阅读
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> JSON 可以自动训练模型
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>JSON 字段固定、格式规范，程序容易解析，可以继续写入数据库、传给前端或进入工作流。
+      </div>
+    </div>
+</div>
+
+<div class="section">
+
+    <div class="section-title"><span class="icon"></span>二、填空题（10 题）</div>
+
+    <div class="card" data-qid="11" data-type="fill" data-answer="数据、算法、算力">
+      <div class="card-header"><span class="card-qnum">第 11 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">AI 能力的三个核心驱动力是<span class="blank-input" contenteditable="true"></span>、<span class="blank-input" contenteditable="true"></span>、<span class="blank-input" contenteditable="true"></span>。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>数据提供训练素材，算法定义模型架构，算力提供计算资源，三者缺一不可。
+      </div>
+    </div>
+    <div class="card" data-qid="12" data-type="fill" data-answer="事实性、忠实性">
+      <div class="card-header"><span class="card-qnum">第 12 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">大模型幻觉可以分为<span class="blank-input" contenteditable="true"></span>幻觉和<span class="blank-input" contenteditable="true"></span>幻觉。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>事实性幻觉是编造不存在的事实；忠实性幻觉是不遵守用户指令或上下文要求。
+      </div>
+    </div>
+    <div class="card" data-qid="13" data-type="fill" data-answer="用户问题">
+      <div class="card-header"><span class="card-qnum">第 13 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">提示词包含用户问题，但不等于<span class="blank-input" contenteditable="true"></span>。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>提示词除了用户问题，还可能包含角色设定、业务背景、参考资料、示例等。
+      </div>
+    </div>
+    <div class="card" data-qid="14" data-type="fill" data-answer="开卷">
+      <div class="card-header"><span class="card-qnum">第 14 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">RAG 可以用"<span class="blank-input" contenteditable="true"></span> 考试"来类比，因为它会给模型提供外部资料。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>RAG 在回答前先检索外部资料，类似开卷考试可以翻书找答案。
+      </div>
+    </div>
+    <div class="card" data-qid="15" data-type="fill" data-answer="回炉深造">
+      <div class="card-header"><span class="card-qnum">第 15 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">微调可以理解为让模型<span class="blank-input" contenteditable="true"></span>，从而长期适配某类任务。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>微调通过二次训练调整模型参数，让模型长期学习某类能力。
+      </div>
+    </div>
+    <div class="card" data-qid="16" data-type="fill" data-answer="决策、调用工具执行">
+      <div class="card-header"><span class="card-qnum">第 16 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">Agent 中，模型主要负责<span class="blank-input" contenteditable="true"></span>，程序主要负责<span class="blank-input" contenteditable="true"></span>。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>Agent 的分工：模型负责推理和决策，程序负责调用具体工具执行操作。
+      </div>
+    </div>
+    <div class="card" data-qid="17" data-type="fill" data-answer="system、user、assistant">
+      <div class="card-header"><span class="card-qnum">第 17 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">messages 中常见的三个角色是<span class="blank-input" contenteditable="true"></span>、<span class="blank-input" contenteditable="true"></span>、<span class="blank-input" contenteditable="true"></span>。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>system 设定规则，user 提出问题，assistant 表示模型回复或提供示例。
+      </div>
+    </div>
+    <div class="card" data-qid="18" data-type="fill" data-answer="输出边界">
+      <div class="card-header"><span class="card-qnum">第 18 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">system 角色通常用于设定模型的身份、任务规则和<span class="blank-input" contenteditable="true"></span>。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>system 角色定义模型"是谁"、"做什么"、"输出什么格式"，是提示词工程的核心。
+      </div>
+    </div>
+    <div class="card" data-qid="19" data-type="fill" data-answer="环境变量">
+      <div class="card-header"><span class="card-qnum">第 19 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">API Key 不应该写进公开代码，推荐放到<span class="blank-input" contenteditable="true"></span>中。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>环境变量是安全存储密钥的标准方式，避免密钥泄露。
+      </div>
+    </div>
+    <div class="card" data-qid="20" data-type="fill" data-answer="JSON">
+      <div class="card-header"><span class="card-qnum">第 20 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">如果希望程序更容易处理模型结果，可以要求模型输出<span class="blank-input" contenteditable="true"></span>格式。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>JSON 字段固定、格式规范，程序容易解析，是 AI 项目最常用的输出格式。
+      </div>
+    </div>
+</div>
+
+<div class="section">
+
+    <div class="section-title"><span class="icon"></span>三、简答题（10 题）</div>
+
+    <div class="card" data-qid="21" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 21 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">为什么说提示词不是简单的一句用户提问？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">因为真实提示词除了用户问题，还可能包含角色设定、业务背景、参考资料、示例、步骤、输出格式和边界规则。用户问题只是提示词的一部分。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>因为真实提示词除了用户问题，还可能包含角色设定、业务背景、参考资料、示例、步骤、输出格式和边界规则。用户问题只是提示词的一部分。</div>
+    </div>
+    <div class="card" data-qid="22" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 22 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">请用自己的话解释事实性幻觉。</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">事实性幻觉指模型生成的内容和现实事实不一致，比如编造不存在的事件、人物、作品或时间。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>事实性幻觉指模型生成的内容和现实事实不一致，比如编造不存在的事件、人物、作品或时间。</div>
+    </div>
+    <div class="card" data-qid="23" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 23 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">请用自己的话解释忠实性幻觉。</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">忠实性幻觉指模型没有遵守用户指令或上下文要求，比如要求只输出 JSON，它却额外输出解释。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>忠实性幻觉指模型没有遵守用户指令或上下文要求，比如要求只输出 JSON，它却额外输出解释。</div>
+    </div>
+    <div class="card" data-qid="24" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 24 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">RAG 和微调有什么区别？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">RAG 是检索外部资料后交给模型回答，像开卷考试；微调是对模型进行二次训练或参数调整，让模型长期适配某类任务。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>RAG 是检索外部资料后交给模型回答，像开卷考试；微调是对模型进行二次训练或参数调整，让模型长期适配某类任务。</div>
+    </div>
+    <div class="card" data-qid="25" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 25 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">为什么工作中经常要求模型输出 JSON？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">因为 JSON 字段固定，程序容易解析，可以继续写入数据库、传给前端或进入工作流。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>因为 JSON 字段固定，程序容易解析，可以继续写入数据库、传给前端或进入工作流。</div>
+    </div>
+    <div class="card" data-qid="26" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 26 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">system、user、assistant 三种角色分别有什么作用？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">system 用来设定规则和边界；user 用来提出具体问题；assistant 表示模型回复，常用于提供示例答案。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>system 用来设定规则和边界；user 用来提出具体问题；assistant 表示模型回复，常用于提供示例答案。</div>
+    </div>
+    <div class="card" data-qid="27" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 27 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">为什么 API Key 不能直接写在代码里？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">因为 API Key 相当于账户钥匙，泄露后别人可能消耗额度或造成安全风险。应该放到环境变量或安全配置中读取。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>因为 API Key 相当于账户钥匙，泄露后别人可能消耗额度或造成安全风险。应该放到环境变量或安全配置中读取。</div>
+    </div>
+    <div class="card" data-qid="28" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 28 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">请列出一个清晰提示词应该包含的 4 个要素。</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">可以包含角色、任务、背景、约束、输出格式、示例、参考资料等，答出其中 4 个即可。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>可以包含角色、任务、背景、约束、输出格式、示例、参考资料等，答出其中 4 个即可。</div>
+    </div>
+    <div class="card" data-qid="29" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 29 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">什么情况下适合给模型提供示例？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">当希望模型模仿固定格式、风格、分类标准或输出结构时，适合提供示例。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>当希望模型模仿固定格式、风格、分类标准或输出结构时，适合提供示例。</div>
+    </div>
+    <div class="card" data-qid="30" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 30 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">为什么复杂任务要拆成多个步骤再交给模型？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">因为复杂任务一次性提交容易让模型遗漏步骤或误解意图，拆步骤可以降低难度，让模型按流程完成任务。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>因为复杂任务一次性提交容易让模型遗漏步骤或误解意图，拆步骤可以降低难度，让模型按流程完成任务。</div>
+    </div>
+</div>
+
+<div class="section">
+
+    <div class="section-title"><span class="icon"></span>四、代码实战（8 题）</div>
+
+    <div class="card" data-qid="31" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 31 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>基础练习：调用模型完成一句话解释</strong></div>
+      <div class="card-desc">使用 OpenAI 兼容方式调用模型，从环境变量读取 OPENAI_API_KEY，提问"请用一句话解释提示词工程"，打印模型回复。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">import os
+from openai import OpenAI
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+
+client = OpenAI(
+    api_key=api_key,
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+)
+
+completion = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": "你是一个简洁的 AI 助手，请用中文回答。"},
+        {"role": "user", "content": "请用一句话解释提示词工程。"}
+    ]
+)
+
+print(completion.choices[0].message.content)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import os
+from openai import OpenAI
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+
+client = OpenAI(
+    api_key=api_key,
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+)
+
+completion = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": "你是一个简洁的 AI 助手，请用中文回答。"},
+        {"role": "user", "content": "请用一句话解释提示词工程。"}
+    ]
+)
+
+print(completion.choices[0].message.content)</div></div>
+    </div>
+    <div class="card" data-qid="32" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 32 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>基础练习：设置计算器角色</strong></div>
+      <div class="card-desc">使用 system 设定模型为计算器（只输出最终结果，不要解释），user 中提问 2 + 5 * 3 等于多少？</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">import os
+from openai import OpenAI
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+
+client = OpenAI(
+    api_key=api_key,
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+)
+
+completion = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": "你是一个计算器，只输出最终计算结果，不要解释过程。"},
+        {"role": "user", "content": "2 + 5 * 3 等于多少？"}
+    ]
+)
+
+print(completion.choices[0].message.content)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import os
+from openai import OpenAI
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+
+client = OpenAI(
+    api_key=api_key,
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+)
+
+completion = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": "你是一个计算器，只输出最终计算结果，不要解释过程。"},
+        {"role": "user", "content": "2 + 5 * 3 等于多少？"}
+    ]
+)
+
+print(completion.choices[0].message.content)</div></div>
+    </div>
+    <div class="card" data-qid="33" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 33 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>基础练习：DashScope 调用模型</strong></div>
+      <div class="card-desc">使用 dashscope 库调用模型，从环境变量读取 DASHSCOPE_API_KEY，提问"请用一句话解释 RAG"。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">import os
+import dashscope
+
+dashscope.api_key = os.getenv("DASHSCOPE_API_KEY")
+if not dashscope.api_key:
+    raise ValueError("没有读取到 DASHSCOPE_API_KEY，请配置环境变量后重启 PyCharm。")
+
+response = dashscope.Generation.call(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": "你是一个简洁的 AI 助手，请用中文回答。"},
+        {"role": "user", "content": "请用一句话解释 RAG。"}
+    ]
+)
+
+print(response.output["text"])</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import os
+import dashscope
+
+dashscope.api_key = os.getenv("DASHSCOPE_API_KEY")
+if not dashscope.api_key:
+    raise ValueError("没有读取到 DASHSCOPE_API_KEY，请配置环境变量后重启 PyCharm。")
+
+response = dashscope.Generation.call(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": "你是一个简洁的 AI 助手，请用中文回答。"},
+        {"role": "user", "content": "请用一句话解释 RAG。"}
+    ]
+)
+
+print(response.output["text"])</div></div>
+    </div>
+    <div class="card" data-qid="34" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 34 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>进阶练习：客户反馈情绪分类</strong></div>
+      <div class="card-desc">使用 system 设定模型为客户反馈分析助手，输入客户反馈，要求输出 JSON（emotion/problem/suggestion），情绪只能是正面、负面、中性。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">import os
+from openai import OpenAI
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+
+client = OpenAI(
+    api_key=api_key,
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+)
+
+system_prompt = """
+你是一个客户反馈分析助手。
+请分析用户反馈，并输出 JSON。
+
+要求：
+1. emotion 只能是：正面、负面、中性。
+2. problem 提取客户提到的主要问题。
+3. suggestion 给出一句适合客服回复的建议。
+4. 只输出 JSON，不要输出解释文字。
+"""
+
+user_feedback = """
+这个 AI 写作工具生成速度挺快，但是经常答非所问，导出的格式也有点乱。
+"""
+
+completion = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_feedback},
+    ]
+)
+
+print(completion.choices[0].message.content)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import os
+from openai import OpenAI
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+
+client = OpenAI(
+    api_key=api_key,
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+)
+
+system_prompt = """
+你是一个客户反馈分析助手。
+请分析用户反馈，并输出 JSON。
+
+要求：
+1. emotion 只能是：正面、负面、中性。
+2. problem 提取客户提到的主要问题。
+3. suggestion 给出一句适合客服回复的建议。
+4. 只输出 JSON，不要输出解释文字。
+"""
+
+user_feedback = """
+这个 AI 写作工具生成速度挺快，但是经常答非所问，导出的格式也有点乱。
+"""
+
+completion = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_feedback},
+    ]
+)
+
+print(completion.choices[0].message.content)</div></div>
+    </div>
+    <div class="card" data-qid="35" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 35 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>进阶练习：会议行动项提取</strong></div>
+      <div class="card-desc">从会议内容中提取行动项，输出 JSON，每个行动项包含 item/owner/deadline，没有明确截止时间则 deadline 写 null。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">import os
+from openai import OpenAI
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+
+client = OpenAI(
+    api_key=api_key,
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+)
+
+system_prompt = """
+你是一个会议行动项提取助手。
+请从会议内容中提取明确有人负责的任务。
+
+输出要求：
+1. 只输出 JSON。
+2. JSON 顶层字段为 action_items。
+3. 每个行动项包含 item、owner、deadline。
+4. 如果没有明确截止时间，deadline 写 null。
+"""
+
+meeting_text = """
+本次周会决定，小王本周五前完成智能客服原型页面，小张负责整理客户反馈，但没有明确截止时间。
+"""
+
+completion = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": meeting_text},
+    ]
+)
+
+print(completion.choices[0].message.content)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import os
+from openai import OpenAI
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+
+client = OpenAI(
+    api_key=api_key,
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+)
+
+system_prompt = """
+你是一个会议行动项提取助手。
+请从会议内容中提取明确有人负责的任务。
+
+输出要求：
+1. 只输出 JSON。
+2. JSON 顶层字段为 action_items。
+3. 每个行动项包含 item、owner、deadline。
+4. 如果没有明确截止时间，deadline 写 null。
+"""
+
+meeting_text = """
+本次周会决定，小王本周五前完成智能客服原型页面，小张负责整理客户反馈，但没有明确截止时间。
+"""
+
+completion = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": meeting_text},
+    ]
+)
+
+print(completion.choices[0].message.content)</div></div>
+    </div>
+    <div class="card" data-qid="36" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 36 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>进阶练习：给模型一个示例</strong></div>
+      <div class="card-desc">使用 few-shot 示例，让模型学习快递信息抽取。system 设定规则，user/assistant 提供示例，再输入真实文本，输出姓名/手机号/地址 JSON。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">import os
+from openai import OpenAI
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+
+client = OpenAI(
+    api_key=api_key,
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+)
+
+system_prompt = """
+你是一个快递信息提取助手。
+请提取姓名、手机号、地址。
+只输出 JSON。
+手机号中的横线和空格要去掉。
+"""
+
+example_user = "张明远，138-1234-5678
+广东省深圳市南山区科技园南区高新南一道1000号腾讯大厦18层 1806室"
+
+example_assistant = '{"name": "张明远", "phone": "13812345678", "address": "广东省深圳市南山区科技园南区高新南一道1000号腾讯大厦18层 180室"}'
+
+real_user = """
+李婉婷
+151-9876-5432
+北京市海淀区中关村大街1号海龙大厦8层805室
+东西是一份文件，已经封装好了。
+"""
+
+completion = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": example_user},
+        {"role": "assistant", "content": example_assistant},
+        {"role": "user", "content": real_user},
+    ]
+)
+
+print(completion.choices[0].message.content)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import os
+from openai import OpenAI
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+
+client = OpenAI(
+    api_key=api_key,
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+)
+
+system_prompt = """
+你是一个快递信息提取助手。
+请提取姓名、手机号、地址。
+只输出 JSON。
+手机号中的横线和空格要去掉。
+"""
+
+example_user = "张明远，138-1234-5678
+广东省深圳市南山区科技园南区高新南一道1000号腾讯大厦18层 1806室"
+
+example_assistant = '{"name": "张明远", "phone": "13812345678", "address": "广东省深圳市南山区科技园南区高新南一道1000号腾讯大厦18层 180室"}'
+
+real_user = """
+李婉婷
+151-9876-5432
+北京市海淀区中关村大街1号海龙大厦8层805室
+东西是一份文件，已经封装好了。
+"""
+
+completion = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": example_user},
+        {"role": "assistant", "content": example_assistant},
+        {"role": "user", "content": real_user},
+    ]
+)
+
+print(completion.choices[0].message.content)</div></div>
+    </div>
+    <div class="card" data-qid="37" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 37 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>综合案例：社媒内容分类</strong></div>
+      <div class="card-desc">设计社媒内容分类提示词，将输入内容分为噪音/广告营销/弱相关/非噪音四类，要求输出 JSON（label + confidence）。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">import os
+from openai import OpenAI
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+
+client = OpenAI(
+    api_key=api_key,
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+)
+
+system_prompt = """
+你是一个品牌社媒内容分类助手。
+
+请将输入内容分类为以下四类之一：
+1. 噪音：完全无关，比如成语、误匹配、人名等。
+2. 广告营销：促销、打卡、优惠、正面分享。
+3. 弱相关：只是顺带提到品牌，没有具体行为或评价。
+4. 非噪音：真实评价、投诉、体验、负面内容或有效内容。
+
+输出要求：
+1. 只输出 JSON。
+2. label 必须是：噪音、广告营销、弱相关、非噪音。
+3. confidence 必须是：high、medium、low。
+"""
+
+content = "#海底捞# 今天生日去吃饭，服务员送了蛋糕，体验很好！"
+
+completion = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": content},
+    ]
+)
+
+print(completion.choices[0].message.content)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import os
+from openai import OpenAI
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+
+client = OpenAI(
+    api_key=api_key,
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+)
+
+system_prompt = """
+你是一个品牌社媒内容分类助手。
+
+请将输入内容分类为以下四类之一：
+1. 噪音：完全无关，比如成语、误匹配、人名等。
+2. 广告营销：促销、打卡、优惠、正面分享。
+3. 弱相关：只是顺带提到品牌，没有具体行为或评价。
+4. 非噪音：真实评价、投诉、体验、负面内容或有效内容。
+
+输出要求：
+1. 只输出 JSON。
+2. label 必须是：噪音、广告营销、弱相关、非噪音。
+3. confidence 必须是：high、medium、low。
+"""
+
+content = "#海底捞# 今天生日去吃饭，服务员送了蛋糕，体验很好！"
+
+completion = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": content},
+    ]
+)
+
+print(completion.choices[0].message.content)</div></div>
+    </div>
+    <div class="card" data-qid="38" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 38 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>综合案例：AI 产品需求整理</strong></div>
+      <div class="card-desc">从需求描述中提取结构化信息，输出 JSON（product/scenario/channels/constraints/risk_handling）。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">import os
+from openai import OpenAI
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+
+client = OpenAI(
+    api_key=api_key,
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+)
+
+system_prompt = """
+你是一个 AI 产品需求分析助手。
+请从用户输入中提取结构化需求信息。
+
+输出 JSON，字段包括：
+1. product：产品名称或产品类型。
+2. scenario：主要应用场景。
+3. channels：使用渠道，数组格式。
+4. constraints：约束条件，数组格式。
+5. risk_handling：风险处理方式。
+
+只输出 JSON，不要输出解释文字。
+"""
+
+requirement = """
+我们想做一个 AI 客服助手，主要用于回答用户关于订单、退款、物流的问题。
+希望先接入网页端，输出要简洁，遇到不确定的问题要提示转人工。
+"""
+
+completion = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": requirement},
+    ]
+)
+
+print(completion.choices[0].message.content)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import os
+from openai import OpenAI
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+
+client = OpenAI(
+    api_key=api_key,
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+)
+
+system_prompt = """
+你是一个 AI 产品需求分析助手。
+请从用户输入中提取结构化需求信息。
+
+输出 JSON，字段包括：
+1. product：产品名称或产品类型。
+2. scenario：主要应用场景。
+3. channels：使用渠道，数组格式。
+4. constraints：约束条件，数组格式。
+5. risk_handling：风险处理方式。
+
+只输出 JSON，不要输出解释文字。
+"""
+
+requirement = """
+我们想做一个 AI 客服助手，主要用于回答用户关于订单、退款、物流的问题。
+希望先接入网页端，输出要简洁，遇到不确定的问题要提示转人工。
+"""
+
+completion = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": requirement},
+    ]
+)
+
+print(completion.choices[0].message.content)</div></div>
+    </div>
+</div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const STORAGE_KEY = 'py_s2_day01_quiz_history';
+const SAVE_KEY = 'py_s2_day01_saves';
+</script>
+<script src="/static/js/codemirror/codemirror.min.js?v=20260602"></script>
+<script src="/static/js/codemirror/mode/python/python.min.js?v=20260602"></script>
+<script src="/static/js/quiz-engine.js?v=20260602"></script>
+
+</body>
+</html>
