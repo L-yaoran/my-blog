@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM 练习 014</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/js/codemirror/codemirror.min.css?v=20260602">
+<link rel="stylesheet" href="/static/js/codemirror/theme/eclipse.min.css?v=20260602">
+<link rel="stylesheet" href="/static/css/quiz.css?v=20260602">
+</head>
+<body>
+
+<div class="container">
+  <div class="header" style="position:relative;">
+    <span class="theme-toggle" onclick="toggleTheme()" title="切换深色/浅色模式" style="position:absolute;top:0;right:0;cursor:pointer;font-size:1.2rem;">🌙</span>
+    <div class="badge">交互式练习</div>
+    <h1>LLM 练习 014</h1>
+    <div class="subtitle">37 道题 · 选择题 + 填空题 + 简答题 + 代码实战 · 即时反馈 · 记录保存</div>
+  </div>
+  <div class="quiz-nav">
+    <a href="/static/python_basic_test_013.html" class="quiz-arrow" title="上一练习">◂</a>
+    <div class="quiz-dropdown">
+      <button class="quiz-dropdown-btn" onclick="toggleDropdown(this)">练习 014 <span class="arrow-icon">▾</span></button>
+      <div class="quiz-dropdown-menu">
+        <a href="/static/python_basic_test_001.html">练习 001</a>
+        <a href="/static/python_basic_test_002.html">练习 002</a>
+        <a href="/static/python_basic_test_003.html">练习 003</a>
+        <a href="/static/python_basic_test_004.html">练习 004</a>
+        <a href="/static/python_basic_test_005.html">练习 005</a>
+        <a href="/static/python_basic_test_006.html">练习 006</a>
+        <a href="/static/python_basic_test_007.html">练习 007</a>
+        <a href="/static/python_basic_test_008.html">练习 008</a>
+        <a href="/static/python_basic_test_009.html">练习 009</a>
+        <a href="/static/python_basic_test_010.html">练习 010</a>
+        <a href="/static/python_basic_test_011.html">练习 011</a>
+        <a href="/static/python_basic_test_012.html">练习 012</a>
+        <a href="/static/python_basic_test_013.html">练习 013</a>
+        <a href="/static/python_basic_test_014.html" class="active">练习 014</a>
+      </div>
+    </div>
+    <span class="quiz-arrow disabled" title="已是最后一个">▸</span>
+  </div>
+  <div class="sticky-toolbar">
+    <a href="/" class="back-link">&larr; 返回主页</a>
+    <div class="score-bar">
+      <div class="score-item"><div class="score-label">客观题</div><div class="score-num"><span id="objDone">0</span>/20</div></div>
+      <div class="score-item"><div class="score-label">主观题</div><div class="score-num"><span id="subjDone">0</span>/17</div></div>
+      <div class="score-item" id="scoreResult" style="display:none"><div class="score-label">得分</div><div class="score-num"><span id="correctCount">0</span></div></div>
+      <div style="flex:1;min-width:0;"></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.35rem;position:relative;">
+        <div style="display:flex;gap:0.5rem;">
+          <button type="button" class="score-btn" id="btnSubmit" onclick="submitAll()">提交答案</button>
+          <button type="button" class="score-btn" style="background:var(--muted)" onclick="resetAll()">重置进度</button>
+        </div>
+      </div>
+    </div>
+    <div style="width:100%;display:flex;align-items:center;justify-content:space-between;padding-top:0.35rem;border-top:1px dashed var(--border);position:relative;">
+      <span onclick="toggleHistory()" style="cursor:pointer;font-size:0.78rem;color:var(--sub);user-select:none;">做题记录 <span id="historyToggleIcon">▼</span></span>
+      <div style="display:flex;gap:0.5rem;">
+        <button type="button" class="score-btn" style="background:var(--green)" onclick="saveProgress()">暂存进度</button>
+        <button type="button" class="score-btn" style="background:var(--purple)" onclick="loadProgress()">加载进度</button>
+        <button type="button" class="score-btn" style="background:var(--gold)" onclick="exportProgress()">导出数据</button>
+        <button type="button" class="score-btn" style="background:var(--blue)" onclick="importProgress()">导入数据</button>
+        <input type="file" id="importFileInput" accept=".json" style="display:none" onchange="handleImportFile(event)">
+      </div>
+      <div class="history-panel" id="historyPanel">
+    <h4>做题记录 <button class="history-clear" onclick="clearHistory()">清空记录</button></h4>
+    <ul class="history-list" id="historyList"></ul>
+    <div class="history-empty" id="historyEmpty">暂无记录</div>
+  </div>
+    </div>
+  </div>
+
+  <div class="history-detail-overlay" id="historyDetailOverlay" onclick="closeHistoryDetail()">
+    <div class="history-detail" id="historyDetail" onclick="event.stopPropagation()">
+      <div class="history-detail-header">
+        <h4>答题详情</h4>
+        <button class="history-detail-close" onclick="closeHistoryDetail()">&times;</button>
+      </div>
+      <div class="history-detail-body" id="historyDetailBody"></div>
+    </div>
+  </div>
+
+<div class="section">
+
+    <div class="section-title"><span class="icon"></span>一、单选题（10 题）</div>
+
+    <div class="card" data-qid="1" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 1 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">在真实项目中，使用 Python 调用大模型 API 的主要目的是什么？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 让学生少写代码
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 让程序自动把问题发送给模型并处理结果
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 替代所有数据库操作
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 让模型自动保存 API Key
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>API 调用的核心是让程序自动化地与模型交互，包括发送问题、接收结果、解析处理。
+      </div>
+    </div>
+    <div class="card" data-qid="2" data-type="choice" data-answer="C">
+      <div class="card-header"><span class="card-qnum">第 2 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">api_key 的主要作用是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 指定模型名称
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 指定输出语言
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 证明调用者有权限访问模型服务
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 控制是否流式输出
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>API Key 是身份凭证，用于证明调用者有权访问模型服务，类似账户密码。
+      </div>
+    </div>
+    <div class="card" data-qid="3" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 3 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">base_url 的主要作用是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 指定请求发往哪个模型服务地址
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 指定用户输入内容
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 指定返回结果的字体
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 指定代码文件保存路径
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>base_url 指定 API 请求的目标地址，不同平台有不同的兼容接口地址。
+      </div>
+    </div>
+    <div class="card" data-qid="4" data-type="choice" data-answer="C">
+      <div class="card-header"><span class="card-qnum">第 4 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">关于批处理和流式输出，下列说法正确的是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 批处理必须使用 stream=True
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 流式输出会一次性返回完整答案
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 批处理通常一次性返回完整结果
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 流式输出不能用于聊天场景
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>批处理等模型生成完毕后一次性返回；流式输出逐段返回，适合聊天等需要即时反馈的场景。
+      </div>
+    </div>
+    <div class="card" data-qid="5" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 5 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">在 OpenAI 兼容接口中开启流式输出的常见参数是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> fast=True
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> stream=True
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> flow=False
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> print=True
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>stream=True 开启流式输出，返回值变为可迭代的流式对象。
+      </div>
+    </div>
+    <div class="card" data-qid="6" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 6 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">zero-shot 的含义是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 给模型很多示例
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 不给示例，直接让模型完成任务
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 训练一个新模型
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 删除所有提示词
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>zero-shot 表示不提供任何示例，直接让模型根据指令完成任务。
+      </div>
+    </div>
+    <div class="card" data-qid="7" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 7 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">few-shot 更适合下列哪个场景？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 固定格式的文本分类
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 关闭电脑
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 修改 Python 解释器
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 安装操作系统
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>few-shot 通过提供少量示例让模型模仿格式，非常适合需要固定输出格式的任务。
+      </div>
+    </div>
+    <div class="card" data-qid="8" data-type="choice" data-answer="C">
+      <div class="card-header"><span class="card-qnum">第 8 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">CoT 思维链最适合用于？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 简单问候
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 简单翻译一个词
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 多步骤推理问题
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 输出当前时间
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>CoT（思维链）通过要求模型逐步推理，适合数学、逻辑等需要多步骤思考的问题。
+      </div>
+    </div>
+    <div class="card" data-qid="9" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 9 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">ReAct 中的 Action 指什么？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 模型输出最终答案
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 模型决定调用某个工具或执行某个动作
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 程序删除提示词
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 用户关闭浏览器
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>ReAct 中 Action 是模型决定调用工具或执行操作的步骤。
+      </div>
+    </div>
+    <div class="card" data-qid="10" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 10 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">提示词注入攻击的典型特征是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 用户输入中包含试图覆盖原始规则的恶意指令
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 用户正常提问天气
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 程序正常读取环境变量
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 模型正常返回 JSON
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>提示词注入是用户输入中嵌入恶意指令，试图覆盖系统规则，让模型执行非预期操作。
+      </div>
+    </div>
+</div>
+
+<div class="section">
+
+    <div class="section-title"><span class="icon"></span>二、填空题（10 题）</div>
+
+    <div class="card" data-qid="11" data-type="fill" data-answer="创建客户端、解析结果">
+      <div class="card-header"><span class="card-qnum">第 11 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">大模型 API 调用的四个基本步骤是：导包、<span class="blank-input" contenteditable="true"></span>、发送消息、<span class="blank-input" contenteditable="true"></span>。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>标准流程：导入库 → 创建客户端（配置 base_url 等）→ 发送 messages → 解析返回结果。
+      </div>
+    </div>
+    <div class="card" data-qid="12" data-type="fill" data-answer="对话消息">
+      <div class="card-header"><span class="card-qnum">第 12 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">messages 是大模型接口中的<span class="blank-input" contenteditable="true"></span>列表。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>messages 是一个列表，包含 system/user/assistant 等角色的消息字典。
+      </div>
+    </div>
+    <div class="card" data-qid="13" data-type="fill" data-answer="云端模型">
+      <div class="card-header"><span class="card-qnum">第 13 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">OpenAI 兼容接口的好处是可以用类似写法调用不同平台的<span class="blank-input" contenteditable="true"></span>。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>OpenAI 兼容接口统一了调用方式，只需更换 base_url 和 api_key 就能切换不同平台。
+      </div>
+    </div>
+    <div class="card" data-qid="14" data-type="fill" data-answer="for">
+      <div class="card-header"><span class="card-qnum">第 14 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">流式输出通常需要使用<span class="blank-input" contenteditable="true"></span>循环逐段读取模型返回内容。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>for chunk in stream 循环遍历流式对象，逐段读取并打印内容。
+      </div>
+    </div>
+    <div class="card" data-qid="15" data-type="fill" data-answer="换行">
+      <div class="card-header"><span class="card-qnum">第 15 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">end="" 的作用是让 print() 打印后不自动<span class="blank-input" contenteditable="true"></span>。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>默认 print() 末尾会加换行符，end="" 让内容连续显示，模拟打字效果。
+      </div>
+    </div>
+    <div class="card" data-qid="16" data-type="fill" data-answer="示例">
+      <div class="card-header"><span class="card-qnum">第 16 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">zero-shot 表示不给模型<span class="blank-input" contenteditable="true"></span>，直接让模型完成任务。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>zero-shot 零样本学习，不提供任何示例，完全依赖模型自身的理解能力。
+      </div>
+    </div>
+    <div class="card" data-qid="17" data-type="fill" data-answer="示例">
+      <div class="card-header"><span class="card-qnum">第 17 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">few-shot 表示给模型少量<span class="blank-input" contenteditable="true"></span>，让模型模仿格式或判断标准。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>few-shot 少样本学习，通过 1-3 个示例引导模型理解任务格式和要求。
+      </div>
+    </div>
+    <div class="card" data-qid="18" data-type="fill" data-answer="思维链">
+      <div class="card-header"><span class="card-qnum">第 18 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">CoT 的中文名称是<span class="blank-input" contenteditable="true"></span>。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>CoT（Chain of Thought）思维链，通过要求模型逐步推理来提高复杂任务的准确率。
+      </div>
+    </div>
+    <div class="card" data-qid="19" data-type="fill" data-answer="投票">
+      <div class="card-header"><span class="card-qnum">第 19 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">Self-Consistency 可以理解为多条思路生成答案后进行<span class="blank-input" contenteditable="true"></span>或比较。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>Self-Consistency 通过多条推理路径生成答案，再投票选出最常见的结果。
+      </div>
+    </div>
+    <div class="card" data-qid="20" data-type="fill" data-answer="观察">
+      <div class="card-header"><span class="card-qnum">第 20 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">ReAct 的核心循环可以概括为：思考、行动、<span class="blank-input" contenteditable="true"></span>、再思考。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>ReAct 循环：Thought（思考）→ Action（行动）→ Observation（观察）→ 再思考。
+      </div>
+    </div>
+</div>
+
+<div class="section">
+
+    <div class="section-title"><span class="icon"></span>三、简答题（10 题）</div>
+
+    <div class="card" data-qid="21" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 21 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">为什么真实项目中不能只依赖网页端和大模型聊天？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">因为真实项目需要程序自动调用模型、自动处理用户输入、自动解析模型结果，并把结果展示、保存或交给后续流程处理。网页聊天适合体验模型能力，但不适合做自动化业务系统。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>因为真实项目需要程序自动调用模型、自动处理用户输入、自动解析模型结果，并把结果展示、保存或交给后续流程处理。网页聊天适合体验模型能力，但不适合做自动化业务系统。</div>
+    </div>
+    <div class="card" data-qid="22" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 22 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">批处理和流式输出有什么区别？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">批处理是模型生成完整答案后一次性返回，适合短回答和后台任务；流式输出是一段一段返回内容，适合聊天、长文本生成和需要改善用户等待体验的场景。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>批处理是模型生成完整答案后一次性返回，适合短回答和后台任务；流式输出是一段一段返回内容，适合聊天、长文本生成和需要改善用户等待体验的场景。</div>
+    </div>
+    <div class="card" data-qid="23" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 23 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">如果模型返回结果取不到，应该如何排查？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">应先打印完整响应对象，查看真实返回结构，再根据字段层级取值。不要直接猜字段，也不要在换模型后继续照搬旧的解析路径。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>应先打印完整响应对象，查看真实返回结构，再根据字段层级取值。不要直接猜字段，也不要在换模型后继续照搬旧的解析路径。</div>
+    </div>
+    <div class="card" data-qid="24" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 24 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">zero-shot 和 few-shot 的区别是什么？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">zero-shot 是不给示例，直接让模型完成任务；few-shot 是给模型少量示例，让模型模仿示例的格式、风格或判断标准。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>zero-shot 是不给示例，直接让模型完成任务；few-shot 是给模型少量示例，让模型模仿示例的格式、风格或判断标准。</div>
+    </div>
+    <div class="card" data-qid="25" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 25 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">few-shot 为什么不是训练模型？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">few-shot 只是把示例放进提示词上下文中，让模型临时参考，不会修改模型参数，也不会让模型永久学会这些示例。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>few-shot 只是把示例放进提示词上下文中，让模型临时参考，不会修改模型参数，也不会让模型永久学会这些示例。</div>
+    </div>
+    <div class="card" data-qid="26" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 26 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">CoT 适合什么任务？为什么简单任务不一定适合 CoT？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">CoT 适合数学题、逻辑题、多步骤任务、代码分析等复杂推理任务。简单任务不一定适合 CoT，因为它会增加 token 消耗和响应时间。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>CoT 适合数学题、逻辑题、多步骤任务、代码分析等复杂推理任务。简单任务不一定适合 CoT，因为它会增加 token 消耗和响应时间。</div>
+    </div>
+    <div class="card" data-qid="27" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 27 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">链式提示和 CoT 有什么区别？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">CoT 多数是在一个提示词中要求模型分步推理；链式提示更偏工程实现，是把一个大任务拆成多个子任务，让前一步结果作为下一步输入。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>CoT 多数是在一个提示词中要求模型分步推理；链式提示更偏工程实现，是把一个大任务拆成多个子任务，让前一步结果作为下一步输入。</div>
+    </div>
+    <div class="card" data-qid="28" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 28 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">Self-Consistency 的优点和代价分别是什么？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">Self-Consistency 的优点是提高复杂推理任务的稳定性；代价是需要多次调用模型，会增加 token 成本、运行时间和代码复杂度。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>Self-Consistency 的优点是提高复杂推理任务的稳定性；代价是需要多次调用模型，会增加 token 成本、运行时间和代码复杂度。</div>
+    </div>
+    <div class="card" data-qid="29" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 29 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">ReAct 中模型和程序分别负责什么？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">模型负责思考下一步、选择工具、总结工具结果；程序负责提供工具、执行工具、校验工具调用和返回结果。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>模型负责思考下一步、选择工具、总结工具结果；程序负责提供工具、执行工具、校验工具调用和返回结果。</div>
+    </div>
+    <div class="card" data-qid="30" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 30 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">提示词注入攻击应该如何防御？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">可以通过分隔符隔离用户输入、明确任务边界、不把敏感信息放入提示词、限制工具调用权限、对输出进行安全检查等方式防御。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>可以通过分隔符隔离用户输入、明确任务边界、不把敏感信息放入提示词、限制工具调用权限、对输出进行安全检查等方式防御。</div>
+    </div>
+</div>
+
+<div class="section">
+
+    <div class="section-title"><span class="icon"></span>四、代码实战（7 题）</div>
+
+    <div class="card" data-qid="31" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 31 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>基础练习：大模型基础调用</strong></div>
+      <div class="card-desc">使用 OpenAI 兼容接口调用云端模型，让模型回答"请用三句话说明 Python 程序员为什么要学习大模型 API 调用"。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+)
+
+response = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {
+            "role": "user",
+            "content": "请用三句话说明 Python 程序员为什么要学习大模型 API 调用。"
+        }
+    ]
+)
+
+answer = response.choices[0].message.content
+print(answer)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+)
+
+response = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {
+            "role": "user",
+            "content": "请用三句话说明 Python 程序员为什么要学习大模型 API 调用。"
+        }
+    ]
+)
+
+answer = response.choices[0].message.content
+print(answer)</div></div>
+    </div>
+    <div class="card" data-qid="32" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 32 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>基础练习：流式输出</strong></div>
+      <div class="card-desc">在上一题基础上开启流式输出（stream=True），使用 for 循环逐段读取，用 end="" 和 flush=True 实现实时输出效果。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+)
+
+stream = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {
+            "role": "user",
+            "content": "请用通俗语言解释什么是大模型流式输出。"
+        }
+    ],
+    stream=True
+)
+
+for chunk in stream:
+    content = chunk.choices[0].delta.content
+    if content:
+        print(content, end="", flush=True)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+)
+
+stream = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {
+            "role": "user",
+            "content": "请用通俗语言解释什么是大模型流式输出。"
+        }
+    ],
+    stream=True
+)
+
+for chunk in stream:
+    content = chunk.choices[0].delta.content
+    if content:
+        print(content, end="", flush=True)</div></div>
+    </div>
+    <div class="card" data-qid="33" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 33 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>Few-shot 翻译</strong></div>
+      <div class="card-desc">使用 few-shot 提示词，system 中提供一个英文到中文的翻译示例，user 中提供新的英文句子，让模型参考示例格式翻译。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+)
+
+system_prompt = """
+你是一个英文到中文的翻译助手。
+请参考下面的示例进行翻译，只输出中文结果，不要输出多余解释。
+
+示例：
+英文：I love Python.
+中文：我喜欢 Python。
+"""
+
+response = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": "Large models can call external tools."}
+    ]
+)
+
+print(response.choices[0].message.content)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+)
+
+system_prompt = """
+你是一个英文到中文的翻译助手。
+请参考下面的示例进行翻译，只输出中文结果，不要输出多余解释。
+
+示例：
+英文：I love Python.
+中文：我喜欢 Python。
+"""
+
+response = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": "Large models can call external tools."}
+    ]
+)
+
+print(response.choices[0].message.content)</div></div>
+    </div>
+    <div class="card" data-qid="34" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 34 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>Zero-shot CoT</strong></div>
+      <div class="card-desc">让模型回答年龄题（小明6岁妹妹一半，哥哥大4岁，现在70岁），要求"请一步一步思考"，打印推理过程和最终答案。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+)
+
+question = """
+当小明 6 岁时，他的妹妹年龄是他的一半。他的哥哥比小明大 4 岁。
+现在小明 70 岁了，请问他的妹妹和哥哥年龄加起来是多少？
+"""
+
+prompt = f"""
+请解决下面的问题。
+
+题目：
+{question}
+
+要求：
+1. 请一步一步思考。
+2. 先写出推理过程。
+3. 最后单独给出最终答案。
+"""
+
+response = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "user", "content": prompt}
+    ]
+)
+
+print(response.choices[0].message.content)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+)
+
+question = """
+当小明 6 岁时，他的妹妹年龄是他的一半。他的哥哥比小明大 4 岁。
+现在小明 70 岁了，请问他的妹妹和哥哥年龄加起来是多少？
+"""
+
+prompt = f"""
+请解决下面的问题。
+
+题目：
+{question}
+
+要求：
+1. 请一步一步思考。
+2. 先写出推理过程。
+3. 最后单独给出最终答案。
+"""
+
+response = client.chat.completions.create(
+    model="qwen-plus",
+    messages=[
+        {"role": "user", "content": prompt}
+    ]
+)
+
+print(response.choices[0].message.content)</div></div>
+    </div>
+    <div class="card" data-qid="35" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 35 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>链式提示</strong></div>
+      <div class="card-desc">完成三步链式任务：从文本中抽取要点 → 根据要点写摘要 → 优化摘要语言。前一步结果作为下一步输入，每步都打印。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+)
+
+def ask_model(prompt):
+    response = client.chat.completions.create(
+        model="qwen-plus",
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return response.choices[0].message.content
+
+article = """
+近年来，大模型在客服、教育、办公和数据分析等场景中应用越来越广。
+企业在使用大模型时，通常需要通过 Prompt 工程约束模型输出格式，
+并结合知识库、外部工具和安全审核来提高回答可靠性。
+"""
+
+# 第一步：抽取要点
+points = ask_model(f'请从下面文本中抽取 3 个关键要点。
+
+文本：
+"""{article}"""')
+print("第一步：抽取要点")
+print(points)
+
+# 第二步：生成摘要
+summary = ask_model(f'请根据下面的要点，生成一段 100 字以内的摘要。
+
+要点：
+"""{points}"""')
+print("第二步：生成摘要")
+print(summary)
+
+# 第三步：优化摘要
+final = ask_model(f'请优化下面这段摘要，使语言更简洁、正式。
+
+摘要：
+"""{summary}"""')
+print("第三步：优化摘要")
+print(final)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+)
+
+def ask_model(prompt):
+    response = client.chat.completions.create(
+        model="qwen-plus",
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return response.choices[0].message.content
+
+article = """
+近年来，大模型在客服、教育、办公和数据分析等场景中应用越来越广。
+企业在使用大模型时，通常需要通过 Prompt 工程约束模型输出格式，
+并结合知识库、外部工具和安全审核来提高回答可靠性。
+"""
+
+# 第一步：抽取要点
+points = ask_model(f'请从下面文本中抽取 3 个关键要点。
+
+文本：
+"""{article}"""')
+print("第一步：抽取要点")
+print(points)
+
+# 第二步：生成摘要
+summary = ask_model(f'请根据下面的要点，生成一段 100 字以内的摘要。
+
+要点：
+"""{points}"""')
+print("第二步：生成摘要")
+print(summary)
+
+# 第三步：优化摘要
+final = ask_model(f'请优化下面这段摘要，使语言更简洁、正式。
+
+摘要：
+"""{summary}"""')
+print("第三步：优化摘要")
+print(final)</div></div>
+    </div>
+    <div class="card" data-qid="36" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 36 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>Self-Consistency 简化实现</strong></div>
+      <div class="card-desc">让模型针对同一个问题生成 3 个不同思路（输出 JSON 数组），再让模型从多个答案中选出最合理的结果。不使用 eval()。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">import json
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+)
+
+def ask_model(prompt):
+    response = client.chat.completions.create(
+        model="qwen-plus",
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return response.choices[0].message.content
+
+question = "当小明 6 岁时，妹妹 3 岁。现在小明 70 岁，妹妹多少岁？"
+
+# 第一步：生成 3 个思路
+ideas_text = ask_model(f'"""
+请针对下面问题，给出 3 个不同的解题思路。
+问题：{question}
+输出要求：只输出 JSON 数组，格式：["思路1", "思路2", "思路3"]
+"""')
+ideas = json.loads(ideas_text)
+
+# 第二步：按每个思路回答
+answers = []
+for idea in ideas:
+    answer = ask_model(f'请按照思路"{idea}"解决问题。问题：{question}')
+    answers.append(answer)
+
+# 第三步：评审选出最终答案
+final = ask_model(f'请从下面多个答案中选出最合理的答案。
+问题：{question}
+候选答案：{answers}')
+print("最终结果：", final)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import json
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+)
+
+def ask_model(prompt):
+    response = client.chat.completions.create(
+        model="qwen-plus",
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return response.choices[0].message.content
+
+question = "当小明 6 岁时，妹妹 3 岁。现在小明 70 岁，妹妹多少岁？"
+
+# 第一步：生成 3 个思路
+ideas_text = ask_model(f'"""
+请针对下面问题，给出 3 个不同的解题思路。
+问题：{question}
+输出要求：只输出 JSON 数组，格式：["思路1", "思路2", "思路3"]
+"""')
+ideas = json.loads(ideas_text)
+
+# 第二步：按每个思路回答
+answers = []
+for idea in ideas:
+    answer = ask_model(f'请按照思路"{idea}"解决问题。问题：{question}')
+    answers.append(answer)
+
+# 第三步：评审选出最终答案
+final = ask_model(f'请从下面多个答案中选出最合理的答案。
+问题：{question}
+候选答案：{answers}')
+print("最终结果：", final)</div></div>
+    </div>
+    <div class="card" data-qid="37" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 37 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>ReAct 简化工具调用</strong></div>
+      <div class="card-desc">实现简化版 ReAct 天气查询：定义 get_weather(city) 模拟工具，让模型判断需要查询哪个城市，程序调用工具，再把结果交给模型生成自然语言回答。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+)
+
+def get_weather(city):
+    weather_data = {
+        "深圳": "小雨，25-29℃，湿度较高，建议带伞。",
+        "北京": "晴，18-27℃，空气较干燥，适合出行。",
+        "上海": "多云，22-28℃，体感舒适。"
+    }
+    return weather_data.get(city, "暂时没有查询到该城市的天气。")
+
+def ask_model(prompt):
+    response = client.chat.completions.create(
+        model="qwen-plus",
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return response.choices[0].message.content
+
+user_question = "我明天去深圳上课，需要带伞吗？"
+
+# 第一步：让模型提取城市
+city = ask_model(f'从问题中提取城市名，只输出城市名。
+问题：{user_question}').strip()
+print("城市：", city)
+
+# 第二步：调用工具
+weather = get_weather(city)
+print("天气：", weather)
+
+# 第三步：生成最终回答
+answer = ask_model(f'用户问题：{user_question}
+天气结果：{weather}
+请用自然语言回答。')
+print("回答：", answer)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+)
+
+def get_weather(city):
+    weather_data = {
+        "深圳": "小雨，25-29℃，湿度较高，建议带伞。",
+        "北京": "晴，18-27℃，空气较干燥，适合出行。",
+        "上海": "多云，22-28℃，体感舒适。"
+    }
+    return weather_data.get(city, "暂时没有查询到该城市的天气。")
+
+def ask_model(prompt):
+    response = client.chat.completions.create(
+        model="qwen-plus",
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return response.choices[0].message.content
+
+user_question = "我明天去深圳上课，需要带伞吗？"
+
+# 第一步：让模型提取城市
+city = ask_model(f'从问题中提取城市名，只输出城市名。
+问题：{user_question}').strip()
+print("城市：", city)
+
+# 第二步：调用工具
+weather = get_weather(city)
+print("天气：", weather)
+
+# 第三步：生成最终回答
+answer = ask_model(f'用户问题：{user_question}
+天气结果：{weather}
+请用自然语言回答。')
+print("回答：", answer)</div></div>
+    </div>
+</div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const STORAGE_KEY = 'py_s2_day02_quiz_history';
+const SAVE_KEY = 'py_s2_day02_saves';
+</script>
+<script src="/static/js/codemirror/codemirror.min.js?v=20260602"></script>
+<script src="/static/js/codemirror/mode/python/python.min.js?v=20260602"></script>
+<script src="/static/js/quiz-engine.js?v=20260602"></script>
+
+</body>
+</html>
