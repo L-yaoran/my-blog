@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM 练习 016</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/js/codemirror/codemirror.min.css?v=20260602">
+<link rel="stylesheet" href="/static/js/codemirror/theme/eclipse.min.css?v=20260602">
+<link rel="stylesheet" href="/static/css/quiz.css?v=20260602">
+</head>
+<body>
+
+<div class="container">
+  <div class="header" style="position:relative;">
+    <span class="theme-toggle" onclick="toggleTheme()" title="切换深色/浅色模式" style="position:absolute;top:0;right:0;cursor:pointer;font-size:1.2rem;">🌙</span>
+    <div class="badge">交互式练习</div>
+    <h1>LLM 练习 016</h1>
+    <div class="subtitle">37 道题 · 选择题 + 填空题 + 简答题 + 代码实战 · 即时反馈 · 记录保存</div>
+  </div>
+  <div class="quiz-nav">
+    <a href="/static/python_basic_test_015.html" class="quiz-arrow" title="上一练习">◂</a>
+    <div class="quiz-dropdown">
+      <button class="quiz-dropdown-btn" onclick="toggleDropdown(this)">练习 016 <span class="arrow-icon">▾</span></button>
+      <div class="quiz-dropdown-menu">
+        <a href="/static/python_basic_test_001.html">练习 001</a>
+        <a href="/static/python_basic_test_002.html">练习 002</a>
+        <a href="/static/python_basic_test_003.html">练习 003</a>
+        <a href="/static/python_basic_test_004.html">练习 004</a>
+        <a href="/static/python_basic_test_005.html">练习 005</a>
+        <a href="/static/python_basic_test_006.html">练习 006</a>
+        <a href="/static/python_basic_test_007.html">练习 007</a>
+        <a href="/static/python_basic_test_008.html">练习 008</a>
+        <a href="/static/python_basic_test_009.html">练习 009</a>
+        <a href="/static/python_basic_test_010.html">练习 010</a>
+        <a href="/static/python_basic_test_011.html">练习 011</a>
+        <a href="/static/python_basic_test_012.html">练习 012</a>
+        <a href="/static/python_basic_test_013.html">练习 013</a>
+        <a href="/static/python_basic_test_014.html">练习 014</a>
+        <a href="/static/python_basic_test_015.html">练习 015</a>
+        <a href="/static/python_basic_test_016.html" class="active">练习 016</a>
+      </div>
+    </div>
+    <span class="quiz-arrow disabled" title="已是最后一个">▸</span>
+  </div>
+  <div class="sticky-toolbar">
+    <a href="/" class="back-link">&larr; 返回主页</a>
+    <div class="score-bar">
+      <div class="score-item"><div class="score-label">客观题</div><div class="score-num"><span id="objDone">0</span>/20</div></div>
+      <div class="score-item"><div class="score-label">主观题</div><div class="score-num"><span id="subjDone">0</span>/17</div></div>
+      <div class="score-item" id="scoreResult" style="display:none"><div class="score-label">得分</div><div class="score-num"><span id="correctCount">0</span></div></div>
+      <div style="flex:1;min-width:0;"></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.35rem;position:relative;">
+        <div style="display:flex;gap:0.5rem;">
+          <button type="button" class="score-btn" id="btnSubmit" onclick="submitAll()">提交答案</button>
+          <button type="button" class="score-btn" style="background:var(--muted)" onclick="resetAll()">重置进度</button>
+        </div>
+      </div>
+    </div>
+    <div style="width:100%;display:flex;align-items:center;justify-content:space-between;padding-top:0.35rem;border-top:1px dashed var(--border);position:relative;">
+      <span onclick="toggleHistory()" style="cursor:pointer;font-size:0.78rem;color:var(--sub);user-select:none;">做题记录 <span id="historyToggleIcon">▼</span></span>
+      <div style="display:flex;gap:0.5rem;">
+        <button type="button" class="score-btn" style="background:var(--green)" onclick="saveProgress()">暂存进度</button>
+        <button type="button" class="score-btn" style="background:var(--purple)" onclick="loadProgress()">加载进度</button>
+        <button type="button" class="score-btn" style="background:var(--gold)" onclick="exportProgress()">导出数据</button>
+        <button type="button" class="score-btn" style="background:var(--blue)" onclick="importProgress()">导入数据</button>
+        <input type="file" id="importFileInput" accept=".json" style="display:none" onchange="handleImportFile(event)">
+      </div>
+      <div class="history-panel" id="historyPanel">
+    <h4>做题记录 <button class="history-clear" onclick="clearHistory()">清空记录</button></h4>
+    <ul class="history-list" id="historyList"></ul>
+    <div class="history-empty" id="historyEmpty">暂无记录</div>
+  </div>
+    </div>
+  </div>
+
+  <div class="history-detail-overlay" id="historyDetailOverlay" onclick="closeHistoryDetail()">
+    <div class="history-detail" id="historyDetail" onclick="event.stopPropagation()">
+      <div class="history-detail-header">
+        <h4>答题详情</h4>
+        <button class="history-detail-close" onclick="closeHistoryDetail()">&times;</button>
+      </div>
+      <div class="history-detail-body" id="historyDetailBody"></div>
+    </div>
+  </div>
+
+<div class="section">
+
+    <div class="section-title"><span class="icon"></span>一、单选题（10 题）</div>
+
+    <div class="card" data-qid="1" data-type="choice" data-answer="C">
+      <div class="card-header"><span class="card-qnum">第 1 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">关于智能体，下列说法最准确的是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 智能体就是普通聊天机器人
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 智能体只负责生成文字，不需要工具
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 智能体通常由大模型的思考能力和工具的执行能力组成
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 智能体只能在本地代码中开发，不能用平台搭建
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>智能体不只是聊天，它通常能理解目标、拆分任务，并结合工具执行外部操作。
+      </div>
+    </div>
+    <div class="card" data-qid="2" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 2 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">Coze 中“资源库”的作用是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 只用来保存聊天记录
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 存放插件、知识库、数据库、工作流等可复用资源
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 只用来创建账号
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 只用来修改页面颜色
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>资源库用于统一管理插件、知识库、数据库、工作流等资源，便于智能体复用。
+      </div>
+    </div>
+    <div class="card" data-qid="3" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 3 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">工作流最小闭环通常至少包含？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 开始节点、中间处理节点、结束节点
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 三个插件节点
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 两个智能体
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 一个知识库和一个数据库
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>一个可运行工作流通常要有输入入口、处理过程和输出出口，形成最小闭环。
+      </div>
+    </div>
+    <div class="card" data-qid="4" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 4 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">选择器节点更适合处理哪类问题？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 判断用户一句话的真实意图
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 判断输入是否为空这类明确条件
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 自动生成旅游攻略
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 自动识别图片内容
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>选择器节点适合明确条件分支，类似程序中的 if / else 判断。
+      </div>
+    </div>
+    <div class="card" data-qid="5" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 5 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">意图识别节点主要用于？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 根据语义判断用户需求类型
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 上传文件
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 发布工作流
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 设置页面主题
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>意图识别节点用于根据用户表达的语义，把请求归入不同意图类别。
+      </div>
+    </div>
+    <div class="card" data-qid="6" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 6 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">如果输入节点收集了 <code>city</code>，后续大模型节点却没有引用 <code>{{city}}</code>，最可能出现的问题是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 模型不知道用户补充的城市信息
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 工作流一定无法保存
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 插件市场会被清空
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 智能体名称会自动改变
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>变量只有传入并在提示词中引用，模型节点才能使用该信息。
+      </div>
+    </div>
+    <div class="card" data-qid="7" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 7 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">联网搜索插件适合解决的问题是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 查询实时或外部信息
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 修改 Coze 平台账号密码
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 替代所有提示词
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 自动保证所有回答绝对正确
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>联网搜索插件能获取实时或外部资料，但仍需要检查字段并由模型整理结果。
+      </div>
+    </div>
+    <div class="card" data-qid="8" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 8 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">工作流发布的主要意义是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 让工作流可以被智能体等地方引用
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 删除所有测试记录
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 让节点自动变成中文
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 让模型不再消耗资源
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>工作流发布后才能更稳定地被智能体或其他入口调用。
+      </div>
+    </div>
+    <div class="card" data-qid="9" data-type="choice" data-answer="B">
+      <div class="card-header"><span class="card-qnum">第 9 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">图片理解任务中，开始节点输入类型更合理的是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 普通文本
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 图片文件
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 数字
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 布尔值
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>图片理解需要接收图片文件，因此开始节点应配置图片或文件类输入。
+      </div>
+    </div>
+    <div class="card" data-qid="10" data-type="choice" data-answer="A">
+      <div class="card-header"><span class="card-qnum">第 10 题</span><span class="card-type choice">单选题</span></div>
+      <div class="card-question">调试工作流时，最应该优先查看的是？</div>
+      <div class="options">
+            <div class="option" data-opt="A" onclick="selectOption(this)">
+              <span class="option-letter">A</span> 运行日志中每个节点的输入和输出
+            </div>
+            <div class="option" data-opt="B" onclick="selectOption(this)">
+              <span class="option-letter">B</span> 浏览器主题颜色
+            </div>
+            <div class="option" data-opt="C" onclick="selectOption(this)">
+              <span class="option-letter">C</span> 是否换了一个头像
+            </div>
+            <div class="option" data-opt="D" onclick="selectOption(this)">
+              <span class="option-letter">D</span> 节点摆放是否完全对称
+            </div>
+      </div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>运行日志能展示每个节点的输入、输出和变量传递，是定位问题的核心依据。
+      </div>
+    </div>
+</div>
+
+<div class="section">
+
+    <div class="section-title"><span class="icon"></span>二、填空题（10 题）</div>
+
+    <div class="card" data-qid="11" data-type="fill" data-answer="工具">
+      <div class="card-header"><span class="card-qnum">第 11 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">智能体可以简单理解为：大模型的思考能力加上<span class="blank-input" contenteditable="true"></span>的执行能力。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>智能体通过大模型进行理解和决策，通过工具执行查询、读取、计算等外部动作。
+      </div>
+    </div>
+    <div class="card" data-qid="12" data-type="fill" data-answer="资源库">
+      <div class="card-header"><span class="card-qnum">第 12 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">Coze 中用于存放插件、知识库、数据库、工作流等内容的地方叫<span class="blank-input" contenteditable="true"></span>。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>资源库是管理可复用资源的入口。
+      </div>
+    </div>
+    <div class="card" data-qid="13" data-type="fill" data-answer="流水线">
+      <div class="card-header"><span class="card-qnum">第 13 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">工作流可以理解为一条处理任务的<span class="blank-input" contenteditable="true"></span>。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>工作流将任务拆成多个节点，像流水线一样按步骤处理输入并产出结果。
+      </div>
+    </div>
+    <div class="card" data-qid="14" data-type="fill" data-answer="开始">
+      <div class="card-header"><span class="card-qnum">第 14 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">工作流中的数据通常从<span class="blank-input" contenteditable="true"></span>节点进入。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>开始节点负责定义和接收工作流入口数据。
+      </div>
+    </div>
+    <div class="card" data-qid="15" data-type="fill" data-answer="if / else">
+      <div class="card-header"><span class="card-qnum">第 15 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">选择器节点类似 Python 中的<span class="blank-input" contenteditable="true"></span>结构。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>选择器根据明确条件选择不同分支，类似 if / else。
+      </div>
+    </div>
+    <div class="card" data-qid="16" data-type="fill" data-answer="意图识别">
+      <div class="card-header"><span class="card-qnum">第 16 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">当需要判断用户输入属于“旅游规划”“文档分析”还是“闲聊”时，更适合使用<span class="blank-input" contenteditable="true"></span>节点。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>这是语义分类问题，适合使用意图识别节点。
+      </div>
+    </div>
+    <div class="card" data-qid="17" data-type="fill" data-answer="补充收集">
+      <div class="card-header"><span class="card-qnum">第 17 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">输入节点常用于在流程中途向用户<span class="blank-input" contenteditable="true"></span>缺失信息。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>输入节点可以在信息不足时暂停并追问用户。
+      </div>
+    </div>
+    <div class="card" data-qid="18" data-type="fill" data-answer="{{input}}">
+      <div class="card-header"><span class="card-qnum">第 18 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">如果在提示词中想引用变量 <code>input</code>，通常写成<span class="blank-input" contenteditable="true"></span>。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>Coze 工作流中通常用双大括号语法引用变量，例如 {{input}}。
+      </div>
+    </div>
+    <div class="card" data-qid="19" data-type="fill" data-answer="脱敏">
+      <div class="card-header"><span class="card-qnum">第 19 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">使用文档提取插件时，上传真实简历前应该先进行<span class="blank-input" contenteditable="true"></span>处理。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>真实简历可能包含手机号、身份证号、住址等隐私，测试前应先脱敏。
+      </div>
+    </div>
+    <div class="card" data-qid="20" data-type="fill" data-answer="发布">
+      <div class="card-header"><span class="card-qnum">第 20 题</span><span class="card-type fill">填空题</span></div>
+      <div class="card-question">工作流想要被智能体稳定调用，通常需要先进行<span class="blank-input" contenteditable="true"></span>。</div>
+      <div class="feedback">
+        <div class="result-tag correct-tag">✓ 正确</div>
+        <strong>解析：</strong>发布后的工作流才能作为可调用工具稳定提供给智能体使用。
+      </div>
+    </div>
+</div>
+
+<div class="section">
+
+    <div class="section-title"><span class="icon"></span>三、简答题（10 题）</div>
+
+    <div class="card" data-qid="21" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 21 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">请用自己的话解释：为什么说智能体不是普通聊天机器人？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">普通聊天机器人主要根据用户问题生成回答，而智能体还能围绕目标进行判断、拆分步骤、调用工具并完成任务。例如普通聊天机器人只能告诉你“可以查天气”，智能体可以直接调用天气插件查出结果，再整理成建议。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>普通聊天机器人主要根据用户问题生成回答，而智能体还能围绕目标进行判断、拆分步骤、调用工具并完成任务。例如普通聊天机器人只能告诉你“可以查天气”，智能体可以直接调用天气插件查出结果，再整理成建议。</div>
+    </div>
+    <div class="card" data-qid="22" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 22 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">请说明 Coze 中插件的作用，并举两个插件例子。</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">插件用于给智能体增加外部能力。大模型本身主要负责理解和生成文本，插件可以让它联网搜索、查天气、读取文档、识别图片、查询数据等。例如联网搜索插件可以查询实时信息，文档提取插件可以读取 PDF 或 Word 内容。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>插件用于给智能体增加外部能力。大模型本身主要负责理解和生成文本，插件可以让它联网搜索、查天气、读取文档、识别图片、查询数据等。例如联网搜索插件可以查询实时信息，文档提取插件可以读取 PDF 或 Word 内容。</div>
+    </div>
+    <div class="card" data-qid="23" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 23 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">工作流中为什么不建议一口气搭完所有节点再测试？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">因为节点越多，出错位置越难定位。正确做法是每加一个关键节点就运行一次，确认输入、输出和变量传递都正确，再继续往后搭建。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>因为节点越多，出错位置越难定位。正确做法是每加一个关键节点就运行一次，确认输入、输出和变量传递都正确，再继续往后搭建。</div>
+    </div>
+    <div class="card" data-qid="24" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 24 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">请说明选择器节点和意图识别节点的区别。</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">选择器节点适合明确条件判断，例如输入是否为空、某个字段是否等于某个值。意图识别节点适合语义分类，例如判断用户是想旅游规划、文档分析还是普通聊天。简单说，选择器更像代码里的 if / else，意图识别更像让模型理解用户意图后分类。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>选择器节点适合明确条件判断，例如输入是否为空、某个字段是否等于某个值。意图识别节点适合语义分类，例如判断用户是想旅游规划、文档分析还是普通聊天。简单说，选择器更像代码里的 if / else，意图识别更像让模型理解用户意图后分类。</div>
+    </div>
+    <div class="card" data-qid="25" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 25 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">为什么 <code>classification_id</code> 不应该直接作为用户问题传给大模型？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">classification_id 通常只是意图分类结果，例如 1、2、3，它用于决定流程走哪条分支，不是用户原始问题。如果把它传给大模型，大模型只会看到一个编号，无法知道用户真正想问什么。后续生成回答时，应该继续传用户原始输入。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>classification_id 通常只是意图分类结果，例如 1、2、3，它用于决定流程走哪条分支，不是用户原始问题。如果把它传给大模型，大模型只会看到一个编号，无法知道用户真正想问什么。后续生成回答时，应该继续传用户原始输入。</div>
+    </div>
+    <div class="card" data-qid="26" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 26 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">输入节点适合解决什么问题？请举一个例子。</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">输入节点适合解决信息缺失问题。例如用户说“帮我规划旅游路线”，但没说去哪里，工作流可以通过输入节点追问“你想去哪个城市？”，再把用户补充的城市传给后续节点。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>输入节点适合解决信息缺失问题。例如用户说“帮我规划旅游路线”，但没说去哪里，工作流可以通过输入节点追问“你想去哪个城市？”，再把用户补充的城市传给后续节点。</div>
+    </div>
+    <div class="card" data-qid="27" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 27 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">为什么工作流名称和描述要写清楚？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">因为后续智能体选择工具时，需要根据工具名称和描述判断什么时候调用它。名称模糊会导致自己维护困难，也会导致智能体不容易选对工具。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>因为后续智能体选择工具时，需要根据工具名称和描述判断什么时候调用它。名称模糊会导致自己维护困难，也会导致智能体不容易选对工具。</div>
+    </div>
+    <div class="card" data-qid="28" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 28 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">使用联网搜索插件时，为什么要查看插件输出字段？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">不同插件返回的数据结构不同，有的字段是标题，有的字段是链接，有的字段才是真正内容。如果字段选错，最终输出可能为空、杂乱或不是用户需要的信息。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>不同插件返回的数据结构不同，有的字段是标题，有的字段是链接，有的字段才是真正内容。如果字段选错，最终输出可能为空、杂乱或不是用户需要的信息。</div>
+    </div>
+    <div class="card" data-qid="29" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 29 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">文档提取插件在求职类 AI 应用中可以做什么？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">文档提取插件可以读取简历内容，提取姓名、学历、技能、项目经验、工作经历等信息。提取成文本后，还可以交给大模型继续做简历优化、岗位匹配、面试题生成。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>文档提取插件可以读取简历内容，提取姓名、学历、技能、项目经验、工作经历等信息。提取成文本后，还可以交给大模型继续做简历优化、岗位匹配、面试题生成。</div>
+    </div>
+    <div class="card" data-qid="30" data-type="short" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 30 题</span><span class="card-type short">简答题</span></div>
+      <div class="card-question">如果智能体没有调用你添加的工作流，你会优先检查哪些地方？</div>
+      <textarea class="fill-input" placeholder="请输入你的回答..." rows="3"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer" style="margin-top:0.5rem; padding:0.6rem 0.8rem; background:var(--code-bg); border-radius:6px; font-size:0.85rem; line-height:1.6; color:var(--text);">可以优先检查：工作流是否已经发布；工具名称和描述是否清楚；智能体提示词是否说明什么时候调用该工具；用户测试问题是否确实触发该工具场景；工作流本身是否能单独运行成功。</div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong>可以优先检查：工作流是否已经发布；工具名称和描述是否清楚；智能体提示词是否说明什么时候调用该工具；用户测试问题是否确实触发该工具场景；工作流本身是否能单独运行成功。</div>
+    </div>
+</div>
+
+<div class="section">
+
+    <div class="section-title"><span class="icon"></span>四、代码实战（7 题）</div>
+
+    <div class="card" data-qid="31" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 31 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>创建基础文本处理工作流</strong></div>
+      <div class="card-desc">在 Coze 中创建一个基础文本处理工作流：开始节点接收 <code>input</code>，大模型节点把用户输入整理成三条要点，结束节点输出整理结果，并使用不少于 50 字的文本测试。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">参考步骤：
+<span class="num">1</span>. 创建工作流，名称可以写成 text_summary_workflow。
+<span class="num">2</span>. 在开始节点保留或创建文本变量 input。
+<span class="num">3</span>. 添加大模型节点，提示词要求“请将下面这段内容整理成三条要点”，并引用 {{input}}。
+<span class="num">4</span>. 在结束节点选择大模型节点的正式输出字段。
+<span class="num">5</span>. 运行测试，输入一段不少于 <span class="num">50</span> 字的文本，检查最终是否输出三条要点。</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">参考步骤：
+<span class="num">1</span>. 创建工作流，名称可以写成 text_summary_workflow。
+<span class="num">2</span>. 在开始节点保留或创建文本变量 input。
+<span class="num">3</span>. 添加大模型节点，提示词要求“请将下面这段内容整理成三条要点”，并引用 {{input}}。
+<span class="num">4</span>. 在结束节点选择大模型节点的正式输出字段。
+<span class="num">5</span>. 运行测试，输入一段不少于 <span class="num">50</span> 字的文本，检查最终是否输出三条要点。</div></div>
+    </div>
+    <div class="card" data-qid="32" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 32 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>给工作流增加空输入判断</strong></div>
+      <div class="card-desc">在基础文本处理工作流中加入选择器节点：当 <code>input</code> 为空时输出提示语；不为空时再进入大模型节点，并分别测试两种情况。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">参考步骤：
+<span class="num">1</span>. 在开始节点后添加选择器节点。
+<span class="num">2</span>. 设置条件：如果 input 为空。
+<span class="num">3</span>. 空输入分支连接到输出节点，输出“请输入需要整理的内容”。
+<span class="num">4</span>. 非空分支连接到大模型节点。
+<span class="num">5</span>. 分别测试空输入和正常输入：空输入应提示补充内容，正常输入应进入模型并输出三条要点。</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">参考步骤：
+<span class="num">1</span>. 在开始节点后添加选择器节点。
+<span class="num">2</span>. 设置条件：如果 input 为空。
+<span class="num">3</span>. 空输入分支连接到输出节点，输出“请输入需要整理的内容”。
+<span class="num">4</span>. 非空分支连接到大模型节点。
+<span class="num">5</span>. 分别测试空输入和正常输入：空输入应提示补充内容，正常输入应进入模型并输出三条要点。</div></div>
+    </div>
+    <div class="card" data-qid="33" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 33 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>创建旅游规划工作流</strong></div>
+      <div class="card-desc">创建旅游规划工作流：用户输入旅游需求，接入联网搜索插件，大模型结合搜索结果输出行程安排、推荐理由和注意事项。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">参考步骤：
+<span class="num">1</span>. 创建工作流，名称建议为 travel_plan_workflow。
+<span class="num">2</span>. 开始节点接收用户输入 input。
+<span class="num">3</span>. 添加联网搜索插件，将搜索关键词设置为用户输入 input。
+<span class="num">4</span>. 添加大模型节点，把用户需求 {{input}} 和搜索结果一起传入。
+<span class="num">5</span>. 要求输出至少包含：行程安排、推荐理由、注意事项。
+<span class="num">6</span>. 结束节点输出大模型整理后的旅游建议。</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">参考步骤：
+<span class="num">1</span>. 创建工作流，名称建议为 travel_plan_workflow。
+<span class="num">2</span>. 开始节点接收用户输入 input。
+<span class="num">3</span>. 添加联网搜索插件，将搜索关键词设置为用户输入 input。
+<span class="num">4</span>. 添加大模型节点，把用户需求 {{input}} 和搜索结果一起传入。
+<span class="num">5</span>. 要求输出至少包含：行程安排、推荐理由、注意事项。
+<span class="num">6</span>. 结束节点输出大模型整理后的旅游建议。</div></div>
+    </div>
+    <div class="card" data-qid="34" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 34 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>给旅游规划工作流增加目的地补充</strong></div>
+      <div class="card-desc">当用户没有说明目的地时，使用输入节点追问目的地；新增变量建议命名为 <code>city</code>，后续大模型节点要接收并引用 <code>{{city}}</code>。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">参考步骤：
+<span class="num">1</span>. 在旅游规划工作流中加入判断逻辑，判断用户是否提供目的地。
+<span class="num">2</span>. 如果没有目的地，添加输入节点追问“你想去哪个城市旅行？”。
+<span class="num">3</span>. 输入节点变量命名为 city。
+<span class="num">4</span>. 在后续大模型节点中接收 city，并在提示词中写 {{city}}。
+<span class="num">5</span>. 测试“帮我规划一个周末游”和“帮我规划一个深圳周末游”两种输入。</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">参考步骤：
+<span class="num">1</span>. 在旅游规划工作流中加入判断逻辑，判断用户是否提供目的地。
+<span class="num">2</span>. 如果没有目的地，添加输入节点追问“你想去哪个城市旅行？”。
+<span class="num">3</span>. 输入节点变量命名为 city。
+<span class="num">4</span>. 在后续大模型节点中接收 city，并在提示词中写 {{city}}。
+<span class="num">5</span>. 测试“帮我规划一个周末游”和“帮我规划一个深圳周末游”两种输入。</div></div>
+    </div>
+    <div class="card" data-qid="35" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 35 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>创建意图识别分流工作流</strong></div>
+      <div class="card-desc">设置至少三个意图：旅游规划、文档分析、其他问题；根据不同意图走不同分支，并注意不要把分类编号当成用户问题传给后续大模型。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">参考步骤：
+<span class="num">1</span>. 添加意图识别节点，设置旅游规划、文档分析、其他问题三个意图。
+<span class="num">2</span>. 旅游规划分支连接旅游规划工作流或旅游规划大模型节点。
+<span class="num">3</span>. 文档分析分支提示用户上传文档。
+<span class="num">4</span>. 其他问题分支连接普通大模型回答节点。
+<span class="num">5</span>. 后续大模型回答时继续传用户原始输入 input，classification_id 只用于分支判断。</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">参考步骤：
+<span class="num">1</span>. 添加意图识别节点，设置旅游规划、文档分析、其他问题三个意图。
+<span class="num">2</span>. 旅游规划分支连接旅游规划工作流或旅游规划大模型节点。
+<span class="num">3</span>. 文档分析分支提示用户上传文档。
+<span class="num">4</span>. 其他问题分支连接普通大模型回答节点。
+<span class="num">5</span>. 后续大模型回答时继续传用户原始输入 input，classification_id 只用于分支判断。</div></div>
+    </div>
+    <div class="card" data-qid="36" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 36 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>创建文档提取工作流</strong></div>
+      <div class="card-desc">开始节点接收文档文件，使用文档提取或链接读取类插件提取内容，大模型输出文档主题、核心内容和可以继续追问的问题，并使用脱敏文档测试。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">参考步骤：
+<span class="num">1</span>. 创建工作流，名称建议为 doc_extract_workflow。
+<span class="num">2</span>. 在开始节点创建文件变量，例如 doc_file。
+<span class="num">3</span>. 添加文档提取或链接读取插件，并绑定 doc_file。
+<span class="num">4</span>. 查看插件运行日志，找到真正的文档正文输出字段。
+<span class="num">5</span>. 添加大模型节点，根据文档内容提取文档主题、核心内容、可以继续追问的问题。
+<span class="num">6</span>. 使用脱敏文档测试，不要上传真实隐私资料。</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">参考步骤：
+<span class="num">1</span>. 创建工作流，名称建议为 doc_extract_workflow。
+<span class="num">2</span>. 在开始节点创建文件变量，例如 doc_file。
+<span class="num">3</span>. 添加文档提取或链接读取插件，并绑定 doc_file。
+<span class="num">4</span>. 查看插件运行日志，找到真正的文档正文输出字段。
+<span class="num">5</span>. 添加大模型节点，根据文档内容提取文档主题、核心内容、可以继续追问的问题。
+<span class="num">6</span>. 使用脱敏文档测试，不要上传真实隐私资料。</div></div>
+    </div>
+    <div class="card" data-qid="37" data-type="write" data-answer="">
+      <div class="card-header"><span class="card-qnum">第 37 题</span><span class="card-type write">代码实战</span></div>
+      <div class="card-question"><strong>搭建多功能智能体</strong></div>
+      <div class="card-desc">创建一个多功能智能体，添加至少两个已发布工作流，编写职责说明、开场白和两个预设问题，并预览测试旅游规划、文档分析、普通闲聊三类问题。</div>
+      <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
+      <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
+      <div class="ref-answer"><div class="code-block">参考步骤：
+<span class="num">1</span>. 确认至少两个工作流已经单独运行成功并发布，例如旅游规划工作流和文档提取工作流。
+<span class="num">2</span>. 创建智能体，名称要能体现用途。
+<span class="num">3</span>. 编写职责说明，让智能体知道旅游规划、文档分析和普通问题分别如何处理。
+<span class="num">4</span>. 添加已经发布的工作流工具。
+<span class="num">5</span>. 设置开场白和两个预设问题。
+<span class="num">6</span>. 预览测试旅游规划、文档分析、普通闲聊三类问题。
+<span class="num">7</span>. 如果调用不准，优先修改智能体职责说明、工具名称、工具描述或工作流内部节点提示词。</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">参考步骤：
+<span class="num">1</span>. 确认至少两个工作流已经单独运行成功并发布，例如旅游规划工作流和文档提取工作流。
+<span class="num">2</span>. 创建智能体，名称要能体现用途。
+<span class="num">3</span>. 编写职责说明，让智能体知道旅游规划、文档分析和普通问题分别如何处理。
+<span class="num">4</span>. 添加已经发布的工作流工具。
+<span class="num">5</span>. 设置开场白和两个预设问题。
+<span class="num">6</span>. 预览测试旅游规划、文档分析、普通闲聊三类问题。
+<span class="num">7</span>. 如果调用不准，优先修改智能体职责说明、工具名称、工具描述或工作流内部节点提示词。</div></div>
+    </div>
+</div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const STORAGE_KEY = 'py_s2_day04_quiz_history';
+const SAVE_KEY = 'py_s2_day04_saves';
+</script>
+<script src="/static/js/codemirror/codemirror.min.js?v=20260602"></script>
+<script src="/static/js/codemirror/mode/python/python.min.js?v=20260602"></script>
+<script src="/static/js/quiz-engine.js?v=20260602"></script>
+
+</body>
+</html>

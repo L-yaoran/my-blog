@@ -38,9 +38,12 @@
         <a href="/static/python_basic_test_011.html">练习 011</a>
         <a href="/static/python_basic_test_012.html">练习 012</a>
         <a href="/static/python_basic_test_013.html" class="active">练习 013</a>
+        <a href="/static/python_basic_test_014.html">练习 014</a>
+        <a href="/static/python_basic_test_015.html">练习 015</a>
+        <a href="/static/python_basic_test_016.html">练习 016</a>
       </div>
     </div>
-    <span class="quiz-arrow disabled" title="已是最后一个">▸</span>
+    <a href="/static/python_basic_test_014.html" class="quiz-arrow" title="下一练习">▸</a>
   </div>
   <div class="sticky-toolbar">
     <a href="/" class="back-link">&larr; 返回主页</a>
@@ -491,48 +494,48 @@
       <div class="card-desc">使用 OpenAI 兼容方式调用模型，从环境变量读取 OPENAI_API_KEY，提问"请用一句话解释提示词工程"，打印模型回复。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import os
-from openai import OpenAI
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> os
+<span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
-
-client = OpenAI(
-    api_key=api_key,
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-)
-
-completion = client.chat.completions.create(
-    model="qwen-plus",
-    messages=[
-        {"role": "system", "content": "你是一个简洁的 AI 助手，请用中文回答。"},
-        {"role": "user", "content": "请用一句话解释提示词工程。"}
-    ]
-)
-
-print(completion.choices[0].message.content)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import os
-from openai import OpenAI
-
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+api_key = os.getenv(<span class="str">"OPENAI_API_KEY"</span>)
+<span class="kw">if</span> <span class="kw">not</span> api_key:
+    <span class="kw">raise</span> ValueError(<span class="str">"没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。"</span>)
 
 client = OpenAI(
     api_key=api_key,
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>,
 )
 
-completion = client.chat.completions.create(
-    model="qwen-plus",
+completion = client.chat.completions.<span class="kw">create</span>(
+    model=<span class="str">"qwen-plus"</span>,
     messages=[
-        {"role": "system", "content": "你是一个简洁的 AI 助手，请用中文回答。"},
-        {"role": "user", "content": "请用一句话解释提示词工程。"}
+        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: <span class="str">"你是一个简洁的 AI 助手，请用中文回答。"</span>},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"请用一句话解释提示词工程。"</span>}
     ]
 )
 
-print(completion.choices[0].message.content)</div></div>
+print(completion.choices[<span class="num">0</span>].message.content)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> os
+<span class="kw">from</span> openai <span class="kw">import</span> OpenAI
+
+api_key = os.getenv(<span class="str">"OPENAI_API_KEY"</span>)
+<span class="kw">if</span> <span class="kw">not</span> api_key:
+    <span class="kw">raise</span> ValueError(<span class="str">"没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。"</span>)
+
+client = OpenAI(
+    api_key=api_key,
+    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>,
+)
+
+completion = client.chat.completions.<span class="kw">create</span>(
+    model=<span class="str">"qwen-plus"</span>,
+    messages=[
+        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: <span class="str">"你是一个简洁的 AI 助手，请用中文回答。"</span>},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"请用一句话解释提示词工程。"</span>}
+    ]
+)
+
+print(completion.choices[<span class="num">0</span>].message.content)</div></div>
     </div>
     <div class="card" data-qid="32" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 32 题</span><span class="card-type write">代码实战</span></div>
@@ -540,48 +543,48 @@ print(completion.choices[0].message.content)</div></div>
       <div class="card-desc">使用 system 设定模型为计算器（只输出最终结果，不要解释），user 中提问 2 + 5 * 3 等于多少？</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import os
-from openai import OpenAI
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> os
+<span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
-
-client = OpenAI(
-    api_key=api_key,
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-)
-
-completion = client.chat.completions.create(
-    model="qwen-plus",
-    messages=[
-        {"role": "system", "content": "你是一个计算器，只输出最终计算结果，不要解释过程。"},
-        {"role": "user", "content": "2 + 5 * 3 等于多少？"}
-    ]
-)
-
-print(completion.choices[0].message.content)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import os
-from openai import OpenAI
-
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+api_key = os.getenv(<span class="str">"OPENAI_API_KEY"</span>)
+<span class="kw">if</span> <span class="kw">not</span> api_key:
+    <span class="kw">raise</span> ValueError(<span class="str">"没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。"</span>)
 
 client = OpenAI(
     api_key=api_key,
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>,
 )
 
-completion = client.chat.completions.create(
-    model="qwen-plus",
+completion = client.chat.completions.<span class="kw">create</span>(
+    model=<span class="str">"qwen-plus"</span>,
     messages=[
-        {"role": "system", "content": "你是一个计算器，只输出最终计算结果，不要解释过程。"},
-        {"role": "user", "content": "2 + 5 * 3 等于多少？"}
+        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: <span class="str">"你是一个计算器，只输出最终计算结果，不要解释过程。"</span>},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"2 + 5 * 3 等于多少？"</span>}
     ]
 )
 
-print(completion.choices[0].message.content)</div></div>
+print(completion.choices[<span class="num">0</span>].message.content)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> os
+<span class="kw">from</span> openai <span class="kw">import</span> OpenAI
+
+api_key = os.getenv(<span class="str">"OPENAI_API_KEY"</span>)
+<span class="kw">if</span> <span class="kw">not</span> api_key:
+    <span class="kw">raise</span> ValueError(<span class="str">"没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。"</span>)
+
+client = OpenAI(
+    api_key=api_key,
+    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>,
+)
+
+completion = client.chat.completions.<span class="kw">create</span>(
+    model=<span class="str">"qwen-plus"</span>,
+    messages=[
+        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: <span class="str">"你是一个计算器，只输出最终计算结果，不要解释过程。"</span>},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"2 + 5 * 3 等于多少？"</span>}
+    ]
+)
+
+print(completion.choices[<span class="num">0</span>].message.content)</div></div>
     </div>
     <div class="card" data-qid="33" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 33 题</span><span class="card-type write">代码实战</span></div>
@@ -589,38 +592,38 @@ print(completion.choices[0].message.content)</div></div>
       <div class="card-desc">使用 dashscope 库调用模型，从环境变量读取 DASHSCOPE_API_KEY，提问"请用一句话解释 RAG"。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import os
-import dashscope
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> os
+<span class="kw">import</span> dashscope
 
-dashscope.api_key = os.getenv("DASHSCOPE_API_KEY")
-if not dashscope.api_key:
-    raise ValueError("没有读取到 DASHSCOPE_API_KEY，请配置环境变量后重启 PyCharm。")
+dashscope.api_key = os.getenv(<span class="str">"DASHSCOPE_API_KEY"</span>)
+<span class="kw">if</span> <span class="kw">not</span> dashscope.api_key:
+    <span class="kw">raise</span> ValueError(<span class="str">"没有读取到 DASHSCOPE_API_KEY，请配置环境变量后重启 PyCharm。"</span>)
 
 response = dashscope.Generation.call(
-    model="qwen-plus",
+    model=<span class="str">"qwen-plus"</span>,
     messages=[
-        {"role": "system", "content": "你是一个简洁的 AI 助手，请用中文回答。"},
-        {"role": "user", "content": "请用一句话解释 RAG。"}
+        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: <span class="str">"你是一个简洁的 AI 助手，请用中文回答。"</span>},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"请用一句话解释 RAG。"</span>}
     ]
 )
 
-print(response.output["text"])</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import os
-import dashscope
+print(response.output[<span class="str">"text"</span>])</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> os
+<span class="kw">import</span> dashscope
 
-dashscope.api_key = os.getenv("DASHSCOPE_API_KEY")
-if not dashscope.api_key:
-    raise ValueError("没有读取到 DASHSCOPE_API_KEY，请配置环境变量后重启 PyCharm。")
+dashscope.api_key = os.getenv(<span class="str">"DASHSCOPE_API_KEY"</span>)
+<span class="kw">if</span> <span class="kw">not</span> dashscope.api_key:
+    <span class="kw">raise</span> ValueError(<span class="str">"没有读取到 DASHSCOPE_API_KEY，请配置环境变量后重启 PyCharm。"</span>)
 
 response = dashscope.Generation.call(
-    model="qwen-plus",
+    model=<span class="str">"qwen-plus"</span>,
     messages=[
-        {"role": "system", "content": "你是一个简洁的 AI 助手，请用中文回答。"},
-        {"role": "user", "content": "请用一句话解释 RAG。"}
+        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: <span class="str">"你是一个简洁的 AI 助手，请用中文回答。"</span>},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"请用一句话解释 RAG。"</span>}
     ]
 )
 
-print(response.output["text"])</div></div>
+print(response.output[<span class="str">"text"</span>])</div></div>
     </div>
     <div class="card" data-qid="34" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 34 题</span><span class="card-type write">代码实战</span></div>
@@ -628,78 +631,78 @@ print(response.output["text"])</div></div>
       <div class="card-desc">使用 system 设定模型为客户反馈分析助手，输入客户反馈，要求输出 JSON（emotion/problem/suggestion），情绪只能是正面、负面、中性。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import os
-from openai import OpenAI
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> os
+<span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+api_key = os.getenv(<span class="str">"OPENAI_API_KEY"</span>)
+<span class="kw">if</span> <span class="kw">not</span> api_key:
+    <span class="kw">raise</span> ValueError(<span class="str">"没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。"</span>)
 
 client = OpenAI(
     api_key=api_key,
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>,
 )
 
-system_prompt = """
+system_prompt = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 你是一个客户反馈分析助手。
 请分析用户反馈，并输出 JSON。
 
 要求：
-1. emotion 只能是：正面、负面、中性。
-2. problem 提取客户提到的主要问题。
-3. suggestion 给出一句适合客服回复的建议。
-4. 只输出 JSON，不要输出解释文字。
-"""
+<span class="num">1</span>. emotion 只能是：正面、负面、中性。
+<span class="num">2</span>. problem 提取客户提到的主要问题。
+<span class="num">3</span>. suggestion 给出一句适合客服回复的建议。
+<span class="num">4</span>. 只输出 JSON，不要输出解释文字。
+&quot;&quot;&quot;&lt;/span&gt;
 
-user_feedback = """
+user_feedback = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 这个 AI 写作工具生成速度挺快，但是经常答非所问，导出的格式也有点乱。
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
-completion = client.chat.completions.create(
-    model="qwen-plus",
+completion = client.chat.completions.<span class="kw">create</span>(
+    model=<span class="str">"qwen-plus"</span>,
     messages=[
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": user_feedback},
+        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: system_prompt},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: user_feedback},
     ]
 )
 
-print(completion.choices[0].message.content)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import os
-from openai import OpenAI
+print(completion.choices[<span class="num">0</span>].message.content)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> os
+<span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+api_key = os.getenv(<span class="str">"OPENAI_API_KEY"</span>)
+<span class="kw">if</span> <span class="kw">not</span> api_key:
+    <span class="kw">raise</span> ValueError(<span class="str">"没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。"</span>)
 
 client = OpenAI(
     api_key=api_key,
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>,
 )
 
-system_prompt = """
+system_prompt = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 你是一个客户反馈分析助手。
 请分析用户反馈，并输出 JSON。
 
 要求：
-1. emotion 只能是：正面、负面、中性。
-2. problem 提取客户提到的主要问题。
-3. suggestion 给出一句适合客服回复的建议。
-4. 只输出 JSON，不要输出解释文字。
-"""
+<span class="num">1</span>. emotion 只能是：正面、负面、中性。
+<span class="num">2</span>. problem 提取客户提到的主要问题。
+<span class="num">3</span>. suggestion 给出一句适合客服回复的建议。
+<span class="num">4</span>. 只输出 JSON，不要输出解释文字。
+&quot;&quot;&quot;&lt;/span&gt;
 
-user_feedback = """
+user_feedback = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 这个 AI 写作工具生成速度挺快，但是经常答非所问，导出的格式也有点乱。
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
-completion = client.chat.completions.create(
-    model="qwen-plus",
+completion = client.chat.completions.<span class="kw">create</span>(
+    model=<span class="str">"qwen-plus"</span>,
     messages=[
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": user_feedback},
+        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: system_prompt},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: user_feedback},
     ]
 )
 
-print(completion.choices[0].message.content)</div></div>
+print(completion.choices[<span class="num">0</span>].message.content)</div></div>
     </div>
     <div class="card" data-qid="35" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 35 题</span><span class="card-type write">代码实战</span></div>
@@ -707,78 +710,78 @@ print(completion.choices[0].message.content)</div></div>
       <div class="card-desc">从会议内容中提取行动项，输出 JSON，每个行动项包含 item/owner/deadline，没有明确截止时间则 deadline 写 null。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import os
-from openai import OpenAI
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> os
+<span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+api_key = os.getenv(<span class="str">"OPENAI_API_KEY"</span>)
+<span class="kw">if</span> <span class="kw">not</span> api_key:
+    <span class="kw">raise</span> ValueError(<span class="str">"没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。"</span>)
 
 client = OpenAI(
     api_key=api_key,
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>,
 )
 
-system_prompt = """
+system_prompt = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 你是一个会议行动项提取助手。
 请从会议内容中提取明确有人负责的任务。
 
 输出要求：
-1. 只输出 JSON。
-2. JSON 顶层字段为 action_items。
-3. 每个行动项包含 item、owner、deadline。
-4. 如果没有明确截止时间，deadline 写 null。
-"""
+<span class="num">1</span>. 只输出 JSON。
+<span class="num">2</span>. JSON 顶层字段为 action_items。
+<span class="num">3</span>. 每个行动项包含 item、owner、deadline。
+<span class="num">4</span>. 如果没有明确截止时间，deadline 写 <span class="kw">null</span>。
+&quot;&quot;&quot;&lt;/span&gt;
 
-meeting_text = """
+meeting_text = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 本次周会决定，小王本周五前完成智能客服原型页面，小张负责整理客户反馈，但没有明确截止时间。
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
-completion = client.chat.completions.create(
-    model="qwen-plus",
+completion = client.chat.completions.<span class="kw">create</span>(
+    model=<span class="str">"qwen-plus"</span>,
     messages=[
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": meeting_text},
+        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: system_prompt},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: meeting_text},
     ]
 )
 
-print(completion.choices[0].message.content)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import os
-from openai import OpenAI
+print(completion.choices[<span class="num">0</span>].message.content)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> os
+<span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+api_key = os.getenv(<span class="str">"OPENAI_API_KEY"</span>)
+<span class="kw">if</span> <span class="kw">not</span> api_key:
+    <span class="kw">raise</span> ValueError(<span class="str">"没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。"</span>)
 
 client = OpenAI(
     api_key=api_key,
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>,
 )
 
-system_prompt = """
+system_prompt = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 你是一个会议行动项提取助手。
 请从会议内容中提取明确有人负责的任务。
 
 输出要求：
-1. 只输出 JSON。
-2. JSON 顶层字段为 action_items。
-3. 每个行动项包含 item、owner、deadline。
-4. 如果没有明确截止时间，deadline 写 null。
-"""
+<span class="num">1</span>. 只输出 JSON。
+<span class="num">2</span>. JSON 顶层字段为 action_items。
+<span class="num">3</span>. 每个行动项包含 item、owner、deadline。
+<span class="num">4</span>. 如果没有明确截止时间，deadline 写 <span class="kw">null</span>。
+&quot;&quot;&quot;&lt;/span&gt;
 
-meeting_text = """
+meeting_text = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 本次周会决定，小王本周五前完成智能客服原型页面，小张负责整理客户反馈，但没有明确截止时间。
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
-completion = client.chat.completions.create(
-    model="qwen-plus",
+completion = client.chat.completions.<span class="kw">create</span>(
+    model=<span class="str">"qwen-plus"</span>,
     messages=[
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": meeting_text},
+        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: system_prompt},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: meeting_text},
     ]
 )
 
-print(completion.choices[0].message.content)</div></div>
+print(completion.choices[<span class="num">0</span>].message.content)</div></div>
     </div>
     <div class="card" data-qid="36" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 36 题</span><span class="card-type write">代码实战</span></div>
@@ -786,90 +789,90 @@ print(completion.choices[0].message.content)</div></div>
       <div class="card-desc">使用 few-shot 示例，让模型学习快递信息抽取。system 设定规则，user/assistant 提供示例，再输入真实文本，输出姓名/手机号/地址 JSON。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import os
-from openai import OpenAI
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> os
+<span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+api_key = os.getenv(<span class="str">"OPENAI_API_KEY"</span>)
+<span class="kw">if</span> <span class="kw">not</span> api_key:
+    <span class="kw">raise</span> ValueError(<span class="str">"没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。"</span>)
 
 client = OpenAI(
     api_key=api_key,
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>,
 )
 
-system_prompt = """
+system_prompt = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 你是一个快递信息提取助手。
 请提取姓名、手机号、地址。
 只输出 JSON。
 手机号中的横线和空格要去掉。
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
-example_user = "张明远，138-1234-5678
-广东省深圳市南山区科技园南区高新南一道1000号腾讯大厦18层 1806室"
+example_user = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;张明远，<span class="num">138</span>-<span class="num">1234</span>-<span class="num">5678</span>
+广东省深圳市南山区科技园南区高新南一道1000号腾讯大厦18层 1806室&quot;&lt;/span&gt;
 
-example_assistant = '{"name": "张明远", "phone": "13812345678", "address": "广东省深圳市南山区科技园南区高新南一道1000号腾讯大厦18层 180室"}'
+example_assistant = <span class="str">'{"name": "张明远", "phone": "13812345678", "address": "广东省深圳市南山区科技园南区高新南一道1000号腾讯大厦18层 180室"}'</span>
 
-real_user = """
+real_user = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 李婉婷
-151-9876-5432
+<span class="num">151</span>-<span class="num">9876</span>-<span class="num">5432</span>
 北京市海淀区中关村大街1号海龙大厦8层805室
 东西是一份文件，已经封装好了。
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
-completion = client.chat.completions.create(
-    model="qwen-plus",
+completion = client.chat.completions.<span class="kw">create</span>(
+    model=<span class="str">"qwen-plus"</span>,
     messages=[
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": example_user},
-        {"role": "assistant", "content": example_assistant},
-        {"role": "user", "content": real_user},
+        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: system_prompt},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: example_user},
+        {<span class="str">"role"</span>: <span class="str">"assistant"</span>, <span class="str">"content"</span>: example_assistant},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: real_user},
     ]
 )
 
-print(completion.choices[0].message.content)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import os
-from openai import OpenAI
+print(completion.choices[<span class="num">0</span>].message.content)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> os
+<span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+api_key = os.getenv(<span class="str">"OPENAI_API_KEY"</span>)
+<span class="kw">if</span> <span class="kw">not</span> api_key:
+    <span class="kw">raise</span> ValueError(<span class="str">"没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。"</span>)
 
 client = OpenAI(
     api_key=api_key,
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>,
 )
 
-system_prompt = """
+system_prompt = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 你是一个快递信息提取助手。
 请提取姓名、手机号、地址。
 只输出 JSON。
 手机号中的横线和空格要去掉。
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
-example_user = "张明远，138-1234-5678
-广东省深圳市南山区科技园南区高新南一道1000号腾讯大厦18层 1806室"
+example_user = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;张明远，<span class="num">138</span>-<span class="num">1234</span>-<span class="num">5678</span>
+广东省深圳市南山区科技园南区高新南一道1000号腾讯大厦18层 1806室&quot;&lt;/span&gt;
 
-example_assistant = '{"name": "张明远", "phone": "13812345678", "address": "广东省深圳市南山区科技园南区高新南一道1000号腾讯大厦18层 180室"}'
+example_assistant = <span class="str">'{"name": "张明远", "phone": "13812345678", "address": "广东省深圳市南山区科技园南区高新南一道1000号腾讯大厦18层 180室"}'</span>
 
-real_user = """
+real_user = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 李婉婷
-151-9876-5432
+<span class="num">151</span>-<span class="num">9876</span>-<span class="num">5432</span>
 北京市海淀区中关村大街1号海龙大厦8层805室
 东西是一份文件，已经封装好了。
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
-completion = client.chat.completions.create(
-    model="qwen-plus",
+completion = client.chat.completions.<span class="kw">create</span>(
+    model=<span class="str">"qwen-plus"</span>,
     messages=[
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": example_user},
-        {"role": "assistant", "content": example_assistant},
-        {"role": "user", "content": real_user},
+        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: system_prompt},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: example_user},
+        {<span class="str">"role"</span>: <span class="str">"assistant"</span>, <span class="str">"content"</span>: example_assistant},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: real_user},
     ]
 )
 
-print(completion.choices[0].message.content)</div></div>
+print(completion.choices[<span class="num">0</span>].message.content)</div></div>
     </div>
     <div class="card" data-qid="37" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 37 题</span><span class="card-type write">代码实战</span></div>
@@ -877,82 +880,82 @@ print(completion.choices[0].message.content)</div></div>
       <div class="card-desc">设计社媒内容分类提示词，将输入内容分为噪音/广告营销/弱相关/非噪音四类，要求输出 JSON（label + confidence）。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import os
-from openai import OpenAI
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> os
+<span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
-
-client = OpenAI(
-    api_key=api_key,
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-)
-
-system_prompt = """
-你是一个品牌社媒内容分类助手。
-
-请将输入内容分类为以下四类之一：
-1. 噪音：完全无关，比如成语、误匹配、人名等。
-2. 广告营销：促销、打卡、优惠、正面分享。
-3. 弱相关：只是顺带提到品牌，没有具体行为或评价。
-4. 非噪音：真实评价、投诉、体验、负面内容或有效内容。
-
-输出要求：
-1. 只输出 JSON。
-2. label 必须是：噪音、广告营销、弱相关、非噪音。
-3. confidence 必须是：high、medium、low。
-"""
-
-content = "#海底捞# 今天生日去吃饭，服务员送了蛋糕，体验很好！"
-
-completion = client.chat.completions.create(
-    model="qwen-plus",
-    messages=[
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": content},
-    ]
-)
-
-print(completion.choices[0].message.content)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import os
-from openai import OpenAI
-
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+api_key = os.getenv(<span class="str">"OPENAI_API_KEY"</span>)
+<span class="kw">if</span> <span class="kw">not</span> api_key:
+    <span class="kw">raise</span> ValueError(<span class="str">"没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。"</span>)
 
 client = OpenAI(
     api_key=api_key,
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>,
 )
 
-system_prompt = """
+system_prompt = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 你是一个品牌社媒内容分类助手。
 
 请将输入内容分类为以下四类之一：
-1. 噪音：完全无关，比如成语、误匹配、人名等。
-2. 广告营销：促销、打卡、优惠、正面分享。
-3. 弱相关：只是顺带提到品牌，没有具体行为或评价。
-4. 非噪音：真实评价、投诉、体验、负面内容或有效内容。
+<span class="num">1</span>. 噪音：完全无关，比如成语、误匹配、人名等。
+<span class="num">2</span>. 广告营销：促销、打卡、优惠、正面分享。
+<span class="num">3</span>. 弱相关：只是顺带提到品牌，没有具体行为或评价。
+<span class="num">4</span>. 非噪音：真实评价、投诉、体验、负面内容或有效内容。
 
 输出要求：
-1. 只输出 JSON。
-2. label 必须是：噪音、广告营销、弱相关、非噪音。
-3. confidence 必须是：high、medium、low。
-"""
+<span class="num">1</span>. 只输出 JSON。
+<span class="num">2</span>. label 必须是：噪音、广告营销、弱相关、非噪音。
+<span class="num">3</span>. confidence 必须是：high、medium、low。
+&quot;&quot;&quot;&lt;/span&gt;
 
-content = "#海底捞# 今天生日去吃饭，服务员送了蛋糕，体验很好！"
+content = <span class="str">"<span class="cm">#海底捞# 今天生日去吃饭，服务员送了蛋糕，体验很好！"</span>&lt;/span&gt;
 
-completion = client.chat.completions.create(
-    model="qwen-plus",
+completion = client.chat.completions.<span class="kw">create</span>(
+    model=<span class="str">"qwen-plus"</span>,
     messages=[
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": content},
+        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: system_prompt},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: content},
     ]
 )
 
-print(completion.choices[0].message.content)</div></div>
+print(completion.choices[<span class="num">0</span>].message.content)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> os
+<span class="kw">from</span> openai <span class="kw">import</span> OpenAI
+
+api_key = os.getenv(<span class="str">"OPENAI_API_KEY"</span>)
+<span class="kw">if</span> <span class="kw">not</span> api_key:
+    <span class="kw">raise</span> ValueError(<span class="str">"没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。"</span>)
+
+client = OpenAI(
+    api_key=api_key,
+    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>,
+)
+
+system_prompt = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
+你是一个品牌社媒内容分类助手。
+
+请将输入内容分类为以下四类之一：
+<span class="num">1</span>. 噪音：完全无关，比如成语、误匹配、人名等。
+<span class="num">2</span>. 广告营销：促销、打卡、优惠、正面分享。
+<span class="num">3</span>. 弱相关：只是顺带提到品牌，没有具体行为或评价。
+<span class="num">4</span>. 非噪音：真实评价、投诉、体验、负面内容或有效内容。
+
+输出要求：
+<span class="num">1</span>. 只输出 JSON。
+<span class="num">2</span>. label 必须是：噪音、广告营销、弱相关、非噪音。
+<span class="num">3</span>. confidence 必须是：high、medium、low。
+&quot;&quot;&quot;&lt;/span&gt;
+
+content = <span class="str">"<span class="cm">#海底捞# 今天生日去吃饭，服务员送了蛋糕，体验很好！"</span>&lt;/span&gt;
+
+completion = client.chat.completions.<span class="kw">create</span>(
+    model=<span class="str">"qwen-plus"</span>,
+    messages=[
+        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: system_prompt},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: content},
+    ]
+)
+
+print(completion.choices[<span class="num">0</span>].message.content)</div></div>
     </div>
     <div class="card" data-qid="38" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 38 题</span><span class="card-type write">代码实战</span></div>
@@ -960,86 +963,86 @@ print(completion.choices[0].message.content)</div></div>
       <div class="card-desc">从需求描述中提取结构化信息，输出 JSON（product/scenario/channels/constraints/risk_handling）。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">import os
-from openai import OpenAI
+      <div class="ref-answer"><div class="code-block"><span class="kw">import</span> os
+<span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+api_key = os.getenv(<span class="str">"OPENAI_API_KEY"</span>)
+<span class="kw">if</span> <span class="kw">not</span> api_key:
+    <span class="kw">raise</span> ValueError(<span class="str">"没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。"</span>)
 
 client = OpenAI(
     api_key=api_key,
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>,
 )
 
-system_prompt = """
+system_prompt = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 你是一个 AI 产品需求分析助手。
 请从用户输入中提取结构化需求信息。
 
 输出 JSON，字段包括：
-1. product：产品名称或产品类型。
-2. scenario：主要应用场景。
-3. channels：使用渠道，数组格式。
-4. constraints：约束条件，数组格式。
-5. risk_handling：风险处理方式。
+<span class="num">1</span>. product：产品名称或产品类型。
+<span class="num">2</span>. scenario：主要应用场景。
+<span class="num">3</span>. channels：使用渠道，数组格式。
+<span class="num">4</span>. constraints：约束条件，数组格式。
+<span class="num">5</span>. risk_handling：风险处理方式。
 
 只输出 JSON，不要输出解释文字。
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
-requirement = """
+requirement = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 我们想做一个 AI 客服助手，主要用于回答用户关于订单、退款、物流的问题。
 希望先接入网页端，输出要简洁，遇到不确定的问题要提示转人工。
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
-completion = client.chat.completions.create(
-    model="qwen-plus",
+completion = client.chat.completions.<span class="kw">create</span>(
+    model=<span class="str">"qwen-plus"</span>,
     messages=[
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": requirement},
+        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: system_prompt},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: requirement},
     ]
 )
 
-print(completion.choices[0].message.content)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">import os
-from openai import OpenAI
+print(completion.choices[<span class="num">0</span>].message.content)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> os
+<span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。")
+api_key = os.getenv(<span class="str">"OPENAI_API_KEY"</span>)
+<span class="kw">if</span> <span class="kw">not</span> api_key:
+    <span class="kw">raise</span> ValueError(<span class="str">"没有读取到 OPENAI_API_KEY，请配置环境变量后重启 PyCharm。"</span>)
 
 client = OpenAI(
     api_key=api_key,
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>,
 )
 
-system_prompt = """
+system_prompt = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 你是一个 AI 产品需求分析助手。
 请从用户输入中提取结构化需求信息。
 
 输出 JSON，字段包括：
-1. product：产品名称或产品类型。
-2. scenario：主要应用场景。
-3. channels：使用渠道，数组格式。
-4. constraints：约束条件，数组格式。
-5. risk_handling：风险处理方式。
+<span class="num">1</span>. product：产品名称或产品类型。
+<span class="num">2</span>. scenario：主要应用场景。
+<span class="num">3</span>. channels：使用渠道，数组格式。
+<span class="num">4</span>. constraints：约束条件，数组格式。
+<span class="num">5</span>. risk_handling：风险处理方式。
 
 只输出 JSON，不要输出解释文字。
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
-requirement = """
+requirement = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 我们想做一个 AI 客服助手，主要用于回答用户关于订单、退款、物流的问题。
 希望先接入网页端，输出要简洁，遇到不确定的问题要提示转人工。
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
-completion = client.chat.completions.create(
-    model="qwen-plus",
+completion = client.chat.completions.<span class="kw">create</span>(
+    model=<span class="str">"qwen-plus"</span>,
     messages=[
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": requirement},
+        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: system_prompt},
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: requirement},
     ]
 )
 
-print(completion.choices[0].message.content)</div></div>
+print(completion.choices[<span class="num">0</span>].message.content)</div></div>
     </div>
 </div>
 

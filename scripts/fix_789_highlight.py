@@ -75,7 +75,6 @@ def fix_file(path):
 
 import os
 base = os.path.join(os.path.dirname(__file__), '..', 'static')
-for i in range(1, 13):
-    path = os.path.join(base, f'python_basic_test_{i:03d}.html')
-    if os.path.exists(path):
-        fix_file(path)
+for fname in sorted(os.listdir(base)):
+    if fname.startswith('python_basic_test_') and fname.endswith('.html'):
+        fix_file(os.path.join(base, fname))

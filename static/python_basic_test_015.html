@@ -40,9 +40,10 @@
         <a href="/static/python_basic_test_013.html">练习 013</a>
         <a href="/static/python_basic_test_014.html">练习 014</a>
         <a href="/static/python_basic_test_015.html" class="active">练习 015</a>
+        <a href="/static/python_basic_test_016.html">练习 016</a>
       </div>
     </div>
-    <span class="quiz-arrow disabled" title="已是最后一个">▸</span>
+    <a href="/static/python_basic_test_016.html" class="quiz-arrow" title="下一练习">▸</a>
   </div>
   <div class="sticky-toolbar">
     <a href="/" class="back-link">&larr; 返回主页</a>
@@ -493,49 +494,49 @@
       <div class="card-desc">构造金融文本分类提示词，输入一段金融文本，限制类别范围（公司公告/市场行情/宏观经济/投资建议/风险提示/财报解读/政策监管/其他），打印最终提示词。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">text = "某上市公司发布公告称，预计上半年净利润同比增长 40%。"
+      <div class="ref-answer"><div class="code-block">text = <span class="str">"某上市公司发布公告称，预计上半年净利润同比增长 40%。"</span>
 
-prompt_template = """
+prompt_template = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 你是一个金融文本分类助手。
 
 请从以下类别中选择一个最合适的类别：
 公司公告、市场行情、宏观经济、投资建议、风险提示、财报解读、政策监管、其他。
 
 要求：
-1. 只能从给定类别中选择。
-2. 不要创造新类别。
-3. 如果无法判断，选择"其他"。
-4. 只返回 JSON，不要输出解释。
+<span class="num">1</span>. 只能从给定类别中选择。
+<span class="num">2</span>. 不要创造新类别。
+<span class="num">3</span>. 如果无法判断，选择&quot;其他&quot;。
+<span class="num">4</span>. 只返回 JSON，不要输出解释。
 
 输出格式：
-{{"category": "类别名称", "reason": "一句话说明理由"}}
+{{&quot;category&quot;: &quot;类别名称&quot;, &quot;reason&quot;: &quot;一句话说明理由&quot;}}
 
 待分类文本：
 {text}
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
 prompt = prompt_template.format(text=text)
 print(prompt)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">text = "某上市公司发布公告称，预计上半年净利润同比增长 40%。"
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">text = <span class="str">"某上市公司发布公告称，预计上半年净利润同比增长 40%。"</span>
 
-prompt_template = """
+prompt_template = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 你是一个金融文本分类助手。
 
 请从以下类别中选择一个最合适的类别：
 公司公告、市场行情、宏观经济、投资建议、风险提示、财报解读、政策监管、其他。
 
 要求：
-1. 只能从给定类别中选择。
-2. 不要创造新类别。
-3. 如果无法判断，选择"其他"。
-4. 只返回 JSON，不要输出解释。
+<span class="num">1</span>. 只能从给定类别中选择。
+<span class="num">2</span>. 不要创造新类别。
+<span class="num">3</span>. 如果无法判断，选择&quot;其他&quot;。
+<span class="num">4</span>. 只返回 JSON，不要输出解释。
 
 输出格式：
-{{"category": "类别名称", "reason": "一句话说明理由"}}
+{{&quot;category&quot;: &quot;类别名称&quot;, &quot;reason&quot;: &quot;一句话说明理由&quot;}}
 
 待分类文本：
 {text}
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
 prompt = prompt_template.format(text=text)
 print(prompt)</div></div>
@@ -546,9 +547,9 @@ print(prompt)</div></div>
       <div class="card-desc">构造金融信息抽取提示词，要求抽取 companies/dates/amounts/financial_metrics/events/risks/industries，明确"不要编造"，没有的信息返回空数组。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">text = "贵州茅台 2025 年一季度实现营业收入 464.85 亿元，同比增长 15.2%。"
+      <div class="ref-answer"><div class="code-block">text = <span class="str">"贵州茅台 2025 年一季度实现营业收入 464.85 亿元，同比增长 15.2%。"</span>
 
-prompt_template = """
+prompt_template = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 你是一个金融文本信息抽取助手。
 
 请从文本中抽取以下信息：
@@ -561,20 +562,20 @@ risks：风险因素
 industries：行业
 
 要求：
-1. 只抽取文本中明确出现或可以直接判断的信息。
-2. 不要编造。
-3. 没有的信息返回空数组。
-4. 只返回 JSON，不要输出解释。
+<span class="num">1</span>. 只抽取文本中明确出现或可以直接判断的信息。
+<span class="num">2</span>. 不要编造。
+<span class="num">3</span>. 没有的信息返回空数组。
+<span class="num">4</span>. 只返回 JSON，不要输出解释。
 
 待抽取文本：
 {text}
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
 prompt = prompt_template.format(text=text)
 print(prompt)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">text = "贵州茅台 2025 年一季度实现营业收入 464.85 亿元，同比增长 15.2%。"
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">text = <span class="str">"贵州茅台 2025 年一季度实现营业收入 464.85 亿元，同比增长 15.2%。"</span>
 
-prompt_template = """
+prompt_template = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 你是一个金融文本信息抽取助手。
 
 请从文本中抽取以下信息：
@@ -587,14 +588,14 @@ risks：风险因素
 industries：行业
 
 要求：
-1. 只抽取文本中明确出现或可以直接判断的信息。
-2. 不要编造。
-3. 没有的信息返回空数组。
-4. 只返回 JSON，不要输出解释。
+<span class="num">1</span>. 只抽取文本中明确出现或可以直接判断的信息。
+<span class="num">2</span>. 不要编造。
+<span class="num">3</span>. 没有的信息返回空数组。
+<span class="num">4</span>. 只返回 JSON，不要输出解释。
 
 待抽取文本：
 {text}
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
 prompt = prompt_template.format(text=text)
 print(prompt)</div></div>
@@ -605,53 +606,53 @@ print(prompt)</div></div>
       <div class="card-desc">构造金融文本匹配提示词，输入文本 A 和 B，写清匹配标准（核心事件/主体/方向一致才算匹配），明确"同一行业不一定匹配"。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">text_a = "央行宣布下调存款准备金率。"
-text_b = "中国人民银行决定降低金融机构存款准备金率。"
+      <div class="ref-answer"><div class="code-block">text_a = <span class="str">"央行宣布下调存款准备金率。"</span>
+text_b = <span class="str">"中国人民银行决定降低金融机构存款准备金率。"</span>
 
-prompt_template = """
+prompt_template = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 你是一个金融文本匹配判断助手。
 请判断文本 A 和文本 B 是否表达相同或高度相近的金融含义。
 
 判断标准：
-1. 核心事件、主体、方向基本一致，才算匹配。
-2. 只是同一行业或同一主题，不一定匹配。
-3. 同义改写可以匹配。
-4. 只返回 JSON，不要输出解释。
+<span class="num">1</span>. 核心事件、主体、方向基本一致，才算匹配。
+<span class="num">2</span>. 只是同一行业或同一主题，不一定匹配。
+<span class="num">3</span>. 同义改写可以匹配。
+<span class="num">4</span>. 只返回 JSON，不要输出解释。
 
 输出格式：
-{{"is_match": true 或 false, "score": 0 到 1 之间的小数, "reason": "一句话说明理由"}}
+{{&quot;is_match&quot;: <span class="kw">true</span> 或 <span class="kw">false</span>, &quot;score&quot;: <span class="num">0</span> 到 <span class="num">1</span> 之间的小数, &quot;reason&quot;: &quot;一句话说明理由&quot;}}
 
 文本 A：
 {text_a}
 
 文本 B：
 {text_b}
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
 prompt = prompt_template.format(text_a=text_a, text_b=text_b)
 print(prompt)</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">text_a = "央行宣布下调存款准备金率。"
-text_b = "中国人民银行决定降低金融机构存款准备金率。"
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">text_a = <span class="str">"央行宣布下调存款准备金率。"</span>
+text_b = <span class="str">"中国人民银行决定降低金融机构存款准备金率。"</span>
 
-prompt_template = """
+prompt_template = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
 你是一个金融文本匹配判断助手。
 请判断文本 A 和文本 B 是否表达相同或高度相近的金融含义。
 
 判断标准：
-1. 核心事件、主体、方向基本一致，才算匹配。
-2. 只是同一行业或同一主题，不一定匹配。
-3. 同义改写可以匹配。
-4. 只返回 JSON，不要输出解释。
+<span class="num">1</span>. 核心事件、主体、方向基本一致，才算匹配。
+<span class="num">2</span>. 只是同一行业或同一主题，不一定匹配。
+<span class="num">3</span>. 同义改写可以匹配。
+<span class="num">4</span>. 只返回 JSON，不要输出解释。
 
 输出格式：
-{{"is_match": true 或 false, "score": 0 到 1 之间的小数, "reason": "一句话说明理由"}}
+{{&quot;is_match&quot;: <span class="kw">true</span> 或 <span class="kw">false</span>, &quot;score&quot;: <span class="num">0</span> 到 <span class="num">1</span> 之间的小数, &quot;reason&quot;: &quot;一句话说明理由&quot;}}
 
 文本 A：
 {text_a}
 
 文本 B：
 {text_b}
-"""
+&quot;&quot;&quot;&lt;/span&gt;
 
 prompt = prompt_template.format(text_a=text_a, text_b=text_b)
 print(prompt)</div></div>
@@ -707,30 +708,30 @@ print(prompt)</div></div>
       <div class="card-desc">编写 choose_prompt_method(task_type) 函数，simple→Zero-shot/Few-shot，reasoning→CoT/Self-Consistency，multi_step→Prompt Chaining，tool→ReAct，其他返回"需要进一步分析"。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">def choose_prompt_method(task_type):
+      <div class="ref-answer"><div class="code-block"><span class="kw">def</span> choose_prompt_method(task_type):
     method_map = {
-        "simple": "Zero-shot / Few-shot",
-        "reasoning": "CoT / Self-Consistency",
-        "multi_step": "Prompt Chaining",
-        "tool": "ReAct"
+        <span class="str">"simple"</span>: <span class="str">"Zero-shot / Few-shot"</span>,
+        <span class="str">"reasoning"</span>: <span class="str">"CoT / Self-Consistency"</span>,
+        <span class="str">"multi_step"</span>: <span class="str">"Prompt Chaining"</span>,
+        <span class="str">"tool"</span>: <span class="str">"ReAct"</span>
     }
-    return method_map.get(task_type, "需要进一步分析任务需求")
+    <span class="kw">return</span> method_map.get(task_type, <span class="str">"需要进一步分析任务需求"</span>)
 
-print(choose_prompt_method("simple"))
-print(choose_prompt_method("reasoning"))
-print(choose_prompt_method("unknown"))</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">def choose_prompt_method(task_type):
+print(choose_prompt_method(<span class="str">"simple"</span>))
+print(choose_prompt_method(<span class="str">"reasoning"</span>))
+print(choose_prompt_method(<span class="str">"unknown"</span>))</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">def</span> choose_prompt_method(task_type):
     method_map = {
-        "simple": "Zero-shot / Few-shot",
-        "reasoning": "CoT / Self-Consistency",
-        "multi_step": "Prompt Chaining",
-        "tool": "ReAct"
+        <span class="str">"simple"</span>: <span class="str">"Zero-shot / Few-shot"</span>,
+        <span class="str">"reasoning"</span>: <span class="str">"CoT / Self-Consistency"</span>,
+        <span class="str">"multi_step"</span>: <span class="str">"Prompt Chaining"</span>,
+        <span class="str">"tool"</span>: <span class="str">"ReAct"</span>
     }
-    return method_map.get(task_type, "需要进一步分析任务需求")
+    <span class="kw">return</span> method_map.get(task_type, <span class="str">"需要进一步分析任务需求"</span>)
 
-print(choose_prompt_method("simple"))
-print(choose_prompt_method("reasoning"))
-print(choose_prompt_method("unknown"))</div></div>
+print(choose_prompt_method(<span class="str">"simple"</span>))
+print(choose_prompt_method(<span class="str">"reasoning"</span>))
+print(choose_prompt_method(<span class="str">"unknown"</span>))</div></div>
     </div>
     <div class="card" data-qid="36" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 36 题</span><span class="card-type write">代码实战</span></div>
@@ -738,66 +739,66 @@ print(choose_prompt_method("unknown"))</div></div>
       <div class="card-desc">编写 build_prompt(task, data) 函数，task="classify"生成分类提示词，task="extract"生成抽取提示词，task="match"生成匹配提示词，不支持的任务返回错误。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">def build_prompt(task, data):
-    if task == "classify":
-        return f"""
+      <div class="ref-answer"><div class="code-block"><span class="kw">def</span> build_prompt(task, data):
+    <span class="kw">if</span> task == <span class="str">"classify"</span>:
+        <span class="kw">return</span> &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&quot;&quot;&quot;
 你是一个金融文本分类助手。
 请从以下类别中选择一个最合适的类别：
 公司公告、市场行情、宏观经济、投资建议、风险提示、财报解读、政策监管、其他。
 要求：只能从给定类别中选择，不要创造新类别，只返回 JSON。
 待分类文本：
-{data["text"]}
-"""
-    if task == "extract":
-        return f"""
+{data[&quot;text&quot;]}
+&quot;&quot;&quot;&lt;/span&gt;
+    <span class="kw">if</span> task == <span class="str">"extract"</span>:
+        <span class="kw">return</span> &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&quot;&quot;&quot;
 你是一个金融文本信息抽取助手。
 请抽取 companies、dates、amounts、financial_metrics、events、risks、industries。
 要求：只抽取明确出现的信息，不要编造，没有返回空数组，只返回 JSON。
 待抽取文本：
-{data["text"]}
-"""
-    if task == "match":
-        return f"""
+{data[&quot;text&quot;]}
+&quot;&quot;&quot;&lt;/span&gt;
+    <span class="kw">if</span> task == <span class="str">"match"</span>:
+        <span class="kw">return</span> &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&quot;&quot;&quot;
 你是一个金融文本匹配判断助手。
 判断标准：核心事件、主体、方向基本一致才算匹配，同一行业不一定匹配，只返回 JSON。
 文本 A：
-{data["text_a"]}
+{data[&quot;text_a&quot;]}
 文本 B：
-{data["text_b"]}
-"""
-    return "错误：不支持的任务类型"
+{data[&quot;text_b&quot;]}
+&quot;&quot;&quot;&lt;/span&gt;
+    <span class="kw">return</span> <span class="str">"错误：不支持的任务类型"</span>
 
-print(build_prompt("classify", {"text": "某公司预计上半年净利润同比增长 40%。"}))</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">def build_prompt(task, data):
-    if task == "classify":
-        return f"""
+print(build_prompt(<span class="str">"classify"</span>, {<span class="str">"text"</span>: <span class="str">"某公司预计上半年净利润同比增长 40%。"</span>}))</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">def</span> build_prompt(task, data):
+    <span class="kw">if</span> task == <span class="str">"classify"</span>:
+        <span class="kw">return</span> &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&quot;&quot;&quot;
 你是一个金融文本分类助手。
 请从以下类别中选择一个最合适的类别：
 公司公告、市场行情、宏观经济、投资建议、风险提示、财报解读、政策监管、其他。
 要求：只能从给定类别中选择，不要创造新类别，只返回 JSON。
 待分类文本：
-{data["text"]}
-"""
-    if task == "extract":
-        return f"""
+{data[&quot;text&quot;]}
+&quot;&quot;&quot;&lt;/span&gt;
+    <span class="kw">if</span> task == <span class="str">"extract"</span>:
+        <span class="kw">return</span> &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&quot;&quot;&quot;
 你是一个金融文本信息抽取助手。
 请抽取 companies、dates、amounts、financial_metrics、events、risks、industries。
 要求：只抽取明确出现的信息，不要编造，没有返回空数组，只返回 JSON。
 待抽取文本：
-{data["text"]}
-"""
-    if task == "match":
-        return f"""
+{data[&quot;text&quot;]}
+&quot;&quot;&quot;&lt;/span&gt;
+    <span class="kw">if</span> task == <span class="str">"match"</span>:
+        <span class="kw">return</span> &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&quot;&quot;&quot;
 你是一个金融文本匹配判断助手。
 判断标准：核心事件、主体、方向基本一致才算匹配，同一行业不一定匹配，只返回 JSON。
 文本 A：
-{data["text_a"]}
+{data[&quot;text_a&quot;]}
 文本 B：
-{data["text_b"]}
-"""
-    return "错误：不支持的任务类型"
+{data[&quot;text_b&quot;]}
+&quot;&quot;&quot;&lt;/span&gt;
+    <span class="kw">return</span> <span class="str">"错误：不支持的任务类型"</span>
 
-print(build_prompt("classify", {"text": "某公司预计上半年净利润同比增长 40%。"}))</div></div>
+print(build_prompt(<span class="str">"classify"</span>, {<span class="str">"text"</span>: <span class="str">"某公司预计上半年净利润同比增长 40%。"</span>}))</div></div>
     </div>
     <div class="card" data-qid="37" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 37 题</span><span class="card-type write">代码实战</span></div>
@@ -805,54 +806,54 @@ print(build_prompt("classify", {"text": "某公司预计上半年净利润同比
       <div class="card-desc">不调用真实大模型，准备分类/抽取/匹配三类测试数据，根据任务类型生成对应提示词，打印每个任务的最终提示词。</div>
       <textarea class="code-editor" placeholder="# 请在此编写你的代码..." rows="10"></textarea>
       <span class="ref-toggle" onclick="toggleRef(this)">查看参考答案 ▼</span>
-      <div class="ref-answer"><div class="code-block">def build_prompt(task, data):
-    if task == "classify":
-        return f"金融文本分类助手。只能从给定类别选择，只返回 JSON。
-待分类：{data['text']}"
-    if task == "extract":
-        return f"金融信息抽取助手。不要编造，没有返回空数组，只返回 JSON。
-待抽取：{data['text']}"
-    if task == "match":
-        return f"金融文本匹配助手。核心事件/主体/方向一致才算匹配，只返回 JSON。
-A：{data['text_a']}
-B：{data['text_b']}"
-    return "错误：不支持的任务类型"
+      <div class="ref-answer"><div class="code-block"><span class="kw">def</span> build_prompt(task, data):
+    <span class="kw">if</span> task == <span class="str">"classify"</span>:
+        <span class="kw">return</span> &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&quot;金融文本分类助手。只能从给定类别选择，只返回 JSON。
+待分类：{data[&#x27;text&#x27;]}&quot;&lt;/span&gt;
+    <span class="kw">if</span> task == <span class="str">"extract"</span>:
+        <span class="kw">return</span> &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&quot;金融信息抽取助手。不要编造，没有返回空数组，只返回 JSON。
+待抽取：{data[&#x27;text&#x27;]}&quot;&lt;/span&gt;
+    <span class="kw">if</span> task == <span class="str">"match"</span>:
+        <span class="kw">return</span> &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&quot;金融文本匹配助手。核心事件/主体/方向一致才算匹配，只返回 JSON。
+A：{data[&#x27;text_a&#x27;]}
+B：{data[&#x27;text_b&#x27;]}&quot;&lt;/span&gt;
+    <span class="kw">return</span> <span class="str">"错误：不支持的任务类型"</span>
 
 samples = [
-    {"task": "classify", "data": {"text": "某上市公司发布公告称，预计上半年净利润同比增长 40%。"}},
-    {"task": "extract", "data": {"text": "贵州茅台 2025 年一季度实现营业收入 464.85 亿元，同比增长 15.2%。"}},
-    {"task": "match", "data": {"text_a": "央行宣布下调存款准备金率。", "text_b": "中国人民银行决定降低金融机构存款准备金率。"}}
+    {<span class="str">"task"</span>: <span class="str">"classify"</span>, <span class="str">"data"</span>: {<span class="str">"text"</span>: <span class="str">"某上市公司发布公告称，预计上半年净利润同比增长 40%。"</span>}},
+    {<span class="str">"task"</span>: <span class="str">"extract"</span>, <span class="str">"data"</span>: {<span class="str">"text"</span>: <span class="str">"贵州茅台 2025 年一季度实现营业收入 464.85 亿元，同比增长 15.2%。"</span>}},
+    {<span class="str">"task"</span>: <span class="str">"match"</span>, <span class="str">"data"</span>: {<span class="str">"text_a"</span>: <span class="str">"央行宣布下调存款准备金率。"</span>, <span class="str">"text_b"</span>: <span class="str">"中国人民银行决定降低金融机构存款准备金率。"</span>}}
 ]
 
-for sample in samples:
-    prompt = build_prompt(sample["task"], sample["data"])
-    print(f"任务：{sample['task']}")
+<span class="kw">for</span> sample <span class="kw">in</span> samples:
+    prompt = build_prompt(sample[<span class="str">"task"</span>], sample[<span class="str">"data"</span>])
+    print(<span class="str">f"任务：{sample['task']}"</span>)
     print(prompt)
-    print("---")</div></div>
-      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block">def build_prompt(task, data):
-    if task == "classify":
-        return f"金融文本分类助手。只能从给定类别选择，只返回 JSON。
-待分类：{data['text']}"
-    if task == "extract":
-        return f"金融信息抽取助手。不要编造，没有返回空数组，只返回 JSON。
-待抽取：{data['text']}"
-    if task == "match":
-        return f"金融文本匹配助手。核心事件/主体/方向一致才算匹配，只返回 JSON。
-A：{data['text_a']}
-B：{data['text_b']}"
-    return "错误：不支持的任务类型"
+    print(<span class="str">"---"</span>)</div></div>
+      <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">def</span> build_prompt(task, data):
+    <span class="kw">if</span> task == <span class="str">"classify"</span>:
+        <span class="kw">return</span> &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&quot;金融文本分类助手。只能从给定类别选择，只返回 JSON。
+待分类：{data[&#x27;text&#x27;]}&quot;&lt;/span&gt;
+    <span class="kw">if</span> task == <span class="str">"extract"</span>:
+        <span class="kw">return</span> &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&quot;金融信息抽取助手。不要编造，没有返回空数组，只返回 JSON。
+待抽取：{data[&#x27;text&#x27;]}&quot;&lt;/span&gt;
+    <span class="kw">if</span> task == <span class="str">"match"</span>:
+        <span class="kw">return</span> &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&quot;金融文本匹配助手。核心事件/主体/方向一致才算匹配，只返回 JSON。
+A：{data[&#x27;text_a&#x27;]}
+B：{data[&#x27;text_b&#x27;]}&quot;&lt;/span&gt;
+    <span class="kw">return</span> <span class="str">"错误：不支持的任务类型"</span>
 
 samples = [
-    {"task": "classify", "data": {"text": "某上市公司发布公告称，预计上半年净利润同比增长 40%。"}},
-    {"task": "extract", "data": {"text": "贵州茅台 2025 年一季度实现营业收入 464.85 亿元，同比增长 15.2%。"}},
-    {"task": "match", "data": {"text_a": "央行宣布下调存款准备金率。", "text_b": "中国人民银行决定降低金融机构存款准备金率。"}}
+    {<span class="str">"task"</span>: <span class="str">"classify"</span>, <span class="str">"data"</span>: {<span class="str">"text"</span>: <span class="str">"某上市公司发布公告称，预计上半年净利润同比增长 40%。"</span>}},
+    {<span class="str">"task"</span>: <span class="str">"extract"</span>, <span class="str">"data"</span>: {<span class="str">"text"</span>: <span class="str">"贵州茅台 2025 年一季度实现营业收入 464.85 亿元，同比增长 15.2%。"</span>}},
+    {<span class="str">"task"</span>: <span class="str">"match"</span>, <span class="str">"data"</span>: {<span class="str">"text_a"</span>: <span class="str">"央行宣布下调存款准备金率。"</span>, <span class="str">"text_b"</span>: <span class="str">"中国人民银行决定降低金融机构存款准备金率。"</span>}}
 ]
 
-for sample in samples:
-    prompt = build_prompt(sample["task"], sample["data"])
-    print(f"任务：{sample['task']}")
+<span class="kw">for</span> sample <span class="kw">in</span> samples:
+    prompt = build_prompt(sample[<span class="str">"task"</span>], sample[<span class="str">"data"</span>])
+    print(<span class="str">f"任务：{sample['task']}"</span>)
     print(prompt)
-    print("---")</div></div>
+    print(<span class="str">"---"</span>)</div></div>
     </div>
 </div>
 
