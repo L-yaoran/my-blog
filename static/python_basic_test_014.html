@@ -497,15 +497,15 @@
       <div class="ref-answer"><div class="code-block"><span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
 client = OpenAI(
-    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>
+    base_url=<span class="str">&quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;</span>
 )
 
 response = client.chat.completions.<span class="kw">create</span>(
-    model=<span class="str">"qwen-plus"</span>,
+    model=<span class="str">&quot;qwen-plus&quot;</span>,
     messages=[
         {
-            <span class="str">"role"</span>: <span class="str">"user"</span>,
-            <span class="str">"content"</span>: <span class="str">"请用三句话说明 Python 程序员为什么要学习大模型 API 调用。"</span>
+            <span class="str">&quot;role&quot;</span>: <span class="str">&quot;user&quot;</span>,
+            <span class="str">&quot;content&quot;</span>: <span class="str">&quot;请用三句话说明 Python 程序员为什么要学习大模型 API 调用。&quot;</span>
         }
     ]
 )
@@ -515,15 +515,15 @@ print(answer)</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
 client = OpenAI(
-    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>
+    base_url=<span class="str">&quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;</span>
 )
 
 response = client.chat.completions.<span class="kw">create</span>(
-    model=<span class="str">"qwen-plus"</span>,
+    model=<span class="str">&quot;qwen-plus&quot;</span>,
     messages=[
         {
-            <span class="str">"role"</span>: <span class="str">"user"</span>,
-            <span class="str">"content"</span>: <span class="str">"请用三句话说明 Python 程序员为什么要学习大模型 API 调用。"</span>
+            <span class="str">&quot;role&quot;</span>: <span class="str">&quot;user&quot;</span>,
+            <span class="str">&quot;content&quot;</span>: <span class="str">&quot;请用三句话说明 Python 程序员为什么要学习大模型 API 调用。&quot;</span>
         }
     ]
 )
@@ -540,15 +540,15 @@ print(answer)</div></div>
       <div class="ref-answer"><div class="code-block"><span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
 client = OpenAI(
-    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>
+    base_url=<span class="str">&quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;</span>
 )
 
 stream = client.chat.completions.<span class="kw">create</span>(
-    model=<span class="str">"qwen-plus"</span>,
+    model=<span class="str">&quot;qwen-plus&quot;</span>,
     messages=[
         {
-            <span class="str">"role"</span>: <span class="str">"user"</span>,
-            <span class="str">"content"</span>: <span class="str">"请用通俗语言解释什么是大模型流式输出。"</span>
+            <span class="str">&quot;role&quot;</span>: <span class="str">&quot;user&quot;</span>,
+            <span class="str">&quot;content&quot;</span>: <span class="str">&quot;请用通俗语言解释什么是大模型流式输出。&quot;</span>
         }
     ],
     stream=<span class="kw">True</span>
@@ -557,19 +557,19 @@ stream = client.chat.completions.<span class="kw">create</span>(
 <span class="kw">for</span> chunk <span class="kw">in</span> stream:
     content = chunk.choices[<span class="num">0</span>].delta.content
     <span class="kw">if</span> content:
-        print(content, end=<span class="str">""</span>, flush=<span class="kw">True</span>)</div></div>
+        print(content, end=<span class="str">&quot;&quot;</span>, flush=<span class="kw">True</span>)</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
 client = OpenAI(
-    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>
+    base_url=<span class="str">&quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;</span>
 )
 
 stream = client.chat.completions.<span class="kw">create</span>(
-    model=<span class="str">"qwen-plus"</span>,
+    model=<span class="str">&quot;qwen-plus&quot;</span>,
     messages=[
         {
-            <span class="str">"role"</span>: <span class="str">"user"</span>,
-            <span class="str">"content"</span>: <span class="str">"请用通俗语言解释什么是大模型流式输出。"</span>
+            <span class="str">&quot;role&quot;</span>: <span class="str">&quot;user&quot;</span>,
+            <span class="str">&quot;content&quot;</span>: <span class="str">&quot;请用通俗语言解释什么是大模型流式输出。&quot;</span>
         }
     ],
     stream=<span class="kw">True</span>
@@ -578,7 +578,7 @@ stream = client.chat.completions.<span class="kw">create</span>(
 <span class="kw">for</span> chunk <span class="kw">in</span> stream:
     content = chunk.choices[<span class="num">0</span>].delta.content
     <span class="kw">if</span> content:
-        print(content, end=<span class="str">""</span>, flush=<span class="kw">True</span>)</div></div>
+        print(content, end=<span class="str">&quot;&quot;</span>, flush=<span class="kw">True</span>)</div></div>
     </div>
     <div class="card" data-qid="33" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 33 题</span><span class="card-type write">代码实战</span></div>
@@ -589,23 +589,23 @@ stream = client.chat.completions.<span class="kw">create</span>(
       <div class="ref-answer"><div class="code-block"><span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
 client = OpenAI(
-    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>
+    base_url=<span class="str">&quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;</span>
 )
 
-system_prompt = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
+system_prompt = <span class="str">&quot;&quot;&quot;
 你是一个英文到中文的翻译助手。
 请参考下面的示例进行翻译，只输出中文结果，不要输出多余解释。
 
 示例：
-英文：I love <span class="kw">Python</span>.
-中文：我喜欢 <span class="kw">Python</span>。
-&quot;&quot;&quot;&lt;/span&gt;
+英文：I love Python.
+中文：我喜欢 Python。
+&quot;&quot;&quot;</span>
 
 response = client.chat.completions.<span class="kw">create</span>(
-    model=<span class="str">"qwen-plus"</span>,
+    model=<span class="str">&quot;qwen-plus&quot;</span>,
     messages=[
-        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: system_prompt},
-        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"Large models can call external tools."</span>}
+        {<span class="str">&quot;role&quot;</span>: <span class="str">&quot;system&quot;</span>, <span class="str">&quot;content&quot;</span>: system_prompt},
+        {<span class="str">&quot;role&quot;</span>: <span class="str">&quot;user&quot;</span>, <span class="str">&quot;content&quot;</span>: <span class="str">&quot;Large models can call external tools.&quot;</span>}
     ]
 )
 
@@ -613,23 +613,23 @@ print(response.choices[<span class="num">0</span>].message.content)</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
 client = OpenAI(
-    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>
+    base_url=<span class="str">&quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;</span>
 )
 
-system_prompt = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
+system_prompt = <span class="str">&quot;&quot;&quot;
 你是一个英文到中文的翻译助手。
 请参考下面的示例进行翻译，只输出中文结果，不要输出多余解释。
 
 示例：
-英文：I love <span class="kw">Python</span>.
-中文：我喜欢 <span class="kw">Python</span>。
-&quot;&quot;&quot;&lt;/span&gt;
+英文：I love Python.
+中文：我喜欢 Python。
+&quot;&quot;&quot;</span>
 
 response = client.chat.completions.<span class="kw">create</span>(
-    model=<span class="str">"qwen-plus"</span>,
+    model=<span class="str">&quot;qwen-plus&quot;</span>,
     messages=[
-        {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: system_prompt},
-        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"Large models can call external tools."</span>}
+        {<span class="str">&quot;role&quot;</span>: <span class="str">&quot;system&quot;</span>, <span class="str">&quot;content&quot;</span>: system_prompt},
+        {<span class="str">&quot;role&quot;</span>: <span class="str">&quot;user&quot;</span>, <span class="str">&quot;content&quot;</span>: <span class="str">&quot;Large models can call external tools.&quot;</span>}
     ]
 )
 
@@ -644,30 +644,30 @@ print(response.choices[<span class="num">0</span>].message.content)</div></div>
       <div class="ref-answer"><div class="code-block"><span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
 client = OpenAI(
-    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>
+    base_url=<span class="str">&quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;</span>
 )
 
-question = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
-当小明 <span class="num">6</span> 岁时，他的妹妹年龄是他的一半。他的哥哥比小明大 <span class="num">4</span> 岁。
-现在小明 <span class="num">70</span> 岁了，请问他的妹妹和哥哥年龄加起来是多少？
-&quot;&quot;&quot;&lt;/span&gt;
+question = <span class="str">&quot;&quot;&quot;
+当小明 6 岁时，他的妹妹年龄是他的一半。他的哥哥比小明大 4 岁。
+现在小明 70 岁了，请问他的妹妹和哥哥年龄加起来是多少？
+&quot;&quot;&quot;</span>
 
-prompt = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&quot;&quot;&quot;
+prompt = <span class="str">f&quot;&quot;&quot;
 请解决下面的问题。
 
 题目：
 {question}
 
 要求：
-<span class="num">1</span>. 请一步一步思考。
-<span class="num">2</span>. 先写出推理过程。
-<span class="num">3</span>. 最后单独给出最终答案。
-&quot;&quot;&quot;&lt;/span&gt;
+1. 请一步一步思考。
+2. 先写出推理过程。
+3. 最后单独给出最终答案。
+&quot;&quot;&quot;</span>
 
 response = client.chat.completions.<span class="kw">create</span>(
-    model=<span class="str">"qwen-plus"</span>,
+    model=<span class="str">&quot;qwen-plus&quot;</span>,
     messages=[
-        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: prompt}
+        {<span class="str">&quot;role&quot;</span>: <span class="str">&quot;user&quot;</span>, <span class="str">&quot;content&quot;</span>: prompt}
     ]
 )
 
@@ -675,30 +675,30 @@ print(response.choices[<span class="num">0</span>].message.content)</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
 client = OpenAI(
-    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>
+    base_url=<span class="str">&quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;</span>
 )
 
-question = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
-当小明 <span class="num">6</span> 岁时，他的妹妹年龄是他的一半。他的哥哥比小明大 <span class="num">4</span> 岁。
-现在小明 <span class="num">70</span> 岁了，请问他的妹妹和哥哥年龄加起来是多少？
-&quot;&quot;&quot;&lt;/span&gt;
+question = <span class="str">&quot;&quot;&quot;
+当小明 6 岁时，他的妹妹年龄是他的一半。他的哥哥比小明大 4 岁。
+现在小明 70 岁了，请问他的妹妹和哥哥年龄加起来是多少？
+&quot;&quot;&quot;</span>
 
-prompt = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&quot;&quot;&quot;
+prompt = <span class="str">f&quot;&quot;&quot;
 请解决下面的问题。
 
 题目：
 {question}
 
 要求：
-<span class="num">1</span>. 请一步一步思考。
-<span class="num">2</span>. 先写出推理过程。
-<span class="num">3</span>. 最后单独给出最终答案。
-&quot;&quot;&quot;&lt;/span&gt;
+1. 请一步一步思考。
+2. 先写出推理过程。
+3. 最后单独给出最终答案。
+&quot;&quot;&quot;</span>
 
 response = client.chat.completions.<span class="kw">create</span>(
-    model=<span class="str">"qwen-plus"</span>,
+    model=<span class="str">&quot;qwen-plus&quot;</span>,
     messages=[
-        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: prompt}
+        {<span class="str">&quot;role&quot;</span>: <span class="str">&quot;user&quot;</span>, <span class="str">&quot;content&quot;</span>: prompt}
     ]
 )
 
@@ -713,86 +713,86 @@ print(response.choices[<span class="num">0</span>].message.content)</div></div>
       <div class="ref-answer"><div class="code-block"><span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
 client = OpenAI(
-    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>
+    base_url=<span class="str">&quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;</span>
 )
 
 <span class="kw">def</span> ask_model(prompt):
     response = client.chat.completions.<span class="kw">create</span>(
-        model=<span class="str">"qwen-plus"</span>,
-        messages=[{<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: prompt}]
+        model=<span class="str">&quot;qwen-plus&quot;</span>,
+        messages=[{<span class="str">&quot;role&quot;</span>: <span class="str">&quot;user&quot;</span>, <span class="str">&quot;content&quot;</span>: prompt}]
     )
     <span class="kw">return</span> response.choices[<span class="num">0</span>].message.content
 
-article = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
+article = <span class="str">&quot;&quot;&quot;
 近年来，大模型在客服、教育、办公和数据分析等场景中应用越来越广。
 企业在使用大模型时，通常需要通过 Prompt 工程约束模型输出格式，
 并结合知识库、外部工具和安全审核来提高回答可靠性。
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;</span>
 
 <span class="cm"># 第一步：抽取要点</span>
-points = ask_model(&lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&#x27;请从下面文本中抽取 <span class="num">3</span> 个关键要点。
+points = ask_model(<span class="str">f&#x27;请从下面文本中抽取 3 个关键要点。
 
 文本：
-&quot;&quot;&quot;{article}&quot;&quot;&quot;&#x27;&lt;/span&gt;)
-print(<span class="str">"第一步：抽取要点"</span>)
+&quot;&quot;&quot;{article}&quot;&quot;&quot;&#x27;</span>)
+print(<span class="str">&quot;第一步：抽取要点&quot;</span>)
 print(points)
 
 <span class="cm"># 第二步：生成摘要</span>
-summary = ask_model(&lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&#x27;请根据下面的要点，生成一段 <span class="num">100</span> 字以内的摘要。
+summary = ask_model(<span class="str">f&#x27;请根据下面的要点，生成一段 100 字以内的摘要。
 
 要点：
-&quot;&quot;&quot;{points}&quot;&quot;&quot;&#x27;&lt;/span&gt;)
-print(<span class="str">"第二步：生成摘要"</span>)
+&quot;&quot;&quot;{points}&quot;&quot;&quot;&#x27;</span>)
+print(<span class="str">&quot;第二步：生成摘要&quot;</span>)
 print(summary)
 
 <span class="cm"># 第三步：优化摘要</span>
-final = ask_model(&lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&#x27;请优化下面这段摘要，使语言更简洁、正式。
+final = ask_model(<span class="str">f&#x27;请优化下面这段摘要，使语言更简洁、正式。
 
 摘要：
-&quot;&quot;&quot;{summary}&quot;&quot;&quot;&#x27;&lt;/span&gt;)
-print(<span class="str">"第三步：优化摘要"</span>)
+&quot;&quot;&quot;{summary}&quot;&quot;&quot;&#x27;</span>)
+print(<span class="str">&quot;第三步：优化摘要&quot;</span>)
 print(final)</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
 client = OpenAI(
-    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>
+    base_url=<span class="str">&quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;</span>
 )
 
 <span class="kw">def</span> ask_model(prompt):
     response = client.chat.completions.<span class="kw">create</span>(
-        model=<span class="str">"qwen-plus"</span>,
-        messages=[{<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: prompt}]
+        model=<span class="str">&quot;qwen-plus&quot;</span>,
+        messages=[{<span class="str">&quot;role&quot;</span>: <span class="str">&quot;user&quot;</span>, <span class="str">&quot;content&quot;</span>: prompt}]
     )
     <span class="kw">return</span> response.choices[<span class="num">0</span>].message.content
 
-article = &lt;span <span class="kw">class</span>=&quot;str&quot;&gt;&quot;&quot;&quot;
+article = <span class="str">&quot;&quot;&quot;
 近年来，大模型在客服、教育、办公和数据分析等场景中应用越来越广。
 企业在使用大模型时，通常需要通过 Prompt 工程约束模型输出格式，
 并结合知识库、外部工具和安全审核来提高回答可靠性。
-&quot;&quot;&quot;&lt;/span&gt;
+&quot;&quot;&quot;</span>
 
 <span class="cm"># 第一步：抽取要点</span>
-points = ask_model(&lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&#x27;请从下面文本中抽取 <span class="num">3</span> 个关键要点。
+points = ask_model(<span class="str">f&#x27;请从下面文本中抽取 3 个关键要点。
 
 文本：
-&quot;&quot;&quot;{article}&quot;&quot;&quot;&#x27;&lt;/span&gt;)
-print(<span class="str">"第一步：抽取要点"</span>)
+&quot;&quot;&quot;{article}&quot;&quot;&quot;&#x27;</span>)
+print(<span class="str">&quot;第一步：抽取要点&quot;</span>)
 print(points)
 
 <span class="cm"># 第二步：生成摘要</span>
-summary = ask_model(&lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&#x27;请根据下面的要点，生成一段 <span class="num">100</span> 字以内的摘要。
+summary = ask_model(<span class="str">f&#x27;请根据下面的要点，生成一段 100 字以内的摘要。
 
 要点：
-&quot;&quot;&quot;{points}&quot;&quot;&quot;&#x27;&lt;/span&gt;)
-print(<span class="str">"第二步：生成摘要"</span>)
+&quot;&quot;&quot;{points}&quot;&quot;&quot;&#x27;</span>)
+print(<span class="str">&quot;第二步：生成摘要&quot;</span>)
 print(summary)
 
 <span class="cm"># 第三步：优化摘要</span>
-final = ask_model(&lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&#x27;请优化下面这段摘要，使语言更简洁、正式。
+final = ask_model(<span class="str">f&#x27;请优化下面这段摘要，使语言更简洁、正式。
 
 摘要：
-&quot;&quot;&quot;{summary}&quot;&quot;&quot;&#x27;&lt;/span&gt;)
-print(<span class="str">"第三步：优化摘要"</span>)
+&quot;&quot;&quot;{summary}&quot;&quot;&quot;&#x27;</span>)
+print(<span class="str">&quot;第三步：优化摘要&quot;</span>)
 print(final)</div></div>
     </div>
     <div class="card" data-qid="36" data-type="write" data-answer="">
@@ -805,72 +805,72 @@ print(final)</div></div>
 <span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
 client = OpenAI(
-    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>
+    base_url=<span class="str">&quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;</span>
 )
 
 <span class="kw">def</span> ask_model(prompt):
     response = client.chat.completions.<span class="kw">create</span>(
-        model=<span class="str">"qwen-plus"</span>,
-        messages=[{<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: prompt}]
+        model=<span class="str">&quot;qwen-plus&quot;</span>,
+        messages=[{<span class="str">&quot;role&quot;</span>: <span class="str">&quot;user&quot;</span>, <span class="str">&quot;content&quot;</span>: prompt}]
     )
     <span class="kw">return</span> response.choices[<span class="num">0</span>].message.content
 
-question = <span class="str">"当小明 6 岁时，妹妹 3 岁。现在小明 70 岁，妹妹多少岁？"</span>
+question = <span class="str">&quot;当小明 6 岁时，妹妹 3 岁。现在小明 70 岁，妹妹多少岁？&quot;</span>
 
 <span class="cm"># 第一步：生成 3 个思路</span>
-ideas_text = ask_model(&lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&#x27;&quot;&quot;&quot;
-请针对下面问题，给出 <span class="num">3</span> 个不同的解题思路。
+ideas_text = ask_model(<span class="str">f&#x27;&quot;&quot;&quot;
+请针对下面问题，给出 3 个不同的解题思路。
 问题：{question}
 输出要求：只输出 JSON 数组，格式：[&quot;思路1&quot;, &quot;思路2&quot;, &quot;思路3&quot;]
-&quot;&quot;&quot;&#x27;&lt;/span&gt;)
+&quot;&quot;&quot;&#x27;</span>)
 ideas = json.loads(ideas_text)
 
 <span class="cm"># 第二步：按每个思路回答</span>
 answers = []
 <span class="kw">for</span> idea <span class="kw">in</span> ideas:
-    answer = ask_model(<span class="str">f'请按照思路"{idea}"解决问题。问题：{question}'</span>)
+    answer = ask_model(<span class="str">f&#x27;请按照思路&quot;{idea}&quot;解决问题。问题：{question}&#x27;</span>)
     answers.append(answer)
 
 <span class="cm"># 第三步：评审选出最终答案</span>
-final = ask_model(&lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&#x27;请从下面多个答案中选出最合理的答案。
+final = ask_model(<span class="str">f&#x27;请从下面多个答案中选出最合理的答案。
 问题：{question}
-候选答案：{answers}&#x27;&lt;/span&gt;)
-print(<span class="str">"最终结果："</span>, final)</div></div>
+候选答案：{answers}&#x27;</span>)
+print(<span class="str">&quot;最终结果：&quot;</span>, final)</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">import</span> json
 <span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
 client = OpenAI(
-    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>
+    base_url=<span class="str">&quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;</span>
 )
 
 <span class="kw">def</span> ask_model(prompt):
     response = client.chat.completions.<span class="kw">create</span>(
-        model=<span class="str">"qwen-plus"</span>,
-        messages=[{<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: prompt}]
+        model=<span class="str">&quot;qwen-plus&quot;</span>,
+        messages=[{<span class="str">&quot;role&quot;</span>: <span class="str">&quot;user&quot;</span>, <span class="str">&quot;content&quot;</span>: prompt}]
     )
     <span class="kw">return</span> response.choices[<span class="num">0</span>].message.content
 
-question = <span class="str">"当小明 6 岁时，妹妹 3 岁。现在小明 70 岁，妹妹多少岁？"</span>
+question = <span class="str">&quot;当小明 6 岁时，妹妹 3 岁。现在小明 70 岁，妹妹多少岁？&quot;</span>
 
 <span class="cm"># 第一步：生成 3 个思路</span>
-ideas_text = ask_model(&lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&#x27;&quot;&quot;&quot;
-请针对下面问题，给出 <span class="num">3</span> 个不同的解题思路。
+ideas_text = ask_model(<span class="str">f&#x27;&quot;&quot;&quot;
+请针对下面问题，给出 3 个不同的解题思路。
 问题：{question}
 输出要求：只输出 JSON 数组，格式：[&quot;思路1&quot;, &quot;思路2&quot;, &quot;思路3&quot;]
-&quot;&quot;&quot;&#x27;&lt;/span&gt;)
+&quot;&quot;&quot;&#x27;</span>)
 ideas = json.loads(ideas_text)
 
 <span class="cm"># 第二步：按每个思路回答</span>
 answers = []
 <span class="kw">for</span> idea <span class="kw">in</span> ideas:
-    answer = ask_model(<span class="str">f'请按照思路"{idea}"解决问题。问题：{question}'</span>)
+    answer = ask_model(<span class="str">f&#x27;请按照思路&quot;{idea}&quot;解决问题。问题：{question}&#x27;</span>)
     answers.append(answer)
 
 <span class="cm"># 第三步：评审选出最终答案</span>
-final = ask_model(&lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&#x27;请从下面多个答案中选出最合理的答案。
+final = ask_model(<span class="str">f&#x27;请从下面多个答案中选出最合理的答案。
 问题：{question}
-候选答案：{answers}&#x27;&lt;/span&gt;)
-print(<span class="str">"最终结果："</span>, final)</div></div>
+候选答案：{answers}&#x27;</span>)
+print(<span class="str">&quot;最终结果：&quot;</span>, final)</div></div>
     </div>
     <div class="card" data-qid="37" data-type="write" data-answer="">
       <div class="card-header"><span class="card-qnum">第 37 题</span><span class="card-type write">代码实战</span></div>
@@ -881,77 +881,77 @@ print(<span class="str">"最终结果："</span>, final)</div></div>
       <div class="ref-answer"><div class="code-block"><span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
 client = OpenAI(
-    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>
+    base_url=<span class="str">&quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;</span>
 )
 
 <span class="kw">def</span> get_weather(city):
     weather_data = {
-        <span class="str">"深圳"</span>: <span class="str">"小雨，25-29℃，湿度较高，建议带伞。"</span>,
-        <span class="str">"北京"</span>: <span class="str">"晴，18-27℃，空气较干燥，适合出行。"</span>,
-        <span class="str">"上海"</span>: <span class="str">"多云，22-28℃，体感舒适。"</span>
+        <span class="str">&quot;深圳&quot;</span>: <span class="str">&quot;小雨，25-29℃，湿度较高，建议带伞。&quot;</span>,
+        <span class="str">&quot;北京&quot;</span>: <span class="str">&quot;晴，18-27℃，空气较干燥，适合出行。&quot;</span>,
+        <span class="str">&quot;上海&quot;</span>: <span class="str">&quot;多云，22-28℃，体感舒适。&quot;</span>
     }
-    <span class="kw">return</span> weather_data.get(city, <span class="str">"暂时没有查询到该城市的天气。"</span>)
+    <span class="kw">return</span> weather_data.get(city, <span class="str">&quot;暂时没有查询到该城市的天气。&quot;</span>)
 
 <span class="kw">def</span> ask_model(prompt):
     response = client.chat.completions.<span class="kw">create</span>(
-        model=<span class="str">"qwen-plus"</span>,
-        messages=[{<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: prompt}]
+        model=<span class="str">&quot;qwen-plus&quot;</span>,
+        messages=[{<span class="str">&quot;role&quot;</span>: <span class="str">&quot;user&quot;</span>, <span class="str">&quot;content&quot;</span>: prompt}]
     )
     <span class="kw">return</span> response.choices[<span class="num">0</span>].message.content
 
-user_question = <span class="str">"我明天去深圳上课，需要带伞吗？"</span>
+user_question = <span class="str">&quot;我明天去深圳上课，需要带伞吗？&quot;</span>
 
 <span class="cm"># 第一步：让模型提取城市</span>
-city = ask_model(&lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&#x27;从问题中提取城市名，只输出城市名。
-问题：{user_question}&#x27;&lt;/span&gt;).strip()
-print(<span class="str">"城市："</span>, city)
+city = ask_model(<span class="str">f&#x27;从问题中提取城市名，只输出城市名。
+问题：{user_question}&#x27;</span>).strip()
+print(<span class="str">&quot;城市：&quot;</span>, city)
 
 <span class="cm"># 第二步：调用工具</span>
 weather = get_weather(city)
-print(<span class="str">"天气："</span>, weather)
+print(<span class="str">&quot;天气：&quot;</span>, weather)
 
 <span class="cm"># 第三步：生成最终回答</span>
-answer = ask_model(&lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&#x27;用户问题：{user_question}
+answer = ask_model(<span class="str">f&#x27;用户问题：{user_question}
 天气结果：{weather}
-请用自然语言回答。&#x27;&lt;/span&gt;)
-print(<span class="str">"回答："</span>, answer)</div></div>
+请用自然语言回答。&#x27;</span>)
+print(<span class="str">&quot;回答：&quot;</span>, answer)</div></div>
       <div class="feedback"><div class="result-tag correct-tag">✓ 正确</div><strong>参考答案：</strong><div class="code-block"><span class="kw">from</span> openai <span class="kw">import</span> OpenAI
 
 client = OpenAI(
-    base_url=<span class="str">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span>
+    base_url=<span class="str">&quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;</span>
 )
 
 <span class="kw">def</span> get_weather(city):
     weather_data = {
-        <span class="str">"深圳"</span>: <span class="str">"小雨，25-29℃，湿度较高，建议带伞。"</span>,
-        <span class="str">"北京"</span>: <span class="str">"晴，18-27℃，空气较干燥，适合出行。"</span>,
-        <span class="str">"上海"</span>: <span class="str">"多云，22-28℃，体感舒适。"</span>
+        <span class="str">&quot;深圳&quot;</span>: <span class="str">&quot;小雨，25-29℃，湿度较高，建议带伞。&quot;</span>,
+        <span class="str">&quot;北京&quot;</span>: <span class="str">&quot;晴，18-27℃，空气较干燥，适合出行。&quot;</span>,
+        <span class="str">&quot;上海&quot;</span>: <span class="str">&quot;多云，22-28℃，体感舒适。&quot;</span>
     }
-    <span class="kw">return</span> weather_data.get(city, <span class="str">"暂时没有查询到该城市的天气。"</span>)
+    <span class="kw">return</span> weather_data.get(city, <span class="str">&quot;暂时没有查询到该城市的天气。&quot;</span>)
 
 <span class="kw">def</span> ask_model(prompt):
     response = client.chat.completions.<span class="kw">create</span>(
-        model=<span class="str">"qwen-plus"</span>,
-        messages=[{<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: prompt}]
+        model=<span class="str">&quot;qwen-plus&quot;</span>,
+        messages=[{<span class="str">&quot;role&quot;</span>: <span class="str">&quot;user&quot;</span>, <span class="str">&quot;content&quot;</span>: prompt}]
     )
     <span class="kw">return</span> response.choices[<span class="num">0</span>].message.content
 
-user_question = <span class="str">"我明天去深圳上课，需要带伞吗？"</span>
+user_question = <span class="str">&quot;我明天去深圳上课，需要带伞吗？&quot;</span>
 
 <span class="cm"># 第一步：让模型提取城市</span>
-city = ask_model(&lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&#x27;从问题中提取城市名，只输出城市名。
-问题：{user_question}&#x27;&lt;/span&gt;).strip()
-print(<span class="str">"城市："</span>, city)
+city = ask_model(<span class="str">f&#x27;从问题中提取城市名，只输出城市名。
+问题：{user_question}&#x27;</span>).strip()
+print(<span class="str">&quot;城市：&quot;</span>, city)
 
 <span class="cm"># 第二步：调用工具</span>
 weather = get_weather(city)
-print(<span class="str">"天气："</span>, weather)
+print(<span class="str">&quot;天气：&quot;</span>, weather)
 
 <span class="cm"># 第三步：生成最终回答</span>
-answer = ask_model(&lt;span <span class="kw">class</span>=&quot;str&quot;&gt;f&#x27;用户问题：{user_question}
+answer = ask_model(<span class="str">f&#x27;用户问题：{user_question}
 天气结果：{weather}
-请用自然语言回答。&#x27;&lt;/span&gt;)
-print(<span class="str">"回答："</span>, answer)</div></div>
+请用自然语言回答。&#x27;</span>)
+print(<span class="str">&quot;回答：&quot;</span>, answer)</div></div>
     </div>
 </div>
 

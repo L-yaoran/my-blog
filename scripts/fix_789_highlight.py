@@ -14,33 +14,36 @@ STR_PAT = re.compile(r"(f?\"\"\"[\s\S]*?\"\"\"|f?'''[\s\S]*?'''|f?\"(?:\\.|[^\"\
 CM_PAT = re.compile(r'(#[^\n]*)')
 OP_PAT = re.compile(r'(@\w+)')
 
-def highlight(code):
-    # Handle strings first
-    code = STR_PAT.sub(r'<span class="str">\1</span>', code)
-    code = CM_PAT.sub(r'<span class="cm">\1</span>', code)
-    code = OP_PAT.sub(r'<span class="op">\1</span>', code)
+def clean_code(content):
+    """将已高亮或已转义的代码块还原为纯文本代码。"""
+    content = re.sub(r'<span class="(?:kw|str|cm|op|num)">', '', content)
+    content = content.replace('</span>', '')
+    return html_mod.unescape(content)
 
-    parts = re.split(r'(<span[^>]*>.*?</span>)', code)
-    for i in range(len(parts)):
-        if parts[i].startswith('<span'):
+
+def highlight(code):
+    """为代码块添加简单语法高亮，先转义源码再插入 span，避免 span 被当成源码显示。"""
+    code = clean_code(code)
+    token_pat = re.compile(
+        r'(?P<str>f?"""[\s\S]*?"""|f?\'\'\'[\s\S]*?\'\'\'|f?"(?:\\.|[^"\\])*"|f?\'(?:\\.|[^\'\\])*\')'
+        r'|(?P<cm>#[^\n]*)'
+        r'|(?P<op>@\w+)'
+        r'|(?P<kw>\b(' + '|'.join(ALL_KW) + r')\b)'
+        r'|(?P<num>\b\d+\.?\d*\b)',
+        re.IGNORECASE
+    )
+
+    result = []
+    pos = 0
+    for m in token_pat.finditer(code):
+        if m.start() < pos:
             continue
-        tokens = []
-        for m in KW_PAT.finditer(parts[i]):
-            tokens.append((m.start(), m.end(), 'kw', m.group(1)))
-        for m in NUM_PAT.finditer(parts[i]):
-            tokens.append((m.start(), m.end(), 'num', m.group(1)))
-        tokens.sort(key=lambda x: (x[0], -x[1]))
-        result = []
-        pos = 0
-        for start, end, cls, text in tokens:
-            if start < pos:
-                continue
-            result.append(html_mod.escape(parts[i][pos:start]))
-            result.append(f'<span class="{cls}">{html_mod.escape(text)}</span>')
-            pos = end
-        result.append(html_mod.escape(parts[i][pos:]))
-        parts[i] = ''.join(result)
-    return ''.join(parts)
+        result.append(html_mod.escape(code[pos:m.start()]))
+        cls = m.lastgroup
+        result.append(f'<span class="{cls}">{html_mod.escape(m.group(0))}</span>')
+        pos = m.end()
+    result.append(html_mod.escape(code[pos:]))
+    return ''.join(result)
 
 def fix_file(path):
     with open(path, 'r', encoding='utf-8') as f:
