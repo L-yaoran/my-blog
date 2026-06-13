@@ -26,6 +26,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://829007.xyz/interactive-python-quiz-platform/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://829007.xyz/static/python_basic_test_001.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -52,6 +57,56 @@
   </url>
   <url>
     <loc>https://829007.xyz/static/python_basic_test_006.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://829007.xyz/static/python_basic_test_007.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://829007.xyz/static/python_basic_test_008.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://829007.xyz/static/python_basic_test_009.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://829007.xyz/static/python_basic_test_010.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://829007.xyz/static/python_basic_test_011.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://829007.xyz/static/python_basic_test_012.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://829007.xyz/static/python_basic_test_013.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://829007.xyz/static/python_basic_test_014.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://829007.xyz/static/python_basic_test_015.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://829007.xyz/static/python_basic_test_016.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>

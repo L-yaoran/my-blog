@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{TITLE}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/static/js/codemirror/codemirror.min.css?v=20260602">
 <link rel="stylesheet" href="/static/js/codemirror/theme/eclipse.min.css?v=20260602">
 <link rel="stylesheet" href="/static/css/quiz.css?v=20260602">
@@ -11,7 +14,8 @@
 <body>
 
 <div class="container">
-  <div class="header">
+  <div class="header" style="position:relative;">
+    <span class="theme-toggle" onclick="toggleTheme()" title="切换深色/浅色模式" style="position:absolute;top:0;right:0;cursor:pointer;font-size:1.2rem;">🌙</span>
     <div class="badge">交互式练习</div>
     <h1>{{TITLE}}</h1>
     <div class="subtitle">{{SUBTITLE}} · 即时反馈 · 记录保存</div>
@@ -25,7 +29,6 @@
       </div>
     </div>
     {{NEXT_LINK}}
-    <button class="theme-toggle" onclick="toggleTheme()" title="切换深色/浅色模式" style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);">🌙</button>
   </div>
   <div class="sticky-toolbar">
     <a href="/" class="back-link">&larr; 返回主页</a>

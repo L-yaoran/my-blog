@@ -7,9 +7,75 @@
 ## [未发布]
 
 ### 计划
-- 练习标签筛选功能
-- 错题本功能
-- 练习统计面板
+- 首页信息架构改版（v4 spec）
+- 内容分类/标签/SEO/RSS（v4.1 spec）
+- 练习平台独立入口（v4.2 spec）
+- 站内 AI 学习助手（v5 spec）
+- 练习平台增强：错题本/统计面板/随机顺序（quiz-enhancement-spec）
+
+---
+
+## [2026-06-12]
+
+### 新增
+- 练习 016：Coze 智能体开发（37 题，Phase2 Day04）
+- 5 份 spec 规划文档（v4/v4.1/v4.2/v5/quiz-enhancement）
+- 练习平台增强 spec（从 PRD 提取）
+
+### 变更
+- 项目文档全面更新（README.md / CLAUDE.md / CHANGELOG.md）
+- README.md 重写（练习 11→16，项目结构更新，新增练习清单表格）
+- CLAUDE.md 同步更新（根目录 + my_blog/ 两份）
+- sitemap.xml 补充 007-016 + interactive-python-quiz-platform 文章
+- hub.html 项目卡片更新为 16 套 570+ 道题
+- quiz_001.json 导航更新到 012-016
+- 服务器全量同步（35 个运行时文件）
+- 清理服务器旧文件（static/static\ 双层目录、旧路径 quiz-engine.js/quiz.css）
+
+### 清理
+- 审查文档 v1/v2/v3 归档至回收站
+- PRD 产品规划文档归档至回收站（练习站功能已提取为独立 spec）
+
+---
+
+## [2026-06-10]
+
+### 新增
+- 练习 015：提示词技术选型与金融场景（37 题，Phase2 Day03）
+
+---
+
+## [2026-06-09]
+
+### 新增
+- 练习 014：API 调用/链式提示（37 题，Phase2 Day02）
+
+---
+
+## [2026-06-08]
+
+### 新增
+- 练习 013：提示词工程基础（38 题，Phase2 Day01）
+- 练习 012：Linux 基础（38 题，Phase1 Day10）
+
+---
+
+## [2026-06-07]
+
+### 新增
+- 统一模板系统（quiz_template.html + generate_quiz.py + update_navs.py）
+- quiz_meta.py 练习元数据集中管理
+- quiz_data_001~011.py 题目数据文件
+
+### 变更
+- 所有练习页由统一模板重新生成，消除骨架漂移
+- 首页继承 base.html（原为独立页面）
+- CodeMirror 改为本地文件托管
+- 深色模式全面支持（style.css / quiz.css / hub.html）
+
+### 清理
+- 删除旧版 gen007~gen011 独立生成脚本
+- scripts/ 目录精简为统一工具链
 
 ---
 

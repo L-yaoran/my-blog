@@ -4,7 +4,7 @@ from datetime import datetime
 import os, json
 
 app = Flask(__name__)
-app.secret_key = 'your-secret-key-change-in-production'
+app.secret_key = os.environ.get('SECRET_KEY', 'dev-key-local-only')
 app.config['FLATPAGES_ROOT'] = 'content'
 app.config['FLATPAGES_EXTENSION'] = '.md'
 app.config['FLATPAGES_MARKDOWN_EXTENSIONS'] = ['tables', 'fenced_code', 'codehilite']
